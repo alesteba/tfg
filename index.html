@@ -1,0 +1,316 @@
+
+
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<ul><li>EDT</li><li>alcance</li><li>comunicaciones</li><li>entregalbes</li><li>gantt</li><li>infraestructure</li><li>introduccion</li><li>justificación</li><li>metodología</li><li>modelo-BD</li><li>pipe_itr_0</li><li>pipeline</li><li>planificación</li><li>resumen</li><li>riegos</li><li>rrhh</li><li>tiempos</li></ul>
+
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<p>Pipeline de Datos para una Aplicacin de datosAgroalimentarios.</p>
+<p>Resumen: El trabajo consistir en la reestructuracin de una aplicacin de gestin de datos agroalimentarios con el objetivo de soportar la gestin y el mantenimiento de los datos de diferentes clientes. Estos datos, actualmente, se actualizan e incrementan de forma peridica con un aadido de trabajo manual que se puede optimizar mediante tcnicas de integracin y despliegue continuo.</p><ul>
+<li>partimos de un rediseo de BD anterior.</li>
+<li>buscamos automatizar los modelos de produccin ()</li>
+<li>necesitamos una arquitectura limpia.</li>
+</ul>
+<p>Necesidad de una reestructuracin para la aplicacin agrai por su crecimiento para la gestin de grandes volmenes de datos agrarios. El estado actual de dicha aplicacin consiste en la representacin del estado de cierto parcelario a travs del anlisis de histricos de datos.</p><p>El proyecto planteado inicialmente por la empresa tiene una planificacin de cuatro meses, pero mi estancia en la empresa no puede prolongarse durante tanto tiempo. As, aprovechando que el proyecto se va a desarrollar siguiendo una metodologa incremental iterativa se considera que realice las tres primeras iteraciones como mi TFG adems de realizar la planificacin de este.</p>
+<p>A continuacin, se expondrn los objetivos generales del proyecto con la intencin de aportar una visin global del trabajo que se pretende realizar. Para evaluar el xito de la realizacin de mi TFG se plantear en la fase de anlisis de cada iteracin unos requisitos a partir de los cules se podr valorar el desarrollo de mi TFG y la influencia que tendr mi aportacin en el proyecto final.</p>
+<p>Los objetivos finales del proyecto son:</p>
+<ul>
+<li>Automatizar el despliegue de la aplicacion mediante infraestructura como cdigo.</li>
+<li>Disear un modelo de datos que permita un rapido escalado de dicha app.</li>
+<li>Automatizacin del proceso de trasformacin de los datos mediante el diseo de un pipeline.</li>
+<li>Obtencin de un modelo de produccin de cultivo para el parcelario (kg)</li>
+<li>Inclusin de los resultados en la presentacin de la applicacin.</li>
+<li>Integracin continua mediante pruebas de test para el pipeline desarrollado<ul>
+<li>(si fuese posible llegar a Jenkins)</li>
+</ul>
+</li>
+</ul><p>En el equipo hacemos uso de SCRUM para la gestin del proyecto. Dicha metodologa permite un desarrollo en cascada de las diferentes tareas propuestas para la creacin del pipeline.</p>
+<p>2.4. MTODO DE TRABAJO  </p>
+<p>Se usar un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (tambin<br />
+llamadas iteraciones), se repiten de manera intencionada una o ms actividades del<br />
+proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va<br />
+aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos<br />
+repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br />
+producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada<br />
+iteracin se entrega una versin mejorada. Podemos observar esta metodologa en la<br />
+ilustracin 1.</p><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
+<div class="mermaid">
+graph TD;
+TFG-->PLANIFICACIN;
+TFG-->MODELO_DATOS;
+TFG-->PIPELINE;
+PLANIFICACIN-->ALCANCE;
+PLANIFICACIN-->METODOLOGIA;
+PLANIFICACIN-->EDT;
+PLANIFICACIN-->GANTT;
+MODELO_DATOS-->DISENO_BD;
+MODELO_DATOS-->ARQUITECTURA;
+PIPLINE-->PIPE.1_D;
+PIPELINE-->PIPE.2_D;
+</div>
+
+<h2>Tareas y Descripcin:</h2>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content from cell 1</td>
+<td>Content from cell 2</td>
+</tr>
+<tr>
+<td>Content in the first column</td>
+<td>Content in the second column</td>
+</tr>
+</tbody>
+</table>
+<script>mermaid.initialize({startOnLoad:true});</script><p>tabla con los entregables y las descripciones:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Tables can be justified with a colon</th>
+<th align="right">Another example with a long title</th>
+<th align="center">And another long title as a example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">because of the <code>:</code></td>
+<td align="right">these will be justified</td>
+<td align="center">this is centered</td>
+</tr>
+</tbody>
+</table><table>
+<thead>
+<tr>
+<th align="left">Tables can be justified with a colon</th>
+<th align="right">Another example with a long title</th>
+<th align="center">And another long title as a example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">because of the <code>:</code></td>
+<td align="right">these will be justified</td>
+<td align="center">this is centered</td>
+</tr>
+</tbody>
+</table>
+<p>tabla con las tareas y tiempos</p><p>https://gist.github.com/martinwoodward/8ad6296118c975510766d80310db71fd</p>
+<p>El siguiente diagrama propone un desglose de tareas para la planificacin del proyecto. </p>
+<div class="mermaid">
+gantt
+title Planificacin
+dateFormat  DD-MM
+axisFormat  %d
+
+section ANALISIS
+ALCANCE: done, 01-01, 2d
+METODOLOGIA: crit, 02-01, 3d
+EDT: 03-01, 5d
+GANNT: 04-01, 5d
+RRHH: 05-01, 3d
+COMUNICACIONES: 06-01, 5d
+RIESGOS: 07-01, 5d
+
+section MODELO_DATOS
+RELACIONES BD: done, 08-01, 15d
+REDISEO: crit, 09-01, 15d
+
+section ENTORNO
+DJANGO+JUPYTER: done, 10-01, 2d
+INT_CONTINUA: crit, 11-01, 3d
+
+section PIPELINE
+INFR: 20-01, 5d
+LOAD: 21-01, 5d
+FEAT: 25-01, 5d
+VIEW: 25-01, 7d
+MODEL: 30-01, 7d
+WEB: 30-01, 5d
+Phase 2 complete: milestone, 30-01, 0d
+
+section TEST
+TEST 1: 20-01, 30d
+TEST 2: 30-01, 20d
+TEST 3: milestone, 20-02, 1d
+
+section MEMORIA
+MEM_WRITE: 01-01, 60d
+SEG_Y_CONT: 01-01, 60d
+
+
+Project complete: milestone, 10-03, 0d
+</div>
+
+<p>Este diagrama es una estipulacin de cmo creo que voy a ir durante el desarrollo del modelo de datos y del pipeline correspondiente. En la seccion final de seguimiento y control analizamos las desviaciones encontradas y cmo han sido solucionados estos contratiempos.</p>
+<script>mermaid.initialize({startOnLoad:true});</script><p>El personal implicado en el Trabajo de Fin de Grado ser:  </p>
+<p>Alberto Esteban Larreina: Ejecutor y responsable del proyecto. Desarrollar el proyecto en su totalidad.  </p>
+<p>Antonio Rbio: Tutor en la empresa. Se dedicar a corregir los aspectos tcnicos del proyecto referentes al desarrollo  del mismo y planificacin.</p>
+<p>Jnathan Heras: Tutor acadmico<br />
+Se dedicar a corregir aspectos referentes a la documentacin y la forma en la que<br />
+se desarrollar el proyecto a lo largo del tiempo estipulado y me guiar a cerca del<br />
+desarrollo de este.</p><p>2.3. PLAN DE COMUNICACIONES  </p>
+<p>Para mantener informados tanto al tutor acadmico como a la tutora de la empresa,<br />
+utilizaremos los siguientes canales:  </p>
+<p>Reuniones: presenciales, tanto con el tutor acadmico como con la tutora de la<br />
+empresa.  </p>
+<p>Email: se utilizar como forma de comunicacin electrnica para concretar<br />
+determinadas pautas o establecimiento de citas.  </p>
+<p>Jira: aplicacin de seguimiento y control que utiliza la empresa.</p><ul>
+<li>fallo de la obtencin de features necesarias.</li>
+<li>datos externos con nuevas caractersticas no contempladas en la BD</li>
+<li>cambios en el alcance</li>
+<li>planificacin demasiado exhaustiva</li>
+</ul>
+<p>TABLA DE RIESGOS:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Tables can be justified with a colon</th>
+<th align="right">Another example with a long title</th>
+<th align="center">And another long title as a example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">because of the <code>:</code></td>
+<td align="right">these will be justified</td>
+<td align="center">this is centered</td>
+</tr>
+</tbody>
+</table><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+<p>El siguiente script automatiza la creaccin de una mquina con las librerias necesarias, el cul una vez ejecutado, deja la aplicacin lista para su despligue.</p>
+<pre><code class="language-bash">
+#!/bin/bash
+
+sudo apt update
+sudo apt upgrade
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+# postgres
+
+sudo apt-get install openjdk-8-jdk
+sudo apt-get install openjdk-8-jre
+sudo apt-get install postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
+sudo -u postgres createuser -P geoserver
+
+# como creo el rol
+
+sudo -u postgres createdb -O geoserver geoserver
+sudo -u postgres psql -c &quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot; geoserver
+
+# gdal native:
+
+sudo add-apt-repository ppa:ubuntugis/ppa &amp;&amp; sudo apt-get update
+sudo apt-get update
+
+# replace config postgres files
+
+sudo cp ./postgresql.conf /etc/postgresql/10/main
+sudo cp ./pg_hba.conf /etc/postgresql/10/main
+
+# python
+
+sudo apt install python3.8
+sudo apt install virtualenv
+sudo apt install python3.8-dev python3.8-venv
+
+# creacion entorno_venv
+
+python3.8 -m venv agrai_venv
+
+# env gdal lib variables
+
+export CPLUS_INCLUDE_PATH=/usr/include/gdal
+export C_INCLUDE_PATH=/usr/include/gdal
+
+# install dep in python agrai_venv
+
+source agrai_venv/bin/activate
+pip install --upgrade pip # quitar
+python -m pip install -r ./requirements.txt
+
+</code></pre><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
+<p>Es importante destacar que ....</p>
+<p>
+<figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
+</p>
+<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
+<p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
+<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
+<p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
+<h2>Diseo de Roles</h2>
+<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra los roles utilizados para la gestin y administracin de los datos de la applicacin.</p>
+<p>Roles necsarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferntes servicos.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ROL</th>
+<th align="right">DESC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Agricultor</td>
+<td align="right">usuario de las parcelas</td>
+</tr>
+<tr>
+<td align="left">Cooperativa</td>
+<td align="right">entidad que agrupa a tcnos con diferentes cargos sobre un parcelario</td>
+</tr>
+<tr>
+<td align="left">Tecnico</td>
+<td align="right">personal asignado a un nmero de parcelas.</td>
+</tr>
+</tbody>
+</table>
+<h2>INDICES DESIGN</h2>
+<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela. Es uno de los puntos ms importantes en el diseo que va ha permitr una correcta bsqueda de features para despus poder estimar con precin en el modelo de produccin de cultivo.</p>
+<p>diagram BD para los indicies, su relacin con parcela y el almacenamineto de los pxels contemplado en el parcelario que permiten representar el estado del cultivo.</p>
+<div class="mermaid">
+erDiagram
+CAR ||--o{ NAMED-DRIVER : allows
+CAR {
+string allowedDriver FK "The license of the allowed driver"
+string registrationNumber
+string make
+string model
+}
+PERSON ||--o{ NAMED-DRIVER : is
+PERSON {
+string driversLicense PK "The license #"
+string firstName
+string lastName
+int age
+}
+</div>
+
+<script>mermaid.initialize({startOnLoad:true});</script><pre><code class="language-plantuml">
+@startuml  [First component] [Another component] as Comp2 component Comp3 component [Last\ncomponent] as Comp4  @enduml 
+
+## Vista Minable
+
+las siguientes features nos dan los datos de entrada para el modelo que queremos obtener:
+
+</code></pre>
+<p>```plantuml
+@startuml component
+actor client
+node app
+database db</p>
+<p>db -&gt; app
+app -&gt; client
+@enduml</p>
