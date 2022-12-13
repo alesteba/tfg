@@ -12,13 +12,13 @@
   mermaid.initialize({ startOnLoad: true });
 </script>
 
-<p>Pipeline de Datos para una Aplicacin de datosAgroalimentarios.</p>
-<p>Resumen: El trabajo consistir en la reestructuracin de una aplicacin de gestin de datos agroalimentarios con el objetivo de soportar la gestin y el mantenimiento de los datos de diferentes clientes. Estos datos, actualmente, se actualizan e incrementan de forma peridica con un aadido de trabajo manual que se puede optimizar mediante tcnicas de integracin y despliegue continuo.</p><ul>
+<h1>resumen</h1><h1>introduccion</h1><p>Pipeline de Datos para una Aplicacin de datosAgroalimentarios.</p>
+<p>Resumen: El trabajo consistir en la reestructuracin de una aplicacin de gestin de datos agroalimentarios con el objetivo de soportar la gestin y el mantenimiento de los datos de diferentes clientes. Estos datos, actualmente, se actualizan e incrementan de forma peridica con un aadido de trabajo manual que se puede optimizar mediante tcnicas de integracin y despliegue continuo.</p><h1>justificación</h1><ul>
 <li>partimos de un rediseo de BD anterior.</li>
 <li>buscamos automatizar los modelos de produccin ()</li>
 <li>necesitamos una arquitectura limpia.</li>
 </ul>
-<p>Necesidad de una reestructuracin para la aplicacin agrai por su crecimiento para la gestin de grandes volmenes de datos agrarios. El estado actual de dicha aplicacin consiste en la representacin del estado de cierto parcelario a travs del anlisis de histricos de datos.</p><p>El proyecto planteado inicialmente por la empresa tiene una planificacin de cuatro meses, pero mi estancia en la empresa no puede prolongarse durante tanto tiempo. As, aprovechando que el proyecto se va a desarrollar siguiendo una metodologa incremental iterativa se considera que realice las tres primeras iteraciones como mi TFG adems de realizar la planificacin de este.</p>
+<p>Necesidad de una reestructuracin para la aplicacin agrai por su crecimiento para la gestin de grandes volmenes de datos agrarios. El estado actual de dicha aplicacin consiste en la representacin del estado de cierto parcelario a travs del anlisis de histricos de datos.</p><h1>alcance</h1><p>El proyecto planteado inicialmente por la empresa tiene una planificacin de cuatro meses, pero mi estancia en la empresa no puede prolongarse durante tanto tiempo. As, aprovechando que el proyecto se va a desarrollar siguiendo una metodologa incremental iterativa se considera que realice las tres primeras iteraciones como mi TFG adems de realizar la planificacin de este.</p>
 <p>A continuacin, se expondrn los objetivos generales del proyecto con la intencin de aportar una visin global del trabajo que se pretende realizar. Para evaluar el xito de la realizacin de mi TFG se plantear en la fase de anlisis de cada iteracin unos requisitos a partir de los cules se podr valorar el desarrollo de mi TFG y la influencia que tendr mi aportacin en el proyecto final.</p>
 <p>Los objetivos finales del proyecto son:</p>
 <ul>
@@ -31,7 +31,7 @@
 <li>(si fuese posible llegar a Jenkins)</li>
 </ul>
 </li>
-</ul><p>En el equipo hacemos uso de SCRUM para la gestin del proyecto. Dicha metodologa permite un desarrollo en cascada de las diferentes tareas propuestas para la creacin del pipeline.</p>
+</ul><h1>metodología</h1><p>En el equipo hacemos uso de SCRUM para la gestin del proyecto. Dicha metodologa permite un desarrollo en cascada de las diferentes tareas propuestas para la creacin del pipeline.</p>
 <p>2.4. MTODO DE TRABAJO  </p>
 <p>Se usar un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (tambin<br />
 llamadas iteraciones), se repiten de manera intencionada una o ms actividades del<br />
@@ -40,7 +40,7 @@ aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie
 repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br />
 producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada<br />
 iteracin se entrega una versin mejorada. Podemos observar esta metodologa en la<br />
-ilustracin 1.</p><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
+ilustracin 1.</p><h1>EDT</h1><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
 <div class="mermaid">
 graph TD;
 TFG-->PLANIFICACIN;
@@ -75,7 +75,7 @@ PIPELINE-->PIPE.2_D;
 </tr>
 </tbody>
 </table>
-<script>mermaid.initialize({startOnLoad:true});</script><p>tabla con los entregables y las descripciones:</p>
+<script>mermaid.initialize({startOnLoad:true});</script><h1>entregalbes</h1><p>tabla con los entregables y las descripciones:</p>
 <table>
 <thead>
 <tr>
@@ -91,7 +91,7 @@ PIPELINE-->PIPE.2_D;
 <td align="center">this is centered</td>
 </tr>
 </tbody>
-</table><table>
+</table><h1>tiempos</h1><table>
 <thead>
 <tr>
 <th align="left">Tables can be justified with a colon</th>
@@ -107,7 +107,7 @@ PIPELINE-->PIPE.2_D;
 </tr>
 </tbody>
 </table>
-<p>tabla con las tareas y tiempos</p><p>https://gist.github.com/martinwoodward/8ad6296118c975510766d80310db71fd</p>
+<p>tabla con las tareas y tiempos</p><h1>gantt</h1><p>https://gist.github.com/martinwoodward/8ad6296118c975510766d80310db71fd</p>
 <p>El siguiente diagrama propone un desglose de tareas para la planificacin del proyecto. </p>
 <div class="mermaid">
 gantt
@@ -155,20 +155,20 @@ Project complete: milestone, 10-03, 0d
 </div>
 
 <p>Este diagrama es una estipulacin de cmo creo que voy a ir durante el desarrollo del modelo de datos y del pipeline correspondiente. En la seccion final de seguimiento y control analizamos las desviaciones encontradas y cmo han sido solucionados estos contratiempos.</p>
-<script>mermaid.initialize({startOnLoad:true});</script><p>El personal implicado en el Trabajo de Fin de Grado ser:  </p>
+<script>mermaid.initialize({startOnLoad:true});</script><h1>rrhh</h1><p>El personal implicado en el Trabajo de Fin de Grado ser:  </p>
 <p>Alberto Esteban Larreina: Ejecutor y responsable del proyecto. Desarrollar el proyecto en su totalidad.  </p>
 <p>Antonio Rbio: Tutor en la empresa. Se dedicar a corregir los aspectos tcnicos del proyecto referentes al desarrollo  del mismo y planificacin.</p>
 <p>Jnathan Heras: Tutor acadmico<br />
 Se dedicar a corregir aspectos referentes a la documentacin y la forma en la que<br />
 se desarrollar el proyecto a lo largo del tiempo estipulado y me guiar a cerca del<br />
-desarrollo de este.</p><p>2.3. PLAN DE COMUNICACIONES  </p>
+desarrollo de este.</p><h1>comunicaciones</h1><p>2.3. PLAN DE COMUNICACIONES  </p>
 <p>Para mantener informados tanto al tutor acadmico como a la tutora de la empresa,<br />
 utilizaremos los siguientes canales:  </p>
 <p>Reuniones: presenciales, tanto con el tutor acadmico como con la tutora de la<br />
 empresa.  </p>
 <p>Email: se utilizar como forma de comunicacin electrnica para concretar<br />
 determinadas pautas o establecimiento de citas.  </p>
-<p>Jira: aplicacin de seguimiento y control que utiliza la empresa.</p><ul>
+<p>Jira: aplicacin de seguimiento y control que utiliza la empresa.</p><h1>riegos</h1><ul>
 <li>fallo de la obtencin de features necesarias.</li>
 <li>datos externos con nuevas caractersticas no contempladas en la BD</li>
 <li>cambios en el alcance</li>
@@ -190,7 +190,7 @@ determinadas pautas o establecimiento de citas.  </p>
 <td align="center">this is centered</td>
 </tr>
 </tbody>
-</table><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+</table><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
 <p>El siguiente script automatiza la creaccin de una mquina con las librerias necesarias, el cul una vez ejecutado, deja la aplicacin lista para su despligue.</p>
 <pre><code class="language-bash">
 #!/bin/bash
@@ -243,7 +243,7 @@ source agrai_venv/bin/activate
 pip install --upgrade pip # quitar
 python -m pip install -r ./requirements.txt
 
-</code></pre><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
+</code></pre><h1>modelo-BD</h1><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
 <p>Es importante destacar que ....</p>
 <p>
 <figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
@@ -298,7 +298,7 @@ int age
 }
 </div>
 
-<script>mermaid.initialize({startOnLoad:true});</script><pre><code class="language-plantuml">
+<script>mermaid.initialize({startOnLoad:true});</script><h1>pipe_itr_0</h1><pre><code class="language-plantuml">
 @startuml  [First component] [Another component] as Comp2 component Comp3 component [Last\ncomponent] as Comp4  @enduml 
 
 ## Vista Minable
