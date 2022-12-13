@@ -183,17 +183,7 @@ determinadas pautas o establecimiento de citas.  </p>
 <td align="center">this is centered</td>
 </tr>
 </tbody>
-</table><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
-<p>Es importante destacar que ....</p>
-<p>![[modelo-BD.png]]</p>
-<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
-<p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
-<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
-<p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
-<h2>Diseo de Roles</h2>
-<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra </p>
-<h2>INDICES DESIGN</h2>
-<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela.</p><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+</table><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
 <p>El siguiente script automatiza la creaccin de una mquina con las librerias necesarias, el cul una vez ejecutado, deja la aplicacin lista para su despligue.</p>
 <pre><code class="language-bash">
 #!/bin/bash
@@ -248,7 +238,9 @@ python -m pip install -r ./requirements.txt
 
 </code></pre><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
 <p>Es importante destacar que ....</p>
-<p>![[modelo-BD.png]]</p>
+<p>
+<figure class="class1"><img src="modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
+</p>
 <p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
 <p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
@@ -256,19 +248,19 @@ python -m pip install -r ./requirements.txt
 <h2>Diseo de Roles</h2>
 <p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra </p>
 <h2>INDICES DESIGN</h2>
-<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela.</p><p>(intencin, justificar cmo hemos ido haciendo el proceso de transformacin de datos para obtener el modelo.)</p>
-<ul>
-<li>Datos aqu  (snippets)</li>
-</ul>
-<p>@startuml start if (condition A) then (yes)   :Text 1; elseif (condition B) then (yes)   :Text 2;   stop (no) elseif (condition C) then (yes)   :Text 3; (no) elseif (condition D) then (yes)   :Text 4; else (nothing)   :Text else; endif stop @enduml</p>
-<pre><code class="language-plantuml">@startuml component
+<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela.</p><pre><code class="language-plantuml">
+@startuml  [First component] [Another component] as Comp2 component Comp3 component [Last\ncomponent] as Comp4  @enduml 
+
+## Vista Minable
+
+las siguientes features nos dan los datos de entrada para el modelo que queremos obtener:
+
+</code></pre>
+<p>```plantuml
+@startuml component
 actor client
 node app
-database db
-
-db -&gt; app
+database db</p>
+<p>db -&gt; app
 app -&gt; client
-@enduml
-</code></pre>
-<h2>Vista Minable</h2>
-<p>las siguientes features nos dan los datos de entrada para el modelo que queremos obtener:</p>
+@enduml</p>
