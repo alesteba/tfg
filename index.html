@@ -5,7 +5,7 @@
   mermaid.initialize({ startOnLoad: true });
 </script>
 
-<ul><li><a href="#resumen">resumen</a></li><ul><li><a href="#introduccion">introduccion</a></li><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#infraestructure">infraestructure</a></li><ul><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul>
+<ul><li><a href="#resumen">resumen</a></li><ul><li><a href="#introduccion">introduccion</a></li><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li></ul><li><a href="#seguimiento">seguimiento</a></li></ul>
 
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
@@ -16,8 +16,8 @@
 <p>[[planificacin]]</p>
 <p>[[anlisis]]</p>
 <p>[[diseo]]</p>
-<p>[[infraestructure]]</p>
-<p>[[pipeline]]</p></div><div id=resumen><h1>resumen</h1></div><div id=planificación><h1>planificación</h1><ul>
+<p>[[implementacin]]</p>
+<p>[[seguimiento]]</p></div><div id=resumen><h1>resumen</h1></div><div id=planificación><h1>planificación</h1><ul>
 <li>
 <p>INTRODUCCIN [[introduccion]]</p>
 <ul>
@@ -436,7 +436,8 @@ int age
         return None
     else:
       return None
-</code></pre></div><div id=infraestructure><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+</code></pre></div><div id=implementación><h1>implementación</h1><p>[[infraestructure]]</p>
+<p>[[entorno]]</p></div><div id=infraestructure><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
 <p>Para poder utilizar tecnologas que posibiliten la integracin continua transformamos el entorno de desarrollo desplegando la aplicacin en UNIX. Identificacmos las siguientes dependencias que necesitan ser instaladas:</p>
 <ul>
 <li>postgres 14 con el plug-in de postgis para trabajar con datos georeferenciados.</li>
@@ -496,34 +497,15 @@ source agrai_venv/bin/activate
 pip install --upgrade pip # quitar
 python -m pip install -r ./requirements.txt
 
-</code></pre></div><div id=pipeline><h1>pipeline</h1><p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta creacin del modelo de produccin no utilizarmos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar.</p>
-<p>Tenemos tres conceptos que definen un pipeline de datos. Para nuestra aplicacin nos centramos en utilizar el repositorio anterior para obtener y gestionar los datos necesarios del parcelario y transformar aquellos campos que definen una parcela en la vista minable correspondiente al modelo de produccin.</p>
+</code></pre></div><div id=entorno><h1>entorno</h1><p>Es importante preparar un entrno comn para el equipo. Django es un framework muy tilpor la integracin de las herramientas que hemos visto (ORM, web-interfaces, etc), pero para conseguir un workflow adecuado necesitamos incluir otra herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos con las libreras necesarias para ejecutar modelos predictivos.</p>
+<p>Migracin de todo el enterno a UNIX para posteriomente utilizar herramientas de integracin continua. El trabajo en el quipo local se hace a travs de una mquina en WSL para trabajar de forma semejante a un contender. Uno de los problemas principales para el quipo en su flujo de trabajo ha sido mantener una integridad entre el desarrollo realizad por los diferentes miembros del equipo y el posterior despliegue de la aplicacin en un entorno UNIX diferente al que se haba utilizado en local en las versiones de preproduccin.</p>
+<p>Dedicamos varios das a prepar la integracin de Django con cuadernos jupyter y adems poder ejecutar diferentes entornos virtuales con las librerias adecuadas en cada momento. Los siguientes ejemplos muestran como se ha conseguido integrar las libreras necesarias para el despliegue de los cuadernos y su integracin con los datos y los modelos de Django.</p>
+<p>CODE -&gt; snippet example -&gt; django integration:</p>
+<p>INTEGRACIN CREACIN -&gt; DESPLIEGUE DE MODELOS:</p>
+<p>Para el trabajo interno de la aplicacin ncesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web que simplemente muestra los datos del parcelario registrado con su produccin estimada.</p></div><div id=seguimiento><h1>seguimiento</h1><p>hacemos uso de una metodologa kai-zen que permite seguir la implementacin y los devios que han sucedido sobre el plantemiento del proyecto.</p>
+<p>lista de lecciones aprendidas -&gt; redaccin de documentos en el blog :</p>
 <ul>
-<li>
-<p>Data Ingestion: utilizamos nuestra BD para extrar a travs de Django los datos necesarios. Las relaciones establecidas anterioremente permiten un fcil acceso a estos datos.</p>
-</li>
-<li>
-<p>Data Transformation: una vez identificadas las relaciones, extraemos las campos necesarios y creamos el esquema de la vista minable que utilizaremos en el modelo. Una vez ejecutado el modelo podemos pasar al siguiente punto</p>
-</li>
-<li>
-<p>Data Storage: es necesario persistir los datos obtenidos por el modelo ya que forman parte de los datos objetivos para seguir modelizando correctamente el cultivo.</p>
-</li>
-</ul>
-<p>(intencin, justificar cmo hemos ido haciendo el proceso de transformacin de datos para obtener el modelo.)</p>
-<p>ITERACIONES:</p>
-<p>[[pipe_itr_0]]</p></div><div id=pipe_itr_0><h1>pipe_itr_0</h1><pre><code class="language-plantuml">
-@startuml  [First component] [Another component] as Comp2 component Comp3 component [Last\ncomponent] as Comp4  @enduml 
-
-## Vista Minable
-
-las siguientes features nos dan los datos de entrada para el modelo que queremos obtener:
-
-</code></pre>
-<p>```plantuml
-@startuml component
-actor client
-node app
-database db</p>
-<p>db -&gt; app
-app -&gt; client
-@enduml</p></div>
+<li>blog-post 1</li>
+<li>blog-post 2</li>
+<li></li>
+</ul></div>
