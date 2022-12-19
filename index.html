@@ -5,7 +5,7 @@
   mermaid.initialize({ startOnLoad: true });
 </script>
 
-<li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#planificación">planificación</a></li><ul><li><a href="#introduccion">introduccion</a></li><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#análisis">análisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#diseño">diseño</a></li><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#implementación">implementación</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li><li><a href="#pipeline">pipeline</a></li><ul><li><a href="#model-view">model-view</a></li><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul><li><a href="#seguimiento">seguimiento</a></li></ul>
+<li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#planificación">planificación</a></li><ul><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#análisis">análisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#diseño">diseño</a></li><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#implementación">implementación</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li><li><a href="#pipeline">pipeline</a></li><ul><li><a href="#model-view">model-view</a></li><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul><li><a href="#seguimiento">seguimiento</a></li></ul>
 
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
@@ -17,9 +17,11 @@
 <p>[[anlisis]]</p>
 <p>[[diseo]]</p>
 <p>[[implementacin]]</p>
-<p>[[seguimiento]]</p></div><div id=resumen><h1>resumen</h1></div><div id=planificación><h1>planificación</h1><ul>
+<p>[[seguimiento]]</p></div><div id=resumen><h1>resumen</h1><p>Pipeline de Datos para una Aplicacin de datosAgroalimentarios.</p>
+<p>Resumen: El trabajo consistir en la reestructuracin de una aplicacin de gestin de datos agroalimentarios con el objetivo de soportar la gestin y el mantenimiento de los datos de diferentes clientes. Estos datos, actualmente, se actualizan e incrementan de forma peridica con un aadido de trabajo manual que se puede optimizar mediante tcnicas de integracin y despliegue continuo.</p></div><div id=planificación><h1>planificación</h1><p>esto sobra</p>
+<ul>
 <li>
-<p>INTRODUCCIN [[introduccion]]</p>
+<p>INTRODUCCIN</p>
 <ul>
 <li>Antecedentes [[justificacin]]</li>
 </ul>
@@ -108,8 +110,7 @@
 <li>varias pruebas de carga de datos</li>
 </ul>
 </li>
-</ul></div><div id=introduccion><h1>introduccion</h1><p>Pipeline de Datos para una Aplicacin de datosAgroalimentarios.</p>
-<p>Resumen: El trabajo consistir en la reestructuracin de una aplicacin de gestin de datos agroalimentarios con el objetivo de soportar la gestin y el mantenimiento de los datos de diferentes clientes. Estos datos, actualmente, se actualizan e incrementan de forma peridica con un aadido de trabajo manual que se puede optimizar mediante tcnicas de integracin y despliegue continuo.</p></div><div id=justificación><h1>justificación</h1><ul>
+</ul></div><div id=justificación><h1>justificación</h1><ul>
 <li>partimos de un rediseo de BD anterior.</li>
 <li>buscamos automatizar los modelos de produccin ()</li>
 <li>necesitamos una arquitectura limpia.</li>
@@ -539,7 +540,8 @@ database db</p>
 <p>db -&gt; app
 app -&gt; client
 @enduml</p></div><div id=seguimiento><h1>seguimiento</h1><p>hacemos uso de una metodologa kai-zen que permite seguir la implementacin y los devios que han sucedido sobre el plantemiento del proyecto.</p>
-<p>lista de lecciones aprendidas -&gt; redaccin de documentos en el blog :</p>
+<p>El objetivo de este trabajo no es obtener un producto software final sino la optimizacin de un proceso o flujo de trabajo. Los cambios planteados mejoran el acceso a los datos y la forma de prorcesar estos por el resto de participantes del equipo. </p>
+<p>Durante el avance del proyecto se han ido documentando algunas lecciones aprendidas en el siguiete blog. Estas pequeas notas documentan algunos de los problemas que pueden volver a aprecer. La mayora de estas publicaciones son relacionadas con problemas de arquitectura de software relacionados con el framework que se est utilizando, Django. Adems encontramos cdigo que permite automizar la visualizacin de ciertos procesos que ayudan a optimzar el proceso de trabajo.</p>
 <ul>
 <li>blog-post 1</li>
 <li>blog-post 2</li>
