@@ -5,7 +5,7 @@
   mermaid.initialize({ startOnLoad: true });
 </script>
 
-<li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#planificación">planificación</a></li><ul><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#análisis">análisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#diseño">diseño</a></li><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#implementación">implementación</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li><li><a href="#pipeline">pipeline</a></li><ul><li><a href="#model-view">model-view</a></li><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul><li><a href="#seguimiento">seguimiento</a></li></ul>
+<li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#planificación">planificación</a></li><ul><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#análisis">análisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#diseño">diseño</a></li><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#implementación">implementación</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li><li><a href="#commands-CLI">commands-CLI</a></li><li><a href="#pipeline">pipeline</a></li><ul><li><a href="#model-view">model-view</a></li><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul><li><a href="#seguimiento">seguimiento</a></li></ul>
 
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
@@ -439,7 +439,8 @@ int age
       return None
 </code></pre></div><div id=implementación><h1>implementación</h1><p>[[infraestructure]]</p>
 <p>[[entorno]]</p>
-<p>[[pipeline]]</p></div><div id=infraestructure><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+<p>[[commands-CLI]]</p>
+<p>[[pipeline]]</p></div><div id=infraestructure><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias creando un script que deja una mquina en estado estable para ejecutar la aplicacin.</p>
 <p>Para poder utilizar tecnologas que posibiliten la integracin continua transformamos el entorno de desarrollo desplegando la aplicacin en UNIX. Identificacmos las siguientes dependencias que necesitan ser instaladas:</p>
 <ul>
 <li>postgres 14 con el plug-in de postgis para trabajar con datos georeferenciados.</li>
@@ -504,7 +505,16 @@ python -m pip install -r ./requirements.txt
 <p>Dedicamos varios das a prepar la integracin de Django con cuadernos jupyter y adems poder ejecutar diferentes entornos virtuales con las librerias adecuadas en cada momento. Los siguientes ejemplos muestran como se ha conseguido integrar las libreras necesarias para el despliegue de los cuadernos y su integracin con los datos y los modelos de Django.</p>
 <p>CODE -&gt; snippet example -&gt; django integration:</p>
 <p>INTEGRACIN CREACIN -&gt; DESPLIEGUE DE MODELOS:</p>
-<p>Para el trabajo interno de la aplicacin ncesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web que simplemente muestra los datos del parcelario registrado con su produccin estimada.</p></div><div id=pipeline><h1>pipeline</h1><p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta creacin del modelo de produccin no utilizarmos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar.</p>
+<p>Para el trabajo interno de la aplicacin ncesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web que simplemente muestra los datos del parcelario registrado con su produccin estimada.</p></div><div id=commands-CLI><h1>commands-CLI</h1><p>Una de las caractersticas ms tiles del framework en nuestro caso es la posibilidad de crear comandos que se ejecuten desde dentro.</p>
+<pre><code class="language-python">
+from django.core.management.base import BaseCommand
+
+class Command(BaseCommand):
+    def handle(self, **options):
+        # now do the things that you want with your models here
+
+</code></pre>
+<p>Con esta estructura desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Podemos crear varios entornos con tuberas deferentes que den como resultado aplicaciones con estados distintos, caracterstica muy importante debido al funcionamiento del equipo en relacin a el procesamiento de datos  con varios clientes.</p></div><div id=pipeline><h1>pipeline</h1><p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta creacin del modelo de produccin no utilizarmos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar.</p>
 <p>Tenemos tres conceptos que definen un pipeline de datos. Para nuestra aplicacin nos centramos en utilizar el repositorio anterior para obtener y gestionar los datos necesarios del parcelario y transformar aquellos campos que definen una parcela en la vista minable correspondiente al modelo de produccin.</p>
 <ul>
 <li>
