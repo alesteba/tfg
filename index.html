@@ -5,7 +5,7 @@
   mermaid.initialize({ startOnLoad: true });
 </script>
 
-<ul><li><a href="#resumen">resumen</a></li><ul><li><a href="#introduccion">introduccion</a></li><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#modelo-BD">modelo-BD</a></li><ul><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul>
+<ul><li><a href="#resumen">resumen</a></li><ul><li><a href="#introduccion">introduccion</a></li><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregalbes">entregalbes</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><ul><ul><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#infraestructure">infraestructure</a></li><ul><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul>
 
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
@@ -190,7 +190,236 @@ determinadas pautas o establecimiento de citas.  </p>
 <td align="center">this is centered</td>
 </tr>
 </tbody>
-</table></div><div id=infraestructure><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+</table></div><div id=AGRAI-data><h1>AGRAI-data</h1><p>Explicacin del estado actual del proyecto:</p>
+<p>AGRAI es una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus paracelas. El estado actual de la aplicacin se centra el despliegue de datos georeferenciados por medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
+<p>Por otro lado, cmo actualmente se procesa la informacin que finalmente muestra la aplicacin es un porceso tedioso para el equipo, en el cul diferentes miembros trabajan con tecnolgias distintas sobre datos duplicados obtenidos de fuentes comunes para finalmente mostrar un resultado en la aplicacin.</p>
+<p>El objetivo de este trabajo de fin de grado es mejorar y automatizar el flujo de trabajo del equipo convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cul el resto del equipo pueda acceder y utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de los datos.</p>
+<p>Entiendo que es un proyecto ambicioso debido a que no slo es importante el conocimiento tcnico sino que sern necesarios cambios en la forma de trabajo del equipo adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar.</p></div><div id=requisitos><h1>requisitos</h1><p>descripcin de requisitos funcionales:</p>
+<table>
+<thead>
+<tr>
+<th align="left">REQUISITO</th>
+<th align="right">DESCRIPCIN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">RF1</td>
+<td align="right">automatizar el despliegue de la aplicacin identificando las libreras y dependencias necesarias</td>
+</tr>
+<tr>
+<td align="left">RF2</td>
+<td align="right">redisear el modelo de datos para poder escalar la aplicacin y su gestin de datos.</td>
+</tr>
+<tr>
+<td align="left">RF3</td>
+<td align="right">creacin de un entorno comn que permita trabajar al equipo sobre las mismos datos con tecnlogas comunes.</td>
+</tr>
+</tbody>
+</table>
+<p>RF9 acceder a los datos de produccin a travs de un API rest -&gt; django REST.</p>
+<p>descripcion de requisitios no funcionales:
+tecologas y dems.</p>
+<table>
+<thead>
+<tr>
+<th align="left">REQUISITO</th>
+<th align="right">DESCRIPCIN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">RNF1</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">RNF2</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">RNF3</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>ampliaciones</p></div><div id=modelo-BD><h1>modelo-BD</h1><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
+<p>Es importante destacar que ....</p>
+<p>
+<figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
+</p>
+<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
+<p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
+<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
+<p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
+<h2>Diseo de Roles</h2>
+<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra los roles utilizados para la gestin y administracin de los datos de la applicacin.</p>
+<p>Roles necsarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferntes servicos.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ROL</th>
+<th align="right">DESC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Agricultor</td>
+<td align="right">usuario de las parcelas</td>
+</tr>
+<tr>
+<td align="left">Cooperativa</td>
+<td align="right">entidad que agrupa a tcnos con diferentes cargos sobre un parcelario</td>
+</tr>
+<tr>
+<td align="left">Tecnico</td>
+<td align="right">personal asignado a un nmero de parcelas.</td>
+</tr>
+</tbody>
+</table>
+<h2>INDICES DESIGN</h2>
+<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela. Es uno de los puntos ms importantes en el diseo que va ha permitr una correcta bsqueda de features para despus poder estimar con precin en el modelo de produccin de cultivo.</p>
+<p>diagram BD para los indicies, su relacin con parcela y el almacenamineto de los pxels contemplado en el parcelario que permiten representar el estado del cultivo.</p>
+<p>puedo automatizar esta parte del diagrama:</p>
+<div class="mermaid">
+erDiagram
+CAR ||--o{ NAMED-DRIVER : allows
+CAR {
+string allowedDriver FK "The license of the allowed driver"
+string registrationNumber
+string make
+string model
+}
+PERSON ||--o{ NAMED-DRIVER : is
+PERSON {
+string driversLicense PK "The license #"
+string firstName
+string lastName
+int age
+}
+</div>
+
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id=services><h1>services</h1><p>Los servicios son la siguiente capa de abstraccin, explicamos por encima por qu son importantes y cmo nos permiten encapsular el diseo de las consultas ms frecuentes sobre el modelo de la applicacin.</p>
+<p>Diagrama de los servicios obetnidos, cdigo del ms importante.</p>
+<p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo. Encapsulamos </p>
+<pre><code>def get_indice_func(parcela, indice_p, fecha_p, func, filtro):
+
+    indice_p = Indice.objects.get(nombre=indice_p) 
+    if type(indice_p) == str else indice_p
+
+    if ParcelaIndices_Service.is_parcela_filter(parcela, filtro):
+
+      pixels = parcela.get_pixeles()
+
+      indices_pixels = Mirar_Indice.objects.filter(
+
+          pixel__in = pixels, 
+          indice = indice_p, 
+          fecha = fecha_p
+      )
+
+      if ParcelaIndices_Service.get_indice_filter(indices_pixels, filtro):
+
+        array_valores = list(indices_pixels.values_list('valor', flat=True))
+
+        return func(array_valores)
+
+      else:
+        return None
+    else:
+      return None
+</code></pre></div><div id=modelo-BD><h1>modelo-BD</h1><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
+<p>Es importante destacar que ....</p>
+<p>
+<figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
+</p>
+<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
+<p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
+<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
+<p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
+<h2>Diseo de Roles</h2>
+<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra los roles utilizados para la gestin y administracin de los datos de la applicacin.</p>
+<p>Roles necsarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferntes servicos.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ROL</th>
+<th align="right">DESC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Agricultor</td>
+<td align="right">usuario de las parcelas</td>
+</tr>
+<tr>
+<td align="left">Cooperativa</td>
+<td align="right">entidad que agrupa a tcnos con diferentes cargos sobre un parcelario</td>
+</tr>
+<tr>
+<td align="left">Tecnico</td>
+<td align="right">personal asignado a un nmero de parcelas.</td>
+</tr>
+</tbody>
+</table>
+<h2>INDICES DESIGN</h2>
+<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela. Es uno de los puntos ms importantes en el diseo que va ha permitr una correcta bsqueda de features para despus poder estimar con precin en el modelo de produccin de cultivo.</p>
+<p>diagram BD para los indicies, su relacin con parcela y el almacenamineto de los pxels contemplado en el parcelario que permiten representar el estado del cultivo.</p>
+<p>puedo automatizar esta parte del diagrama:</p>
+<div class="mermaid">
+erDiagram
+CAR ||--o{ NAMED-DRIVER : allows
+CAR {
+string allowedDriver FK "The license of the allowed driver"
+string registrationNumber
+string make
+string model
+}
+PERSON ||--o{ NAMED-DRIVER : is
+PERSON {
+string driversLicense PK "The license #"
+string firstName
+string lastName
+int age
+}
+</div>
+
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id=services><h1>services</h1><p>Los servicios son la siguiente capa de abstraccin, explicamos por encima por qu son importantes y cmo nos permiten encapsular el diseo de las consultas ms frecuentes sobre el modelo de la applicacin.</p>
+<p>Diagrama de los servicios obetnidos, cdigo del ms importante.</p>
+<p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo. Encapsulamos </p>
+<pre><code>def get_indice_func(parcela, indice_p, fecha_p, func, filtro):
+
+    indice_p = Indice.objects.get(nombre=indice_p) 
+    if type(indice_p) == str else indice_p
+
+    if ParcelaIndices_Service.is_parcela_filter(parcela, filtro):
+
+      pixels = parcela.get_pixeles()
+
+      indices_pixels = Mirar_Indice.objects.filter(
+
+          pixel__in = pixels, 
+          indice = indice_p, 
+          fecha = fecha_p
+      )
+
+      if ParcelaIndices_Service.get_indice_filter(indices_pixels, filtro):
+
+        array_valores = list(indices_pixels.values_list('valor', flat=True))
+
+        return func(array_valores)
+
+      else:
+        return None
+    else:
+      return None
+</code></pre></div><div id=infraestructure><h1>infraestructure</h1><p>Parte del rediseo consiste en la automatizacin del despliege de la applicacion. En este punto vemos como la infraestructura como cdigo permite aislar las librerias necesarias. </p>
+<p>Para poder utilizar tecnologas que posibiliten la integracin continua transformamos el entorno de desarrollo desplegando la aplicacin en UNIX. Identificacmos las siguientes dependencias que necesitan ser instaladas:</p>
+<ul>
+<li>postgres 14 con el plug-in de postgis para trabajar con datos georeferenciados.</li>
+<li>python3.8</li>
+<li>Django</li>
+<li>requierement for virtual env.</li>
+</ul>
 <p>El siguiente script automatiza la creaccin de una mquina con las librerias necesarias, el cul una vez ejecutado, deja la aplicacin lista para su despligue.</p>
 <pre><code class="language-bash">
 #!/bin/bash
@@ -243,62 +472,7 @@ source agrai_venv/bin/activate
 pip install --upgrade pip # quitar
 python -m pip install -r ./requirements.txt
 
-</code></pre></div><div id=modelo-BD><h1>modelo-BD</h1><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
-<p>Es importante destacar que ....</p>
-<p>
-<figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
-</p>
-<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
-<p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
-<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
-<p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
-<h2>Diseo de Roles</h2>
-<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra los roles utilizados para la gestin y administracin de los datos de la applicacin.</p>
-<p>Roles necsarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferntes servicos.</p>
-<table>
-<thead>
-<tr>
-<th align="left">ROL</th>
-<th align="right">DESC</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Agricultor</td>
-<td align="right">usuario de las parcelas</td>
-</tr>
-<tr>
-<td align="left">Cooperativa</td>
-<td align="right">entidad que agrupa a tcnos con diferentes cargos sobre un parcelario</td>
-</tr>
-<tr>
-<td align="left">Tecnico</td>
-<td align="right">personal asignado a un nmero de parcelas.</td>
-</tr>
-</tbody>
-</table>
-<h2>INDICES DESIGN</h2>
-<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela. Es uno de los puntos ms importantes en el diseo que va ha permitr una correcta bsqueda de features para despus poder estimar con precin en el modelo de produccin de cultivo.</p>
-<p>diagram BD para los indicies, su relacin con parcela y el almacenamineto de los pxels contemplado en el parcelario que permiten representar el estado del cultivo.</p>
-<div class="mermaid">
-erDiagram
-CAR ||--o{ NAMED-DRIVER : allows
-CAR {
-string allowedDriver FK "The license of the allowed driver"
-string registrationNumber
-string make
-string model
-}
-PERSON ||--o{ NAMED-DRIVER : is
-PERSON {
-string driversLicense PK "The license #"
-string firstName
-string lastName
-int age
-}
-</div>
-
-<script>mermaid.initialize({startOnLoad:true});</script></div><div id=pipe_itr_0><h1>pipe_itr_0</h1><pre><code class="language-plantuml">
+</code></pre></div><div id=pipe_itr_0><h1>pipe_itr_0</h1><pre><code class="language-plantuml">
 @startuml  [First component] [Another component] as Comp2 component Comp3 component [Last\ncomponent] as Comp4  @enduml 
 
 ## Vista Minable
