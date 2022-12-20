@@ -1,19 +1,4 @@
-<!DOCTYPE html><html>
-
-<head>
-  <meta http-equiv="content-language" content="es">
-  <meta charset="utf-8">
-  <title>Title of the document</title>
-</head> 
-
-<body>
-
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<ul><li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#planificación">planificación</a></li><ul><li><a href="#justificación">justificación</a></li><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregables">entregables</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#análisis">análisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#diseño">diseño</a></li><ul><li><a href="#BD-DESIGN">BD-DESIGN</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li></ul><li><a href="#implementación">implementación</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li><li><a href="#commands-CLI">commands-CLI</a></li><li><a href="#pipeline">pipeline</a></li><ul><li><a href="#model-view">model-view</a></li><li><a href="#pipe_itr_0">pipe_itr_0</a></li></ul></ul><li><a href="#seguimiento">seguimiento</a></li></ul></ul><div id=TFG><h1>TFG</h1><p>[[resumen]]</p>
+<div id=TFG><h1>TFG</h1><p>[[resumen]]</p>
 <p>[[planificacin]]</p>
 <p>[[anlisis]]</p>
 <p>[[diseo]]</p>
@@ -137,8 +122,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos<br />
 repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br />
 producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada<br />
-iteracin se entrega una versin mejorada. Podemos observar esta metodologa en la<br />
-ilustracin 1.</p></div><div id=EDT><h1>EDT</h1><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
+iteracin se entrega una versin mejorada.</p></div><div id=EDT><h1>EDT</h1><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
 <div class="mermaid">
 graph TD;
 TFG-->PLANIFICACIN;
@@ -298,8 +282,8 @@ determinadas pautas o establecimiento de citas.  </p>
 </tbody>
 </table></div><div id=análisis><h1>análisis</h1><p>[[AGRAI-data]]</p>
 <p>[[requisitos]]</p></div><div id=AGRAI-data><h1>AGRAI-data</h1><p>Explicacin del estado actual del proyecto:</p>
-<p>AGRAI es una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus paracelas. El estado actual de la aplicacin se centra el despliegue de datos georeferenciados por medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
-<p>Por otro lado, cmo actualmente se procesa la informacin que finalmente muestra la aplicacin es un porceso tedioso para el equipo, en el cul diferentes miembros trabajan con tecnolgias distintas sobre datos duplicados obtenidos de fuentes comunes para finalmente mostrar un resultado en la aplicacin.</p>
+<p>AGRAIes una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus paracelas. El estado actual de la aplicacin se centra el despliegue de datosgeoreferenciadospor medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
+<p>Por otro lado, como actualmente se procesa la informacin que finalmente muestra la aplicacin es un porceso tedioso para el equipo, en el cul diferentes miembros trabajan contecnologasdistintas sobre datos duplicados obtenidos de fuentes comunes para finalmente mostrar un resultado en la aplicacin.</p>
 <p>El objetivo de este trabajo de fin de grado es mejorar y automatizar el flujo de trabajo del equipo convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cul el resto del equipo pueda acceder y utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de los datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no slo es importante el conocimiento tcnico sino que sern necesarios cambios en la forma de trabajo del equipo adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar.</p></div><div id=requisitos><h1>requisitos</h1><p>descripcin de requisitos funcionales:</p>
 <table>
@@ -513,7 +497,21 @@ class Command(BaseCommand):
         # now do the things that you want with your models here
 
 </code></pre>
-<p>Con esta estructura desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Podemos crear varios entornos con tuberas deferentes que den como resultado aplicaciones con estados distintos, caracterstica muy importante debido al funcionamiento del equipo en relacin a el procesamiento de datos  con varios clientes.</p></div><div id=pipeline><h1>pipeline</h1><p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta creacin del modelo de produccin no utilizarmos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar.</p>
+<p>Con esta estructura desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Podemos crear varios entornos con tuberas deferentes que den como resultado aplicaciones con estados distintos, caracterstica muy importante debido al funcionamiento del equipo en relacin a el procesamiento de datos  con varios clientes.</p></div><div id=pipeline><h1>pipeline</h1><ul>
+<li>Implementacin pipeline (TAREAS)
+        - carga de datos Inicial (1S)
+        - seleccin de caractersticas
+        - transformacin de datos
+        - obtencin vista minable
+        - implementacin modelo de produccin de cultivo
+        - visualizacin resultados en la interfaz<ul>
+<li>Implementacin modelo Produccin</li>
+<li>Pipeline Jenkins (automatizacin de la instalacin de la applicacion y despliegue)</li>
+<li>Depliegue de la interfaz (esta preparada ?)</li>
+</ul>
+</li>
+</ul>
+<p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta creacin del modelo de produccin no utilizarmos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar.</p>
 <p>Tenemos tres conceptos que definen un pipeline de datos. Para nuestra aplicacin nos centramos en utilizar el repositorio anterior para obtener y gestionar los datos necesarios del parcelario y transformar aquellos campos que definen una parcela en la vista minable correspondiente al modelo de produccin.</p>
 <ul>
 <li>
@@ -533,26 +531,49 @@ class Command(BaseCommand):
 <p>-&gt; insertar codigo aqui con la construccin de la vista</p>
 <p>-&gt; insertar cuadernos jupyter dentro del entrno html que estoy desplegando para mostrar la vista minable creada. </p>
 <p>-&gt; as evito la generacin de imgenes.</p>
-<h1>escribir en el html la referencia al cuaderno y ejecutarlo.</h1></div><div id=pipe_itr_0><h1>pipe_itr_0</h1><pre><code class="language-plantuml">
-@startuml  [First component] [Another component] as Comp2 component Comp3 component [Last\ncomponent] as Comp4  @enduml 
+<h1>escribir en el html la referencia al cuaderno y ejecutarlo.</h1></div><div id=pipe_itr_0><h1>pipe_itr_0</h1><p>Mediante los comandos de de django creamos diferentes tuberas para la prueba de datos. El siguiente cdigo carga en la aplicacin datos de prueba para poder probar el modelo.  </p>
+<pre><code class="language-python">
+class Command(LoggingBaseCommand):
 
-## Vista Minable
+  help = 'Carga la geometra a las parcelas y a los pixeles'
 
-las siguientes features nos dan los datos de entrada para el modelo que queremos obtener:
+  BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+  PARCELA_SHAPE = BASE_DIR / 'data' / 'parcelas' / '25' / 'parcelas.shp'
+  PIXEL_SHAPE = BASE_DIR / 'data' / 'parcelas' / '25' / 'pixeles.shp'
+  FICHERO_PATH = BASE_DIR / 'data' / 'excels' / 'datos-test-2.xls'
+  TRILINEA_PATH = BASE_DIR / 'data' / 'trilineas' / 'PRilineas.json'
 
-</code></pre>
-<p>```plantuml
-@startuml component
-actor client
-node app
-database db</p>
-<p>db -&gt; app
-app -&gt; client
-@enduml</p></div><div id=seguimiento><h1>seguimiento</h1><p>hacemos uso de una metodologa kai-zen que permite seguir la implementacin y los devios que han sucedido sobre el plantemiento del proyecto.</p>
+  def handle(self, *args, **kwargs):
+
+    self.run()
+
+  def run(self):
+
+    # execute in order:
+
+    print(Path(self.PARCELA_SHAPE))
+
+        call_command('1-load-qgis',parcelas=self.PARCELA_SHAPE, pixels=self.PIXEL_SHAPE)
+
+    call_command('2-load-parcela-data', excel=str(self.FICHERO_PATH))
+
+    call_command('3-load-cultivos', excel=str(self.FICHERO_PATH))
+
+    # mirar que puedo ejecutar ms veces el comando
+
+    for i in range(0,10):
+
+      call_command('4-random-ndvi')
+
+    call_command('5-create-models')
+
+    call_command('6-create-roles')
+
+</code></pre></div><div id=seguimiento><h1>seguimiento</h1><p>hacemos uso de una metodologa kai-zen que permite seguir la implementacin y los devios que han sucedido sobre el plantemiento del proyecto.</p>
 <p>El objetivo de este trabajo no es obtener un producto software final sino la optimizacin de un proceso o flujo de trabajo. Los cambios planteados mejoran el acceso a los datos y la forma de prorcesar estos por el resto de participantes del equipo. </p>
 <p>Durante el avance del proyecto se han ido documentando algunas lecciones aprendidas en el siguiete blog. Estas pequeas notas documentan algunos de los problemas que pueden volver a aprecer. La mayora de estas publicaciones son relacionadas con problemas de arquitectura de software relacionados con el framework que se est utilizando, Django. Adems encontramos cdigo que permite automizar la visualizacin de ciertos procesos que ayudan a optimzar el proceso de trabajo.</p>
 <ul>
 <li>blog-post 1</li>
 <li>blog-post 2</li>
 <li></li>
-</ul></div></body></html>
+</ul></div>
