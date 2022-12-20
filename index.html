@@ -363,8 +363,8 @@ tecologas y dems.</p>
 </table>
 <p>ampliaciones</p></div><div id=diseño><h1>diseño</h1><p>[[BD-DESIGN]]</p>
 <p>[[modelo-BD]]</p>
-<p>[[services]]</p></div><div id=BD-DESIGN><h1>BD-DESIGN</h1></div><div id=modelo-BD><h1>modelo-BD</h1><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la parte de anlisis descrita en el planteamiento.</p>
-<p>Es importante destacar que ....</p>
+<p>[[services]]</p></div><div id=BD-DESIGN><h1>BD-DESIGN</h1></div><div id=modelo-BD><h1>modelo-BD</h1><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
+<p>Es importante destacar que este esquema propuesto </p>
 <p>
 <figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
 </p>
@@ -372,8 +372,54 @@ tecologas y dems.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
 <p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
+<h2>Entidades Principales</h2>
+<p>Del inicio anterior, nos quedamos solo con las entidades principales.</p>
+<p>
+<figure><img src="figures/spectralgeo_db.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Este rediseo contempla la mayora de casos posibles para el posterior tratamiento y procesamiento de dataos, con posibilidad de crear buenos modelos predictivos. A continuacin se describen las entidades principales contempladas en la base de datos.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ENTIDAD</th>
+<th align="right">DESCRIPCIN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Parcela</td>
+<td align="right">Como toda la informacin que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla Parcela.</td>
+</tr>
+<tr>
+<td align="left">Indice</td>
+<td align="right">Esta taba es de vital importancia para el funcionamiento de la aplicacin, toda nuestra informacin lleva a estos datos. Sern datos calculados en un dominio, esto se hace as ya que existen cientos de formas de denominar un mismo ndice de vegetacin y podra ser un desastre a la hora de realizar las consultas. Para ello se establecern algunos campos determinados en el campo tipo_indice y se les dar un valor en valor_indice.</td>
+</tr>
+<tr>
+<td align="left">Campaa</td>
+<td align="right">Es una tabla muy importante, sirve para unir distintos tipos de registros (desde variedades hasta labores de campo pasando por unir los datos de parcelas y subparcelas).</td>
+</tr>
+<tr>
+<td align="left">Cultivo</td>
+<td align="right">Esta tabla est directamente unida a la anterior, ya que un cultivo puede tener muchas variedades diferentes (Ej: Guisante es un tipo de cultivo, pero tiene varias variedades: tirabeque, snap peas).</td>
+</tr>
+</tbody>
+</table>
+<h2>Diseo de Cultivo</h2>
+<p>explicacin sobre la forma de modelado recurisva para la entidad cultivo.</p>
+<p>EXP CULT REC</p>
+<div class="mermaid">
+erDiagram
+CULTIVO ||--o{ CULTIVO : is
+CULTIVO {
+string nombre FK
+string descripcion
+string es_variedad FK
+}
+</div>
+
 <h2>Diseo de Roles</h2>
-<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones dentro de la aplicacin. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar hardcodeados en el cdigo de la aplicacin. La siguiente tabla muestra los roles utilizados para la gestin y administracin de los datos de la applicacin.</p>
+<p>La aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar "hardcoded" en el cdigo de la aplicacin. La siguiente tabla muestra los roles hasta ahora creados por el equipo y su relacin con el parcelario.</p>
 <p>Roles necsarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferntes servicos.</p>
 <table>
 <thead>
@@ -397,31 +443,40 @@ tecologas y dems.</p>
 </tr>
 </tbody>
 </table>
-<h2>INDICES DESIGN</h2>
-<p>Explicacin de cmo se ha llegado al diseo del modelo para los inidices y de su asociacin a cada parcela. Es uno de los puntos ms importantes en el diseo que va ha permitr una correcta bsqueda de features para despus poder estimar con precin en el modelo de produccin de cultivo.</p>
-<p>diagram BD para los indicies, su relacin con parcela y el almacenamineto de los pxels contemplado en el parcelario que permiten representar el estado del cultivo.</p>
-<p>puedo automatizar esta parte del diagrama:</p>
+<h2>Diseo de ndices</h2>
+<p>El trabajo con ndices vegetativos por parte del equipo es uno de los puntos ms importantes para que el rediseo sea satisfactorio. A continuacin mostramos cmo las relaciones identificadas van ha permitr una correcta bsqueda de features para despus poder estimar con precin en el modelo de produccin de cultivo.</p>
 <div class="mermaid">
 erDiagram
-CAR ||--o{ NAMED-DRIVER : allows
-CAR {
-string allowedDriver FK "The license of the allowed driver"
-string registrationNumber
-string make
-string model
+INDICE ||--o{ MIRAR_INDICE : allows
+INDICE {
+string nombre FK
+string descripcion
 }
-PERSON ||--o{ NAMED-DRIVER : is
-PERSON {
-string driversLicense PK "The license #"
-string firstName
-string lastName
-int age
+PIXEL ||--o{ MIRAR_INDICE : is
+PIXEL ||--o{ PARCELA : is
+PIXEL {
+string parcela FK
+polygon geom
+string idx
+}
+PARCELA {
+string idx
+string estacion
+float altitud
+polygon geom
+}
+MIRAR_INDICE {
+string indice FK
+string pixel FK
+date fecha
+geojson json
+float valor
 }
 </div>
 
-<script>mermaid.initialize({startOnLoad:true});</script></div><div id=services><h1>services</h1><p>Los servicios son la siguiente capa de abstraccin, explicamos por encima por qu son importantes y cmo nos permiten encapsular el diseo de las consultas ms frecuentes sobre el modelo de la applicacin.</p>
-<p>Diagrama de los servicios obetnidos, cdigo del ms importante.</p>
-<p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo. Encapsulamos </p>
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id=services><h1>services</h1><p>Los servicios son la siguiente capa de abstraccin, explicamos por qu son importantes y cmo nos permiten encapsular el diseo de las consultas ms frecuentes sobre el modelo de la applicacin.</p>
+<p>Como estamos utilizando el ORM de Django, para no sobrecargar los objetos del modelo con demasiados mtodos establecemos un mdulo de servicios con las consultas ms frecuentes. Este mdulo ayuda a mantener el cdigo en el modelo limpio sin complejidad aadida debido a que las consltas / mtodos que hacen uso de varias relaciones quedan como entidades separadas que se pueden reutilizar.</p>
+<p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo.</p>
 <pre><code>def get_indice_func(parcela, indice_p, fecha_p, func, filtro):
 
     indice_p = Indice.objects.get(nombre=indice_p) 
@@ -515,6 +570,7 @@ python -m pip install -r ./requirements.txt
 <p>Migracin de todo el enterno a UNIX para posteriomente utilizar herramientas de integracin continua. El trabajo en el quipo local se hace a travs de una mquina en WSL para trabajar de forma semejante a un contender. Uno de los problemas principales para el quipo en su flujo de trabajo ha sido mantener una integridad entre el desarrollo realizad por los diferentes miembros del equipo y el posterior despliegue de la aplicacin en un entorno UNIX diferente al que se haba utilizado en local en las versiones de preproduccin.</p>
 <p>Dedicamos varios das a prepar la integracin de Django con cuadernos jupyter y adems poder ejecutar diferentes entornos virtuales con las librerias adecuadas en cada momento. Los siguientes ejemplos muestran como se ha conseguido integrar las libreras necesarias para el despliegue de los cuadernos y su integracin con los datos y los modelos de Django.</p>
 <p>CODE -&gt; snippet example -&gt; django integration:</p>
+<p>IPYNB -&gt; cdigo con el cuaderno dentro de este punto</p>
 <p>INTEGRACIN CREACIN -&gt; DESPLIEGUE DE MODELOS:</p>
 <p>Para el trabajo interno de la aplicacin ncesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web que simplemente muestra los datos del parcelario registrado con su produccin estimada.</p></div><div id=commands-CLI><h1>commands-CLI</h1><p>Una de las caractersticas ms tiles del framework en nuestro caso es la posibilidad de crear comandos que se ejecuten desde dentro.</p>
 <pre><code class="language-python">
