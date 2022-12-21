@@ -367,7 +367,6 @@ tecologas y dems.</p>
 <p>ampliaciones</p></div><div id=diseño><h2>2 diseño</h2><p>[[BD-DESIGN]]</p>
 <p>[[modelo-BD]]</p>
 <p>[[services]]</p></div><div id=BD-DESIGN><h3>3 BD-DESIGN</h3></div><div id=modelo-BD><h3>3 modelo-BD</h3><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
-<p>Es importante destacar que este esquema propuesto </p>
 <p>
 <figure class="class1"><img src="figures/modelo-BD.png" title="title" /><figcaption>caption</figcaption></figure>
 </p>
@@ -378,7 +377,7 @@ tecologas y dems.</p>
 <h2>Entidades Principales</h2>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales.</p>
 <p>
-<figure><img src="figures/spectralgeo_db.png" title="original" /><figcaption>caption</figcaption>
+<figure><img src="figures/spectralgeo_db.png =250x" title="original" /><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>Este rediseo contempla la mayora de casos posibles para el posterior tratamiento y procesamiento de dataos, con posibilidad de crear buenos modelos predictivos. A continuacin se describen las entidades principales contempladas en la base de datos.</p>
@@ -408,9 +407,13 @@ tecologas y dems.</p>
 </tr>
 </tbody>
 </table>
+<p>
+<figure><img src="figures/modelo-end.png =250x" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <h2>Diseo de Cultivo</h2>
-<p>explicacin sobre la forma de modelado recurisva para la entidad cultivo.</p>
-<p>EXP CULT REC</p>
+<p>Una decisin complicada sobre el posible historico de datos es el registro de la evolucin de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLGICO damos caracter temporal al cultivo concreto que se est siendo cultivando en un parcela. </p>
+<p>Otro punto importante de la aplicacin es la contemplacin de variedades. Para poder mantener una jerarqua con las posibles entidades registradas en el sistema enlazamos de forma recursiva el cultivo con una clave fornea a su misma tabla. Esta estructura permite el desglose de una jerarqua de cultivos en la que sabemos qu entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar mltiples niveles.</p>
 <div class="mermaid">
 erDiagram
 CULTIVO ||--o{ CULTIVO : is
@@ -418,6 +421,19 @@ CULTIVO {
 string nombre FK
 string descripcion
 string es_variedad FK
+}
+MIRAR_FENOLOGICO ||--o{ CULTIVO : allows
+MIRAR_FENOLOGICO ||--o{ PARCELA : allows
+MIRAR_FENOLOGICO {
+string fenologico FK
+string parcela FK
+string fecha FK
+}
+PARCELA {
+string idx
+string estacion
+float altitud
+polygon geom
 }
 </div>
 
@@ -477,6 +493,7 @@ float valor
 }
 </div>
 
+<p>Este diseo de ndices permite obtener la vista minable de la aplicacin sobre la cal probaremos varios modelos.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id=services><h3>3 services</h3><p>Los servicios son la siguiente capa de abstraccin, explicamos por qu son importantes y cmo nos permiten encapsular el diseo de las consultas ms frecuentes sobre el modelo de la applicacin.</p>
 <p>Como estamos utilizando el ORM de Django, para no sobrecargar los objetos del modelo con demasiados mtodos establecemos un mdulo de servicios con las consultas ms frecuentes. Este mdulo ayuda a mantener el cdigo en el modelo limpio sin complejidad aadida debido a que las consltas / mtodos que hacen uso de varias relaciones quedan como entidades separadas que se pueden reutilizar.</p>
 <p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo.</p>
