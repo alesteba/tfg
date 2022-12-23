@@ -132,7 +132,7 @@
 <li>buscamos automatizar los modelos de produccin ()</li>
 <li>necesitamos una arquitectura limpia.</li>
 </ul>
-<p>Necesidad de una reestructuracin para la aplicacin agrai por su crecimiento para la gestin de grandes volmenes de datos agrarios. El estado actual de dicha aplicacin consiste en la representacin del estado de cierto parcelario a travs del anlisis de histricos de datos.</p></div><div id=alcance><h3>3 alcance</h3><p>El proyecto planteado inicialmente por la empresa tiene una planificacin de cuatro meses, pero mi estancia en la empresa no puede prolongarse durante tanto tiempo. As, aprovechando que el proyecto se va a desarrollar siguiendo una metodologa incremental iterativa se considera que realice las tres primeras iteraciones como mi TFG adems de realizar la planificacin de este.</p>
+<p>Necesidad de una reestructuracin para la aplicacin agrai por su crecimiento para la gestin de grandes volmenes de datos agrarios. El estado actual de dicha aplicacin consiste en la representacin del estado de cierto parcelario a travs del anlisis de histricos de datos.</p></div><div id=alcance><h3>3 alcance</h3><p>El proyecto planteado inicialmente por la empresa tiene una planificacin de cuatro meses. </p>
 <p>A continuacin, se expondrn los objetivos generales del proyecto con la intencin de aportar una visin global del trabajo que se pretende realizar. Para evaluar el xito de la realizacin de mi TFG se plantear en la fase de anlisis de cada iteracin unos requisitos a partir de los cules se podr valorar el desarrollo de mi TFG y la influencia que tendr mi aportacin en el proyecto final.</p>
 <p>Los objetivos finales del proyecto son:</p>
 <ul>
@@ -141,19 +141,11 @@
 <li>Automatizacin del proceso de trasformacin de los datos mediante el diseo de un pipeline.</li>
 <li>Obtencin de un modelo de produccin de cultivo para el parcelario (kg)</li>
 <li>Inclusin de los resultados en la presentacin de la applicacin.</li>
-<li>Integracin continua mediante pruebas de test para el pipeline desarrollado<ul>
-<li>(si fuese posible llegar a Jenkins)</li>
-</ul>
-</li>
+<li>Integracin continua mediante pruebas de test para el pipeline desarrollado</li>
 </ul></div><div id=metodología><h3>3 metodología</h3><p>En el equipo hacemos uso de SCRUM para la gestin del proyecto. Dicha metodologa permite un desarrollo en cascada de las diferentes tareas propuestas para la creacin del pipeline.</p>
-<p>2.4. MTODO DE TRABAJO  </p>
-<p>Se usar un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (tambin<br />
-llamadas iteraciones), se repiten de manera intencionada una o ms actividades del<br />
-proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va<br />
-aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos<br />
-repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br />
-producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada<br />
-iteracin se entrega una versin mejorada.</p></div><div id=EDT><h3>3 EDT</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
+<p>Se usar un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (tambin llamadas iteraciones), se repiten de manera intencionada una o ms actividades del<br />
+proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va  aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br />
+producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteracin se entrega una versin mejorada.</p></div><div id=EDT><h3>3 EDT</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
 <div class="mermaid">
 graph TD;
 TFG-->PLANIFICACIN;
@@ -538,42 +530,57 @@ float valor
 <pre><code class="language-bash">
 #!/bin/bash
 
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+
+sudo sh -c 'echo &quot;deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list'
+
 sudo apt update
 sudo apt upgrade
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:deadsnakes/ppa
 
-# postgres
+sudo apt install postgresql-14
+sudo apt install postgresql-14-postgis-scripts
 
-sudo apt-get install openjdk-8-jdk
-sudo apt-get install openjdk-8-jre
-sudo apt-get install postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
-sudo -u postgres createuser -P geoserver
+sudo service postgresql start
 
-# como creo el rol
-
-sudo -u postgres createdb -O geoserver geoserver
-sudo -u postgres psql -c &quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot; geoserver
+sudo -u postgres createuser -P agrai_user
+sudo -u postgres createdb -O agrai_user agrai_db
+sudo -u postgres psql -c &quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot; agrai_db
 
 # gdal native:
-
 sudo add-apt-repository ppa:ubuntugis/ppa &amp;&amp; sudo apt-get update
 sudo apt-get update
 
-# replace config postgres files
+# cargarte la versin de la mquina, dejar solo 1:
+sudo apt autoremove python3
 
-sudo cp ./postgresql.conf /etc/postgresql/10/main
-sudo cp ./pg_hba.conf /etc/postgresql/10/main
+# python repositories
 
-# python
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
 
-sudo apt install python3.8
+# python concrete installation
+
+sudo apt install python3.10 # version concreta
+
+# sudp apt install pip
+
+sudo apt-get install python3.10-dev python3.10-venv
+sudo apt install python3.10-dev python3.10-venv
 sudo apt install virtualenv
-sudo apt install python3.8-dev python3.8-venv
+
+# python env var
+
+export PYTHONPATH=&quot;/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages&quot;
+
+alias py=python3.10
+alias python=python3.10
+alias python3=python3.10
 
 # creacion entorno_venv
+sudo python3.10 -m venv ../agrai_venv
 
-python3.8 -m venv agrai_venv
+# GDAL
+sudo apt-get install libgdal-dev
 
 # env gdal lib variables
 
@@ -582,17 +589,38 @@ export C_INCLUDE_PATH=/usr/include/gdal
 
 # install dep in python agrai_venv
 
-source agrai_venv/bin/activate
-pip install --upgrade pip # quitar
-python -m pip install -r ./requirements.txt
+source ../agrai_venv/bin/activate
+# pip install --upgrade pip # quitar
+sudo python3 -m pip install -r requirements.txt
+</code></pre>
+<pre><code class="language-python">
+psycopg2-binary
+django
+django-apscheduler
+django_extensions
+psycopg2
+numpy
+pandas
+requests
+pdfkit
+fiona
+rasterio
+rasterstats
+GDAL==3.4.3
+psycopg2-binary
+xhtml2pdf
 
 </code></pre></div><div id=entorno><h3>3 entorno</h3><p>Es importante preparar un entrno comn para el equipo. Django es un framework muy tilpor la integracin de las herramientas que hemos visto (ORM, web-interfaces, etc), pero para conseguir un workflow adecuado necesitamos incluir otra herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos con las libreras necesarias para ejecutar modelos predictivos.</p>
 <p>Migracin de todo el enterno a UNIX para posteriomente utilizar herramientas de integracin continua. El trabajo en el quipo local se hace a travs de una mquina en WSL para trabajar de forma semejante a un contender. Uno de los problemas principales para el quipo en su flujo de trabajo ha sido mantener una integridad entre el desarrollo realizad por los diferentes miembros del equipo y el posterior despliegue de la aplicacin en un entorno UNIX diferente al que se haba utilizado en local en las versiones de preproduccin.</p>
 <p>Dedicamos varios das a prepar la integracin de Django con cuadernos jupyter y adems poder ejecutar diferentes entornos virtuales con las librerias adecuadas en cada momento. Los siguientes ejemplos muestran como se ha conseguido integrar las libreras necesarias para el despliegue de los cuadernos y su integracin con los datos y los modelos de Django.</p>
-<p>CODE -&gt; snippet example -&gt; django integration:</p>
-<p>IPYNB -&gt; cdigo con el cuaderno dentro de este punto</p>
+<h1>WSL</h1>
+<p>Hacemos uso de WSL (Windows Subsystem for Linux) para crear el entorno de desarrollo necesario para el proyecto. De esta forma conseguimos que los entornos de pruebas y produccin sean muy similiares, permitiedo automatizar el despliegue de la aplicacin mediante tcnicas de infraestructura como cdigo. Una de las ventajas de tener una maquina Ubuntu como entorno de desarrollo es que mediante un script .sh instalamos todas las dependencias necesarias para dejar dicha mquina en un estado estable preparado para el despliegue de la aplicacin.</p>
 <p>INTEGRACIN CREACIN -&gt; DESPLIEGUE DE MODELOS:</p>
-<p>Para el trabajo interno de la aplicacin ncesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web que simplemente muestra los datos del parcelario registrado con su produccin estimada.</p></div><div id=commands-CLI><h3>3 commands-CLI</h3><p>Una de las caractersticas ms tiles del framework en nuestro caso es la posibilidad de crear comandos que se ejecuten desde dentro.</p>
+<p>Para el trabajo interno de la aplicacin necesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web, ya que sta simplemente muestra los datos del parcelario registrado con su produccin estimada. Consideramos la posibilidad de crear varios entornos virtuales para los diferentes flujos de trabajo que se puedan realizar con la aplicacin.</p>
+<ul>
+<li>despliegue de la aplicacin</li>
+<li>data-science para la creacin de modelos a nivel interno.</li>
+</ul></div><div id=commands-CLI><h3>3 commands-CLI</h3><p>Una de las caractersticas ms tiles del framework en nuestro caso es la posibilidad de crear comandos que se ejecuten desde dentro.</p>
 <pre><code class="language-python">
 from django.core.management.base import BaseCommand
 
