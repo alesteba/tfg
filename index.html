@@ -616,10 +616,11 @@ xhtml2pdf
 <h1>WSL</h1>
 <p>Hacemos uso de WSL (Windows Subsystem for Linux) para crear el entorno de desarrollo necesario para el proyecto. De esta forma conseguimos que los entornos de pruebas y produccin sean muy similiares, permitiedo automatizar el despliegue de la aplicacin mediante tcnicas de infraestructura como cdigo. Una de las ventajas de tener una maquina Ubuntu como entorno de desarrollo es que mediante un script .sh instalamos todas las dependencias necesarias para dejar dicha mquina en un estado estable preparado para el despliegue de la aplicacin.</p>
 <p>INTEGRACIN CREACIN -&gt; DESPLIEGUE DE MODELOS:</p>
-<p>Para el trabajo interno de la aplicacin necesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web, ya que sta simplemente muestra los datos del parcelario registrado con su produccin estimada. Consideramos la posibilidad de crear varios entornos virtuales para los diferentes flujos de trabajo que se puedan realizar con la aplicacin.</p>
+<p>Para el trabajo interno de la aplicacin necesitamos entornos con libreras ms pesadas como sklearn, numpy, scikit-learn, etc que no deberamos usar en la produccin de solo la interfaz web, ya que sta simplemente muestra los datos del parcelario registrado con su produccin estimada. Consideramos la posibilidad de crear varios entornos virtuales para los diferentes flujos de trabajo que contempla la aplicacin.</p>
 <ul>
 <li>despliegue de la aplicacin</li>
 <li>data-science para la creacin de modelos a nivel interno.</li>
+<li>ahora solo redaccin</li>
 </ul></div><div id=commands-CLI><h3>3 commands-CLI</h3><p>Una de las caractersticas ms tiles del framework en nuestro caso es la posibilidad de crear comandos que se ejecuten desde dentro.</p>
 <pre><code class="language-python">
 from django.core.management.base import BaseCommand
