@@ -1,7 +1,13 @@
 table, th, td {
      
     border: 1px solid;
-    width: 100%;
+    
+}
+
+table {
+
+    table-layout: auto;
+    width: 100%; 
 }
 
 img {
