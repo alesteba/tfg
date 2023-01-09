@@ -25,7 +25,7 @@ caption {
 }
 
 
-html * {
+p, table, ul, li {
     font-size: 18px;
     /* font-family: Arial, sans-serif; */
 }
