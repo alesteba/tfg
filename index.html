@@ -47,7 +47,7 @@
 proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va  aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br/>
 producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteracin se entrega una versin mejorada.</p>
 <p>
-<figure><img src="figures/iteraciones.png" title="title" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/iteraciones.png" title="title" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p></div><div id="EDT"><h3>3 EDT</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
 <div class="mermaid">
@@ -703,7 +703,7 @@ Project complete: milestone, 10-03, 0d
 <p>[[requisitos]]</p></div><div id="AGRAI-data"><h3>3 AGRAI-data</h3><p>AGRAIes una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicacin se centra el despliegue de datosgeo-referenciadospor medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>En la interfaz web el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en  los pxeles hace referencia a los ndices vegetativos provenientes de las imgenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la produccin que predicen los modelos de Inteligencia Artificial generados.</p>
 <p>
-<figure><img src="figures/visor_GIS.png" title="title" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/visor_GIS.png" title="title" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imgenes descargadas de satlites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con informacin proporcionada por estaciones meteorolgicas como el SIAR y con la informacin que los clientes pueden proporcionar sobre campaas anteriores.</p>
@@ -711,7 +711,7 @@ Project complete: milestone, 10-03, 0d
 <p>El objetivo de este trabajo de fin de grado es mejorar y automatizar el flujo de trabajo del equipo convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cul el resto del equipo pueda acceder y utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de los datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no slo es importante el conocimiento tcnico sino que sern necesarios cambios en la forma de trabajo del equipo adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. Intentaremos seguir los principios de los procesos 'lean' para buscar la mejor optimizacin continua.</p>
 <p>
-<figure><img src="figures/lean.png" title="title" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/lean.png" title="title" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p></div><div id="ideas-previas"><h3>3 ideas-previas</h3><p>Mencionbamos la bsqueda de optimizacin del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicacin. El rediseo que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodologa. Para que este trabaja resulte satisfactorio el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta fsica que coordine el esquema mental de los participantes que la usan.</p>
 <p>Para poder realizar este proyecto decidimos trabajar con un nmero pequeo representativo de datos de laaplicacinactualmente en produccin. Un menor volumen de informacin permite realizar pruebas y da pie a fijarnos en las relaciones y los esquemas estructurales con ms precisin.  </p>
@@ -782,7 +782,7 @@ METEO }|..|{ CORE : uses
 </ul>
 <p>Aunque el framework es muy potente, harn falta otras herramientas y entornos para completar con xito la automatizacin que buscamos y as conseguir un proceso de optimizacin continua. An el siguiente punto hablaremos de la infraestructura que la aplicacin requiere y de cmo podemos solventar algunos de los problemas de integracin ms importantes.</p>
 <p>
-<figure><img src="figures/django_migrate.png" title="original" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/django_migrate.png" title="original" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p></div><div id="requisitos"><h3>3 requisitos</h3><p>la siguiente tabla muestra los requisitos funcionales crticos para completar con xito el proyecto, terminando el trabajo con un producto estable que el equipo pueda utilizar.</p>
 <table>
@@ -1055,7 +1055,7 @@ INSTALLED_APPS = [
 <li>datos masivos con poca escalabilidad</li>
 </ul></div><div id="modelo-BD"><h3>3 modelo-BD</h3><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
 <p>
-<figure class="class1"><img src="figures/modelo-BD.png" title="title" width="900px"/><figcaption>caption</figcaption></figure>
+<figure class="class1"><img src="figures/modelo-BD.png" title="title" width="width:100%"/><figcaption>caption</figcaption></figure>
 </p>
 <p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
@@ -1064,7 +1064,7 @@ INSTALLED_APPS = [
 <h2>Entidades Principales</h2>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta seleccin de entidades se realiza cuidadosamente para que la aplicacin pueda contemplar la mayor informacin posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseo detalladamente en los siguientes puntos.</p>
 <p>
-<figure><img src="figures/spectralgeo_db.png" title="original" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/spectralgeo_db.png" title="original" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>Este rediseo contempla la mayora de casos posibles para el posterior tratamiento y procesamiento de dataos, con posibilidad de crear buenos modelos predictivos. A continuacin se describen las entidades principales contempladas en la base de datos.</p>
@@ -1111,7 +1111,7 @@ INSTALLED_APPS = [
 </tbody>
 </table>
 <p>
-<figure><img src="figures/modelo-end.png" title="original" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/modelo-end.png" title="original" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <h2>Diseo del Cultivo y Fenologa</h2>
@@ -1147,7 +1147,7 @@ polygon geom
 </div>
 <p>Otro punto importante de la aplicacin es la contemplacin de variedades. Para poder mantener una jerarqua con las posibles entidades registradas en el sistema enlazamos de forma recursiva el cultivo con una clave fornea a su misma tabla. Esta estructura permite el desglose de una jerarqua de cultivos en la que sabemos qu entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar mltiples niveles.</p>
 <p>
-<figure><img src="figures/mirar_feno.png" title="original" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/mirar_feno.png" title="original" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <h2>Diseo de ndices Vegetativos</h2>
@@ -1265,7 +1265,7 @@ class Command(BaseCommand):
 </code></pre>
 <p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de ste patrn es </p>
 <p>
-<figure><img src="figures/pipeline_pattern.png" width="900px"/><figcaption>caption</figcaption>
+<figure><img src="figures/pipeline_pattern.png" width="width:100%"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>EXPLICACIN UN POCO MS DETALLADA:</p>
