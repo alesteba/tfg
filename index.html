@@ -1288,9 +1288,10 @@ class Command(BaseCommand):
 </code></pre>
 <p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de ste patrn es </p>
 <p>
-<figure><img src="figures/pipeline_pattern.png" title="title" /><figcaption>caption</figcaption>
+<figure><img src="figures/pipeline_pattern.png" /><figcaption>caption</figcaption>
 </figure>
 </p>
+<p>EXPLICACIN UN POCO MS DETALLADA:</p>
 <p>Con esta estructura desarrollamos la infraestructura necesaria para cargar los datos en el modelo.  Cada comando representa un proceso de carga de datos, el cul se puede componer posteriormente dentro de un procese ms complejo. </p>
 <div class="mermaid">
 stateDiagram-v2
