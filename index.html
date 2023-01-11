@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="content">
-<ul><li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#0-plan">0-plan</a></li><ul><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregables">entregables</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#0-analisis">0-analisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#ideas-previas">ideas-previas</a></li><li><a href="#automatizacion">automatizacion</a></li><li><a href="#tecnologías">tecnologías</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#0-infraestructura">0-infraestructura</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li></ul><li><a href="#0-diseño">0-diseño</a></li><ul><li><a href="#componentes">componentes</a></li><li><a href="#data-load">data-load</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li><li><a href="#despliegue">despliegue</a></li></ul><li><a href="#0-implementacion">0-implementacion</a></li><ul><li><a href="#commands-CLI">commands-CLI</a></li><li><a href="#pipeline">pipeline</a></li><li><a href="#model-view">model-view</a></li><li><a href="#modelo-producción">modelo-producción</a></li></ul><li><a href="#0-seguimiento">0-seguimiento</a></li><ul><li><a href="#seguimiento">seguimiento</a></li><li><a href="#memoria">memoria</a></li><li><a href="#lecciones">lecciones</a></li></ul><li><a href="#0-conclusiones">0-conclusiones</a></li><ul><li><a href="#conclusiones">conclusiones</a></li><li><a href="#bibliografía">bibliografía</a></li></ul></ul></ul>
+<ul><li><a href="#TFG">TFG</a></li><ul><li><a href="#resumen">resumen</a></li><li><a href="#0-plan">0-plan</a></li><ul><li><a href="#alcance">alcance</a></li><li><a href="#metodología">metodología</a></li><li><a href="#EDT">EDT</a></li><li><a href="#entregables">entregables</a></li><li><a href="#tiempos">tiempos</a></li><li><a href="#gantt">gantt</a></li><li><a href="#rrhh">rrhh</a></li><li><a href="#comunicaciones">comunicaciones</a></li><li><a href="#riegos">riegos</a></li></ul><li><a href="#0-analisis">0-analisis</a></li><ul><li><a href="#AGRAI-data">AGRAI-data</a></li><li><a href="#ideas-previas">ideas-previas</a></li><li><a href="#automatizacion">automatizacion</a></li><li><a href="#tecnologías">tecnologías</a></li><li><a href="#requisitos">requisitos</a></li></ul><li><a href="#0-infraestructura">0-infraestructura</a></li><ul><li><a href="#infraestructure">infraestructure</a></li><li><a href="#entorno">entorno</a></li><li><a href="#control-versiones">control-versiones</a></li></ul><li><a href="#0-diseño">0-diseño</a></li><ul><li><a href="#componentes">componentes</a></li><li><a href="#data-load">data-load</a></li><li><a href="#modelo-BD">modelo-BD</a></li><li><a href="#services">services</a></li><li><a href="#despliegue">despliegue</a></li></ul><li><a href="#0-implementacion">0-implementacion</a></li><ul><li><a href="#previos-pipe">previos-pipe</a></li><li><a href="#commands-CLI">commands-CLI</a></li><li><a href="#model-view">model-view</a></li><li><a href="#modelo-producción">modelo-producción</a></li></ul><li><a href="#0-seguimiento">0-seguimiento</a></li><ul><li><a href="#seguimiento">seguimiento</a></li><li><a href="#memoria">memoria</a></li><li><a href="#lecciones">lecciones</a></li></ul><li><a href="#0-conclusiones">0-conclusiones</a></li><ul><li><a href="#conclusiones">conclusiones</a></li><li><a href="#bibliografía">bibliografía</a></li></ul></ul></ul>
 <div id="TFG"><h1>1 TFG</h1><p>-- LINK_NOTE --</p>
 <p>[[resumen]]</p>
 <p>[[0-plan]]</p>
@@ -704,7 +704,7 @@ Project complete: milestone, 10-03, 0d
 <p>[[requisitos]]</p></div><div id="AGRAI-data"><h3>3 AGRAI-data</h3><p>AGRAIes una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicacin se centra el despliegue de datosgeo-referenciadospor medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>En la interfaz web el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en  los pxeles hace referencia a los ndices vegetativos provenientes de las imgenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la produccin que predicen los modelos de Inteligencia Artificial generados.</p>
 <p>
-<figure><img src="figures/visor_GIS.png" title="title"/><figcaption>caption</figcaption>
+<figure><img src="figures/visor_GIS.png"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imgenes descargadas de satlites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con informacin proporcionada por estaciones meteorolgicas como el SIAR y con la informacin que los clientes pueden proporcionar sobre campaas anteriores.</p>
@@ -856,7 +856,8 @@ METEO }|..|{ CORE : uses
 </tbody>
 </table></div><div id="0-infraestructura"><h2>2 0-infraestructura</h2><p>-- LINK_NOTE --</p>
 <p>[[infraestructure]]</p>
-<p>[[entorno]]</p></div><div id="infraestructure"><h3>3 infraestructure</h3><p>El entorno local sobre el cul desarrollamos y el de produccin donde se despliega la aplicacin son actualmente diferentes. Todos los miembros del equipo utilizamos mquinas Windows, mientras que el servidor de produccin es una mquina Ubuntu. Es un problema importante por el proceso de instalacin de las libreras necesarias para trabajar con los datos, se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va ha trabajar con el repositorio de la aplicacin. Como solucin propondremos una nueva forma de trabajo que nos asegure un entorno comn con las mismas libreras y paquetes.</p>
+<p>[[entorno]]</p>
+<p>[[control-versiones]]</p></div><div id="infraestructure"><h3>3 infraestructure</h3><p>El entorno local sobre el cul desarrollamos y el de produccin donde se despliega la aplicacin son actualmente diferentes. Todos los miembros del equipo utilizamos mquinas Windows, mientras que el servidor de produccin es una mquina Ubuntu. Es un problema importante por el proceso de instalacin de las libreras necesarias para trabajar con los datos, se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va ha trabajar con el repositorio de la aplicacin. Como solucin propondremos una nueva forma de trabajo que nos asegure un entorno comn con las mismas libreras y paquetes.</p>
 <div class="mermaid">
 graph LR;
 subgraph desarollo
@@ -984,7 +985,22 @@ sudo python3 -m pip install -r requirements.txt
 <li>despliegue de la aplicacin</li>
 <li>data-science para la creacin de modelos a nivel interno.</li>
 </ul>
-<p>Actualmente solo existe un entono virtual sobre el cal se instalan todas las libreras python necesarias para el desarrollo y despliegue. Dicha refactorizacin sobre la infraestructura se contempla para prximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseo actual impedira su mejora. En este caso sera muy sencillo, una vez crezca la aplicacin separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id="0-diseño"><h2>2 0-diseño</h2><p>-- LINK_NOTE --</p>
+<p>Actualmente solo existe un entono virtual sobre el cal se instalan todas las libreras python necesarias para el desarrollo y despliegue. Dicha refactorizacin sobre la infraestructura se contempla para prximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseo actual impedira su mejora. En este caso sera muy sencillo, una vez crezca la aplicacin separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id="control-versiones"><h3>3 control-versiones</h3><p>Para poder desarrollar sobre software que est en produccin estamos utilizando un sistema de control de versiones bsico. Damos unas pequeas pinceladas sobre cmo evoluciona el software y  las ramas que utilizamos.</p>
+<div class="mermaid">
+gitGraph
+commit
+branch develop
+commit tag:"v1.0.0"
+commit
+checkout main
+commit type: HIGHLIGHT
+commit
+merge develop
+commit
+branch featureA
+commit
+</div>
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id="0-diseño"><h2>2 0-diseño</h2><p>-- LINK_NOTE --</p>
 <p>[[componentes]]</p>
 <p>[[data-load]]</p>
 <p>[[modelo-BD]]</p>
@@ -996,6 +1012,7 @@ erDiagram
 CUADERNO ||--|{ CORE : uses
 ROLES }|..|{ CORE : uses
 METEO }|..|{ CORE : uses
+AUTO }|..|{ CORE : uses
 </div>
 <p>En Django podemos crear un proyecto compuesto por varias aplicaciones. En la documentacin oficial se explica como funciona la arquitectura del framework y se exponen ejemplos para que, una vez creadas, podamos acoplar y desacoplar las aplicaciones al proyecto. Es una forma similar de trabajo a cuando organizamos una librera en mltiples paquetes, pero un poco ms complicada debido a que el ORM subyacente traduce los modelos a tablas en una BD. Veamos cmo con solo aadir o quitar un string en nuestro settings activamos o desactivamos la aplicacin en el proyecto.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
@@ -1015,6 +1032,7 @@ METEO }|..|{ CORE : uses
   <span class="s1">'meteo'</span><span class="p">,</span>
   <span class="s1">'roles'</span><span class="p">,</span>
   <span class="s1">'cuaderno'</span>
+  <span class="s1">'auto'</span>
 <span class="p">]</span>
 </code></pre></div>
 <p>Estas aplicaciones pueden comunicarse entre s a travs de sus modelos y servicios. En la siguiente tabla explicamos que hace cada sub-aplicacin.</p>
@@ -1042,21 +1060,35 @@ METEO }|..|{ CORE : uses
 <td align="left">Cuaderno</td>
 <td align="right">Extiende el almacenamiento de datos relacionado con incidencias en el parcelario.</td>
 </tr>
+<tr>
+<td align="left">Auto</td>
+<td align="right">Contiene scripts y dependencias externas para la automatizacin de procesos, como la descarga de imgenes satelitles.</td>
+</tr>
 </tbody>
 </table>
-<p>Esta divisin en aplicaciones permite desarrollar y hacer pruebas slo con aquella parte del proyecto que necesitemos en el momento dado. Ms importante an la claridad y sencillez de los los modelos de cada componente y su respectiva representacin en la BD.</p>
-<script>mermaid.initialize({startOnLoad:true});</script></div><div id="data-load"><h3>3 data-load</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicacin de forma ordenada con posibilidad de ser escalados. En la implementacin del pipeline que veremos en siguientes apartados haremos hincapi en los estados de carga por los que pasan los datos, de momento slo importa destacar que el modelo actual permite mantener un histrico de datos mucho ms solido que el que estaba implantado cuando comenzamos el desarrollo. </p>
-<p>Si que es importante explicar por qu vamos a poner tanto nfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicacin muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas en base a los ndices vegetativos, tambin se muestra la produccin estimada.</p>
-<ul>
-<li>la interfaz web muestra muy poc del proceso</li>
-<li>datos masivos con poca escalabilidad</li>
-</ul></div><div id="modelo-BD"><h3>3 modelo-BD</h3><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
+<p>Esta divisin en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Ms importante an la claridad y sencillez de los modelos de cada componente y su respectiva representacin en la BD.</p>
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id="data-load"><h3>3 data-load</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicacin de forma ordenada con posibilidad de ser escalados. En la implementacin del pipeline que veremos en siguientes apartados haremos hincapi en los estados de carga por los que pasan los datos, de momento solo importa destacar que el modelo actual permite mantener un histrico de datos mucho ms slido que el que estaba implantado cuando comenzamos el desarrollo. </p>
+<p>S que es importante explicar por qu vamos a poner tanto nfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicacin muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basndose en los ndices vegetativos, tambin se muestra la produccin estimada.</p>
 <p>
-<figure class="class1"><img src="figures/modelo-BD.png" title="title"/><figcaption>caption</figcaption></figure>
+<figure><img src="figures/visor_GIS.png"/><figcaption>caption</figcaption>
+</figure>
 </p>
-<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
+<p>Los ndices que renderiza el visor de la aplicacin son el resultado de todo el proceso que estamos exponiendo. Es el punto ms delicado que requiere de varias entidades para persistir los datos y guardar un histrico. Es la visualizacin del histrico de ndices vegetativos el mayor valor que obtiene el cliente cuando accede a la aplicacin.</p>
+<p>El proceso de carga de datos hace uso de un mdulo de descarga de imgenes satelitales que obtiene el valor de los ndices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del mdulo de automatizacin junto con otras tareas similares. 
+Utilizaremos el mdulo como una caja negra y aseguraremos el correcto uso de este para que los ndices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
+<div class="mermaid">
+erDiagram
+AUTO }|..|{ descarga_indices : contains
+AUTO }|..|{ CORE : uses
+</div>
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id="modelo-BD"><h3>3 modelo-BD</h3><p>Como inicio del pipeline, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
+<p>
+<figure><img src="figures/modelo-BD.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
-<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento, posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
+<p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
 <h2>Entidades Principales</h2>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta seleccin de entidades se realiza cuidadosamente para que la aplicacin pueda contemplar la mayor informacin posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseo detalladamente en los siguientes puntos.</p>
@@ -1112,12 +1144,12 @@ METEO }|..|{ CORE : uses
 </figure>
 </p>
 <h2>Diseo del Cultivo y Fenologa</h2>
-<p>Una decisin complicada sobre el posible historico de datos es el registro de la evolucin de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLGICO damos caracter temporal al cultivo concreto que se est siendo cultivando en un parcela. De esta forma podemos registrar cules son los estados por los que ha pasado un cultivo desde su "siembra" hasta su "recoleccin".</p>
-<p>El modelado de la entidad FENOLGICO ha sido una decicin complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un caracter general y tiene sentido como entidad en s misma (todos los cultivos pasan por siembra). Es su relacin con CULTIVO mediante MIRAR_FENOLGICO lo que dice que dicho cultivo est en un estado fenolgico concreto en un momento determinado. Por ejemplo podemos decir que el cultivo "vid" estaba en estado de "siembra" el da "2022-01-23". </p>
-<p>Tambin es importante destacar que CULTIVO es simplemente el tipo que se ha registrado, por lo tanto para que la informacin sea completa un avistamiento fenolgico sucede sobre un tipo de cultivo fsicamente sembrado en una PARCELA.  El siguiente esquema muestra cmo estas tres entidades se relacionara para dar caracter temporal y espacial a un tipo de cultivo</p>
+<p>Una decisin complicada sobre el posible histrico de datos es el registro de la evolucin de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLGICO damos carcter temporal al cultivo concreto que se est siendo cultivando en una parcela. De esta forma podemos registrar cules son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recoleccin".</p>
+<p>El modelado de la entidad FENOLGICO ha sido una decisin complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carcter general y tiene sentido como entidad en s misma (todos los cultivos pasan por siembra). Es su relacin con CULTIVO mediante MIRAR_FENOLGICO lo que dice que dicho cultivo est en un estado fenolgico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el da "2022-01-23". </p>
+<p>Tambin es importante destacar que CULTIVO es simplemente el tipo que se ha registrado, por lo tanto, para que la informacin sea completa un avistamiento fenolgico sucede sobre un tipo de cultivo fsicamente sembrado en una PARCELA.  El siguiente esquema muestra cmo estas tres entidades se relacionar para dar carcter temporal y espacial a un tipo de cultivo</p>
 <div class="mermaid">
 erDiagram
-CULTIVO ||--o{ CULTIVO : is
+CULTIVO ||--o{ CULTIVO : contains
 CULTIVO {
 string nombre FK
 string descripcion
@@ -1127,9 +1159,9 @@ FENOLOGICO {
 string nombre FK
 string descripcion
 }
-MIRAR_FENOLOGICO ||--o{ FENOLOGICO : allows
-MIRAR_FENOLOGICO ||--o{ CULTIVO : allows
-MIRAR_FENOLOGICO ||--o{ PARCELA : allows
+MIRAR_FENOLOGICO ||--o{ FENOLOGICO : contains
+MIRAR_FENOLOGICO ||--o{ CULTIVO : contains
+MIRAR_FENOLOGICO ||--o{ PARCELA : contains
 MIRAR_FENOLOGICO {
 string fenologico FK
 string parcela FK
@@ -1142,24 +1174,23 @@ float altitud
 polygon geom
 }
 </div>
-<p>Otro punto importante de la aplicacin es la contemplacin de variedades. Para poder mantener una jerarqua con las posibles entidades registradas en el sistema enlazamos de forma recursiva el cultivo con una clave fornea a su misma tabla. Esta estructura permite el desglose de una jerarqua de cultivos en la que sabemos qu entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar mltiples niveles.</p>
+<p>Otro punto importante de la aplicacin es la contemplacin de variedades. Para poder mantener una jerarqua con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave fornea a su misma tabla. Esta estructura permite el desglose de una jerarqua de cultivos en la que sabemos qu entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar mltiples niveles.</p>
 <p>
 <figure><img src="figures/mirar_feno.png" title="original"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <h2>Diseo de ndices Vegetativos</h2>
-<p>Para nuestro sistema de informacin una parcela es una agrupacin de varios pxeles. Entendemos como PIXEL a la imgen stelital ms pequena que se puede obtener sobre el terreno, a partir de la cal obtenedermos los ndices vegetativos.</p>
-<p>El trabajo con ndices vegetativos por parte del equipo es uno de los puntos ms importantes para que el rediseo sea satisfactorio. A continuacin mostramos cmo las relaciones identificadas van a permitr una correcta bsqueda de features para despus poder estimar con precisin en el modelo de produccin de cultivo.</p>
-<p>EXPLICACIN</p>
+<p>Para nuestro sistema de informacin una parcela es una agrupacin de varios pxeles. Entendemos como PIXEL a la imagen satelital ms pequea que se puede obtener sobre el terreno, a partir de la cual obtendremos los ndices vegetativos.</p>
+<p>El trabajo con ndices vegetativos por parte del equipo es uno de los puntos ms importantes para que el rediseo sea satisfactorio. A continuacin mostramos cmo las relaciones identificadas van a permitir una correcta bsqueda de features para despus poder estimar con precisin en el modelo de produccin de cultivo.</p>
 <div class="mermaid">
 erDiagram
-INDICE ||--o{ MIRAR_INDICE : allows
+INDICE ||--o{ MIRAR_INDICE : contains
 INDICE {
 string nombre FK
 string descripcion
 }
-PIXEL ||--o{ MIRAR_INDICE : is
-PIXEL ||--o{ PARCELA : is
+PIXEL ||--o{ MIRAR_INDICE : contains
+PIXEL ||--o{ PARCELA : contains
 PIXEL {
 string parcela FK
 polygon geom
@@ -1179,10 +1210,11 @@ geojson json
 float valor
 }
 </div>
-<p>Este diseo de ndices permite obtener la vista minable de la aplicacin sobre la cul probaremos varios modelos.</p>
+<p>Este diseo de ndices permite mantener un histrico de datos preciso. </p>
+<p>Automatizaremos la descarga de datos 
+dando la posibilidad de generar buenos modelos predictivos.</p>
 <h2>Diseo de Roles</h2>
-<p>Aunque es un punto secundario, la aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar "hardcoded" en el cdigo de la aplicacin. La siguiente tabla muestra los roles hasta ahora creados por el equipo y su relacin con el parcelario.</p>
-<p>Roles necesarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferentes servicios.</p>
+<p>Aunque es un punto secundario, la aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones. Recordamos que habamos separado diferentes componentes de la aplicacin, los roles se encuentran en un mdulo secundario independiente de las entidades anteriores que representaban los conceptos agronmicos y vegetativos. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar "hardcoded" en el cdigo de la aplicacin. La siguiente tabla muestra los roles hasta ahora creados por el equipo y su relacin con el parcelario.</p>
 <table>
 <thead>
 <tr>
@@ -1205,6 +1237,7 @@ float valor
 </tr>
 </tbody>
 </table>
+<p>Roles necesarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferentes servicios.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="services"><h3>3 services</h3><p>Los servicios son la siguiente capa de abstraccin, explicamos por qu son importantes y cmo nos permiten encapsular el diseo de las consultas ms frecuentes sobre el modelo de la aplicacin.</p>
 <div class="mermaid">
 erDiagram
@@ -1242,11 +1275,26 @@ CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
+<p>Diagrama de estado.
+y de clases.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="despliegue"><h3>3 despliegue</h3><p>desplegamos la aplicacin para mostrar los datos insertados</p></div><div id="0-implementacion"><h2>2 0-implementacion</h2><p>-- LINK_NOTE --</p>
+<p>[[previos-pipe]]</p>
 <p>[[commands-CLI]]</p>
-<p>[[pipeline]]</p>
 <p>[[model-view]]</p>
-<p>[[modelo-produccin]]</p></div><div id="commands-CLI"><h3>3 commands-CLI</h3><p>En ingeniera de software, un <strong>patrn de diseo</strong> es una solucin general y reutilizable para un problema comn dentro de un contexto dado. El trmino pipeline puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicacin como patrn de diseo ya que en nuestra aplicacin se est utilizando como tal.</p>
+<p>[[modelo-produccin]]</p></div><div id="previos-pipe"><h3>3 previos-pipe</h3><p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta carga y transformacin de datos no utilizaremos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar para crear el modelo de produccin.</p>
+<p>Tenemos tres conceptos que definen un pipeline de datos. Para nuestra aplicacin nos centramos en utilizar el repositorio anterior para obtener y gestionar los datos necesarios del parcelario y transformar aquellos campos que definen una parcela en la vista minable correspondiente al modelo de produccin.</p>
+<ul>
+<li>
+<p>Data Ingestion: utilizamos nuestra BD para extraer a travs de Django los datos necesarios. Las relaciones establecidas anteriormente permiten un fcil acceso a estos datos.</p>
+</li>
+<li>
+<p>Data Transformation: una vez identificadas las relaciones, extraemos los campos necesarios y creamos el esquema de la vista minable que utilizaremos en el modelo. Una vez ejecutado el modelo podemos pasar al siguiente punto</p>
+</li>
+<li>
+<p>Data Storage: es necesario persistir los datos obtenidos por el modelo ya que forman parte de los datos objetivos para seguir modelizando correctamente el cultivo.</p>
+</li>
+</ul>
+<p>(intencin, justificar cmo hemos ido haciendo el proceso de transformacin de datos para obtener el modelo.)</p></div><div id="commands-CLI"><h3>3 commands-CLI</h3><p>En ingeniera de software, un <strong>patrn de diseo</strong> es una solucin general y reutilizable para un problema comn dentro de un contexto dado. El trmino pipeline puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicacin como patrn de diseo ya que en nuestra aplicacin se est utilizando como tal.</p>
 <p>**Podemos definir un pipeline como una cadena de elementos de procesamiento (procesos, subprocesos, rutinas, funciones, etc.), dispuestos de modo que la salida de cada elemento sea la entrada del siguiente; el nombre hace referencia al flujo de una o varias tuberas.</p>
 <p>En nuestro caso vamos a utilizar la arquitectura de comandos que proporciona Django para disear los procesos de transformacin de datos que van a poblar la base de datos. La definicin y reutilizacin del proceso de poblacin es muy importante debido a la forma de trabajo que tiene la empresa con diferentes clientes. Dependiendo de la magnitud del cliente se prepara una copia de la aplicacin para trabajar con sus datos, por ello una vez definido las unidades atmicas del proceso de carga de datos, se podrn disear diferentes pipelines para cada cliente. Para este trabajo nos conformaremos con el diseo y la implementacin de un proceso general, pero manteniendo la idea de que pueda ser escalado ms adelante.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
@@ -1257,44 +1305,25 @@ CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 
         <span class="c1"># now do the things that you want with your models here</span>
 </code></pre></div>
-<p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de ste patrn es </p>
+<p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de este patrn es un poco ms compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parmetros. </p>
 <p>
 <figure><img src="figures/pipeline_pattern.png"/><figcaption>caption</figcaption>
 </figure>
 </p>
-<p>EXPLICACIN UN POCO MS DETALLADA:</p>
-<p>Con esta estructura desarrollamos la infraestructura necesaria para cargar los datos en el modelo.  Cada comando representa un proceso de carga de datos, el cul se puede componer posteriormente dentro de un procese ms complejo. </p>
-<div class="mermaid">
-stateDiagram-v2
-[*] --&gt; Active
-
-state Active {
-[*] --&gt; NumLockOff
-NumLockOff --&gt; NumLockOn : EvNumLockPressed
-NumLockOn --&gt; NumLockOff : EvNumLockPressed
---
-[*] --&gt; CapsLockOff
-CapsLockOff --&gt; CapsLockOn : EvCapsLockPressed
-CapsLockOn --&gt; CapsLockOff : EvCapsLockPressed
---
-[*] --&gt; ScrollLockOff
-ScrollLockOff --&gt; ScrollLockOn : EvScrollLockPressed
-ScrollLockOn --&gt; ScrollLockOff : EvScrollLockPressed
-}
-</div>
+<p>Con este patrn desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso ms complejo. Cada unidad de carga se comporta como un filtro que aade de forma ordenada la informacin al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberas que permitan dejar varias instancias de la aplicacin en estados diferentes.</p>
 <p>Para AGRAI, hacen falta transformar los datos de ndices vegetativos que maneja el equipo en informacin ordenada que llegue al modelo de datos desarrollado anteriormente. A continuacin explicamos el flujo de procesos de carga ms utilizado.</p>
-<p>Los datos principalmente provienen de qgis, software para trabajar con informacin georeferenciada. El equipo pre-procesa la informacin sobre los ndices vegetativos y da valores a los pixels mediante dicho software. La principal funcin de este trabajo es dar sentido a esa informacin persistiendo los datos tomados junto con sus relaciones con el parcelario fsico.</p>
+<p>Los datos principalmente provienen de qgis, software para trabajar con informacin georeferenciada. El equipo pre-procesa la informacin sobre los ndices vegetativos y da valores a los pxeles mediante dicho software. La principal funcin de este trabajo es dar sentido a esa informacin, persistiendo los datos tomados junto con sus relaciones con el parcelario fsico.</p>
 <div class="mermaid">
 graph LR;
 qgis--&gt;parcelas;
 parcelas--&gt;cultivos;
 cultivos--&gt;ndices;
-ndices--&gt;indices_vegetativos;
-ndices--&gt;indices_agroclimaticos;
-indices_vegetativos--&gt;stable;
-indices_agroclimaticos--&gt;stable;
+ndices--&gt;indice_descarga_da;
+ndices--&gt;indices_descarga_rango;
+indice_descarga_da--&gt;stable;
+indices_descarga_rango--&gt;stable;
 </div>
-<p>La informacin de los pxeles tiene que elazarse con los datos de parcelas y cultivos. Cuando obtenemos los indices vegetativos solo contemplamos la informacin sobre la geometra de la parcela, no sabemos nada ms. Esta informacin tiene que almacenarse junto con el cultivo, estado fenolgico, datos fsicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los scripts que conforman los procesis del pipeline.</p>
+<p>La informacin de los pxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los ndices vegetativos solo contemplamos la informacin sobre la geometra de la parcela, no sabemos nada ms. Esta informacin tiene que almacenarse junto con el cultivo, estado fenolgico, datos fsicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los scripts que conforman los procesos del pipeline.</p>
 <table>
 <thead>
 <tr>
@@ -1321,7 +1350,14 @@ indices_agroclimaticos--&gt;stable;
 </tr>
 </tbody>
 </table>
-<p>Estos scripts nos permiten crear el flujo necesario para que la aplicacin procese la informacin y termine en un estado consistente. Finalmente podemos crear un nico script que ejecute el proceso de forma ordenada.</p>
+<p>Para entender detalladamente qu hacen los scripts de carga de ndices tenemos que explicar algunos de los procesos de automatizacin de los que hacemos uso. </p>
+<div class="mermaid">
+graph LR;
+indices --&gt; download_indices;
+download_indices --&gt; download_today
+download_indices --&gt; download_range
+</div>
+<p>Estos scripts nos permiten crear el flujo necesario para que la aplicacin procese la informacin y termine en un estado consistente. Finalmente, queremos crear un nico script que ejecute el proceso de forma ordenada.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">LoggingBaseCommand</span><span class="p">):</span>
 
   <span class="n">help</span> <span class="o">=</span> <span class="s1">'Carga la geometra a las parcelas y a los pixeles'</span>
@@ -1342,13 +1378,17 @@ indices_agroclimaticos--&gt;stable;
 
     <span class="nb">print</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">))</span>
 
-        <span class="n">call_command</span><span class="p">(</span><span class="s1">'1-load-qgis'</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
+    <span class="n">call_command</span><span class="p">(</span><span class="s1">'1-load-qgis'</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
 
     <span class="n">call_command</span><span class="p">(</span><span class="s1">'2-load-parcela-data'</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
 
     <span class="n">call_command</span><span class="p">(</span><span class="s1">'3-load-cultivos'</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
+
+    <span class="n">call_command</span><span class="p">(</span><span class="s1">'4-download-indices'</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
 </code></pre></div>
-<p>Adems de ste ltimo, podemos crear varios entornos con tuberas diferentes que den como resultado bases de datos con estados distintos. Como mencionbamos anteriormente, es muy til debido al funcionamiento del equipo en relacin a el procesamiento de datos con varios clientes. La aplicacin puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre, por ejemplo la misma instancia de la BD sirve tanto para una bodega con variedades de vino que para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
+<p>Adems de este ltimo, podemos crear varios entornos con tuberas diferentes que den como resultado bases de datos con estados distintos. Como mencionbamos anteriormente, es muy til debido al funcionamiento del equipo en relacin con el procesamiento de datos con varios clientes. La aplicacin puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre, por ejemplo la misma instancia de la BD sirve tanto para una bodega con variedades de vino que para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
+<p>PROCESO ASNSCRONO</p>
+<p>Este patrn nos permite ejecutar comandos de forma asncrona y gestionar los procesos con un planificador.</p>
 <h1>Pipeline Pattern</h1>
 <p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p>
 <p>Vamos a ver el patrn de diseo de Pipeline como entidad nica.</p>
@@ -1359,36 +1399,7 @@ indices_agroclimaticos--&gt;stable;
 <p>algn patron de diseo relacionado con un pipeline.</p>
 <h1>explicacin del patrn y posible post -&gt;</h1>
 <p>patron en Django con comandoss</p>
-<script>mermaid.initialize({startOnLoad:true});</script></div><div id="pipeline"><h3>3 pipeline</h3><h1>architectura</h1>
-<p>Las siguientes tareas </p>
-<ul>
-<li>Implementacin pipeline (TAREAS)
-        - carga de datos Inicial
-        - seleccin de caractersticas
-        - transformacin de datos
-        - obtencin vista minable
-        - implementacin modelo de produccin de cultivo
-        - visualizacin resultados en la interfaz<ul>
-<li>Implementacin modelo Produccin</li>
-<li>Pipeline Jenkins (automatizacin de la instalacin de la aplicaron y despliegue)</li>
-<li>Despliegue de la interfaz</li>
-</ul>
-</li>
-</ul>
-<p>Es importante diferenciar qu tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para pipelines como pueden ser ETLs u otras. Para la correcta creacin del modelo de produccin no utilizaremos ninguna de estas arquitecturas, sino que disearemos los bloques necesarios en cada paso para llegar a una vista minable que podamos utilizar.</p>
-<p>Tenemos tres conceptos que definen un pipeline de datos. Para nuestra aplicacin nos centramos en utilizar el repositorio anterior para obtener y gestionar los datos necesarios del parcelario y transformar aquellos campos que definen una parcela en la vista minable correspondiente al modelo de produccin.</p>
-<ul>
-<li>
-<p>Data Ingestion: utilizamos nuestra BD para extraer a travs de Django los datos necesarios. Las relaciones establecidas anteriormente permiten un fcil acceso a estos datos.</p>
-</li>
-<li>
-<p>Data Transformation: una vez identificadas las relaciones, extraemos las campos necesarios y creamos el esquema de la vista minable que utilizaremos en el modelo. Una vez ejecutado el modelo podemos pasar al siguiente punto</p>
-</li>
-<li>
-<p>Data Storage: es necesario persistir los datos obtenidos por el modelo ya que forman parte de los datos objetivos para seguir modelizando correctamente el cultivo.</p>
-</li>
-</ul>
-<p>(intencin, justificar cmo hemos ido haciendo el proceso de transformacin de datos para obtener el modelo.)</p></div><div id="model-view"><h3>3 model-view</h3><p>Anteriormente en los servicios habamos expuesto cmo la encapsulacin de algunas consultas permite un mejor uso de los datos. Ahora vamos a crear un nuevo servicio con una consulta para generar la tabla correspondiente a la vista minable necesaria para el modelo de produccin.</p>
+<script>mermaid.initialize({startOnLoad:true});</script></div><div id="model-view"><h3>3 model-view</h3><p>Anteriormente en los servicios habamos expuesto cmo la encapsulacin de algunas consultas permite un mejor uso de los datos. Ahora vamos a crear un nuevo servicio con una consulta para generar la tabla correspondiente a la vista minable necesaria para el modelo de produccin.</p>
 <p>servicios....</p>
 <p>CODE -&gt; entregable.</p>
 <p>(en este caso utilizamos 4 fechas ya que son suficientes para el modelo de produccin)</p>
@@ -1396,8 +1407,14 @@ indices_agroclimaticos--&gt;stable;
 <p>-&gt; insertar cuadernos jupyter dentro del entrno html que estoy desplegando para mostrar la vista minable creada. </p>
 <p>-&gt; as evito la generacin de imgenes.</p>
 <h1>escribir en el html la referencia al cuaderno y ejecutarlo.</h1>
-<p>El diseo de la vista minable es complicado, para ello trabajo con el equipo seleccionando los campos de la BD ms importantes que formaran la tabla.  Nos centramos principalmente en los indices vegetativos registrados en diferentes fechas. </p>
-<p>Hablbamos anteriormente de entornos virtuales, por el momento la aplicacin utiliza un solo entorno virtual Python, pero este punto del trabajo podra hacer uso de un entorno separado con las libreras de ciencia de datos instaladas, de tal forma separaramos dos procesos importantes. Resaltar que en el trabajo me estoy encargando del proceso para hacer pruebas, pero sern diferentes miembros del equipo los que usen estas tecnoligas y para que podamos seguir escalando a medidad que evolucione la aplicacin, estos miembros tienen que poder utilizar los entornos creados.</p></div><div id="modelo-producción"><h3>3 modelo-producción</h3></div><div id="0-seguimiento"><h2>2 0-seguimiento</h2><p>-- LINK_NOTE --</p>
+<p>El diseo de la vista minable es complicado, para ello trabajo con el equipo seleccionando los campos de la BD ms importantes que formaran la tabla.  Nos centramos principalmente en los ndices vegetativos registrados en diferentes fechas. </p>
+<p>Hablbamos anteriormente de entornos virtuales, por el momento la aplicacin utiliza un solo entorno virtual Python, pero este punto del trabajo podra hacer uso de un entorno separado con las libreras de ciencia de datos instaladas, de tal forma separaramos dos procesos importantes. Resaltar que en el trabajo me estoy encargando del proceso para hacer pruebas, pero sern diferentes miembros del equipo los que usen estas tecnologas y para que podamos seguir escalando a medida que evolucione la aplicacin, estos miembros tienen que poder utilizar los entornos creados.</p></div><div id="modelo-producción"><h3>3 modelo-producción</h3><p>La vista minable que acabamos de crear representa los datos necesarios para crear un modelo de produccin para el cultivo. El prximo entregable es el desarrollo de un cuaderno de jupyter que contiene pruebas con varios modelos para la tabla anterior.</p>
+<ul>
+<li>Probar con varios modelos</li>
+<li>calibrar datos</li>
+<li>gestionar el proceso</li>
+<li></li>
+</ul></div><div id="0-seguimiento"><h2>2 0-seguimiento</h2><p>-- LINK_NOTE --</p>
 <p>[[seguimiento]]</p>
 <p>[[memoria]]</p>
 <p>[[lecciones]]</p></div><div id="seguimiento"><h3>3 seguimiento</h3><p>A pesar de realizar la planificacin del proyecto, el desarrollo ha diferido de la misma en<br/>
@@ -1416,7 +1433,7 @@ con las horas de desviacin de cada uno de los paquetes de trabajo.</p></div><div
 </ul></div><div id="0-conclusiones"><h2>2 0-conclusiones</h2><p>-- LINK_NOTE --</p>
 <p>[[conclusiones]]</p>
 <p>[[bibliografa]]</p></div><div id="conclusiones"><h3>3 conclusiones</h3><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatizacin que permite la integracin continua del flujo de trabajo del equipo. Hemos pasado por casi todas las etapas de diseo e implementacin adems de la final inclusin de los modelos predictivos para el cultivo.</p>
-<p>Revisamos el proceso ....</p></div><div id="bibliografía"><h3>3 bibliografía</h3></div>
+<p>Revisamos el proceso ....</p></div><div id="bibliografía"><h3>3 bibliografía</h3><p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p></div>
 <div>
 </div></div></body>
 </html>
