@@ -985,21 +985,23 @@ sudo python3 -m pip install -r requirements.txt
 <li>despliegue de la aplicacin</li>
 <li>data-science para la creacin de modelos a nivel interno.</li>
 </ul>
-<p>Actualmente solo existe un entono virtual sobre el cal se instalan todas las libreras python necesarias para el desarrollo y despliegue. Dicha refactorizacin sobre la infraestructura se contempla para prximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseo actual impedira su mejora. En este caso sera muy sencillo, una vez crezca la aplicacin separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id="control-versiones"><h3>3 control-versiones</h3><p>Para poder desarrollar sobre software que est en produccin estamos utilizando un sistema de control de versiones bsico. Damos unas pequeas pinceladas sobre cmo evoluciona el software y  las ramas que utilizamos.</p>
+<p>Actualmente solo existe un entono virtual sobre el cal se instalan todas las libreras python necesarias para el desarrollo y despliegue. Dicha refactorizacin sobre la infraestructura se contempla para prximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseo actual impedira su mejora. En este caso sera muy sencillo, una vez crezca la aplicacin separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id="control-versiones"><h3>3 control-versiones</h3><p>Para poder desarrollar sobre software que est en produccin estamos utilizando un sistema de control de versiones bsico. Damos unas pequeas pinceladas sobre cmo evoluciona el software y las ramas que utilizamos. </p>
+<p>El cdigo de la aplicacin se encuentra en un nico servidor que gestiona su control de versiones a travs de SVN, Subversion. El siguiente diagrama muestra el flujo de desarrollo con las ramas creadas para el trabajo independiente sin romper el producto en produccin.</p>
 <div class="mermaid">
 gitGraph
 commit
-branch develop
+branch origins
 commit tag:"v1.0.0"
 commit
 checkout main
 commit type: HIGHLIGHT
 commit
-merge develop
+merge origins
 commit
 branch featureA
 commit
 </div>
+<p>Al plantear un nuevo rediseo del producto, el trabajo tiene lugar en una rama diferente a la que se encuentra en produccin, Esta nueva rama, Origins, gestionar el rediseo del modelo de datos y la implementacin del proceso de automatizacin de los datos. Si el trabajo evoluciona correctamente, los futuros merges no deberan ser problemticos.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="0-diseño"><h2>2 0-diseño</h2><p>-- LINK_NOTE --</p>
 <p>[[componentes]]</p>
 <p>[[data-load]]</p>
@@ -1433,7 +1435,9 @@ con las horas de desviacin de cada uno de los paquetes de trabajo.</p></div><div
 </ul></div><div id="0-conclusiones"><h2>2 0-conclusiones</h2><p>-- LINK_NOTE --</p>
 <p>[[conclusiones]]</p>
 <p>[[bibliografa]]</p></div><div id="conclusiones"><h3>3 conclusiones</h3><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatizacin que permite la integracin continua del flujo de trabajo del equipo. Hemos pasado por casi todas las etapas de diseo e implementacin adems de la final inclusin de los modelos predictivos para el cultivo.</p>
-<p>Revisamos el proceso ....</p></div><div id="bibliografía"><h3>3 bibliografía</h3><p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p></div>
+<p>Revisamos el proceso ....</p></div><div id="bibliografía"><h3>3 bibliografía</h3><p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p>
+<p>https://mermaid.js.org/syntax/entityRelationshipDiagram.html</p>
+<p>https://docs.djangoproject.com/en/4.1/intro/tutorial01/</p></div>
 <div>
 </div></div></body>
 </html>
