@@ -1474,11 +1474,13 @@ download_indices --&gt; download_range
 <p>Junto con los datos extrados aadimos la variable objetivo de produccin. Esta variable, todava sin persistir en el modelo, hace referencia a los kilos de produccin de cada parcela en su cosecha.</p></div><div id="modelo-producción"><h3>3 modelo-producción</h3><p>La vista minable que acabamos de crear representa los datos necesarios para crear un modelo de produccin para el cultivo. El prximo entregable es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
 <p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. 
 S que intentaremos que los datos de produccin con los que vamos a predecir estn normalizados y se haya hecho una bsqueda previa de outliers.</p>
-<p>Problema de clasificacin.</p>
-<p>imagen o csv -&gt;import.</p>
-<p>interpretacin datos negativos</p>
-<p>modelos predictivos</p>
-<p>enlazado de un cuaderno de jupyter.</p></div><div id="0-seguimiento"><h2>2 0-seguimiento</h2><p>-- LINK_NOTE --</p>
+<p>Problema de regresin</p>
+<p>El rango de valores para la mayora de los ndices que obtenemos va de -1 a 1. Los datos de ndices negativos que llegan a la vista se pueden considerar como outliers. Esto es debido a que si los ndices provienen de una imagen con nubes, no se diferencian los colores del terreno y el ndice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los ndices que provengan de la toma de la imagen en una fecha en la que haba nubes.</p>
+<p>
+<figure><img src="figures/nubes.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestin y automatizacin de los modelos de produccin generados a partir los datos de las 25 parcelas estudiadas.</p></div><div id="0-seguimiento"><h2>2 0-seguimiento</h2><p>-- LINK_NOTE --</p>
 <p>[[seguimiento]]</p>
 <p>[[memoria]]</p>
 <p>[[lecciones]]</p></div><div id="seguimiento"><h3>3 seguimiento</h3><p>A pesar de realizar la planificacin del proyecto, el desarrollo ha diferido de la misma en<br/>
