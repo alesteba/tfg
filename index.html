@@ -897,11 +897,12 @@ end
 </ul>
 <p>Suele ser complicado encontrar todas las dependencias cons sus versiones correctas, en este caso el punto ms complicado ha sido la instalacin de Python con su versin correspondiente de GDAL, librera que permite tratar con los datos geoespaciales. Adems el sistema gestor de BD, 'postgres' necesita una extensin especial, 'postgis' para poder guardar los datos georeferenciados. Como este tipo de trabajo es casi de prueba y error, la utilidad del script que obtenemos es de gran valor.</p>
 <p>El primero de los entregables hace referencia a esta parte del proceso. El siguiente script automatiza la creacin de una mquina con las libreras necesarias, el cul una vez ejecutado, deja la aplicacin lista para su desligue.</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre><code class="language-bash">
+#!/bin/bash
 
-curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc<span class="p">|</span>sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
 
-sudo sh -c <span class="s1">'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" &gt; /etc/apt/sources.list.d/pgdg.list'</span>
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" &gt; /etc/apt/sources.list.d/pgdg.list'
 
 sudo apt update
 sudo apt upgrade
@@ -913,68 +914,70 @@ sudo service postgresql start
 
 sudo -u postgres createuser -P agrai_user
 sudo -u postgres createdb -O agrai_user agrai_db
-sudo -u postgres psql -c <span class="s2">"CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;"</span> agrai_db
+sudo -u postgres psql -c "CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;" agrai_db
 
-<span class="c1"># gdal native:</span>
-sudo add-apt-repository ppa:ubuntugis/ppa <span class="o">&amp;&amp;</span> sudo apt-get update
+# gdal native:
+sudo add-apt-repository ppa:ubuntugis/ppa &amp;&amp; sudo apt-get update
 sudo apt-get update
 
-<span class="c1"># cargarte la versin de la mquina, dejar solo 1:</span>
+# cargarte la versin de la mquina, dejar solo 1:
 sudo apt autoremove python3
 
-<span class="c1"># python repositories</span>
+# python repositories
 
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:deadsnakes/ppa
 
-<span class="c1"># python concrete installation</span>
+# python concrete installation
 
-sudo apt install python3.10 <span class="c1"># version concreta</span>
+sudo apt install python3.10 # version concreta
 sudo apt-get install python3.10-dev python3.10-venv
 sudo apt install python3.10-dev python3.10-venv
 sudo apt install virtualenv
 
-<span class="c1"># python env var</span>
+# python env var
 
-<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">"/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages"</span>
+export PYTHONPATH="/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages"
 
-<span class="nb">alias</span> <span class="nv">py</span><span class="o">=</span>python3.10
-<span class="nb">alias</span> <span class="nv">python</span><span class="o">=</span>python3.10
-<span class="nb">alias</span> <span class="nv">python3</span><span class="o">=</span>python3.10
+alias py=python3.10
+alias python=python3.10
+alias python3=python3.10
 
-<span class="c1"># creacion entorno_venv</span>
+# creacion entorno_venv
 sudo python3.10 -m venv ../agrai_venv
 
-<span class="c1"># GDAL</span>
+# GDAL
 sudo apt-get install libgdal-dev
 
-<span class="c1"># env gdal lib variables</span>
+# env gdal lib variables
 
-<span class="nb">export</span> <span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span>/usr/include/gdal
-<span class="nb">export</span> <span class="nv">C_INCLUDE_PATH</span><span class="o">=</span>/usr/include/gdal
+export CPLUS_INCLUDE_PATH=/usr/include/gdal
+export C_INCLUDE_PATH=/usr/include/gdal
 
-<span class="c1"># install dep in python agrai_venv</span>
+# install dep in python agrai_venv
 
-<span class="nb">source</span> ../agrai_venv/bin/activate
-<span class="c1"># pip install --upgrade pip # quitar</span>
+source ../agrai_venv/bin/activate
+# pip install --upgrade pip # quitar
 sudo python3 -m pip install -r requirements.txt
-</code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
-<span class="n">django</span>
-<span class="n">django</span><span class="o">-</span><span class="n">apscheduler</span>
-<span class="n">django_extensions</span>
-<span class="n">psycopg2</span>
-<span class="n">numpy</span>
-<span class="n">pandas</span>
-<span class="n">requests</span>
-<span class="n">pdfkit</span>
-<span class="n">fiona</span>
-<span class="n">rasterio</span>
-<span class="n">rasterstats</span>
-<span class="n">GDAL</span><span class="o">==</span><span class="mf">3.4.3</span>
-<span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
-<span class="n">xhtml2pdf</span>
-</code></pre></div>
+</code></pre>
+<pre><code class="language-python">
+psycopg2-binary
+django
+django-apscheduler
+django_extensions
+psycopg2
+numpy
+pandas
+requests
+pdfkit
+fiona
+rasterio
+rasterstats
+GDAL==3.4.3
+psycopg2-binary
+xhtml2pdf
+
+</code></pre>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="entorno"><h3>3 entorno</h3><p>Es importante preparar un entorno comn para el equipo. Django es un framework muy til por la integracin de las herramientas que hemos visto (ORM, web-interfaces, etc), pero para conseguir un workflow adecuado necesitamos incluir otra herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos con las libreras necesarias para ejecutar modelos predictivos.</p>
 <p>Migracin de todo el entorno a UNIX para posteriormente utilizar herramientas de integracin continua. El trabajo en el equipo local se hace a travs de una mquina en WSL (windows subsystem for Linux) para trabajar de forma semejante a un contender. Uno de los problemas principales para el equipo en su flujo de trabajo ha sido mantener una integridad entre el desarrollo realizad por los diferentes miembros del equipo y el posterior despliegue de la aplicacin en un entorno UNIX diferente al que se haba utilizado en local en las versiones de pre-produccin.</p>
 <p>Dedicamos varios das a preparar la integracin de Django con cuadernos jupyter y adems poder ejecutar diferentes entornos virtuales con las libreras adecuadas en cada momento. Los siguientes ejemplos muestran como se ha conseguido integrar las libreras necesarias para el despliegue de los cuadernos y su integracin con los datos y los modelos de Django.</p>
@@ -1018,26 +1021,27 @@ METEO }|..|{ CORE : uses
 AUTO }|..|{ CORE : uses
 </div>
 <p>En Django podemos crear un proyecto compuesto por varias aplicaciones. En la documentacin oficial se explica como funciona la arquitectura del framework y se exponen ejemplos para que, una vez creadas, podamos acoplar y desacoplar las aplicaciones al proyecto. Es una forma similar de trabajo a cuando organizamos una librera en mltiples paquetes, pero un poco ms complicada debido a que el ORM subyacente traduce los modelos a tablas en una BD. Veamos cmo con solo aadir o quitar un string en nuestro settings activamos o desactivamos la aplicacin en el proyecto.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<pre><code class="language-python">
+INSTALLED_APPS = [
 
-  <span class="s1">'django_apscheduler'</span><span class="p">,</span>
-  <span class="s1">'django_extensions'</span><span class="p">,</span>
+  'django_apscheduler',
+  'django_extensions',
 
-  <span class="s1">'django.contrib.admin'</span><span class="p">,</span>
-  <span class="s1">'django.contrib.auth'</span><span class="p">,</span>
-  <span class="s1">'django.contrib.contenttypes'</span><span class="p">,</span>
-  <span class="s1">'django.contrib.sessions'</span><span class="p">,</span>
-  <span class="s1">'django.contrib.messages'</span><span class="p">,</span>
-  <span class="s1">'django.contrib.staticfiles'</span><span class="p">,</span>
-  <span class="s1">'django.contrib.gis'</span><span class="p">,</span>
+  'django.contrib.admin',
+  'django.contrib.auth',
+  'django.contrib.contenttypes',
+  'django.contrib.sessions',
+  'django.contrib.messages',
+  'django.contrib.staticfiles',
+  'django.contrib.gis',
 
-  <span class="s1">'core'</span><span class="p">,</span>
-  <span class="s1">'meteo'</span><span class="p">,</span>
-  <span class="s1">'roles'</span><span class="p">,</span>
-  <span class="s1">'cuaderno'</span>
-  <span class="s1">'auto'</span>
-<span class="p">]</span>
-</code></pre></div>
+  'core',
+  'meteo',
+  'roles',
+  'cuaderno'
+  'auto'
+]
+</code></pre>
 <p>Estas aplicaciones pueden comunicarse entre s a travs de sus modelos y servicios. En la siguiente tabla explicamos que hace cada sub-aplicacin.</p>
 <table>
 <thead>
@@ -1249,33 +1253,34 @@ CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 <p>El pipeline que estamos construyendo es posible gracias a la refactorizacin en mdulos de la aplicacin y a la sencillez y versatilidad del modelo. Los servicios que ahora diseamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propsitos distintos. Son muy importantes ya que nos acercan al flujo de trabajo de integracin continua que estamos buscando.</p>
 <p>Como estamos utilizando el ORM de Django, para no sobrecargar los objetos del modelo con demasiados mtodos establecemos un mdulo de servicios (para cada componte del sistema) con las consultas ms frecuentes. Este mdulo ayuda a mantener el cdigo en el modelo limpio sin complejidad aadida debido a que las consultas / mtodos que hacen uso de varias relaciones quedan como entidades separadas que se pueden reutilizar.</p>
 <p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_indice_func</span><span class="p">(</span><span class="n">parcela</span><span class="p">,</span> <span class="n">indice_p</span><span class="p">,</span> <span class="n">fecha_p</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
+<pre><code class="language-python">
+def get_indice_func(parcela, indice_p, fecha_p, func, filtro):
 
-    <span class="n">indice_p</span> <span class="o">=</span> <span class="n">Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">indice_p</span><span class="p">)</span> 
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">indice_p</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span> <span class="k">else</span> <span class="n">indice_p</span>
+    indice_p = Indice.objects.get(nombre=indice_p) 
+    if type(indice_p) == str else indice_p
 
-    <span class="k">if</span> <span class="n">ParcelaIndices_Service</span><span class="o">.</span><span class="n">is_parcela_filter</span><span class="p">(</span><span class="n">parcela</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
+    if ParcelaIndices_Service.is_parcela_filter(parcela, filtro):
 
-        <span class="n">pixels</span> <span class="o">=</span> <span class="n">parcela</span><span class="o">.</span><span class="n">get_pixeles</span><span class="p">()</span>
+        pixels = parcela.get_pixeles()
 
-        <span class="n">indices_pixels</span> <span class="o">=</span> <span class="n">Mirar_Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        indices_pixels = Mirar_Indice.objects.filter(
 
-            <span class="n">pixel__in</span> <span class="o">=</span> <span class="n">pixels</span><span class="p">,</span> 
-            <span class="n">indice</span> <span class="o">=</span> <span class="n">indice_p</span><span class="p">,</span> 
-            <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha_p</span>
-        <span class="p">)</span>
+            pixel__in = pixels, 
+            indice = indice_p, 
+            fecha = fecha_p
+        )
 
-        <span class="k">if</span> <span class="n">ParcelaIndices_Service</span><span class="o">.</span><span class="n">get_indice_filter</span><span class="p">(</span><span class="n">indices_pixels</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
+        if ParcelaIndices_Service.get_indice_filter(indices_pixels, filtro):
 
-            <span class="n">array_valores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indices_pixels</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">'valor'</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+            array_valores = list(indices_pixels.values_list('valor', flat=True))
 
-            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">array_valores</span><span class="p">)</span>
+            return func(array_valores)
 
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-</code></pre></div>
+        else:
+            return None
+    else:
+        return None
+</code></pre>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="despliegue"><h3>3 despliegue</h3><p>Con la aplicacin en un estado slido, procedemos a mostrar los datos en la interfaz web. Aunque no es parte del trabajo establecido para este TFG, necesitamos ver que los datos con los que trabajamos se muestran correctamente en el visor GIS de nuestra interfaz. </p>
 <p>Recordemos que dentro de nuestras fuentes de datos tenemos datos de parcelas con su informacin geoespacial, tanto la forma de la parcela como la de todos sus pxeles que la conforman. Como estamos haciendo pruebas con un nmero reducido de datos, 25 parcelas con sus pxeles e ndices asociados, el visor debe mostrar estas 25 parcelas con diferentes colores dependiendo del valor de los indices estudiados.</p>
 <ul>
@@ -1304,14 +1309,16 @@ CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 <p>Como hemos dicho, hay varias formas de realizar este proceso de canalizacin, en el siguiente punto exponemos la tecnologa subyacente que utilizaremos para ello. </p></div><div id="commands-CLI"><h3>3 commands-CLI</h3><p>En ingeniera de software, un <strong>patrn de diseo</strong> es una solucin general y reutilizable para un problema comn dentro de un contexto dado. El trmino pipeline puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicacin como patrn de diseo ya que en nuestra aplicacin se est utilizando como tal.</p>
 <p>**Podemos definir un pipeline como una cadena de elementos de procesamiento (procesos, subprocesos, rutinas, funciones, etc.), dispuestos de modo que la salida de cada elemento sea la entrada del siguiente; el nombre hace referencia al flujo de una o varias tuberas.</p>
 <p>En nuestro caso vamos a utilizar la arquitectura de comandos que proporciona Django para disear los procesos de transformacin de datos que van a poblar la base de datos. La definicin y reutilizacin del proceso de poblacin es muy importante debido a la forma de trabajo que tiene la empresa con diferentes clientes. Dependiendo de la magnitud del cliente se prepara una copia de la aplicacin para trabajar con sus datos, por ello una vez definido las unidades atmicas del proceso de carga de datos, se podrn disear diferentes pipelines para cada cliente. Para este trabajo nos conformaremos con el diseo y la implementacin de un proceso general, pero manteniendo la idea de que pueda ser escalado ms adelante.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+<pre><code class="language-python">
+from django.core.management.base import BaseCommand
 
-<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+class Command(BaseCommand):
 
-    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    def handle(self, **options):
 
-        <span class="c1"># now do the things that you want with your models here</span>
-</code></pre></div>
+        # now do the things that you want with your models here
+
+</code></pre>
 <p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de este patrn es un poco ms compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parmetros. </p>
 <p>
 <figure><img src="figures/pipeline_pattern.png"/><figcaption>caption</figcaption>
@@ -1369,32 +1376,33 @@ download_indices --&gt; download_range
 <p>Estos scripts nos permiten crear el flujo necesario para que la aplicacin procese la informacin y termine en un estado consistente. Parte del proceso necesita ser automatizado y ejecutado reiteradamente, aadiendo los datos a la BD y relacionndolos adecuadamente. En nuestro contexto agronmico, es la descarga de ndices la parte del proceso que necesita ser automatizada, mientras que los datos de las parcelas y cultivos y la informacin geoespacial se pueden cargar directamente en el despliegue de la aplicacin. </p>
 <p>Con esta estructura de tuberas lista, podemos reutilizar cualquier parte del proceso. Un planificador de tareas nos ayuda a establecer el tiempo que tiene que transcurrir entre las descargas. Sin entrar en ms detalle, se ha utilizado el scheduler por defecto del framework de Django que estamos utilizando para esta gestin de tiempos y descarga.</p>
 <p>Finalmente, para realizar pruebas, queremos crear un nico script que ejecute el proceso de forma ordenada. El resto de tuberas que se adjuntan en el proyecto tienen una forma similar y hacen el mismo uso de los comandos de Django que hemos explicado.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">LoggingBaseCommand</span><span class="p">):</span>
+<pre><code class="language-python">
+class Command(LoggingBaseCommand):
 
-  <span class="n">help</span> <span class="o">=</span> <span class="s1">'Carga la geometra a las parcelas y a los pixeles'</span>
+  help = 'Carga la geometra a las parcelas y a los pixeles'
 
-  <span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
-  <span class="n">PARCELA_SHAPE</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">'data'</span> <span class="o">/</span> <span class="s1">'parcelas'</span> <span class="o">/</span> <span class="s1">'25'</span> <span class="o">/</span> <span class="s1">'parcelas.shp'</span>
-  <span class="n">PIXEL_SHAPE</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">'data'</span> <span class="o">/</span> <span class="s1">'parcelas'</span> <span class="o">/</span> <span class="s1">'25'</span> <span class="o">/</span> <span class="s1">'pixeles.shp'</span>
-  <span class="n">FICHERO_PATH</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">'data'</span> <span class="o">/</span> <span class="s1">'excels'</span> <span class="o">/</span> <span class="s1">'datos-test-2.xls'</span>
-  <span class="n">TRILINEA_PATH</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">'data'</span> <span class="o">/</span> <span class="s1">'trilineas'</span> <span class="o">/</span> <span class="s1">'PRilineas.json'</span>
+  BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+  PARCELA_SHAPE = BASE_DIR / 'data' / 'parcelas' / '25' / 'parcelas.shp'
+  PIXEL_SHAPE = BASE_DIR / 'data' / 'parcelas' / '25' / 'pixeles.shp'
+  FICHERO_PATH = BASE_DIR / 'data' / 'excels' / 'datos-test-2.xls'
+  TRILINEA_PATH = BASE_DIR / 'data' / 'trilineas' / 'PRilineas.json'
 
-  <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  def handle(self, *args, **kwargs):
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    self.run()
 
-  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  def run(self):
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">))</span>
+    print(Path(self.PARCELA_SHAPE))
 
-    <span class="n">call_command</span><span class="p">(</span><span class="s1">'1-load-qgis'</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
+    call_command('1-load-qgis',parcelas=self.PARCELA_SHAPE, pixels=self.PIXEL_SHAPE)
 
-    <span class="n">call_command</span><span class="p">(</span><span class="s1">'2-load-parcela-data'</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
+    call_command('2-load-parcela-data', excel=str(self.FICHERO_PATH))
 
-    <span class="n">call_command</span><span class="p">(</span><span class="s1">'3-load-cultivos'</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
+    call_command('3-load-cultivos', excel=str(self.FICHERO_PATH))
 
-    <span class="n">call_command</span><span class="p">(</span><span class="s1">'4-download-indices'</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
-</code></pre></div>
+    call_command('4-download-indices',parcelas=self.PARCELA_SHAPE, pixels=self.PIXEL_SHAPE)
+</code></pre>
 <p>Adems de este ltimo, podemos crear varios entornos con tuberas diferentes que den como resultado bases de datos con estados distintos. Como mencionbamos anteriormente, es muy til debido al funcionamiento del equipo en relacin con el procesamiento de datos con varios clientes. La aplicacin puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre, por ejemplo la misma instancia de la BD sirve tanto para una bodega con variedades de vino que para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
 <p>Por ltimo, este patrn nos permite ejecutar comandos de forma asncrona y gestionar los procesos con un planificador. Actualmente, aunque el tiempo de carga es alto, podemos asumir una carga lenta. Pero es este mismo patrn de diseo el que nos puede permitir a futuro la carga asncrona de los datos en cada una de las componentes que lo forman.</p>
 <p>Adjuntamos en los entregables los scripts que forman este proceso de persistencia de datos. </p>
@@ -1411,60 +1419,61 @@ download_indices --&gt; download_range
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="model-view"><h3>3 model-view</h3><p>Hasta este punto habamos insertado en la base da datos la informacin que provena de diferentes fuentes. Hemos dotado de consistencia y relacin a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
 <p>Ahora, fuera de la estructura de comandos de Django y utilizando el entorno virtual creado y los cuadernos integrados en la aplicacin, escribimos el algoritmo para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
 <p>El cdigo que mostramos en este apartado corresponde con la generacin de la vista tabulada con la que vamos a crear el modelo de produccin de cultivo. Ahora realizamos el proceso inverso a la persistencia de datos que hemos realizado hasta este punto. Utilizamos la informacin y sus relaciones persistidas en la base de datos de nuestro sistema para generar la vista minable que necesita el modelo predictivo. </p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">core.models</span> <span class="kn">import</span> <span class="o">*</span>
+<pre><code class="language-python">
+from core.models import *
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+import pandas as pd
 
-<span class="c1"># indices:</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'ndvi'</span><span class="p">,</span> <span class="s1">'ndre'</span><span class="p">]</span>
+# indices:
+indices = ['ndvi', 'ndre']
 
-<span class="k">def</span> <span class="nf">statistic_indices</span><span class="p">(</span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'ndvi'</span><span class="p">,</span> <span class="s1">'ndre'</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
+def statistic_indices(indices = ['ndvi', 'ndre'], func=np.mean):
 
-  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-  <span class="c1"># para cada indice:</span>
+  df = pd.DataFrame()
+  # para cada indice:
 
-  <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+  for ind in indices:
 
-    <span class="n">indice_p</span> <span class="o">=</span> <span class="n">Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+    indice_p = Indice.objects.get(nombre=ind)
 
-    <span class="k">for</span> <span class="n">fecha</span> <span class="ow">in</span> <span class="n">fechas</span><span class="p">:</span>
+    for fecha in fechas:
 
-      <span class="n">col_data</span> <span class="o">=</span> <span class="p">[]</span>
+      col_data = []
 
-      <span class="c1"># por cada iteracin de hay una fila en el df:</span>
+      # por cada iteracin de hay una fila en el df:
 
-      <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Parcela</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+      for p in Parcela.objects.all():
 
-        <span class="c1"># la media de todos sus pixels de cada parcela por cada ndice</span>
+        # la media de todos sus pixels de cada parcela por cada ndice
 
-        <span class="n">p_indices</span> <span class="o">=</span> <span class="n">Pixel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
-        <span class="n">list_values</span> <span class="o">=</span> <span class="p">[]</span>
+        p_indices = Pixel.objects.filter(parcela=p)
+        list_values = []
 
-        <span class="k">for</span> <span class="n">p_itr</span> <span class="ow">in</span> <span class="n">p_indices</span><span class="p">:</span>
+        for p_itr in p_indices:
 
-          <span class="n">qs</span> <span class="o">=</span> <span class="n">Mirar_Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+          qs = Mirar_Indice.objects.get(
 
-            <span class="n">pixel</span> <span class="o">=</span> <span class="n">p_itr</span><span class="p">,</span>
-            <span class="n">indice</span> <span class="o">=</span> <span class="n">indice_p</span><span class="p">,</span>
-            <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span> <span class="c1"># fecha para la columna:</span>
-          <span class="p">)</span>
+            pixel = p_itr,
+            indice = indice_p,
+            fecha = fecha # fecha para la columna:
+          )
 
-          <span class="kn">import</span> <span class="nn">math</span>
+          import math
 
-          <span class="c1"># mirarmos que no sea nulo, porque se puede dar el caso</span>
-          <span class="k">if</span> <span class="p">(</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span> <span class="p">):</span>
+          # mirarmos que no sea nulo, porque se puede dar el caso
+          if ( not math.isnan(qs.valor) ):
 
-            <span class="n">list_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span>
+            list_values.append(qs.valor)
 
-        <span class="c1"># estadistico</span>
+        # estadistico
 
-        <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">list_values</span><span class="p">)</span>
-        <span class="n">col_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        res = func(list_values)
+        col_data.append(res)
 
-      <span class="n">df</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'_'</span> <span class="o">+</span> <span class="n">ind</span> <span class="o">+</span><span class="s1">'_'</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)]</span> <span class="o">=</span> <span class="n">col_data</span>
+      df[func.__name__ + '_' + ind +'_' +str(fecha)] = col_data
 
-  <span class="k">return</span> <span class="n">df</span>
-</code></pre></div>
+  return df
+</code></pre>
 <h2>Seleccin de features</h2>
 <p>El diseo de la vista minable es complicado, para ello trabajo con el equipo seleccionando los campos de la BD ms importantes que formaran la tabla.  Nos centramos principalmente en los ndices vegetativos registrados en diferentes fechas. </p>
 <p>Para poder predecir la produccin de cultivo incluimos en la vista varios estadsticos como la media y el sumatorio para cada ndice en cuatro fechas representativas de la evolucin de este. El diseo de esta estructura proviene de un estudio previo realizado por el equipo, en el que se ha concluido que ciertos estadsticos en unas fechas calibradas funcionan bien para predecir la produccin. En este punto no estamos </p>
