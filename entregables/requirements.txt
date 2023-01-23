@@ -1,0 +1,16 @@
+
+django
+django-apscheduler
+django_extensions
+psycopg2-binary
+psycopg2
+numpy
+pandas
+requests
+pdfkit
+fiona
+rasterio
+rasterstats
+GDAL==gdal-config --version
+psycopg2-binary
+xhtml2pdf
