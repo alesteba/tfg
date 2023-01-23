@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta content="es" http-equiv="content-language"/>
 <meta charset="utf-8"/>
-<title>Title of the document</title>
+<title>TFG</title>
 <link href="https://waloncab.github.io/s.ln_blog/assets/css/body.css" rel="stylesheet"/>
 <link href="./style.css" rel="stylesheet"/>
 <link href="./codehilite.css" rel="stylesheet"/>
@@ -1474,7 +1473,7 @@ download_indices --&gt; download_range
 <p>Junto con los datos extrados aadimos la variable objetivo de produccin. Esta variable, todava sin persistir en el modelo, hace referencia a los kilos de produccin de cada parcela en su cosecha.</p></div><div id="modelo-producción"><h3>3 modelo-producción</h3><p>La vista minable que acabamos de crear representa los datos necesarios para crear un modelo de produccin para el cultivo. El prximo entregable es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
 <p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. 
 S que intentaremos que los datos de produccin con los que vamos a predecir estn normalizados y se haya hecho una bsqueda previa de outliers.</p>
-<p>Problema de regresin</p>
+<p>Buscamos un modelo de regresin para el nmero de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeo, disearemos los cuadernos para automatizar la bsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar ms adelante.</p>
 <p>El rango de valores para la mayora de los ndices que obtenemos va de -1 a 1. Los datos de ndices negativos que llegan a la vista se pueden considerar como outliers. Esto es debido a que si los ndices provienen de una imagen con nubes, no se diferencian los colores del terreno y el ndice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los ndices que provengan de la toma de la imagen en una fecha en la que haba nubes.</p>
 <p>
 <figure><img src="figures/nubes.png"/><figcaption>caption</figcaption>
