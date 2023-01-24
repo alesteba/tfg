@@ -6,7 +6,7 @@ from pathlib import Path
 
 class Command(BaseCommand):
 
-    help = 'Carga la geometría a las parcelas y a los pixeles. Lee los datos de QGIS.'
+    help = 'Carga la geometría a las entidades de parcela y pixel. Los datos son leidos desde QGIS.'
 
     def add_arguments(self, parser):
 

@@ -40,9 +40,9 @@ class Command(BaseCommand):
 
                 parcela.estacion = Estacion.objects.filter(id=data["estacion"][i])[0]
 
-                # parcela.provincia =  data["provincia"][i]
+                parcela.provincia =  data["provincia"][i]
                 parcela.municipio = data["municipio"][i]
-                # parcela.poligono = data["poligono"][i]
+                parcela.poligono = data["poligono"][i]
 
                 parcela.altitud = data["elevacionm"][i]
                 parcela.pendiente = data["pendientem"][i]

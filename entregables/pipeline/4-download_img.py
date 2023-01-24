@@ -4,12 +4,12 @@ from django.core.management.base import BaseCommand
 import random
 from datetime import date
 
+# utilizamos un script desarrollado por el equipo para la descarga de datos correspondientes a los índices vegetativos. 
+# Esta descarga procesa el RGB de las imágenes satelitales para dar valor a los índices.
+
 from sentinelS2 import SentinelS2
 import geopandas as gpd
 import pandas as pd
-
-# algunos comentarios:
-# si no hay datos, no hay columnas, por lo que no se persiste nada.
 
 class Command(BaseCommand):
 
@@ -35,15 +35,7 @@ class Command(BaseCommand):
 
     def run (self, FECHA_START, FECHA_END, PIXEL_SHAPE=None, INDICES = ['ndvi', 'ndre']):
 
-        # today = date.today()
-        # fecha_end = today - timedelta(days = 0)
-        # fecha_start = today - timedelta(days = RANGE)
-
         # EJECUCIÓN SCRIPT
-
-        #ruta_parcelas = r'/mnt/c/Users/reuni/Desktop/Agrai-World/agrai/data/parcelas/25/pixeles.shp'
-
-        # descargar todos los indices 
 
         s2 = SentinelS2(str(PIXEL_SHAPE), 'id')
 
@@ -52,7 +44,7 @@ class Command(BaseCommand):
 
         # en este caso el mean hace referencia al valor del pixel, no necesitamos nada más.
         estadisticos = ['mean']
-        indices_vegetativos = INDICES # ejecutar solo con un índice para quedarte con cols por fecha
+        indices_vegetativos = INDICES
         start_date = fecha_start
         end_date = fecha_end
 

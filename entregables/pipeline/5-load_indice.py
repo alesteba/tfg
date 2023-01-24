@@ -10,7 +10,7 @@ import pandas as pd
 
 class Command(BaseCommand):
 
-    help = 'Descarga datos de NDVIs para el parecelario establecido'
+    help = 'Persiste los datos de NDVIs para el parecelario establecido'
 
     def add_arguments(self, parser):
 
@@ -50,7 +50,7 @@ class Command(BaseCommand):
 
                 valor = float(pixel_in_df)
 
-                # comprobar que la fecha no existe y no hay otro indice para el pixel igual
+                # comprobar que la fecha no existe y no hay otro indice para el mismo pixel
 
                 if (Mirar_Indice.objects.filter(
 
@@ -64,7 +64,6 @@ class Command(BaseCommand):
                         indice=indice, 
                         valor=valor, 
                         fecha=date_transform,
-                        # geojson=geojson
                     )
                         
                 m.save()

@@ -12,7 +12,7 @@ import pandas as pd
 
 class Command(BaseCommand):
 
-    help = 'Para descargar solo los indices respectivos a una rango'
+    help = 'Llama a los scrips de descarga con solo un índice poder obtener sus valores en diferentes fechas. Luego se persite.'
 
     def add_arguments(self, parser):
 
@@ -28,7 +28,7 @@ class Command(BaseCommand):
 
     def run (self, DATA, INDICES):
 
-        # el data frame de descarga es una mezcla de toodos los índices.
+        # el data frame de descarga proveniente del script anterior es una mezcla de todos los índices.
         # necesitamos limpiarlo para quedarnos solo con las columnas respectivas a ese índice
         # para posteriormente extraer los valores en las diferentes fechas.
 
