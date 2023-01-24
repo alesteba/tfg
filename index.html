@@ -28,19 +28,13 @@
 <p>[[previos]]</p>
 <p>[[justificacin]]</p></div><div id="contexto"><h3>3</h3><p>El propsito de este proyecto es mejorar el flujo de trabajo del equipo de "SpectralGeo" mediante la automatizacin del proceso de recogida y procesado de datos agronmicos que se utilizan en la creacin de modelos de inteligencia artificial.</p>
 <p>AGRAIes una aplicacin para la gestin de cultivos que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicacin se centra el despliegue de datos agronmicos y vegetativosgeoreferenciadosa travs de en una interfaz web. Los usuarios de la aplicacin, normalmente agricultores o cooperativas, pueden consultar el estado de su parcelario junto con algunas predicciones. El acceso a dicha aplicacin puede darse desde equipo de sobremesa o un dispositivo mvil, aunque es este ltimo lo que parece que se utiliza ms. </p>
-<p>
-<figure><img src="figures/visor_GIS_det.png"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/visor_GIS_det.png"/></p>
 <p>Actualmente, cmo se procesa la informacin que utiliza nuestra aplicacin es un proceso tedioso para el equipo. En este proceso, diferentes miembros trabajan contecnologasdistintas sobre datos duplicados provenientes de fuentes comunes. Aunque se realiza una planificacin y coordinacin de los proyectos, se pierde bastante tiempo en la transformacin de los datos que cada miembro del equipo necesita para llevar a cabo su labor.</p>
 <p>El objetivo de este Trabajo de Fin de Grado (TFG) es mejorar y automatizar el flujo de trabajo del equipo, convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cual el resto del equipo pueda acceder, utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de estos datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no solo es importante el conocimiento tcnico, sino que sern necesarios cambios en la forma de trabajo del equipo, adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. </p></div><div id="previos"><h3>3</h3><p>SpectralGeo se ha especializado en el uso de nuevas tecnologas para sectores como el de la agricultura o el reciclaje, centrndose en proyectos con carcter reivindicativo por la sostenible medioambiental. La relacin con clientes como Ecoembes o el desarrollo de software para la gestin sostenible de cultivos lo demuestran.</p>
 <p>Durante las prcticas realizas en la empresa identifiqu que era totalmente necesario dotar de una arquitectura robusta a la aplicacin sobre la que trabajaba gran parte del equipo. Adems de adaptarme a las tecnologas necesarias para la ciencia de datos actual al que todo el mundo se est sumando, comenc con la implementacin de un modelo sobre el que la aplicacin AGRAI pudiese escalarse posteriormente.</p>
 <p>La aplicacin ya est creada, el cliente obtiene los resultados que espera cuando consulta el estado de su parcelario en la interfaz de la aplicacin. Como equipo nos organizamos para que la informacin y los modelos predictivos lleguen al cliente a travs de esta, pero son varios los puntos en los que trabajamos en exceso para finalmente mostrar una "prediccin" al cliente. Sern las etapas de extraccin, pre-procesado, procesado y modelado las que buscaremos optimizar en el contexto de todo el equipo, debido a que estas etapas se reparten entre sus miembros.</p>
-<p>
-<figure><img src="figures/lean_1.gif"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/lean_1.gif"/></p>
 <p>Justificamos este cambio como parte de una bsqueda de procesos esbeltos (lean), que consisten en la eliminacin de los "desperdicios", o fuentes de despilfarro de tiempo y trabajo en la elaboracin de productos o servicios. A travs de la solucin que vamos a implantar buscamos la optimizacin continua del proceso y la aceptacin de dicha cultura de optimizacin por el equipo.</p>
 <p>Los puntos ms importantes de los procesos "lean" son los siguientes:</p>
 <ul>
@@ -75,10 +69,7 @@
 <p>Se usar un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (tambin llamadas iteraciones), se repiten de manera intencionada una o ms actividades del<br/>
 proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va  aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br/>
 producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteracin se entrega una versin mejorada.</p>
-<p>
-<figure><img src="figures/iteraciones.png" title="title"/><figcaption>caption</figcaption>
-</figure>
-</p></div><div id="EDT"><h3>3</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
+<p><img alt="caption" src="figures/iteraciones.png" title="title"/></p></div><div id="EDT"><h3>3</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
 <div class="mermaid">
 graph LR;
 TFG--&gt;PLANIFICACIN;
@@ -104,480 +95,108 @@ PIPELINE--&gt;PIPE.1_D;
 PIPELINE--&gt;PIPE.2_D;
 </div>
 <h2>Tareas y Descripcin:</h2>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.1 INTRODUCCIN</td>
-<td>Explicamos el contexto del problema planteado y cmo vamos a implementar la solucin.</td>
-</tr>
-<tr>
-<td>1.2 ALCANCE</td>
-<td>Qu pretendemos conseguir con el proyecto acontando las tareas</td>
-</tr>
-<tr>
-<td>1.3 RECURSOS HUMANOS</td>
-<td>Aquellas personas que intervienen y la explicacin de sus funciones</td>
-</tr>
-<tr>
-<td>1.4 COMUNICACIONES</td>
-<td>Elementos de comunicacin interna y externa, incluimos interesados y clientes.</td>
-</tr>
-<tr>
-<td>1.5 METODOLOGIA</td>
-<td>Conjunto de procedimientos que usaremos para la planificacin y gestin.</td>
-</tr>
-<tr>
-<td>1.6 EDT</td>
-<td>Estructura en rbol con el desglose en tareas del trabajo</td>
-</tr>
-<tr>
-<td>1.7 ENTREGABLES</td>
-<td>Creacin de los paquetes de trabajo del proyecto</td>
-</tr>
-<tr>
-<td>1.8 ESTIMACIN DE TIEMPOS</td>
-<td>Estimancin en horas para cada paquete de trabajo</td>
-</tr>
-<tr>
-<td>1.9 GANTT</td>
-<td>Tiempo determinado en el calendario para cada uno de los paquetes de trabajo</td>
-</tr>
-<tr>
-<td>1.10 PLAN DE RIESGOS</td>
-<td>Determinaremos los principales riesgos que pueden suceder durante el proyecto y los categorizaremos por nivel de impacto y de suceso.</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.1 CONCEPTOS PREVIOS</td>
-<td>Explicamos el contexto del problema planteado y cmo vamos a implementar la solucin.</td>
-</tr>
-<tr>
-<td>2.2 PROYECTO AGRAI</td>
-<td>Presentamos el estado actual de la aplicacin AGRAI.</td>
-</tr>
-<tr>
-<td>2.3 PIPELINE</td>
-<td>Exponemos los distintos pasos a travs de los cuales se transforman los datos</td>
-</tr>
-<tr>
-<td>2.4 CATLOGO DE REQUISITOS</td>
-<td>Obtendremos los requisitos funcionales y no funcionales del proyecto</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3.1 ENTORNO</td>
-<td>Decidimos los entornos de desarrollo necesarios as como las tecnologas necesarias en cada punto.</td>
-</tr>
-<tr>
-<td>3.2 INFRAESTRUCTURA CDIGO</td>
-<td>Desarrollamos un script para dejar la mquina que contiene la aplicacin en un estado estable con todas sus dependencias instaladas.</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>4.1 ANLISIS MODELO PREVIO</td>
-<td>Explicamos el contexto del modelo de datos previos y sus fallos</td>
-</tr>
-<tr>
-<td>4.2 REDISEO ENTIDADES</td>
-<td>Explicamos qu entidades conformarn el modelo y por que la base de datos quedar normalizada.</td>
-</tr>
-<tr>
-<td>4.3 DISEO DE SERVICIOS</td>
-<td>Encapsulamos las consultas ms frecuentes en servicios fciles de acceder.</td>
-</tr>
-<tr>
-<td>4.4 CARGA CON DATOS</td>
-<td>Cargaremos el modelo con datos para verificar su consistencia.</td>
-</tr>
-<tr>
-<td>4.5 DESPLIEGUE DE APLICACIN</td>
-<td>Obtendremos los requisitos funcionales y no funcionales del proyecto</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5.1 DATOS DE ENTRADA</td>
-<td>Explicamos las fuentes de datos con las que trabajamos</td>
-</tr>
-<tr>
-<td>5.2 DEFINICIN DE ETAPAS</td>
-<td>Acotamos y definimos los pasos en los que se transforman los datos hasta llegar al modelo de forma consistente.</td>
-</tr>
-<tr>
-<td>5.3 VISTA MINABLE</td>
-<td>Con los datos ordenados en el modelo seleccionamos 'features' para el modelo de produccin</td>
-</tr>
-<tr>
-<td>5.4 MODELO DE PRODUCCIN</td>
-<td>Usamos varias tcnicas de Inteligencia Artificial para crear un modelo de produccin de Kg para el cultivo.</td>
-</tr>
-<tr>
-<td>5.4 AUTOMATIZACIN COMPLETA</td>
-<td>Explicamos cmo esta definicin e implementacin de etapas permite automatizar el flujo de trabajo del equipo.</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6.1 PRUEBAS</td>
-<td>Realizamos pruebas de integracin para asegurar la consistencia de los datos</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>7.1 ESTUDIO PREVIO</td>
-<td>Se revisarn y observarn TFGs de aos anteriores, los cuales podemos encontrar en la biblioteca de la Universidad de La Rioja.</td>
-</tr>
-<tr>
-<td>7.2 ESTRUCTURA</td>
-<td>Disearemos la estructura de nuestro TFG basndonos en la estructura de otros trabajos de compaeros.</td>
-</tr>
-<tr>
-<td>7.3 REDACCIN</td>
-<td>Redactamos la memoria a medida que avanza el proyecto.</td>
-</tr>
-<tr>
-<td>7.4 EXPORTACIN</td>
-<td>La memoria se escribe en notas de "markdown" debido a la simplicidad con la que se pueden integrar diagramas y cdigo. Al terminarl, exportaremos la memoria como pginal "html"</td>
-</tr>
-<tr>
-<td>7.5 REVISIN</td>
-<td>Al finalizar el proyecto revisaremos el escrito para asegurarnos de no cometer errores.</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tarea</th>
-<th>Descripcin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>8.1 GESTIN DE TIEMPOS</td>
-<td>En una tabla registramos el tiempo estimado, el tiempo real invertido y la desviacin del tiempo en cada una de las tareas del proyecto.</td>
-</tr>
-<tr>
-<td>8.2 REUNIONES</td>
-<td>Se realizarn rdenes del da y actas con lo tratado en cada una de las reuniones.</td>
-</tr>
-</tbody>
-</table>
+<p>Tarea | Descripcin
+------------ | ------------
+1.1 INTRODUCCIN | Explicamos el contexto del problema planteado y cmo vamos a implementar la solucin.
+1.2 ALCANCE | Qu pretendemos conseguir con el proyecto acontando las tareas
+1.3 RECURSOS HUMANOS | Aquellas personas que intervienen y la explicacin de sus funciones
+1.4 COMUNICACIONES | Elementos de comunicacin interna y externa, incluimos interesados y clientes.
+1.5 METODOLOGIA | Conjunto de procedimientos que usaremos para la planificacin y gestin.
+1.6 EDT | Estructura en rbol con el desglose en tareas del trabajo
+1.7 ENTREGABLES | Creacin de los paquetes de trabajo del proyecto
+1.8 ESTIMACIN DE TIEMPOS | Estimancin en horas para cada paquete de trabajo
+1.9 GANTT | Tiempo determinado en el calendario para cada uno de los paquetes de trabajo
+1.10 PLAN DE RIESGOS | Determinaremos los principales riesgos que pueden suceder durante el proyecto y los categorizaremos por nivel de impacto y de suceso.</p>
+<p>Tarea | Descripcin
+------------ | ------------
+2.1 CONCEPTOS PREVIOS | Explicamos el contexto del problema planteado y cmo vamos a implementar la solucin.
+2.2 PROYECTO AGRAI | Presentamos el estado actual de la aplicacin AGRAI.
+2.3 PIPELINE | Exponemos los distintos pasos a travs de los cuales se transforman los datos
+2.4 CATLOGO DE REQUISITOS | Obtendremos los requisitos funcionales y no funcionales del proyecto</p>
+<p>Tarea | Descripcin
+------------ | ------------
+3.1 ENTORNO | Decidimos los entornos de desarrollo necesarios as como las tecnologas necesarias en cada punto.
+3.2 INFRAESTRUCTURA CDIGO | Desarrollamos un script para dejar la mquina que contiene la aplicacin en un estado estable con todas sus dependencias instaladas.</p>
+<p>Tarea | Descripcin
+------------ | ------------
+4.1 ANLISIS MODELO PREVIO | Explicamos el contexto del modelo de datos previos y sus fallos
+4.2 REDISEO ENTIDADES | Explicamos qu entidades conformarn el modelo y por que la base de datos quedar normalizada.
+4.3 DISEO DE SERVICIOS | Encapsulamos las consultas ms frecuentes en servicios fciles de acceder.
+4.4 CARGA CON DATOS | Cargaremos el modelo con datos para verificar su consistencia.
+4.5 DESPLIEGUE DE APLICACIN | Obtendremos los requisitos funcionales y no funcionales del proyecto</p>
+<p>Tarea | Descripcin
+------------ | ------------
+5.1 DATOS DE ENTRADA | Explicamos las fuentes de datos con las que trabajamos
+5.2 DEFINICIN DE ETAPAS | Acotamos y definimos los pasos en los que se transforman los datos hasta llegar al modelo de forma consistente.
+5.3 VISTA MINABLE | Con los datos ordenados en el modelo seleccionamos 'features' para el modelo de produccin
+5.4 MODELO DE PRODUCCIN | Usamos varias tcnicas de Inteligencia Artificial para crear un modelo de produccin de Kg para el cultivo.
+5.4 AUTOMATIZACIN COMPLETA | Explicamos cmo esta definicin e implementacin de etapas permite automatizar el flujo de trabajo del equipo.</p>
+<p>Tarea | Descripcin
+------------ | ------------
+6.1 PRUEBAS | Realizamos pruebas de integracin para asegurar la consistencia de los datos</p>
+<p>Tarea | Descripcin
+------------ | ------------
+7.1 ESTUDIO PREVIO | Se revisarn y observarn TFGs de aos anteriores, los cuales podemos encontrar en la biblioteca de la Universidad de La Rioja.
+7.2 ESTRUCTURA | Disearemos la estructura de nuestro TFG basndonos en la estructura de otros trabajos de compaeros. 
+7.3 REDACCIN | Redactamos la memoria a medida que avanza el proyecto.
+7.4 EXPORTACIN | La memoria se escribe en notas de "markdown" debido a la simplicidad con la que se pueden integrar diagramas y cdigo. Al terminarl, exportaremos la memoria como pginal "html"
+7.5 REVISIN | Al finalizar el proyecto revisaremos el escrito para asegurarnos de no cometer errores.</p>
+<p>Tarea | Descripcin
+------------ | ------------
+8.1 GESTIN DE TIEMPOS | En una tabla registramos el tiempo estimado, el tiempo real invertido y la desviacin del tiempo en cada una de las tareas del proyecto.
+8.2 REUNIONES | Se realizarn rdenes del da y actas con lo tratado en cada una de las reuniones.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="entregables"><h3>3</h3><p>Para acotar el proceso de trabajo identificamos los siguientes entregables que generaremos a lo a medida que avance el proyecto. Estos entregables quedarn en la memoria en sus correspondientes apartados o como anexos si tienen una extensin ms larga. La siguiente tabla contiene que lleva a cada uno de estos artefactos.</p>
-<table>
-<thead>
-<tr>
-<th align="left">IDENT</th>
-<th align="right">ENTREGABLE</th>
-<th align="center">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">E01</a></td>
-<td align="right">Mdulo de Inicio</td>
-<td align="center">Anlisis de viabilidad que permitir determinar si es posible desarrollar el proyecto.</td>
-</tr>
-<tr>
-<td align="left">[E02]</td>
-<td align="right">Planificacin del proyecto</td>
-<td align="center">Determinaremos los requisitos del proyecto, crearemos un enunciado para el alcance, realizaremos una descripcin detallada de tareas junto a una EDT, estimaremos el tiempo y costo de los paquetes de trabajo, desarrollaremos un cronograma, estableceremos los estndares, procesos y mtricas de calidad, determinaremos un plan de identificacin de riesgos y crearemos el plan de gestin de cambios.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">E03</a></td>
-<td align="right">Infraestructura como cdigo</td>
-<td align="center">Desarrollo de un 'script' con las instrucciones bash para dejar la mquina que despliega la aplicacin en un estado estable.</td>
-</tr>
-<tr>
-<td align="left">[E04]</td>
-<td align="right">Documento de Diseo</td>
-<td align="center">Documento en el que se explican las decisiones tomadas para la creacin de las entidades del modelo y sus relaciones.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/alesteba/tfg/tree/main/entregables/models.py">E05</a></td>
-<td align="right">Esquema modelo de Datos</td>
-<td align="center">Esquema UML que representa las entidades del modelo y sus relaciones. Modelo simplificado de datos exraido del ORM Django</td>
-</tr>
-<tr>
-<td align="left">[E06]</td>
-<td align="right">Arquitectura Pipeline</td>
-<td align="center">Arquitectura y diagramas del proceso de transformacin de datos, junto con sus scripts.</td>
-</tr>
-<tr>
-<td align="left">[E07]</td>
-<td align="right">Vista minable</td>
-<td align="center">Estructura tabulada con las 'features' necesarias para el modelo de produccin de cultivo.</td>
-</tr>
-<tr>
-<td align="left">[E08]</td>
-<td align="right">Modelo de produccin</td>
-<td align="center">Cuaderno jupyter en el que buscamos el mejor modelo posible</td>
-</tr>
-<tr>
-<td align="left">[E09]</td>
-<td align="right">Interfaz de usuario</td>
-<td align="center">Entregable donde crearemos un apartado en la aplicacin web AGRAI para mostrar las predicciones del modelo creado.</td>
-</tr>
-</tbody>
-</table></div><div id="tiempos"><h3>3</h3><p>Para poder realizar un posterior seguimiento y control del proyecto asignamos a cada tarea un tiempo adecuado a la complejidad que estimamos para sta. En caso de que posteriormente nos alejemos de lo que aqu planificamos, anotaremos dichas desviaciones en la seccin de 'seguimiento y control'</p>
-<table>
-<thead>
-<tr>
-<th>V</th>
-<th>Tarea</th>
-<th>Horas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.0</td>
-<td>DOP</td>
-<td>10</td>
-</tr>
-<tr>
-<td>1.1</td>
-<td>INTRODUCCIN</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.2</td>
-<td>ALCANCE</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.3</td>
-<td>RECURSOS HUMANOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.4</td>
-<td>COMUNICACIONES</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.5</td>
-<td>METODOLOGIA</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.6</td>
-<td>EDT</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.7</td>
-<td>ENTREGABLES</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.8</td>
-<td>ESTIMACIN DE TIEMPOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.9</td>
-<td>GANTT</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1.10</td>
-<td>PLAN DE RIESGOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2.0</td>
-<td>ANLISIS</td>
-<td>10</td>
-</tr>
-<tr>
-<td>2.1</td>
-<td>CONCEPTOS PREVIOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2.2</td>
-<td>PROYECTO AGRAI</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2.3</td>
-<td>PIPELINE</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2.4</td>
-<td>CATLOGO DE REQUISITOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3.0</td>
-<td>DISE0</td>
-<td>10</td>
-</tr>
-<tr>
-<td>3.1</td>
-<td>ANLISIS MODELO PREVIO</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3.2</td>
-<td>REDISEO ENTIDADES</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3.3</td>
-<td>CARGA CON DATOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3.4</td>
-<td>DESPLIEGUE DE APLICACIN</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3.4</td>
-<td>PIPELINE</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4.0</td>
-<td>IMPLEMENTACIN</td>
-<td>10</td>
-</tr>
-<tr>
-<td>4.1</td>
-<td>DATOS DE ENTRADA</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4.2</td>
-<td>DEFINICIN DE ETAPAS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4.3</td>
-<td>VISTA MINABLE</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4.4</td>
-<td>MODELO DE PRODUCCIN</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4.4</td>
-<td>AUTOMATIZACIN COMPLETA</td>
-<td>1</td>
-</tr>
-<tr>
-<td>5.0</td>
-<td>PRUEBAS</td>
-<td>10</td>
-</tr>
-<tr>
-<td>5.1</td>
-<td>PRUEBAS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>6.0</td>
-<td>MEMORIA</td>
-<td>10</td>
-</tr>
-<tr>
-<td>6.1</td>
-<td>ESTUDIO PREVIO</td>
-<td>1</td>
-</tr>
-<tr>
-<td>6.2</td>
-<td>ESTRUCTURA</td>
-<td>1</td>
-</tr>
-<tr>
-<td>6.3</td>
-<td>REDACCIN</td>
-<td>1</td>
-</tr>
-<tr>
-<td>6.4</td>
-<td>REVISIN</td>
-<td>1</td>
-</tr>
-<tr>
-<td>7.0</td>
-<td>SEGUIMIENTO Y CONTROL</td>
-<td>10</td>
-</tr>
-<tr>
-<td>7.1</td>
-<td>GESTIN DE TIEMPOS</td>
-<td>1</td>
-</tr>
-<tr>
-<td>7.2</td>
-<td>REUNIONES</td>
-<td>1</td>
-</tr>
-</tbody>
-</table></div><div id="gantt"><h3>3</h3><p>https://gist.github.com/martinwoodward/8ad6296118c975510766d80310db71fd</p>
+<p>IDENT | ENTREGABLE | DESCRIPCIN
+:----------------|-------------:|:-------------:
+<a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">E01</a> | Mdulo de Inicio | Anlisis de viabilidad que permitir determinar si es posible desarrollar el proyecto.
+[E02] | Planificacin del proyecto | Determinaremos los requisitos del proyecto, crearemos un enunciado para el alcance, realizaremos una descripcin detallada de tareas junto a una EDT, estimaremos el tiempo y costo de los paquetes de trabajo, desarrollaremos un cronograma, estableceremos los estndares, procesos y mtricas de calidad, determinaremos un plan de identificacin de riesgos y crearemos el plan de gestin de cambios.
+<a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">E03</a> | Infraestructura como cdigo | Desarrollo de un 'script' con las instrucciones bash para dejar la mquina que despliega la aplicacin en un estado estable. 
+[E04] | Documento de Diseo | Documento en el que se explican las decisiones tomadas para la creacin de las entidades del modelo y sus relaciones. 
+<a href="https://github.com/alesteba/tfg/tree/main/entregables/models.py">E05</a> | Esquema modelo de Datos | Esquema UML que representa las entidades del modelo y sus relaciones. Modelo simplificado de datos exraido del ORM Django 
+[E06] | Arquitectura Pipeline | Arquitectura y diagramas del proceso de transformacin de datos, junto con sus scripts.
+[E07] | Vista minable | Estructura tabulada con las 'features' necesarias para el modelo de produccin de cultivo.
+[E08] | Modelo de produccin | Cuaderno jupyter en el que buscamos el mejor modelo posible
+[E09] | Interfaz de usuario |Entregable donde crearemos un apartado en la aplicacin web AGRAI para mostrar las predicciones del modelo creado.</p></div><div id="tiempos"><h3>3</h3><p>Para poder realizar un posterior seguimiento y control del proyecto asignamos a cada tarea un tiempo adecuado a la complejidad que estimamos para sta. En caso de que posteriormente nos alejemos de lo que aqu planificamos, anotaremos dichas desviaciones en la seccin de 'seguimiento y control'</p>
+<p>V |Tarea | Horas
+------------ | ------------ | ------------
+1.0 |DOP | 10
+1.1 |INTRODUCCIN | 1
+1.2 |ALCANCE | 1
+1.3 | RECURSOS HUMANOS | 1
+1.4 | COMUNICACIONES | 1
+1.5 | METODOLOGIA | 1
+1.6 | EDT | 1
+1.7 | ENTREGABLES | 1
+1.8 | ESTIMACIN DE TIEMPOS | 1
+1.9 | GANTT | 1
+1.10 | PLAN DE RIESGOS |1
+2.0 |ANLISIS | 10
+2.1 |CONCEPTOS PREVIOS | 1
+2.2 |PROYECTO AGRAI | 1
+2.3 |PIPELINE | 1
+2.4 |CATLOGO DE REQUISITOS | 1
+3.0 |DISE0 | 10
+3.1 |ANLISIS MODELO PREVIO | 1
+3.2 | REDISEO ENTIDADES | 1
+3.3 | CARGA CON DATOS | 1
+3.4 |DESPLIEGUE DE APLICACIN | 1
+3.4 | PIPELINE | 1
+4.0 | IMPLEMENTACIN | 10
+4.1 | DATOS DE ENTRADA | 1
+4.2 | DEFINICIN DE ETAPAS | 1
+4.3 | VISTA MINABLE | 1
+4.4 | MODELO DE PRODUCCIN | 1
+4.4 | AUTOMATIZACIN COMPLETA | 1
+5.0 | PRUEBAS | 10
+5.1 | PRUEBAS | 1
+6.0 | MEMORIA | 10
+6.1 | ESTUDIO PREVIO | 1
+6.2 | ESTRUCTURA | 1
+6.3 | REDACCIN | 1
+6.4 | REVISIN | 1
+7.0 | SEGUIMIENTO Y CONTROL | 10
+7.1 | GESTIN DE TIEMPOS | 1
+7.2 | REUNIONES | 1</p></div><div id="gantt"><h3>3</h3><p>https://gist.github.com/martinwoodward/8ad6296118c975510766d80310db71fd</p>
 <p>El siguiente diagrama propone un desglose de tareas para la planificacin del proyecto. </p>
 <div class="mermaid">
 gantt
@@ -625,104 +244,25 @@ Project complete: milestone, 10-03, 0d
 </div>
 <p>Este diagrama es una estipulacin de cmo creo que voy a ir durante el desarrollo del modelo de datos y del pipeline correspondiente. En la seccin final de seguimiento y control analizamos las desviaciones encontradas y cmo han sido solucionados estos contratiempos.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="rrhh"><h3>3</h3><p>El personal implicado en el Trabajo de Fin de Grado ser:  </p>
-<table>
-<thead>
-<tr>
-<th align="left">INTERESADO</th>
-<th align="center">LABOR</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Alberto Esteban Larreina</td>
-<td align="center">Ejecutor y responsable del proyecto. Desarrollar el proyecto en su totalidad</td>
-</tr>
-<tr>
-<td align="left">Antonio Rbio</td>
-<td align="center">Tutor en la empresa. Se dedicar a corregir los aspectos tcnicos del proyecto referentes al desarrollo  del mismo y planificacin.</td>
-</tr>
-<tr>
-<td align="left">Jnathan Heras</td>
-<td align="center">Tutor acadmico. Se dedicar a corregir aspectos referentes a la documentacin y la forma en la que se desarrollar el proyecto a lo largo del tiempo estipulado y me guiar a cerca del desarrollo de este.</td>
-</tr>
-</tbody>
-</table></div><div id="comunicaciones"><h3>3</h3><p>Para mantener informados tanto al tutor acadmico como a la tutora de la empresa, utilizaremos los siguientes canales:  </p>
-<table>
-<thead>
-<tr>
-<th align="left">CANAL</th>
-<th align="right">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Reuniones</td>
-<td align="right">presenciales, tanto con el tutor acadmico como con el tutor de la empresa.</td>
-</tr>
-<tr>
-<td align="left">Email</td>
-<td align="right">se utilizar como forma de comunicacin electrnica para concretar determinadas pautas o establecimiento de citas.</td>
-</tr>
-<tr>
-<td align="left">Discord</td>
-<td align="right">aplicacin de comunicacin interna para mensajes directos con los miembros del equipo.</td>
-</tr>
-</tbody>
-</table></div><div id="riegos"><h3>3</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos.</p>
-<table>
-<thead>
-<tr>
-<th align="left">FUENTE</th>
-<th align="center">RIESGO</th>
-<th align="center">SI SUCEDE</th>
-<th align="center">MINIMIZAR</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Ausencia de interesados</td>
-<td align="center">Mdio</td>
-<td align="center">this is centered</td>
-<td align="center">this is centered</td>
-</tr>
-<tr>
-<td align="left">Ausencia del Tutor</td>
-<td align="center">these will be justified</td>
-<td align="center">this is centered</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="left">Tecnologa equivocada</td>
-<td align="center">Medio</td>
-<td align="center">Estudiar nuevas posiblidades</td>
-<td align="center">Uso de patrones abstractos elegantes que se puedan implementar en diferentes frameworks</td>
-</tr>
-<tr>
-<td align="left">Prdida cdigo fuente</td>
-<td align="center">Alto</td>
-<td align="center">Empezar casi de cero</td>
-<td align="center">Backups y control de versiones</td>
-</tr>
-<tr>
-<td align="left">Prdida documentacin</td>
-<td align="center">Alto</td>
-<td align="center">Empezar casi de cero</td>
-<td align="center">Utilizar herramientas de copias incrementales</td>
-</tr>
-<tr>
-<td align="left">Fallo del servidor con la applicacin</td>
-<td align="center">Alto</td>
-<td align="center">Utilizar y configurar uno nuevo</td>
-<td align="center">Backups</td>
-</tr>
-<tr>
-<td align="left">Falta de horas para terminar el proyecto</td>
-<td align="center">Medio</td>
-<td align="center">Dedicarse primero a los requisitos ms importantes.</td>
-<td align="center">Realizar una buena planificacin y ajustar el alcance</td>
-</tr>
-</tbody>
-</table>
+<p>INTERESADO | LABOR 
+:----------------|:-------------:
+Alberto Esteban Larreina | Ejecutor y responsable del proyecto. Desarrollar el proyecto en su totalidad
+Antonio Rbio | Tutor en la empresa. Se dedicar a corregir los aspectos tcnicos del proyecto referentes al desarrollo  del mismo y planificacin.
+Jnathan Heras | Tutor acadmico. Se dedicar a corregir aspectos referentes a la documentacin y la forma en la que se desarrollar el proyecto a lo largo del tiempo estipulado y me guiar a cerca del desarrollo de este.</p></div><div id="comunicaciones"><h3>3</h3><p>Para mantener informados tanto al tutor acadmico como a la tutora de la empresa, utilizaremos los siguientes canales:  </p>
+<p>CANAL | DESCRIPCIN
+:----------------|-------------:
+Reuniones | presenciales, tanto con el tutor acadmico como con el tutor de la empresa.<br/>
+Email | se utilizar como forma de comunicacin electrnica para concretar determinadas pautas o establecimiento de citas.<br/>
+Discord |  aplicacin de comunicacin interna para mensajes directos con los miembros del equipo.</p></div><div id="riegos"><h3>3</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos.</p>
+<p>FUENTE | RIESGO | SI SUCEDE | MINIMIZAR
+:----------------|:-------------:|:-------------:|:-------------:
+Ausencia de interesados | Mdio |this is centered |this is centered
+Ausencia del Tutor | these will be justified |this is centered |
+Tecnologa equivocada | Medio |Estudiar nuevas posiblidades | Uso de patrones abstractos elegantes que se puedan implementar en diferentes frameworks
+Prdida cdigo fuente | Alto |Empezar casi de cero |Backups y control de versiones
+Prdida documentacin| Alto |Empezar casi de cero | Utilizar herramientas de copias incrementales
+Fallo del servidor con la applicacin| Alto | Utilizar y configurar uno nuevo |Backups
+Falta de horas para terminar el proyecto| Medio | Dedicarse primero a los requisitos ms importantes. | Realizar una buena planificacin y ajustar el alcance</p>
 <p>De la tabla anterior se prestar especial atencin a los riesgos valorados como 'Alto', ya que por su incidencia en el proyecto requieren un seguimiento exhaustivo, para los cuales se desarrollarn sus correspondientes planes de contingencia.  </p>
 <p>Los riesgos de valoracin Media y Baja tendrn un control basado en su plan de mitigacin simple de seguimientos al cronograma, con intervalos cortos de tiempo.</p></div><div id="0-analisis"><h2>2</h2><p>-- LINK_NOTE --</p>
 <p>[[AGRAI-data]]</p>
@@ -731,47 +271,21 @@ Project complete: milestone, 10-03, 0d
 <p>[[tecnologas]]</p>
 <p>[[requisitos]]</p></div><div id="AGRAI-data"><h3>3</h3><p>AGRAIes una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicacin se centra el despliegue de datosgeo-referenciadospor medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>En la interfaz web el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en  los pxeles hace referencia a los ndices vegetativos provenientes de las imgenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la produccin que predicen los modelos de Inteligencia Artificial generados.</p>
-<p>
-<figure><img src="figures/visor_GIS.png"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/visor_GIS.png"/></p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imgenes descargadas de satlites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con informacin proporcionada por estaciones meteorolgicas como el SIAR y con la informacin que los clientes pueden proporcionar sobre campaas anteriores.</p>
 <p>Por otro lado, cmo actualmente se procesa la informacin es un proceso tedioso para el equipo. Los diferentes miembros trabajan contecnologasdistintas sobre datos muchas veces duplicados que provienen de fuentes comunes.</p>
 <p>El objetivo de este trabajo de fin de grado es mejorar y automatizar el flujo de trabajo del equipo convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cul el resto del equipo pueda acceder y utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de los datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no slo es importante el conocimiento tcnico sino que sern necesarios cambios en la forma de trabajo del equipo adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. Intentaremos seguir los principios de los procesos 'lean' para buscar la mejor optimizacin continua.</p>
-<p>
-<figure><img src="figures/lean.png" title="title"/><figcaption>caption</figcaption>
-</figure>
-</p></div><div id="ideas-previas"><h3>3</h3><p>Mencionbamos la bsqueda de optimizacin del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicacin. El rediseo que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodologa. Para que este trabaja resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta fsica que coordine el esquema mental de los participantes que la usan.</p>
+<p><img alt="caption" src="figures/lean.png" title="title"/></p></div><div id="ideas-previas"><h3>3</h3><p>Mencionbamos la bsqueda de optimizacin del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicacin. El rediseo que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodologa. Para que este trabaja resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta fsica que coordine el esquema mental de los participantes que la usan.</p>
 <p>Para poder realizar este proyecto decidimos trabajar con un nmero pequeo representativo de datos de laaplicacinactualmente en produccin. Un menor volumen de informacin permite realizar pruebas y da pie a fijarnos en las relaciones y los esquemas estructurales con ms precisin.  </p>
 <p>Como este trabajo se realiza en equipo, a medida que voy haciendo pruebas con mi entorno local, un compaero se encarga de ir probando mi entorno con losvolmenesoriginales de datos que la aplicacin utiliza en produccin. Lareestructuracindel modelo deBDque realizamos contempla un posterior escalado de la aplicacin que permitir la integracin continua con ms datos y nuevas tecnologas.</p>
 <p>La siguiente tabla muestra las principales fuentes de datos de las que se obtienen y enlaza la informacin. El volumen de datos que se puede llegar a manejar es grande, por cada parcela se persisten varios ndices vegetativos en cada uno de sus pxeles. </p>
-<table>
-<thead>
-<tr>
-<th align="left">FUENTE DATOS</th>
-<th align="left">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">QGIS</td>
-<td align="left">informacin geomomtrica de parcelas y sus pixles</td>
-</tr>
-<tr>
-<td align="left">ndices Vegetativos</td>
-<td align="left">provenientes de imgenes satelitales descargadas en diferentes fechas</td>
-</tr>
-<tr>
-<td align="left">Cultivos / Variedad</td>
-<td align="left">informacin tabulada en excels sobre tipo de cultivos y sus variedades</td>
-</tr>
-<tr>
-<td align="left">RF3</td>
-<td align="left">documentar el proceso de desarrollo generando los documentos de diseo pertinente</td>
-</tr>
-</tbody>
-</table>
+<p>FUENTE DATOS | DESCRIPCIN
+:----------------|:-------------
+QGIS | informacin geomomtrica de parcelas y sus pixles
+ndices Vegetativos | provenientes de imgenes satelitales descargadas en diferentes fechas
+Cultivos / Variedad | informacin tabulada en excels sobre tipo de cultivos y sus variedades
+RF3 | documentar el proceso de desarrollo generando los documentos de diseo pertinente</p>
 <p>Para poder realizar el trabajo utilizaremos una muestra representativa de los datos debido a que el proceso de descarga de ndices y persistencia de datos es largo para realizar las pruebas. El sistema est pensado para trabajar con muchas parcelas, en las pruebas que yo voy a realizar escogemos una muestra de 25 parcelas y pensaremos una descarga de ndices para no ms de 4 fechas diferentes.</p>
 <p>Es el histrico de ndices en diferentes fechas lo que permite al sistema realizar modelos predictivos. A mayor volumen de datos, ms precisin podremos obtener en los modelos posteriormente. El punto importante de este trabajo es la mejora del proceso y la automatizacin del flujo de datos, por ello no ser relevante que los modelos predictivos que creemos al final no tengan buena precisin. </p>
 <p>Para hacernos una idea, contemplando solo 25 parcelas, podemos almacenar 3000 pxeles. Por cada pixel vamos a registrar varios ndices vegetativos (ndvi, ndre) y para generar el histrico de datos esta informacin se multiplica por el nmero de fechas contempladas. Es decir, que aunque trabajamos sobre un volumen reducido para probar la automatizacin, siguen siendo mucha informacin que tiene que persistirse en la base de datos.</p></div><div id="automatizacion"><h3>3</h3><p>El proceso que vamos a implantar requiere de un diseo que posibilite estructurar y manejar grandes volmenes de datos. Actualmente existen varias tecnologas que abordan el concepto de Pipeline desde un punto de vista global. No vamos a utilizar ninguna de estas tecnologas, ETL, nuestro proceso se se va ha desarrollar a medida, utilizando un Pipeline como una parte de la arquitectura, encargada de la transformacin de los datos hasta su almacenamiento en el modelo.</p>
@@ -783,102 +297,30 @@ Project complete: milestone, 10-03, 0d
 <li>Commands-System: gestin de comandos internos mediante los que se pueden automatizar tareas, utilizaremos esta arquitectura para disear el pipeline de datos y persistir la informacin proveniente de diferentes fuentes.</li>
 </ul>
 <p>Aunque el framework es muy potente, harn falta otras herramientas y entornos para completar con xito la automatizacin que buscamos y as conseguir un proceso de optimizacin continua. En el siguiente punto hablaremos de la infraestructura que la aplicacin requiere y de cmo podemos solventar algunos de los problemas de integracin ms importantes.</p>
-<p>
-<figure><img src="figures/django_migrate.png" title="original"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/django_migrate.png" title="original"/> </p>
 <p>La utilizacin de Python, aparte de incluir este framework, nos da la posibilidad de utilizar las libreras de inteligencia artificial y ciencia de datos que finalmente utilizaremos para la creacin del modelo de cultivo. Algunas de libreras principales que vamos a utilizar son las siguientes:</p>
-<table>
-<thead>
-<tr>
-<th align="left">LIBRERA</th>
-<th align="left">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">scikit-learn</td>
-<td align="left">creacin de modelos de inteligencia artificial</td>
-</tr>
-<tr>
-<td align="left">numpy</td>
-<td align="left">tratamiento de datos multidimensionales</td>
-</tr>
-<tr>
-<td align="left">pandas</td>
-<td align="left">uso de datos tabulados con herramientas para su procesamiento</td>
-</tr>
-</tbody>
-</table></div><div id="requisitos"><h3>3</h3><p>La siguiente tabla muestra los requisitos funcionales crticos para completar con xito el proyecto, terminando el trabajo con un producto estable que el equipo pueda utilizar.</p>
-<table>
-<thead>
-<tr>
-<th align="left">REQUISITO</th>
-<th align="left">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">RF1</td>
-<td align="left">automatizar el despliegue de la aplicacin identificando las libreras y dependencias necesarias</td>
-</tr>
-<tr>
-<td align="left">RF2</td>
-<td align="left">redisear el modelo de datos para poder escalar la aplicacin y su gestin de datos.</td>
-</tr>
-<tr>
-<td align="left">RF3</td>
-<td align="left">documentar el proceso de desarrollo generando los documentos de diseo pertinentes.</td>
-</tr>
-<tr>
-<td align="left">RF4</td>
-<td align="left">creacin de un entorno comn que permita trabajar al equipo sobre las mismos fuentes de datos.</td>
-</tr>
-<tr>
-<td align="left">RF5</td>
-<td align="left">obtencin de una vista minable con la seleccin de features provenientes del modelo.</td>
-</tr>
-<tr>
-<td align="left">RF6</td>
-<td align="left">creacin de un modelo de produccin probando varios algoritmos de inteligencia artificial.</td>
-</tr>
-<tr>
-<td align="left">RF7</td>
-<td align="left">despliegue de los datos del modelo en la interfaz de la aplicacin.</td>
-</tr>
-</tbody>
-</table>
+<p>LIBRERA | DESCRIPCIN
+:----------------|:-------------
+scikit-learn | creacin de modelos de inteligencia artificial
+numpy | tratamiento de datos multidimensionales
+pandas | uso de datos tabulados con herramientas para su procesamiento</p></div><div id="requisitos"><h3>3</h3><p>La siguiente tabla muestra los requisitos funcionales crticos para completar con xito el proyecto, terminando el trabajo con un producto estable que el equipo pueda utilizar.</p>
+<p>REQUISITO | DESCRIPCIN
+:----------------|:-------------
+RF1 | automatizar el despliegue de la aplicacin identificando las libreras y dependencias necesarias
+RF2 | redisear el modelo de datos para poder escalar la aplicacin y su gestin de datos.
+RF3 | documentar el proceso de desarrollo generando los documentos de diseo pertinentes.
+RF4 | creacin de un entorno comn que permita trabajar al equipo sobre las mismos fuentes de datos.
+RF5 | obtencin de una vista minable con la seleccin de features provenientes del modelo.
+RF6 | creacin de un modelo de produccin probando varios algoritmos de inteligencia artificial.
+RF7 | despliegue de los datos del modelo en la interfaz de la aplicacin.</p>
 <p>Como requisitos no funcionales para la aplicacin identificamos los siguientes, entendiendo que se completarn a lo largo de todo el proyecto.</p>
-<table>
-<thead>
-<tr>
-<th align="left">REQUISITO</th>
-<th align="left">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">RNF1</td>
-<td align="left">Crear un entorno Linux local con la misma configuracin necesaria en produccin.</td>
-</tr>
-<tr>
-<td align="left">RNF2</td>
-<td align="left">Preparar las fuentes de datos con una muestra pequea representativa de la aplicacin en produccin.</td>
-</tr>
-<tr>
-<td align="left">RNF3</td>
-<td align="left">Estudiar las posibles features para la vista minable que utilizar el modelo de produccin de cultivo</td>
-</tr>
-<tr>
-<td align="left">RNF4</td>
-<td align="left">Implantar un flujo de trabajo en el equipo para utilizar las mismas fuentes de datos</td>
-</tr>
-<tr>
-<td align="left">RNF5</td>
-<td align="left">Utilizar software libre</td>
-</tr>
-</tbody>
-</table></div><div id="0-infraestructura"><h2>2</h2><p>-- LINK_NOTE --</p>
+<p>REQUISITO | DESCRIPCIN
+:----------------|:-------------
+RNF1 | Crear un entorno Linux local con la misma configuracin necesaria en produccin.
+RNF2 | Preparar las fuentes de datos con una muestra pequea representativa de la aplicacin en produccin.
+RNF3 | Estudiar las posibles features para la vista minable que utilizar el modelo de produccin de cultivo
+RNF4 | Implantar un flujo de trabajo en el equipo para utilizar las mismas fuentes de datos
+RNF5 | Utilizar software libre</p></div><div id="0-infraestructura"><h2>2</h2><p>-- LINK_NOTE --</p>
 <p>[[infraestructure]]</p>
 <p>[[entorno]]</p>
 <p>[[UNIX]]</p>
@@ -1041,43 +483,17 @@ AUTO }|..|{ CORE : uses
 ]
 ```</p>
 <p>Estas aplicaciones pueden comunicarse entre s a travs de sus modelos y servicios. En la siguiente tabla explicamos que hace cada sub-aplicacin.</p>
-<table>
-<thead>
-<tr>
-<th align="left">ENTIDAD</th>
-<th align="right">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Core</td>
-<td align="right">Como toda la informacin que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla Parcela.</td>
-</tr>
-<tr>
-<td align="left">Roles</td>
-<td align="right">Separa los interesados que realizan acciones sobre el parcelario de las entidades principales</td>
-</tr>
-<tr>
-<td align="left">Meteo</td>
-<td align="right">Gestiona la comunicacin y descarga de datos de estaciones meteorolgicas</td>
-</tr>
-<tr>
-<td align="left">Cuaderno</td>
-<td align="right">Extiende el almacenamiento de datos relacionado con incidencias en el parcelario.</td>
-</tr>
-<tr>
-<td align="left">Auto</td>
-<td align="right">Contiene scripts y dependencias externas para la automatizacin de procesos, como la descarga de imgenes satelitles.</td>
-</tr>
-</tbody>
-</table>
+<p>ENTIDAD | DESCRIPCIN
+:----------------|-------------:
+Core | Como toda la informacin que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla Parcela.
+Roles | Separa los interesados que realizan acciones sobre el parcelario de las entidades principales
+Meteo | Gestiona la comunicacin y descarga de datos de estaciones meteorolgicas
+Cuaderno | Extiende el almacenamiento de datos relacionado con incidencias en el parcelario.
+Auto | Contiene scripts y dependencias externas para la automatizacin de procesos, como la descarga de imgenes satelitles.</p>
 <p>Esta divisin en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Ms importante an la claridad y sencillez de los modelos de cada componente y su respectiva representacin en la BD.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="data-load"><h3>3</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicacin de forma ordenada con posibilidad de ser escalados. En la implementacin del pipeline que veremos en siguientes apartados haremos hincapi en los estados de carga por los que pasan los datos, de momento solo importa destacar que el modelo actual permite mantener un histrico de datos mucho ms slido que el que estaba implantado cuando comenzamos el desarrollo. </p>
 <p>S que es importante explicar por qu vamos a poner tanto nfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicacin muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basndose en los ndices vegetativos, tambin se muestra la produccin estimada.</p>
-<p>
-<figure><img src="figures/visor_GIS.png"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/visor_GIS.png"/></p>
 <p>Los ndices que renderiza el visor de la aplicacin son el resultado de todo el proceso que estamos exponiendo. Es el punto ms delicado que requiere de varias entidades para persistir los datos y guardar un histrico. Es la visualizacin del histrico de ndices vegetativos el mayor valor que obtiene el cliente cuando accede a la aplicacin.</p>
 <p>El proceso de carga de datos hace uso de un mdulo de descarga de imgenes satelitales que obtiene el valor de estos ndices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del mdulo de automatizacin junto con otras tareas similares. 
 Utilizaremos el mdulo como una caja negra y aseguraremos el correcto uso de este para que los ndices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
@@ -1087,67 +503,26 @@ AUTO }|..|{ descarga_indices : contains
 AUTO }|..|{ CORE : uses
 </div>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="modelo-BD"><h3>3</h3><p>Como inicio de la posterior automatizacin, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
-<p>
-<figure><img src="figures/modelo-BD.png"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/modelo-BD.png"/></p>
 <p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
 <p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
 <h2>Entidades Principales</h2>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta seleccin de entidades se realiza cuidadosamente para que la aplicacin pueda contemplar la mayor informacin posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseo detalladamente en los siguientes puntos.</p>
-<p>
-<figure><img src="figures/spectralgeo_db.png" title="original"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/spectralgeo_db.png" title="original"/> </p>
 <p>Este rediseo contempla la mayora de casos posibles para el posterior tratamiento y procesamiento de datos, con posibilidad de crear buenos modelos predictivos. A continuacin se describen las entidades principales contempladas en la base de datos.</p>
-<table>
-<thead>
-<tr>
-<th align="left">ENTIDAD</th>
-<th align="right">DESCRIPCIN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Parcela</td>
-<td align="right">Como toda la informacin que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla Parcela.</td>
-</tr>
-<tr>
-<td align="left">Cultivo</td>
-<td align="right">Esta tabla est directamente unida a la anterior, ya que un cultivo puede tener muchas variedades diferentes se modela de forma recursiva con una clave fornea a s mismo (leer el siguiente punto, Ej: Guisante es un tipo de cultivo, pero tiene varias variedades: tirabeque, snap peas).</td>
-</tr>
-<tr>
-<td align="left">Indice</td>
-<td align="right">Esta taba es de vital importancia para el funcionamiento de la aplicacin, toda nuestra informacin lleva a estos datos vegetativos. Sern datos calculados en un dominio, esto se hace as ya que existen cientos de formas de denominar un mismo ndice de vegetacin y podra ser un desastre a la hora de realizar las consultas. Para ello se establecern algunos campos determinados en el campo tipo_indice y se les dar un valor en valor_indice.</td>
-</tr>
-<tr>
-<td align="left">Mirar_Indice</td>
-<td align="right">Contempla un histrico de datos y permite dar valor concreto a un ndice vegetativo en una fecha nica.</td>
-</tr>
-<tr>
-<td align="left">Fenolgico</td>
-<td align="right">Permite registrar diferentes estados fenolgicos por los que puede pasar un cultivo. La relacin entre el estado fenolgico y el cultivo se realiza a travs de la tabla Mirar_Fenologico.</td>
-</tr>
-<tr>
-<td align="left">Mirar_Fenologico</td>
-<td align="right">Permite dar carcter temporal al estado fenolgico de un cultivo. Registramos un estado para un cultivo en una fecha concreta.</td>
-</tr>
-<tr>
-<td align="left">Campaa</td>
-<td align="right">Es una tabla muy importante, sirve para unir distintos tipos de registros (desde variedades hasta labores de campo pasando por unir los datos de parcelas y subparcelas).</td>
-</tr>
-<tr>
-<td align="left">Interesado</td>
-<td align="right">Permite realizar el diseo de roles mediante su clave fornea a una parcela. Un intereseado (stakeholder) es una persona que tiene relacin con una o varias parcelas (Ej, cultivador, propietario, etc).</td>
-</tr>
-</tbody>
-</table>
-<p>
-<figure><img src="figures/modelo-end.png" title="original"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p>ENTIDAD | DESCRIPCIN
+:----------------|-------------:
+Parcela | Como toda la informacin que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla Parcela.
+Cultivo | Esta tabla est directamente unida a la anterior, ya que un cultivo puede tener muchas variedades diferentes se modela de forma recursiva con una clave fornea a s mismo (leer el siguiente punto, Ej: Guisante es un tipo de cultivo, pero tiene varias variedades: tirabeque, snap peas).
+Indice | Esta taba es de vital importancia para el funcionamiento de la aplicacin, toda nuestra informacin lleva a estos datos vegetativos. Sern datos calculados en un dominio, esto se hace as ya que existen cientos de formas de denominar un mismo ndice de vegetacin y podra ser un desastre a la hora de realizar las consultas. Para ello se establecern algunos campos determinados en el campo tipo_indice y se les dar un valor en valor_indice.
+Mirar_Indice | Contempla un histrico de datos y permite dar valor concreto a un ndice vegetativo en una fecha nica.
+Fenolgico | Permite registrar diferentes estados fenolgicos por los que puede pasar un cultivo. La relacin entre el estado fenolgico y el cultivo se realiza a travs de la tabla Mirar_Fenologico.
+Mirar_Fenologico | Permite dar carcter temporal al estado fenolgico de un cultivo. Registramos un estado para un cultivo en una fecha concreta. 
+Campaa | Es una tabla muy importante, sirve para unir distintos tipos de registros (desde variedades hasta labores de campo pasando por unir los datos de parcelas y subparcelas).
+Interesado | Permite realizar el diseo de roles mediante su clave fornea a una parcela. Un intereseado (stakeholder) es una persona que tiene relacin con una o varias parcelas (Ej, cultivador, propietario, etc).</p>
+<p><img alt="caption" src="figures/modelo-end.png" title="original"/> </p>
 <h2>Diseo del Cultivo y Fenologa</h2>
 <p>Una decisin complicada sobre el posible histrico de datos es el registro de la evolucin de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLGICO damos carcter temporal al cultivo concreto que se est siendo cultivando en una parcela. De esta forma podemos registrar cules son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recoleccin".</p>
 <p>El modelado de la entidad FENOLGICO ha sido una decisin complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carcter general y tiene sentido como entidad en s misma (todos los cultivos pasan por siembra). Es su relacin con CULTIVO mediante MIRAR_FENOLGICO lo que dice que dicho cultivo est en un estado fenolgico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el da "2022-01-23". </p>
@@ -1180,10 +555,7 @@ polygon geom
 }
 </div>
 <p>Otro punto importante de la aplicacin es la contemplacin de variedades. Para poder mantener una jerarqua con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave fornea a su misma tabla. Esta estructura permite el desglose de una jerarqua de cultivos en la que sabemos qu entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar mltiples niveles.</p>
-<p>
-<figure><img src="figures/mirar_feno.png" title="original"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/mirar_feno.png" title="original"/> </p>
 <h2>Diseo de ndices Vegetativos</h2>
 <p>Para nuestro sistema de informacin una parcela es una agrupacin de varios pxeles. Entendemos como PIXEL a la imagen satelital ms pequea que se puede obtener sobre el terreno, a partir de la cual obtendremos los ndices vegetativos.</p>
 <p>El trabajo con ndices vegetativos por parte del equipo es uno de los puntos ms importantes para que el rediseo sea satisfactorio. A continuacin mostramos cmo las relaciones identificadas van a permitir una correcta bsqueda de features para despus poder estimar con precisin en el modelo de produccin de cultivo.</p>
@@ -1218,28 +590,11 @@ float valor
 <p>Este diseo de ndices permite mantener un histrico de datos preciso. </p>
 <h2>Diseo de Roles</h2>
 <p>Aunque es un punto secundario, la aplicacin contempla que diferentes usuarios puedan realizar diferentes acciones. Recordamos que habamos separado diferentes componentes de la aplicacin, los roles se encuentran en un mdulo secundario independiente de las entidades anteriores que representaban los conceptos agronmicos y vegetativos. El diseo modular del modelo de datos permite al equipo aadir diferentes roles sin estos estar "hardcoded" en el cdigo de la aplicacin. La siguiente tabla muestra los roles hasta ahora creados por el equipo y su relacin con el parcelario.</p>
-<table>
-<thead>
-<tr>
-<th align="left">ROL</th>
-<th align="right">DESC</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Agricultor</td>
-<td align="right">usuario de las parcelas</td>
-</tr>
-<tr>
-<td align="left">Cooperativa</td>
-<td align="right">entidad que agrupa a tcnos con diferentes cargos sobre un parcelario</td>
-</tr>
-<tr>
-<td align="left">Tecnico</td>
-<td align="right">personal asignado a un nmero de parcelas.</td>
-</tr>
-</tbody>
-</table>
+<p>ROL | DESC
+:----------------|-------------:
+Agricultor | usuario de las parcelas 
+Cooperativa | entidad que agrupa a tcnos con diferentes cargos sobre un parcelario
+Tecnico | personal asignado a un nmero de parcelas.</p>
 <p>Roles necesarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferentes servicios.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="services"><h3>3</h3><p>El trmino servicio est sobrecargado y su significado adquiere diferentes matices segn el contexto en que estemos. Como resultado, existe una nube de confusin en torno a la nocin de servicios cuando se trata de distinguir entre servicios de aplicacin, servicios de dominio, servicios de infraestructura, servicios SOA, etc. Las funciones de estos son diferentes y pueden abarcar todas las capas de una aplicacin.</p>
 <p>De hecho, un servicio es un ttulo un tanto genrico para un bloque de creacin de una aplicacin porque implica muy poco. En primer lugar, un servicio implica un cliente cuyas solicitudes est diseado para satisfacer. Otra caracterstica de una operacin de servicio es la de entrada y salida: se proporcionan argumentos y como entrada a una operacin y se devuelve un resultado. Ms all de esta implicacin suelen estar los supuestos de "statelessness" y la idea de "pure fabrication" segn GRASP.</p>
@@ -1352,10 +707,7 @@ else:
 </code></pre>
 <p>```</p>
 <p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de este patrn es un poco ms compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parmetros. </p>
-<p>
-<figure><img src="figures/pipeline_pattern.png"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/pipeline_pattern.png"/></p>
 <p>Con este patrn desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso ms complejo. Cada unidad de carga se comporta como un filtro que aade de forma ordenada la informacin al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberas que permitan dejar varias instancias de la aplicacin en estados diferentes.</p>
 <p>Para AGRAI, hacen falta transformar los datos de ndices vegetativos que maneja el equipo en informacin ordenada que llegue al modelo de datos desarrollado anteriormente. A continuacin explicamos el flujo de procesos de carga ms utilizado.</p>
 <p>Los datos principalmente provienen de qgis, software para trabajar con informacin georeferenciada. El equipo pre-procesa la informacin sobre los ndices vegetativos y da valores a los pxeles mediante dicho software. La principal funcin de este trabajo es dar sentido a esa informacin, persistiendo los datos tomados junto con sus relaciones con el parcelario fsico.</p>
@@ -1368,36 +720,13 @@ ndices--&gt;vista_minable;
 vista_minable--&gt;modelo;
 </div>
 <p>La informacin de los pxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los ndices vegetativos solo contemplamos la informacin sobre la geometra de la parcela, no sabemos nada ms. Esta informacin tiene que almacenarse junto con el cultivo, estado fenolgico, datos fsicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los scripts que conforman los procesos del pipeline.</p>
-<table>
-<thead>
-<tr>
-<th align="left">SCRIPT</th>
-<th align="right">TAREA</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">load_qgis</td>
-<td align="right">Extrae la informacin geometica de cada pixel proveniente de "qgis" e inserta dicha informacin en las tablas de "parcela" y "pixel" de la BD.</td>
-</tr>
-<tr>
-<td align="left">load_parcela</td>
-<td align="right">Lee de un excel informacin fisca sobre las parcelas e inserta los datos en la BD.</td>
-</tr>
-<tr>
-<td align="left">load_cultivos</td>
-<td align="right">Lee de un excel informacin sobre cultivos con sus variedades e inserta los datos en la BD.</td>
-</tr>
-<tr>
-<td align="left">download_img</td>
-<td align="right">Usa uno de los mdulos desarrollado por el equipo para descargar ndices vegetativos a partir de imgenes satelitales. No persiste nada directamente, devuelve un dataframe con los datos descargagos.</td>
-</tr>
-<tr>
-<td align="left">load_indice</td>
-<td align="right">integra la informacin de ndices descargada en el paso anterior en la tabla de "pixel" de la BD.</td>
-</tr>
-</tbody>
-</table>
+<p>SCRIPT | TAREA
+:----------------|-------------:
+load_qgis | Extrae la informacin geometica de cada pixel proveniente de "qgis" e inserta dicha informacin en las tablas de "parcela" y "pixel" de la BD. 
+load_parcela | Lee de un excel informacin fisca sobre las parcelas e inserta los datos en la BD.
+load_cultivos | Lee de un excel informacin sobre cultivos con sus variedades e inserta los datos en la BD.
+download_img | Usa uno de los mdulos desarrollado por el equipo para descargar ndices vegetativos a partir de imgenes satelitales. No persiste nada directamente, devuelve un dataframe con los datos descargagos.
+load_indice | integra la informacin de ndices descargada en el paso anterior en la tabla de "pixel" de la BD.</p>
 <p>Para entender detalladamente qu hacen los scripts de carga de ndices tenemos que explicar algunos de los procesos de automatizacin de los que hacemos uso. </p>
 <div class="mermaid">
 graph LR;
@@ -1508,10 +837,7 @@ for fecha in fechas:
 S que intentaremos que los datos de produccin con los que vamos a predecir estn normalizados y se haya hecho una bsqueda previa de outliers.</p>
 <p>Buscamos un modelo de regresin para el nmero de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeo, disearemos los cuadernos para automatizar la bsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar ms adelante.</p>
 <p>El rango de valores para la mayora de los ndices que obtenemos va de -1 a 1. Los datos de ndices negativos que llegan a la vista se pueden considerar como outliers. Esto es debido a que si los ndices provienen de una imagen con nubes, no se diferencian los colores del terreno y el ndice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los ndices que provengan de la toma de la imagen en una fecha en la que haba nubes.</p>
-<p>
-<figure><img src="figures/nubes.png"/><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="caption" src="figures/nubes.png"/></p>
 <p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestin y automatizacin de los modelos de produccin generados a partir los datos de las 25 parcelas estudiadas.</p></div><div id="0-seguimiento"><h2>2</h2><p>-- LINK_NOTE --</p>
 <p>[[seguimiento]]</p>
 <p>[[memoria]]</p>
