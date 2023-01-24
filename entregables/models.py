@@ -37,8 +37,6 @@ class Estacion(models.Model):
     nombre = models.CharField(max_length=200, null=True)
 
     rango_it = models.FloatField(max_length=20, null=True)
-
-    trilinea = ArrayField(ArrayField(models.FloatField(max_length=20, blank=True), size=15),size=3, null=True)
     
 class Estacion_Historico(models.Model):
 
@@ -120,16 +118,16 @@ class Mirar_Indice(models.Model):
 
     # HISTORICOS:
 
-    def get_historico_range(fecha_inicio, fecha_end):
+    # def get_historico_range(fecha_inicio, fecha_end):
 
-        return Mirar_Indice.objects.filter(fecha__range=[fecha_inicio, fecha_end])
+    #     return Mirar_Indice.objects.filter(fecha__range=[fecha_inicio, fecha_end])
 
-    def get_historico_parcela(parcela1):
+    # def get_historico_parcela(parcela1):
     
-        return Mirar_Indice.objects.filter(parcela = parcela1)
+    #     return Mirar_Indice.objects.filter(parcela = parcela1)
 
-    def get_historico_parcela_range(parcela1, fecha_inicio, fecha_end):
+    # def get_historico_parcela_range(parcela1, fecha_inicio, fecha_end):
 
-        historico = Mirar_Indice.get_historico_range(fecha_inicio, fecha_end)
+    #     historico = Mirar_Indice.get_historico_range(fecha_inicio, fecha_end)
 
-        return historico.filter(parcela = parcela1)
+    #     return historico.filter(parcela = parcela1)

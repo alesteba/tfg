@@ -64,7 +64,7 @@ class ParcelaRender_Service():
                     geo = p.geojson
 
                     geo['properties'] = {indice.nombre: ParcelaRender_Service.get_color(valor)}
-                    
+
                     geos.append(geo)
 
             return geos
@@ -74,9 +74,6 @@ class ParcelaRender_Service():
 
         return [ParcelaIndices_Service.get_all_pixeles(p) for p in parcelas]
     
-    def get_geojsonDetalle_indice(parcelas, indice, fecha):
-
-        return None
 
     def get_images_dates(parcelas, indice):
 
