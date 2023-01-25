@@ -4,7 +4,7 @@
     
 } */
 
-td, th {
+/* td, th {
     border: 1px solid #777;
     padding: 0.5rem;
     text-align: center;
@@ -16,10 +16,10 @@ table {
     width: 100%; 
     margin: 5px;
 }
- 
-tbody tr:nth-child(odd) {
+  */
+/* tbody tr:nth-child(odd) {
     background: #eee;
-}
+} */
 caption {
     font-size: 0.8rem;
 }
