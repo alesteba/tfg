@@ -598,15 +598,14 @@ Tecnico | personal asignado a un nmero de parcelas.</p>
 <p>Roles necesarios para la organizacin jerrquica necesaria en una organizacin agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseadas como diferentes servicios.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="services"><h3>3</h3><p>El trmino servicio est sobrecargado y su significado adquiere diferentes matices segn el contexto en que estemos. Como resultado, existe una nube de confusin en torno a la nocin de servicios cuando se trata de distinguir entre servicios de aplicacin, servicios de dominio, servicios de infraestructura, servicios SOA, etc. Las funciones de estos son diferentes y pueden abarcar todas las capas de una aplicacin.</p>
 <p>De hecho, un servicio es un ttulo un tanto genrico para un bloque de creacin de una aplicacin porque implica muy poco. En primer lugar, un servicio implica un cliente cuyas solicitudes est diseado para satisfacer. Otra caracterstica de una operacin de servicio es la de entrada y salida: se proporcionan argumentos y como entrada a una operacin y se devuelve un resultado. Ms all de esta implicacin suelen estar los supuestos de "statelessness" y la idea de "pure fabrication" segn GRASP.</p>
-<p>```
-When a significant process or transformation in the domain is not a natural responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as standalone interface declared as a SERVICE. Define the interface in terms of the language of the model and make sure the operation name is part of the UBIQUITOUS LANGUAGE. Make the SERVICE stateless.</p>
-<p><strong>Eric Evans</strong> Domain-Driven Design
-```</p>
-<p>El tipo de servicios que estamos diseando e implementando para nuestra aplicacin forman parte de la capa de dominio. Estos servicios de dominio a menudo se pasan por alto como bloques de construccin clave, confundidos por el enfoque de las entidades del modelo (o value objects). </p>
-<p>Cumpliendo con los principios mencionados, los servicios conforman la siguiente capa de abstraccin al modelo de datos implementado. Colocaremos aquellas operaciones que dependan o relacionen ms de una entidad en su mdulo correspondiente de servicios y no como un mtodo de la clase del modelo. Este tipo de diseo en el que dejamos el modelo casi sin mtodos propios puede llegar a entenderse como un anti-patrn, <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">anemic domain model</a> </p>
+<p>``` </p>
+<p>When a significant process or transformation in the domain is not a natural responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as standalone interface declared as a SERVICE. Define the interface in terms of the language of the model and make sure the operation name is part of the UBIQUITOUS LANGUAGE. Make the SERVICE stateless.</p>
+<p><strong>Eric Evans</strong> Domain-Driven Design </p>
+<p>```</p>
+<p>El tipo de servicios que estamos diseando e implementando para nuestra aplicacin forman parte de la capa de dominio. Estos servicios de dominio a menudo se pasan por alto como bloques deconstruccin clave, confundidos por el enfoque de las entidades del modelo (o value objects).</p>
+<p>Cumpliendo con los principios mencionados, los servicios conforman la siguiente capa de abstraccin al modelo de datos implementado. Colocaremos aquellas operaciones que dependan o relacionen ms de una entidad en su mdulo correspondiente de servicios y no como un mtodo de la clase del modelo. Este tipo de diseo en el que dejamos el modelo casi sin mtodos propios puede llegar a entenderse como un anti-patrn, <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">anemic domain model</a></p>
 <p>Justificamos la implementacin de la gran parte de los mtodos sobre la capa de servicios por el tipo de informacin histrica sobre la que necesitamos hacer las consultas. La mayora de entidades necesitan de una relacin con otra segunda o tercera entidad para devolver la informacin pertinente. Es quizs que el modelo est orientado a manejar informacin histrica y sin estado, lo que nos lleva a colocar casi todos los mtodos de acceso a los datos en un mdulo de servicios aparte. Miremos el siguiente ejemplo sobre los histricos fenolgicos en el parcelario registrado.</p>
 <p>```python</p>
-<p>from core.models.models import Parcela, Mirar_Indice, Mirar_Fenologico</p>
 <p>class ParcelaCultivos_Service():</p>
 <p>def get_cultivo(parcela_p):</p>
 <pre><code>""" ltimo cultivo que se est cultivando en una parcela """
@@ -614,9 +613,17 @@ When a significant process or transformation in the domain is not a natural resp
 mirar_feno = Mirar_Fenologico.objects.filter(parcela = parcela_p.idx)
 
 if (mirar_feno.count() &gt; 0):
+
   return mirar_feno.order_by('fecha')[0].cultivo
 
-return None
+else:
+
+  return None
+</code></pre>
+<p>def get_historico_fenologicos(parcela_p):</p>
+<pre><code>""" todos los estados fenolgicos por los que ha pasado una parcela """
+
+return Mirar_Fenologico.objects.filter(parcela = parcela_p.referencia)
 </code></pre>
 <p>def get_historico_range(fecha_inicio, fecha_end):</p>
 <pre><code>""" histrico de todas las parcelas en un rango de fechas """
@@ -635,42 +642,19 @@ historico = ParcelaCultivos_Service.get_historico_range(fecha_inicio, fecha_end)
 
 return historico.filter(parcela = parcela1)
 </code></pre>
+<p>def get_historico_mismo_fenologico(valor_fenologico):</p>
+<pre><code>""" todo los cultivos que estn en un mismo estado fenolgico """
+
+return Mirar_Fenologico.objects.filter(estado = valor_fenologico)
+</code></pre>
 <p>```</p>
-<p><a href="">Adjuntamos</a> como entregables del proyecto algunos de los servicios diseados y usados ms frecuentemente. El cdigo </p>
+<p><a href="file:///E:/UR/TFG/txt_mem/_k.pcs.zen/publish/index.html">Adjuntamos</a> como entregables del proyecto algunos de los servicios diseados y usados ms frecuentemente. El cdigo</p>
 <ul>
 <li>pequeo parrafo.</li>
 </ul>
-<p>El pipeline que estamos diseando es posible gracias a la refactorizacin en mdulos de la aplicacin y a la sencillez y versatilidad del modelo. Los servicios que ahora diseamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propsitos distintos. Son muy importantes, ya que nos acercan al flujo de trabajo de integracin continua que estamos buscando.</p>
+<p>El pipeline que estamos diseando es posible gracias a la factorizacin en mdulos de la aplicacin y a la sencillez y versatilidad del modelo. Los servicios que ahora diseamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propsitos distintos. Son muy importantes, ya que nos acercan al flujo de trabajo de integracin continua que estamos buscando.</p>
 <p>Como estamos utilizando el ORM de Django, para no sobrecargar los objetos del modelo con demasiados mtodos establecemos un mdulo de servicios (para cada componte del sistema) con las consultas ms frecuentes. Este mdulo ayuda a mantener el cdigo en el modelo limpio sin complejidad aadida debido a que las consultas / mtodos que hacen uso de varias relaciones quedan como entidades separadas que se pueden reutilizar.</p>
-<p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo.</p>
-<p>```python</p>
-<p>def get_indice_func(parcela, indice_p, fecha_p, func, filtro):</p>
-<pre><code>indice_p = Indice.objects.get(nombre=indice_p) 
-if type(indice_p) == str else indice_p
-
-if ParcelaIndices_Service.is_parcela_filter(parcela, filtro):
-
-    pixels = parcela.get_pixeles()
-
-    indices_pixels = Mirar_Indice.objects.filter(
-
-        pixel__in = pixels, 
-        indice = indice_p, 
-        fecha = fecha_p
-    )
-
-    if ParcelaIndices_Service.get_indice_filter(indices_pixels, filtro):
-
-        array_valores = list(indices_pixels.values_list('valor', flat=True))
-
-        return func(array_valores)
-
-    else:
-        return None
-else:
-    return None
-</code></pre>
-<p>``` </p></div><div id="despliegue"><h3>3</h3><p>Con la aplicacin en un estado slido, procedemos a mostrar los datos en la interfaz web. Aunque no es parte del trabajo establecido para este TFG, necesitamos ver que los datos con los que trabajamos se muestran correctamente en el visor GIS de nuestra interfaz. </p>
+<p>La siguiente funcin es una de las ms usadas debido a la integracin directa con el proceso de descarga de imgenes satelitales del cultivo.</p></div><div id="despliegue"><h3>3</h3><p>Con la aplicacin en un estado slido, procedemos a mostrar los datos en la interfaz web. Aunque no es parte del trabajo establecido para este TFG, necesitamos ver que los datos con los que trabajamos se muestran correctamente en el visor GIS de nuestra interfaz. </p>
 <p>Recordemos que dentro de nuestras fuentes de datos tenemos datos de parcelas con su informacin geoespacial, tanto la forma de la parcela como la de todos sus pxeles que la conforman. Como estamos haciendo pruebas con un nmero reducido de datos, 25 parcelas con sus pxeles e ndices asociados, el visor debe mostrar estas 25 parcelas con diferentes colores dependiendo del valor de los indices estudiados.</p>
 <ul>
 <li>captura visor *</li>
@@ -762,7 +746,7 @@ call_command('4-download-indices',parcelas=self.PARCELA_SHAPE, pixels=self.PIXEL
 <p>```</p>
 <p>Adems de este ltimo, podemos crear varios entornos con tuberas diferentes que den como resultado bases de datos con estados distintos. Como mencionbamos anteriormente, es muy til debido al funcionamiento del equipo en relacin con el procesamiento de datos con varios clientes. La aplicacin puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre, por ejemplo la misma instancia de la BD sirve tanto para una bodega con variedades de vino que para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
 <p>Por ltimo, este patrn nos permite ejecutar comandos de forma asncrona y gestionar los procesos con un planificador. Actualmente, aunque el tiempo de carga es alto, podemos asumir una carga lenta. Pero es este mismo patrn de diseo el que nos puede permitir a futuro la carga asncrona de los datos en cada una de las componentes que lo forman.</p>
-<p>Adjuntamos en los entregables los scripts que forman este proceso de persistencia de datos. </p>
+<p>Adjuntamos en los entregables los [scripts] que forman este proceso de persistencia de datos. </p>
 <h1>Pipeline Pattern</h1>
 <p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p>
 <p>Vamos a ver el patrn de diseo de Pipeline como entidad nica.</p>
@@ -827,7 +811,7 @@ for fecha in fechas:
 ```</p>
 <h2>Seleccin de features</h2>
 <p>El diseo de la vista minable es complicado, para ello trabajo con el equipo seleccionando los campos de la BD ms importantes que formaran la tabla.  Nos centramos principalmente en los ndices vegetativos registrados en diferentes fechas. </p>
-<p>Para poder predecir la produccin de cultivo incluimos en la vista varios estadsticos como la media y el sumatorio para cada ndice en cuatro fechas representativas de la evolucin de este. El diseo de esta estructura proviene de un estudio previo realizado por el equipo, en el que se ha concluido que ciertos estadsticos en unas fechas calibradas funcionan bien para predecir la produccin. En este punto no estamos </p>
+<p>Para poder predecir la produccin de cultivo incluimos en la vista varios estadsticos como la media y el sumatorio para cada ndice en cuatro fechas representativas de la evolucin de este. El diseo de esta estructura proviene de un estudio previo realizado por el equipo, en el que se ha concluido que ciertos estadsticos en unas fechas calibradas funcionan bien para predecir la produccin. </p>
 <p>Hablbamos anteriormente de entornos virtuales, por el momento la aplicacin utiliza un solo entorno virtual Python, pero este punto del trabajo podra hacer uso de un entorno separado con las libreras de ciencia de datos instaladas, de tal forma separaramos dos procesos importantes. Resaltar que en el trabajo me estoy encargando del proceso para hacer pruebas, pero sern diferentes miembros del equipo los que usen estas tecnologas y para que podamos seguir escalando a medida que evolucione la aplicacin, estos miembros tienen que poder utilizar los entornos creados.</p>
 <h2>Variable Objetivo</h2>
 <p>Junto con los datos extrados aadimos la variable objetivo de produccin. Esta variable, todava sin persistir en el modelo, hace referencia a los kilos de produccin de cada parcela en su cosecha.</p></div><div id="modelo-producción"><h3>3</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de produccin para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">prximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
