@@ -28,13 +28,19 @@
 <p>[[previos]]</p>
 <p>[[justificacin]]</p></div><div id="contexto"><h3>3</h3><p>El propsito de este proyecto es mejorar el flujo de trabajo del equipo de "SpectralGeo" mediante la automatizacin del proceso de recogida y procesado de datos agronmicos que se utilizan en la creacin de modelos de inteligencia artificial.</p>
 <p>AGRAIes una aplicacin para la gestin de cultivos que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicacin se centra el despliegue de datos agronmicos y vegetativosgeoreferenciadosa travs de en una interfaz web. Los usuarios de la aplicacin, normalmente agricultores o cooperativas, pueden consultar el estado de su parcelario junto con algunas predicciones. El acceso a dicha aplicacin puede darse desde equipo de sobremesa o un dispositivo mvil, aunque es este ltimo lo que parece que se utiliza ms. </p>
-<p><img alt="caption" src="figures/visor_GIS_det.png"/></p>
+<p>
+<figure><img src="figures/visor_GIS_det.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Actualmente, cmo se procesa la informacin que utiliza nuestra aplicacin es un proceso tedioso para el equipo. En este proceso, diferentes miembros trabajan contecnologasdistintas sobre datos duplicados provenientes de fuentes comunes. Aunque se realiza una planificacin y coordinacin de los proyectos, se pierde bastante tiempo en la transformacin de los datos que cada miembro del equipo necesita para llevar a cabo su labor.</p>
 <p>El objetivo de este Trabajo de Fin de Grado (TFG) es mejorar y automatizar el flujo de trabajo del equipo, convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cual el resto del equipo pueda acceder, utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de estos datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no solo es importante el conocimiento tcnico, sino que sern necesarios cambios en la forma de trabajo del equipo, adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. </p></div><div id="previos"><h3>3</h3><p>SpectralGeo se ha especializado en el uso de nuevas tecnologas para sectores como el de la agricultura o el reciclaje, centrndose en proyectos con carcter reivindicativo por la sostenible medioambiental. La relacin con clientes como Ecoembes o el desarrollo de software para la gestin sostenible de cultivos lo demuestran.</p>
 <p>Durante las prcticas realizas en la empresa identifiqu que era totalmente necesario dotar de una arquitectura robusta a la aplicacin sobre la que trabajaba gran parte del equipo. Adems de adaptarme a las tecnologas necesarias para la ciencia de datos actual al que todo el mundo se est sumando, comenc con la implementacin de un modelo sobre el que la aplicacin AGRAI pudiese escalarse posteriormente.</p>
 <p>La aplicacin ya est creada, el cliente obtiene los resultados que espera cuando consulta el estado de su parcelario en la interfaz de la aplicacin. Como equipo nos organizamos para que la informacin y los modelos predictivos lleguen al cliente a travs de esta, pero son varios los puntos en los que trabajamos en exceso para finalmente mostrar una "prediccin" al cliente. Sern las etapas de extraccin, pre-procesado, procesado y modelado las que buscaremos optimizar en el contexto de todo el equipo, debido a que estas etapas se reparten entre sus miembros.</p>
-<p><img alt="caption" src="figures/lean_1.gif"/></p>
+<p>
+<figure><img src="figures/lean_1.gif"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Justificamos este cambio como parte de una bsqueda de procesos esbeltos (lean), que consisten en la eliminacin de los "desperdicios", o fuentes de despilfarro de tiempo y trabajo en la elaboracin de productos o servicios. A travs de la solucin que vamos a implantar buscamos la optimizacin continua del proceso y la aceptacin de dicha cultura de optimizacin por el equipo.</p>
 <p>Los puntos ms importantes de los procesos "lean" son los siguientes:</p>
 <ul>
@@ -69,7 +75,10 @@
 <p>Se usar un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (tambin llamadas iteraciones), se repiten de manera intencionada una o ms actividades del<br/>
 proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va  aumentando. Las fases (iteraciones) desarrollan el producto a travs de una serie de ciclos repetidos, mientras que los incrementos van aadiendo sucesivamente funcionalidad al<br/>
 producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteracin se entrega una versin mejorada.</p>
-<p><img alt="caption" src="figures/iteraciones.png" title="title"/></p></div><div id="EDT"><h3>3</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
+<p>
+<figure><img src="figures/iteraciones.png" title="title"/><figcaption>caption</figcaption>
+</figure>
+</p></div><div id="EDT"><h3>3</h3><p>Mostramos el desglose de las tareas ms importantes para la correcta realizacin del proyecto.</p>
 <div class="mermaid">
 graph LR;
 TFG--&gt;PLANIFICACIN;
@@ -722,12 +731,18 @@ Project complete: milestone, 10-03, 0d
 <p>[[tecnologas]]</p>
 <p>[[requisitos]]</p></div><div id="AGRAI-data"><h3>3</h3><p>AGRAIes una aplicacin para la gestin de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicacin se centra el despliegue de datosgeo-referenciadospor medio de una interfaz web. Los resultados para el usuario de la aplicacin son satisfactorios permitiendo a ste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>En la interfaz web el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en  los pxeles hace referencia a los ndices vegetativos provenientes de las imgenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la produccin que predicen los modelos de Inteligencia Artificial generados.</p>
-<p><img alt="caption" src="figures/visor_GIS.png"/></p>
+<p>
+<figure><img src="figures/visor_GIS.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imgenes descargadas de satlites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con informacin proporcionada por estaciones meteorolgicas como el SIAR y con la informacin que los clientes pueden proporcionar sobre campaas anteriores.</p>
 <p>Por otro lado, cmo actualmente se procesa la informacin es un proceso tedioso para el equipo. Los diferentes miembros trabajan contecnologasdistintas sobre datos muchas veces duplicados que provienen de fuentes comunes.</p>
 <p>El objetivo de este trabajo de fin de grado es mejorar y automatizar el flujo de trabajo del equipo convirtiendo la aplicacin AGRAI en una herramienta robusta que manipule un nico repositorio de datos al cul el resto del equipo pueda acceder y utilizar de forma segura y lo ms importante, sin duplicar y romper la integridad de los datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no slo es importante el conocimiento tcnico sino que sern necesarios cambios en la forma de trabajo del equipo adems de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. Intentaremos seguir los principios de los procesos 'lean' para buscar la mejor optimizacin continua.</p>
-<p><img alt="caption" src="figures/lean.png" title="title"/></p></div><div id="ideas-previas"><h3>3</h3><p>Mencionbamos la bsqueda de optimizacin del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicacin. El rediseo que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodologa. Para que este trabaja resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta fsica que coordine el esquema mental de los participantes que la usan.</p>
+<p>
+<figure><img src="figures/lean.png" title="title"/><figcaption>caption</figcaption>
+</figure>
+</p></div><div id="ideas-previas"><h3>3</h3><p>Mencionbamos la bsqueda de optimizacin del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicacin. El rediseo que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodologa. Para que este trabaja resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta fsica que coordine el esquema mental de los participantes que la usan.</p>
 <p>Para poder realizar este proyecto decidimos trabajar con un nmero pequeo representativo de datos de laaplicacinactualmente en produccin. Un menor volumen de informacin permite realizar pruebas y da pie a fijarnos en las relaciones y los esquemas estructurales con ms precisin.  </p>
 <p>Como este trabajo se realiza en equipo, a medida que voy haciendo pruebas con mi entorno local, un compaero se encarga de ir probando mi entorno con losvolmenesoriginales de datos que la aplicacin utiliza en produccin. Lareestructuracindel modelo deBDque realizamos contempla un posterior escalado de la aplicacin que permitir la integracin continua con ms datos y nuevas tecnologas.</p>
 <p>La siguiente tabla muestra las principales fuentes de datos de las que se obtienen y enlaza la informacin. El volumen de datos que se puede llegar a manejar es grande, por cada parcela se persisten varios ndices vegetativos en cada uno de sus pxeles. </p>
@@ -768,7 +783,10 @@ Project complete: milestone, 10-03, 0d
 <li>Commands-System: gestin de comandos internos mediante los que se pueden automatizar tareas, utilizaremos esta arquitectura para disear el pipeline de datos y persistir la informacin proveniente de diferentes fuentes.</li>
 </ul>
 <p>Aunque el framework es muy potente, harn falta otras herramientas y entornos para completar con xito la automatizacin que buscamos y as conseguir un proceso de optimizacin continua. En el siguiente punto hablaremos de la infraestructura que la aplicacin requiere y de cmo podemos solventar algunos de los problemas de integracin ms importantes.</p>
-<p><img alt="caption" src="figures/django_migrate.png" title="original"/> </p>
+<p>
+<figure><img src="figures/django_migrate.png" title="original"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>La utilizacin de Python, aparte de incluir este framework, nos da la posibilidad de utilizar las libreras de inteligencia artificial y ciencia de datos que finalmente utilizaremos para la creacin del modelo de cultivo. Algunas de libreras principales que vamos a utilizar son las siguientes:</p>
 <table>
 <thead>
@@ -1077,7 +1095,10 @@ AUTO }|..|{ CORE : uses
 <p>Esta divisin en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Ms importante an la claridad y sencillez de los modelos de cada componente y su respectiva representacin en la BD.</p>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="data-load"><h3>3</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicacin de forma ordenada con posibilidad de ser escalados. En la implementacin del pipeline que veremos en siguientes apartados haremos hincapi en los estados de carga por los que pasan los datos, de momento solo importa destacar que el modelo actual permite mantener un histrico de datos mucho ms slido que el que estaba implantado cuando comenzamos el desarrollo. </p>
 <p>S que es importante explicar por qu vamos a poner tanto nfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicacin muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basndose en los ndices vegetativos, tambin se muestra la produccin estimada.</p>
-<p><img alt="caption" src="figures/visor_GIS.png"/></p>
+<p>
+<figure><img src="figures/visor_GIS.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Los ndices que renderiza el visor de la aplicacin son el resultado de todo el proceso que estamos exponiendo. Es el punto ms delicado que requiere de varias entidades para persistir los datos y guardar un histrico. Es la visualizacin del histrico de ndices vegetativos el mayor valor que obtiene el cliente cuando accede a la aplicacin.</p>
 <p>El proceso de carga de datos hace uso de un mdulo de descarga de imgenes satelitales que obtiene el valor de estos ndices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del mdulo de automatizacin junto con otras tareas similares. 
 Utilizaremos el mdulo como una caja negra y aseguraremos el correcto uso de este para que los ndices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
@@ -1087,14 +1108,20 @@ AUTO }|..|{ descarga_indices : contains
 AUTO }|..|{ CORE : uses
 </div>
 <script>mermaid.initialize({startOnLoad:true});</script></div><div id="modelo-BD"><h3>3</h3><p>Como inicio de la posterior automatizacin, se reestructura la arquitectura de la aplicacin junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementacin de la parte de anlisis descrita en el planteamiento.</p>
-<p><img alt="caption" src="figures/modelo-BD.png"/></p>
+<p>
+<figure><img src="figures/modelo-BD.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Para la creacin de este modelo he trabajado con el equipo en la identificacin de los conceptos que necesitaban ser representados. El diseo en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, adems de permitir la transmisin de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado asla la base de datos y nos permite disear directamente en <em>Python</em> dicho modelo. Las entidades se disean como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves forneas que fsicamente contiene la base de datos.</p>
 <p>La utilizacin de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localizacin fsica de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de produccin.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto ms o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del cdigo. Esta representacin grfica ha sido realmente til para poder pensar sobre el diseo a medida que avanzaba.</p>
 <h2>Entidades Principales</h2>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta seleccin de entidades se realiza cuidadosamente para que la aplicacin pueda contemplar la mayor informacin posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseo detalladamente en los siguientes puntos.</p>
-<p><img alt="caption" src="figures/spectralgeo_db.png" title="original"/> </p>
+<p>
+<figure><img src="figures/spectralgeo_db.png" title="original"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Este rediseo contempla la mayora de casos posibles para el posterior tratamiento y procesamiento de datos, con posibilidad de crear buenos modelos predictivos. A continuacin se describen las entidades principales contempladas en la base de datos.</p>
 <table>
 <thead>
@@ -1138,7 +1165,10 @@ AUTO }|..|{ CORE : uses
 </tr>
 </tbody>
 </table>
-<p><img alt="caption" src="figures/modelo-end.png" title="original"/> </p>
+<p>
+<figure><img src="figures/modelo-end.png" title="original"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <h2>Diseo del Cultivo y Fenologa</h2>
 <p>Una decisin complicada sobre el posible histrico de datos es el registro de la evolucin de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLGICO damos carcter temporal al cultivo concreto que se est siendo cultivando en una parcela. De esta forma podemos registrar cules son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recoleccin".</p>
 <p>El modelado de la entidad FENOLGICO ha sido una decisin complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carcter general y tiene sentido como entidad en s misma (todos los cultivos pasan por siembra). Es su relacin con CULTIVO mediante MIRAR_FENOLGICO lo que dice que dicho cultivo est en un estado fenolgico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el da "2022-01-23". </p>
@@ -1171,7 +1201,10 @@ polygon geom
 }
 </div>
 <p>Otro punto importante de la aplicacin es la contemplacin de variedades. Para poder mantener una jerarqua con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave fornea a su misma tabla. Esta estructura permite el desglose de una jerarqua de cultivos en la que sabemos qu entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar mltiples niveles.</p>
-<p><img alt="caption" src="figures/mirar_feno.png" title="original"/> </p>
+<p>
+<figure><img src="figures/mirar_feno.png" title="original"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <h2>Diseo de ndices Vegetativos</h2>
 <p>Para nuestro sistema de informacin una parcela es una agrupacin de varios pxeles. Entendemos como PIXEL a la imagen satelital ms pequea que se puede obtener sobre el terreno, a partir de la cual obtendremos los ndices vegetativos.</p>
 <p>El trabajo con ndices vegetativos por parte del equipo es uno de los puntos ms importantes para que el rediseo sea satisfactorio. A continuacin mostramos cmo las relaciones identificadas van a permitir una correcta bsqueda de features para despus poder estimar con precisin en el modelo de produccin de cultivo.</p>
@@ -1329,7 +1362,10 @@ float valor
         <span class="c1"># now do the things that you want with your models here</span>
 </code></pre></div>
 <p>Las lneas de cdigo anteriores hacen referencia a una implementacin concreta del patrn mencionado.  Fijndonos en la siguiente figura, la clase <strong>Command</strong> sera el handler y el mtodo <strong>handle</strong> corresponde con handleRequest del esquema. Los prximos scripts que creemos sern los clientes de estas clases. Resaltar que la implementacin de Django de este patrn es un poco ms compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parmetros. </p>
-<p><img alt="caption" src="figures/pipeline_pattern.png"/></p>
+<p>
+<figure><img src="figures/pipeline_pattern.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Con este patrn desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso ms complejo. Cada unidad de carga se comporta como un filtro que aade de forma ordenada la informacin al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberas que permitan dejar varias instancias de la aplicacin en estados diferentes.</p>
 <p>Para AGRAI, hacen falta transformar los datos de ndices vegetativos que maneja el equipo en informacin ordenada que llegue al modelo de datos desarrollado anteriormente. A continuacin explicamos el flujo de procesos de carga ms utilizado.</p>
 <p>Los datos principalmente provienen de qgis, software para trabajar con informacin georeferenciada. El equipo pre-procesa la informacin sobre los ndices vegetativos y da valores a los pxeles mediante dicho software. La principal funcin de este trabajo es dar sentido a esa informacin, persistiendo los datos tomados junto con sus relaciones con el parcelario fsico.</p>
@@ -1490,7 +1526,10 @@ download_indices --&gt; download_range
 S que intentaremos que los datos de produccin con los que vamos a predecir estn normalizados y se haya hecho una bsqueda previa de outliers.</p>
 <p>Buscamos un modelo de regresin para el nmero de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeo, disearemos los cuadernos para automatizar la bsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar ms adelante.</p>
 <p>El rango de valores para la mayora de los ndices que obtenemos va de -1 a 1. Los datos de ndices negativos que llegan a la vista se pueden considerar como outliers. Esto es debido a que si los ndices provienen de una imagen con nubes, no se diferencian los colores del terreno y el ndice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los ndices que provengan de la toma de la imagen en una fecha en la que haba nubes.</p>
-<p><img alt="caption" src="figures/nubes.png"/></p>
+<p>
+<figure><img src="figures/nubes.png"/><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestin y automatizacin de los modelos de produccin generados a partir los datos de las 25 parcelas estudiadas.</p></div><div id="0-seguimiento"><h2>2</h2><p>-- LINK_NOTE --</p>
 <p>[[seguimiento]]</p>
 <p>[[memoria]]</p>
