@@ -1477,55 +1477,61 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="c1"># indices:</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">]</span>
-
 <span class="k">def</span> <span class="nf">statistic_indices</span><span class="p">(</span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="c1"># para cada indice:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+    <span class="n">col_ids</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">indice_p</span> <span class="o">=</span> <span class="n">Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Parcela</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">for</span> <span class="n">fecha</span> <span class="ow">in</span> <span class="n">fechas</span><span class="p">:</span>
+        <span class="n">col_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">col_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;IDX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">col_ids</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="c1"># por cada iteración de hay una fila en el df:</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Parcela</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="c1"># la media de todos sus pixels de cada parcela por cada índice</span>
+    <span class="c1"># para cada indice:</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">p_indices</span> <span class="o">=</span> <span class="n">Pixel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">list_values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">indice_p</span> <span class="o">=</span> <span class="n">Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span> <span class="c1"># if type(indice_p) == str else indice_p</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">for</span> <span class="n">p_itr</span> <span class="ow">in</span> <span class="n">p_indices</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">fecha</span> <span class="ow">in</span> <span class="n">fechas</span><span class="p">:</span> 
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">qs</span> <span class="o">=</span> <span class="n">Â</span> <span class="n">Mirar_Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">pixel</span> <span class="o">=</span> <span class="n">p_itr</span><span class="p">,</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">indice</span> <span class="o">=</span> <span class="n">indice_p</span><span class="p">,</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span> <span class="c1"># fecha para la columna:</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="p">)</span>
+            <span class="n">col_data</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="kn">import</span> <span class="nn">math</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="c1"># mirarmos que no sea nulo, porque se puede dar el caso</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">if</span> <span class="p">(</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span> <span class="p">):</span>
+            <span class="c1"># por cada iteración de esto tienes una fila en el df:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Parcela</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">list_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span>
+                <span class="c1"># la media de todos sus índices</span>
+                <span class="n">p_indices</span> <span class="o">=</span> <span class="n">Pixel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="c1"># estadistico</span>
+                <span class="n">list_values</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">list_values</span><span class="p">)</span>
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">col_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">p_itr</span> <span class="ow">in</span> <span class="n">p_indices</span><span class="p">:</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">df</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">ind</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)]</span> <span class="o">=</span> <span class="n">col_data</span>
+                    <span class="n">qs</span> <span class="o">=</span>  <span class="n">Mirar_Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">df</span>
+                        <span class="n">pixel</span> <span class="o">=</span> <span class="n">p_itr</span><span class="p">,</span> 
+                        <span class="n">indice</span> <span class="o">=</span> <span class="n">indice_p</span><span class="p">,</span> 
+                        <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span> <span class="c1"># fecha para la columna:</span>
+                    <span class="p">)</span>
+
+                    <span class="kn">import</span> <span class="nn">math</span>
+
+                    <span class="k">if</span> <span class="p">(</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span> <span class="p">):</span>
+
+                        <span class="n">list_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span>
+
+                <span class="c1"># estadistico:añadir columna</span>
+
+                <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">list_values</span><span class="p">)</span>
+
+                <span class="n">col_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+            <span class="n">df</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">ind</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)]</span> <span class="o">=</span> <span class="n">col_data</span>
+
+            <span class="c1"># valor a la tabla</span>
+
+    <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
 
 <h2>Selección de features</h2>
