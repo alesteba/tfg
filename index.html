@@ -43,13 +43,19 @@
 <p>[[previos]]</p>
 <p>[[justificación]]</p></div><div id=contexto><h3>3</h3><p>El propósito de este proyecto es mejorar el flujo de trabajo del equipo de "SpectralGeo" mediante la automatización del proceso de recogida y procesado de datos agronómicos que se utilizan en la creación de modelos de inteligencia artificial.</p>
 <p>AGRAI es una aplicación para la gestión de cultivos que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicación se centra el despliegue de datos agronómicos y vegetativos georeferenciados a través de en una interfaz web. Los usuarios de la aplicación, normalmente agricultores o cooperativas, pueden consultar el estado de su parcelario junto con algunas predicciones. El acceso a dicha aplicación puede darse desde equipo de sobremesa o un dispositivo móvil, aunque es este último lo que parece que se utiliza más. </p>
-<p><img alt="caption" src="figures/visor_GIS_det.png" /></p>
+<p>
+<figure><img src="figures/visor_GIS_det.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Actualmente, cómo se procesa la información que utiliza nuestra aplicación es un proceso tedioso para el equipo. En este proceso, diferentes miembros trabajan con tecnologías distintas sobre datos duplicados provenientes de fuentes comunes. Aunque se realiza una planificación y coordinación de los proyectos, se pierde bastante tiempo en la transformación de los datos que cada miembro del equipo necesita para llevar a cabo su labor.</p>
 <p>El objetivo de este Trabajo de Fin de Grado (TFG) es mejorar y automatizar el flujo de trabajo del equipo, convirtiendo la aplicación AGRAI en una herramienta robusta que manipule un único repositorio de datos al cual el resto del equipo pueda acceder, utilizar de forma segura y lo más importante, sin duplicar y romper la integridad de estos datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no solo es importante el conocimiento técnico, sino que serán necesarios cambios en la forma de trabajo del equipo, además de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. </p></div><div id=previos><h3>3</h3><p>SpectralGeo se ha especializado en el uso de nuevas tecnologías para sectores como el de la agricultura o el reciclaje, centrándose en proyectos con carácter reivindicativo por la sostenible medioambiental. La relación con clientes como Ecoembes o el desarrollo de software para la gestión sostenible de cultivos lo demuestran.</p>
 <p>Durante las prácticas realizas en la empresa identifiqué que era totalmente necesario dotar de una arquitectura robusta a la aplicación sobre la que trabajaba gran parte del equipo. Además de adaptarme a las tecnologías necesarias para la ciencia de datos actual al que todo el mundo se está sumando, comencé con la implementación de un modelo sobre el que la aplicación AGRAI pudiese escalarse posteriormente.</p>
 <p>La aplicación ya está creada, el cliente obtiene los resultados que espera cuando consulta el estado de su parcelario en la interfaz de la aplicación. Como equipo nos organizamos para que la información y los modelos predictivos lleguen al cliente a través de esta, pero son varios los puntos en los que trabajamos en exceso para finalmente mostrar una "predicción" al cliente. Serán las etapas de extracción, pre-procesado, procesado y modelado las que buscaremos optimizar en el contexto de todo el equipo, debido a que estas etapas se reparten entre sus miembros.</p>
-<p><img alt="caption" src="figures/lean_1.gif" /></p>
+<p>
+<figure><img src="figures/lean_1.gif" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Justificamos este cambio como parte de una búsqueda de procesos esbeltos (lean), que consisten en la eliminación de los "desperdicios", o fuentes de despilfarro de tiempo y trabajo en la elaboración de productos o servicios. A través de la solución que vamos a implantar buscamos la optimización continua del proceso y la aceptación de dicha cultura de optimización por el equipo.</p>
 <p>Los puntos más importantes de los procesos "lean" son los siguientes:</p>
 <ul>
@@ -84,7 +90,10 @@
 <p>Se usará un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (también llamadas iteraciones), se repiten de manera intencionada una o más actividades del<br />
 proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va  aumentando. Las fases (iteraciones) desarrollan el producto a través de una serie de ciclos repetidos, mientras que los incrementos van añadiendo sucesivamente funcionalidad al<br />
 producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteración se entrega una versión mejorada.</p>
-<p><img alt="caption" src="figures/iteraciones.png" title="title" /></p></div><div id=EDT><h3>3</h3><p>Mostramos el desglose de las tareas más importantes para la correcta realización del proyecto.</p>
+<p>
+<figure><img src="figures/iteraciones.png" title="title" /><figcaption>caption</figcaption>
+</figure>
+</p></div><div id=EDT><h3>3</h3><p>Mostramos el desglose de las tareas más importantes para la correcta realización del proyecto.</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">graph</span><span class="w"> </span><span class="nt">LR</span><span class="o">;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N</span><span class="o">;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS</span><span class="o">;</span><span class="w"></span>
@@ -735,12 +744,18 @@ producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final 
 <p>[[tecnologías]]</p>
 <p>[[requisitos]]</p></div><div id=AGRAI-data><h3>3</h3><p>AGRAI es una aplicación para la gestión de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicación se centra el despliegue de datos geo-referenciados por medio de una interfaz web. Los resultados para el usuario de la aplicación son satisfactorios permitiendo a éste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>En la interfaz web el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en  los píxeles hace referencia a los índices vegetativos provenientes de las imágenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la producción que predicen los modelos de Inteligencia Artificial generados.</p>
-<p><img alt="caption" src="figures/visor_GIS.png" /></p>
+<p>
+<figure><img src="figures/visor_GIS.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imágenes descargadas de satélites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con información proporcionada por estaciones meteorológicas como el SIAR y con la información que los clientes pueden proporcionar sobre campañas anteriores.</p>
 <p>Por otro lado, cómo actualmente se procesa la información es un proceso tedioso para el equipo. Los diferentes miembros trabajan con tecnologías distintas sobre datos muchas veces duplicados que provienen de fuentes comunes.</p>
 <p>El objetivo de este trabajo de fin de grado es mejorar y automatizar el flujo de trabajo del equipo convirtiendo la aplicación AGRAI en una herramienta robusta que manipule un único repositorio de datos al cuál el resto del equipo pueda acceder y utilizar de forma segura y lo más importante, sin duplicar y romper la integridad de los datos.</p>
 <p>Entiendo que es un proyecto ambicioso debido a que no sólo es importante el conocimiento técnico sino que serán necesarios cambios en la forma de trabajo del equipo además de la confianza de cada miembro por la nueva forma de trabajo que se desea implementar. Intentaremos seguir los principios de los procesos 'lean' para buscar la mejor optimización continua.</p>
-<p><img alt="caption" src="figures/lean.png" title="title" /></p></div><div id=ideas-previas><h3>3</h3><p>Mencionábamos la búsqueda de optimización del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicación. El rediseño que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodología. Para que este trabaja resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta física que coordine el esquema mental de los participantes que la usan.</p>
+<p>
+<figure><img src="figures/lean.png" title="title" /><figcaption>caption</figcaption>
+</figure>
+</p></div><div id=ideas-previas><h3>3</h3><p>Mencionábamos la búsqueda de optimización del proceso como una de las principales idea para mejorar el flujo de datos que utiliza la aplicación. El rediseño que se quiere implantar y la arquitectura resultante tiene que cumplir con los principios de dicha metodología. Para que este trabaja resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta física que coordine el esquema mental de los participantes que la usan.</p>
 <p>Para poder realizar este proyecto decidimos trabajar con un número pequeño representativo de datos de la aplicación actualmente en producción. Un menor volumen de información permite realizar pruebas y da pie a fijarnos en las relaciones y los esquemas estructurales con más precisión.  </p>
 <p>Como este trabajo se realiza en equipo, a medida que voy haciendo pruebas con mi entorno local, un compañero se encarga de ir probando mi entorno con los volúmenes originales de datos que la aplicación utiliza en producción. La reestructuración del modelo de BD que realizamos contempla un posterior escalado de la aplicación que permitirá la integración continua con más datos y nuevas tecnologías.</p>
 <p>La siguiente tabla muestra las principales fuentes de datos de las que se obtienen y enlaza la información. El volumen de datos que se puede llegar a manejar es grande, por cada parcela se persisten varios índices vegetativos en cada uno de sus píxeles. </p>
@@ -781,7 +796,10 @@ producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final 
 <li>Commands-System: gestión de comandos internos mediante los que se pueden automatizar tareas, utilizaremos esta arquitectura para diseñar el pipeline de datos y persistir la información proveniente de diferentes fuentes.</li>
 </ul>
 <p>Aunque el framework es muy potente, harán falta otras herramientas y entornos para completar con éxito la automatización que buscamos y así conseguir un proceso de optimización continua. En el siguiente punto hablaremos de la infraestructura que la aplicación requiere y de cómo podemos solventar algunos de los problemas de integración más importantes.</p>
-<p><img alt="caption" src="figures/django_migrate.png" title="original" /> </p>
+<p>
+<figure><img src="figures/django_migrate.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>La utilización de Python, aparte de incluir este framework, nos da la posibilidad de utilizar las librerías de inteligencia artificial y ciencia de datos que finalmente utilizaremos para la creación del modelo de cultivo. Algunas de librerías principales que vamos a utilizar son las siguientes:</p>
 <table>
 <thead>
@@ -1089,7 +1107,10 @@ sudo python3 -m pip install -r requirements.txt
 </table>
 <p>Esta división en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Más importante aún la claridad y sencillez de los modelos de cada componente y su respectiva representación en la BD.</p></div><div id=data-load><h3>3</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicación de forma ordenada con posibilidad de ser escalados. En la implementación del pipeline que veremos en siguientes apartados haremos hincapié en los estados de carga por los que pasan los datos, de momento solo importa destacar que el modelo actual permite mantener un histórico de datos mucho más sólido que el que estaba implantado cuando comenzamos el desarrollo. </p>
 <p>Sí que es importante explicar por qué vamos a poner tanto énfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicación muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basándose en los índices vegetativos, también se muestra la producción estimada.</p>
-<p><img alt="caption" src="figures/visor_GIS.png" /></p>
+<p>
+<figure><img src="figures/visor_GIS.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere de varias entidades para persistir los datos y guardar un histórico. Es la visualización del histórico de índices vegetativos el mayor valor que obtiene el cliente cuando accede a la aplicación.</p>
 <p>El proceso de carga de datos hace uso de un módulo de descarga de imágenes satelitales que obtiene el valor de estos índices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del módulo de automatización junto con otras tareas similares. 
 Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de este para que los índices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
@@ -1097,14 +1118,20 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
     AUTO }|..|{ descarga_indices : contains
     AUTO }|..|{ CORE : uses
 </code></pre></div></div><div id=modelo-BD><h3>3</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación de la parte de análisis descrita en el planteamiento.</p>
-<p><img alt="caption" src="figures/modelo-BD.png" /></p>
+<p>
+<figure><img src="figures/modelo-BD.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Para la creación de este modelo he trabajado con el equipo en la identificación de los conceptos que necesitaban ser representados. El diseño en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, además de permitir la transmisión de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado aísla la base de datos y nos permite diseñar directamente en <em>Python</em> dicho modelo. Las entidades se diseñan como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves foráneas que físicamente contiene la base de datos.</p>
 <p>La utilización de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localización física de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de producción.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto más o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del código. Esta representación gráfica ha sido realmente útil para poder pensar sobre el diseño a medida que avanzaba.</p>
 <h2>Entidades Principales</h2>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta selección de entidades se realiza cuidadosamente para que la aplicación pueda contemplar la mayor información posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseño detalladamente en los siguientes puntos.</p>
-<p><img alt="caption" src="figures/spectralgeo_db.png" title="original" /> </p>
+<p>
+<figure><img src="figures/spectralgeo_db.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Este rediseño contempla la mayoría de casos posibles para el posterior tratamiento y procesamiento de datos, con posibilidad de crear buenos modelos predictivos. A continuación se describen las entidades principales contempladas en la base de datos.</p>
 <table>
 <thead>
@@ -1148,7 +1175,10 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 </tr>
 </tbody>
 </table>
-<p><img alt="caption" src="figures/modelo-end.png" title="original" /> </p>
+<p>
+<figure><img src="figures/modelo-end.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <h2>Diseño del Cultivo y Fenología</h2>
 <p>Una decisión complicada sobre el posible histórico de datos es el registro de la evolución de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLÓGICO damos carácter temporal al cultivo concreto que se está siendo cultivando en una parcela. De esta forma podemos registrar cuáles son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recolección".</p>
 <p>El modelado de la entidad FENOLÓGICO ha sido una decisión complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carácter general y tiene sentido como entidad en sí misma (todos los cultivos pasan por siembra). Es su relación con CULTIVO mediante MIRAR_FENOLÓGICO lo que dice que dicho cultivo está en un estado fenológico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el día "2022-01-23". </p>
@@ -1181,7 +1211,10 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 </code></pre></div>
 
 <p>Otro punto importante de la aplicación es la contemplación de variedades. Para poder mantener una jerarquía con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave foránea a su misma tabla. Esta estructura permite el desglose de una jerarquía de cultivos en la que sabemos qué entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar múltiples niveles.</p>
-<p><img alt="caption" src="figures/mirar_feno.png" title="original" /> </p>
+<p>
+<figure><img src="figures/mirar_feno.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <h2>Diseño de Índices Vegetativos</h2>
 <p>Para nuestro sistema de información una parcela es una agrupación de varios píxeles. Entendemos como PIXEL a la imagen satelital más pequeña que se puede obtener sobre el terreno, a partir de la cual obtendremos los índices vegetativos.</p>
 <p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. A continuación mostramos cómo las relaciones identificadas van a permitir una correcta búsqueda de features para después poder estimar con precisión en el modelo de producción de cultivo.</p>
@@ -1341,7 +1374,10 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 </code></pre></div>
 
 <p>Las líneas de código anteriores hacen referencia a una implementación concreta del patrón mencionado.  Fijándonos en la siguiente figura, la clase <strong>Command</strong> sería el handler y el método <strong>handle</strong> corresponde con handleRequest del esquema. Los próximos scripts que creemos serán los clientes de estas clases. Resaltar que la implementación de Django de este patrón es un poco más compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parámetros. </p>
-<p><img alt="caption" src="figures/pipeline_pattern.png" /></p>
+<p>
+<figure><img src="figures/pipeline_pattern.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>Con este patrón desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso más complejo. Cada unidad de carga se comporta como un filtro que añade de forma ordenada la información al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberías que permitan dejar varias instancias de la aplicación en estados diferentes.</p>
 <p>Para AGRAI, hacen falta transformar los datos de índices vegetativos que maneja el equipo en información ordenada que llegue al modelo de datos desarrollado anteriormente. A continuación explicamos el flujo de procesos de carga más utilizado.</p>
 <p>Los datos principalmente provienen de qgis, software para trabajar con información georeferenciada. El equipo pre-procesa la información sobre los índices vegetativos y da valores a los píxeles mediante dicho software. La principal función de este trabajo es dar sentido a esa información, persistiendo los datos tomados junto con sus relaciones con el parcelario físico.</p>
@@ -1503,7 +1539,10 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 Sí que intentaremos que los datos de producción con los que vamos a predecir estén normalizados y se haya hecho una búsqueda previa de outliers.</p>
 <p>Buscamos un modelo de regresión para el número de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeño, diseñaremos los cuadernos para automatizar la búsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar más adelante.</p>
 <p>El rango de valores para la mayoría de los índices que obtenemos va de -1 a 1. Los datos de índices negativos que llegan a la vista se pueden considerar como outliers. Esto es debido a que si los índices provienen de una imagen con nubes, no se diferencian los colores del terreno y el índice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los índices que provengan de la toma de la imagen en una fecha en la que había nubes.</p>
-<p><img alt="caption" src="figures/nubes.png" /></p>
+<p>
+<figure><img src="figures/nubes.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
 <p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestión y automatización de los modelos de producción generados a partir los datos de las 25 parcelas estudiadas.</p></div><div id=0-seguimiento><h2>2</h2><p>-- LINK_NOTE --</p>
 <p>[[seguimiento]]</p>
 <p>[[memoria]]</p>
