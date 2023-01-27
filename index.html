@@ -74,29 +74,30 @@ producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final 
 <figure><img src="figures/iteraciones.png" title="title" /><figcaption>caption</figcaption>
 </figure>
 </p></div><div id=EDT><h3>3 EDT</h3><p>Mostramos el desglose de las tareas más importantes para la correcta realización del proyecto.</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">graph</span><span class="w"> </span><span class="nt">LR</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">DISEÃ</span><span class="err">‘</span><span class="nt">O</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">IMPLEMENTACIÃ</span><span class="err">“</span><span class="nt">N</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">ALCANCE</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">METODOLOGIA</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">EDT</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">ENTREGABLES</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">TIEMPOS</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">GANTT</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">RRHH</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">COMUNICACIONES</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">RIESGOS</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS--</span><span class="o">&gt;</span><span class="nt">PREVIOS</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS--</span><span class="o">&gt;</span><span class="nt">REQUISITOS</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">REQUISITOS--</span><span class="o">&gt;</span><span class="nt">FUNCIONALES</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">REQUISITOS--</span><span class="o">&gt;</span><span class="nt">NO_FUNCIONALES</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">DISEÃ</span><span class="err">‘</span><span class="nt">O--</span><span class="o">&gt;</span><span class="nt">ARQUITECTURA</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">IMPLEMENTACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">PIPELINE</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PIPELINE--</span><span class="o">&gt;</span><span class="nt">PIPE</span><span class="p">.</span><span class="nc">1_D</span><span class="o">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PIPELINE--</span><span class="o">&gt;</span><span class="nt">PIPE</span><span class="p">.</span><span class="nc">2_D</span><span class="o">;</span><span class="w"></span>
-</code></pre></div>
+<div class="mermaid">
+graph LR;
+    TFG-->PLANIFICACIÓN;
+    TFG-->ANÁLISIS;
+    TFG-->DISEÑO;
+    TFG-->IMPLEMENTACIÓN;
+    PLANIFICACIÓN-->ALCANCE;
+    PLANIFICACIÓN-->METODOLOGIA;
+    PLANIFICACIÓN-->EDT;
+    PLANIFICACIÓN-->ENTREGABLES;
+    PLANIFICACIÓN-->TIEMPOS;
+    PLANIFICACIÓN-->GANTT;
+    PLANIFICACIÓN-->RRHH;
+    PLANIFICACIÓN-->COMUNICACIONES;
+    PLANIFICACIÓN-->RIESGOS;
+    ANÁLISIS-->PREVIOS;
+    ANÁLISIS-->REQUISITOS;
+    REQUISITOS-->FUNCIONALES:
+    REQUISITOS-->NO_FUNCIONALES;
+    DISEÑO-->ARQUITECTURA;
+    IMPLEMENTACIÓN-->PIPELINE;
+    PIPELINE-->PIPE.1_D;
+    PIPELINE-->PIPE.2_D;
+</div>
 
 <h2>Tareas y Descripción:</h2>
 <table>
@@ -868,32 +869,33 @@ gantt
 </tr>
 </tbody>
 </table></div><div id=infraestructure><h3>3 infraestructure</h3><p>El entorno local sobre el cuál desarrollamos y el de producción donde se despliega la aplicación son actualmente diferentes. Todos los miembros del equipo utilizamos máquinas Windows, mientras que el servidor de producción es una máquina Ubuntu. Es un problema importante por el proceso de instalación de las librerías necesarias para trabajar con los datos, se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va ha trabajar con el repositorio de la aplicación. Como solución propondremos una nueva forma de trabajo que nos asegure un entorno común con las mismas librerías y paquetes.</p>
-<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span><span class="p">;</span><span class="w">    </span>
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">desarollo</span><span class="w"></span>
-<span class="w">        </span><span class="n">WSL</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="mf">.1</span><span class="w"></span>
-<span class="w">        </span><span class="n">WSL</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="mf">.2</span><span class="w"></span>
-<span class="w">        </span><span class="n">WSL</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="mf">.3</span><span class="w"></span>
-<span class="w">    </span><span class="kd">end</span>
+<div class="mermaid">
+graph LR;    
+    subgraph desarollo
+        WSL--> WSL.1
+        WSL--> WSL.2
+        WSL--> WSL.3
+    end
 
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">producción</span><span class="w"></span>
+    subgraph producción
 
-<span class="w">        </span><span class="n">WSL</span><span class="mf">.1</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
-<span class="w">        </span><span class="n">WSL</span><span class="mf">.2</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
-<span class="w">        </span><span class="n">WSL</span><span class="mf">.3</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
+        WSL.1--> Ubuntu
+        WSL.2--> Ubuntu
+        WSL.3--> Ubuntu
 
-<span class="w">    </span><span class="kd">end</span>
-
-
-<span class="w">        </span><span class="n">BD_test</span><span class="o">--&gt;</span><span class="n">WSL</span><span class="w"></span>
-<span class="w">        </span><span class="n">BD_prod</span><span class="o">--&gt;</span><span class="n">Ubuntu</span><span class="w"></span>
+    end
 
 
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">repositorio</span><span class="w"></span>
-<span class="w">        </span><span class="n">CODE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GIT</span><span class="w">    </span>
-<span class="w">        </span><span class="n">GIT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="w"></span>
-<span class="w">        </span><span class="n">GIT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
-<span class="w">    </span><span class="kd">end</span>
-</code></pre></div>
+        BD_test-->WSL
+        BD_prod-->Ubuntu
+
+
+    subgraph repositorio
+        CODE --> GIT    
+        GIT --> WSL
+        GIT --> Ubuntu
+    end
+</div>
 
 <p>Parte del trabajo consiste en la automatización del despliegue de la aplicación. En este punto vemos como la infraestructura como código permite aislar las librerías necesarias creando un script que deja una máquina en estado estable para ejecutar la aplicación.</p>
 <p>Para poder utilizar tecnologías que posibiliten la integración continua transformamos el entorno de desarrollo desplegando la aplicación en UNIX. Identificamos las siguientes dependencias que necesitan ser instaladas:</p>
@@ -995,10 +997,11 @@ sudo python3 -m pip install -r requirements.txt
 </ul>
 <p>Actualmente solo existe un entono virtual sobre el cuál se instalan todas las librerías python necesarias para el desarrollo y despliegue. Dicha refactorización sobre la infraestructura se contempla para próximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande, pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseño actual impediría su mejora. En este caso sería muy sencillo, una vez crezca la aplicación separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id=control-versiones><h3>3 control-versiones</h3><p>Para poder desarrollar sobre software que está en producción estamos utilizando un sistema de control de versiones básico. Damos unas pequeñas pinceladas sobre cómo evoluciona el software y las ramas que utilizamos. </p>
 <p>El código de la aplicación se encuentra en un único servidor que gestiona su control de versiones a través de SVN, Subversion. El siguiente diagrama muestra el flujo de desarrollo con las ramas creadas para el trabajo independiente sin romper el producto en producción.</p>
-<div class="codehilite"><pre><span></span><code>       gitGraph
+<div class="mermaid">
+       gitGraph
            commit
            branch origins
-           commit tag:&quot;v1.0.0&quot;
+           commit tag:"v1.0.0"
            commit
            checkout main
            commit type: HIGHLIGHT
@@ -1007,17 +1010,18 @@ sudo python3 -m pip install -r requirements.txt
            commit
            branch featureA
            commit
-</code></pre></div>
+</div>
 
 <p>Al plantear un nuevo rediseño del producto, el trabajo tiene lugar en una rama diferente a la que se encuentra en producción, Esta nueva rama, Origins, gestionará el rediseño del modelo de datos y la implementación del proceso de automatización de los datos. Si el trabajo evoluciona correctamente, los futuros merges no deberían ser problemáticos.</p></div><div id=componentes><h3>3 componentes</h3><p>introducción para este apartado.</p>
 <p>Cuando comencé a trabajar con la aplicación todo el código se encontraba en un único paquete con muy poca forma. A medida que se he ido refactorizando, se han creado entidades para modelar los datos y éstas se han estructurado en componentes atómicas de la aplicación.</p>
-<div class="codehilite"><pre><span></span><code>erDiagram
+<div class="mermaid">
+erDiagram
 
     CUADERNO ||--|{ CORE : uses
     ROLES }|..|{ CORE : uses
     METEO }|..|{ CORE : uses
     AUTO }|..|{ CORE : uses
-</code></pre></div>
+</div>
 
 <p>En Django podemos crear un proyecto compuesto por varias aplicaciones. En la documentación oficial se explica como funciona la arquitectura del framework y se exponen ejemplos para que, una vez creadas, podamos acoplar y desacoplar las aplicaciones al proyecto. Es una forma similar de trabajo a cuando organizamos una librería en múltiples paquetes, pero un poco más complicada debido a que el ORM subyacente traduce los modelos a tablas en una BD. Veamos cómo con solo añadir o quitar un string en nuestro settings activamos o desactivamos la aplicación en el proyecto.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
@@ -1081,10 +1085,11 @@ sudo python3 -m pip install -r requirements.txt
 <p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere de varias entidades para persistir los datos y guardar un histórico. Es la visualización del histórico de índices vegetativos el mayor valor que obtiene el cliente cuando accede a la aplicación.</p>
 <p>El proceso de carga de datos hace uso de un módulo de descarga de imágenes satelitales que obtiene el valor de estos índices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del módulo de automatización junto con otras tareas similares. 
 Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de este para que los índices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
-<div class="codehilite"><pre><span></span><code>erDiagram
+<div class="mermaid">
+erDiagram
     AUTO }|..|{ descarga_indices : contains
     AUTO }|..|{ CORE : uses
-</code></pre></div></div><div id=modelo-BD><h3>3 modelo-BD</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación de la parte de análisis descrita en el planteamiento.</p>
+</div></div><div id=modelo-BD><h3>3 modelo-BD</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación de la parte de análisis descrita en el planteamiento.</p>
 <p>
 <figure><img src="figures/modelo-BD.png" /><figcaption>caption</figcaption>
 </figure>
@@ -1150,32 +1155,33 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 <p>Una decisión complicada sobre el posible histórico de datos es el registro de la evolución de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLÓGICO damos carácter temporal al cultivo concreto que se está siendo cultivando en una parcela. De esta forma podemos registrar cuáles son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recolección".</p>
 <p>El modelado de la entidad FENOLÓGICO ha sido una decisión complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carácter general y tiene sentido como entidad en sí misma (todos los cultivos pasan por siembra). Es su relación con CULTIVO mediante MIRAR_FENOLÓGICO lo que dice que dicho cultivo está en un estado fenológico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el día "2022-01-23". </p>
 <p>También es importante destacar que CULTIVO es simplemente el tipo que se ha registrado, por lo tanto, para que la información sea completa, un avistamiento fenológico sucede sobre un tipo de cultivo físicamente sembrado en una PARCELA.  El siguiente esquema muestra cómo estas tres entidades se relacionará para dar carácter temporal y espacial a un tipo de cultivo</p>
-<div class="codehilite"><pre><span></span><code><span class="n">erDiagram</span><span class="w"></span>
-<span class="w">    </span><span class="n">CULTIVO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">CULTIVO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
-<span class="w">    </span><span class="n">CULTIVO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">descripcion</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">es_variedad</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">FENOLOGICO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">descripcion</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">FENOLOGICO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
-<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">CULTIVO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
-<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">PARCELA</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
-<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">fenologico</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">parcela</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">fecha</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">PARCELA</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span>
-<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">estacion</span><span class="w"></span>
-<span class="w">        </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="n">altitud</span><span class="w"></span>
-<span class="w">        </span><span class="n">polygon</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="mermaid">
+erDiagram
+    CULTIVO ||--o{ CULTIVO : contains
+    CULTIVO {
+        string nombre FK
+        string descripcion
+        string es_variedad FK
+    }
+    FENOLOGICO {
+        string nombre FK
+        string descripcion
+    }
+    MIRAR_FENOLOGICO ||--o{ FENOLOGICO : contains
+    MIRAR_FENOLOGICO ||--o{ CULTIVO : contains
+    MIRAR_FENOLOGICO ||--o{ PARCELA : contains
+    MIRAR_FENOLOGICO {
+        string fenologico FK
+        string parcela FK
+        string fecha FK
+    }
+    PARCELA {
+        string idx 
+        string estacion
+        float altitud
+        polygon geom
+    }
+</div>
 
 <p>Otro punto importante de la aplicación es la contemplación de variedades. Para poder mantener una jerarquía con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave foránea a su misma tabla. Esta estructura permite el desglose de una jerarquía de cultivos en la que sabemos qué entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar múltiples niveles.</p>
 <p>
@@ -1186,18 +1192,25 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 <h2>Diseño de Índices Vegetativos</h2>
 <p>Para nuestro sistema de información una parcela es una agrupación de varios píxeles. Entendemos como PIXEL a la imagen satelital más pequeña que se puede obtener sobre el terreno, a partir de la cual obtendremos los índices vegetativos.</p>
 <p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. A continuación mostramos cómo las relaciones identificadas van a permitir una correcta búsqueda de features para después poder estimar con precisión en el modelo de producción de cultivo.</p>
-<div class="codehilite"><pre><span></span><code>erDiagram
-    INDICE ||--o{ MIRAR_INDICE : contains
-    INDICE {
+<div class="mermaid">
+erDiagram
+    CULTIVO ||--o{ CULTIVO : contains
+    CULTIVO {
+        string nombre FK
+        string descripcion
+        string es_variedad FK
+    }
+    FENOLOGICO {
         string nombre FK
         string descripcion
     }
-    PIXEL ||--o{ MIRAR_INDICE : contains
-    PIXEL ||--o{ PARCELA : contains
-    PIXEL {
-        string parcela FK 
-        polygon geom
-        string idx
+    MIRAR_FENOLOGICO ||--o{ FENOLOGICO : contains
+    MIRAR_FENOLOGICO ||--o{ CULTIVO : contains
+    MIRAR_FENOLOGICO ||--o{ PARCELA : contains
+    MIRAR_FENOLOGICO {
+        string fenologico FK
+        string parcela FK
+        string fecha FK
     }
     PARCELA {
         string idx 
@@ -1205,14 +1218,7 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
         float altitud
         polygon geom
     }
-    MIRAR_INDICE {
-        string indice FK
-        string pixel FK
-        date fecha
-        geojson json
-        float valor
-    }
-</code></pre></div>
+</div>
 
 <p>Este diseño de índices permite mantener un histórico de datos preciso. </p>
 <h2>Diseño de Roles</h2>
@@ -1345,13 +1351,14 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 <p>Con este patrón desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso más complejo. Cada unidad de carga se comporta como un filtro que añade de forma ordenada la información al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberías que permitan dejar varias instancias de la aplicación en estados diferentes.</p>
 <p>Para AGRAI, hacen falta transformar los datos de índices vegetativos que maneja el equipo en información ordenada que llegue al modelo de datos desarrollado anteriormente. A continuación explicamos el flujo de procesos de carga más utilizado.</p>
 <p>Los datos principalmente provienen de qgis, software para trabajar con información georeferenciada. El equipo pre-procesa la información sobre los índices vegetativos y da valores a los píxeles mediante dicho software. La principal función de este trabajo es dar sentido a esa información, persistiendo los datos tomados junto con sus relaciones con el parcelario físico.</p>
-<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">qgis</span><span class="o">--&gt;</span><span class="n">parcelas</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">parcelas</span><span class="o">--&gt;</span><span class="n">cultivos</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">cultivos</span><span class="o">--&gt;</span><span class="err">í</span><span class="n">ndices</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="err">í</span><span class="n">ndices</span><span class="o">--&gt;</span><span class="n">vista_minable</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">vista_minable</span><span class="o">--&gt;</span><span class="n">modelo</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+<div class="mermaid">
+graph LR;
+    qgis-->parcelas;
+    parcelas-->cultivos;
+    cultivos-->índices;
+    índices-->vista_minable;
+    vista_minable-->modelo;
+</div>
 
 <p>La información de los píxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los índices vegetativos solo contemplamos la información sobre la geometría de la parcela, no sabemos nada más. Esta información tiene que almacenarse junto con el cultivo, estado fenológico, datos físicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los scripts que conforman los procesos del pipeline.</p>
 <table>
@@ -1385,11 +1392,14 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 </tbody>
 </table>
 <p>Para entender detalladamente qué hacen los scripts de carga de índices tenemos que explicar algunos de los procesos de automatización de los que hacemos uso. </p>
-<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">indices</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">download_indices</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">download_indices</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">download_today</span><span class="w"></span>
-<span class="w">    </span><span class="n">download_indices</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">download_range</span><span class="w"></span>
-</code></pre></div>
+<div class="mermaid">
+graph LR;
+    qgis-->parcelas;
+    parcelas-->cultivos;
+    cultivos-->índices;
+    índices-->vista_minable;
+    vista_minable-->modelo;
+</div>
 
 <p>Estos scripts nos permiten crear el flujo necesario para que la aplicación procese la información y termine en un estado consistente. Parte del proceso necesita ser automatizado y ejecutado reiteradamente, añadiendo los datos a la BD y relacionándolos adecuadamente. En nuestro contexto agronómico, es la descarga de índices la parte del proceso que necesita ser automatizada, mientras que los datos de las parcelas y cultivos y la información geoespacial se pueden cargar directamente en el despliegue de la aplicación. </p>
 <p>Con esta estructura de tuberías lista, podemos reutilizar cualquier parte del proceso. Un planificador de tareas nos ayuda a establecer el tiempo que tiene que transcurrir entre las descargas. Sin entrar en más detalle, se ha utilizado el scheduler por defecto del framework de Django que estamos utilizando para esta gestión de tiempos y descarga.</p>
