@@ -73,30 +73,248 @@ producto. En definitiva, consiste en varios ciclos de vida en cascada. Al final 
 <p>
 <figure><img src="figures/iteraciones.png" title="title" /><figcaption>caption</figcaption>
 </figure>
-</p></div><div id=EDT><h3>3 EDT</h3><div class="mermaid">
-graph LR;
-    TFG-->PLANIFICACIÓN;
-    TFG-->ANÁLISIS;
-    TFG-->DISEÑO;
-    TFG-->IMPLEMENTACIÓN;
-    PLANIFICACIÓN-->ALCANCE;
-    PLANIFICACIÓN-->METODOLOGIA;
-    PLANIFICACIÓN-->EDT;
-    PLANIFICACIÓN-->ENTREGABLES;
-    PLANIFICACIÓN-->TIEMPOS;
-    PLANIFICACIÓN-->GANTT;
-    PLANIFICACIÓN-->RRHH;
-    PLANIFICACIÓN-->COMUNICACIONES;
-    PLANIFICACIÓN-->RIESGOS;
-    ANÁLISIS-->PREVIOS;
-    ANÁLISIS-->REQUISITOS;
-    REQUISITOS-->FUNCIONALES:
-    REQUISITOS-->NO_FUNCIONALES;
-    DISEÑO-->ARQUITECTURA;
-    IMPLEMENTACIÓN-->PIPELINE;
-    PIPELINE-->PIPE.1_D;
-    PIPELINE-->PIPE.2_D;
-</div></div><div id=entregables><h3>3 entregables</h3><p>Para acotar el proceso de trabajo identificamos los siguientes entregables que generaremos a lo a medida que avance el proyecto. Estos entregables quedarán en la memoria en sus correspondientes apartados o como anexos si tienen una extensión más larga. La siguiente tabla contiene que lleva a cada uno de estos artefactos.</p>
+</p></div><div id=EDT><h3>3 EDT</h3><p>Mostramos el desglose de las tareas más importantes para la correcta realización del proyecto.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">graph</span><span class="w"> </span><span class="nt">LR</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">DISEÃ</span><span class="err">‘</span><span class="nt">O</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TFG--</span><span class="o">&gt;</span><span class="nt">IMPLEMENTACIÃ</span><span class="err">“</span><span class="nt">N</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">ALCANCE</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">METODOLOGIA</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">EDT</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">ENTREGABLES</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">TIEMPOS</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">GANTT</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">RRHH</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">COMUNICACIONES</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLANIFICACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">RIESGOS</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS--</span><span class="o">&gt;</span><span class="nt">PREVIOS</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ANÃ</span><span class="err"></span><span class="nt">LISIS--</span><span class="o">&gt;</span><span class="nt">REQUISITOS</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">REQUISITOS--</span><span class="o">&gt;</span><span class="nt">FUNCIONALES</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">REQUISITOS--</span><span class="o">&gt;</span><span class="nt">NO_FUNCIONALES</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DISEÃ</span><span class="err">‘</span><span class="nt">O--</span><span class="o">&gt;</span><span class="nt">ARQUITECTURA</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">IMPLEMENTACIÃ</span><span class="err">“</span><span class="nt">N--</span><span class="o">&gt;</span><span class="nt">PIPELINE</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PIPELINE--</span><span class="o">&gt;</span><span class="nt">PIPE</span><span class="p">.</span><span class="nc">1_D</span><span class="o">;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PIPELINE--</span><span class="o">&gt;</span><span class="nt">PIPE</span><span class="p">.</span><span class="nc">2_D</span><span class="o">;</span><span class="w"></span>
+</code></pre></div>
+
+<h2>Tareas y Descripción:</h2>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 INTRODUCCIÓN</td>
+<td>Explicamos el contexto del problema planteado y cómo vamos a implementar la solución.</td>
+</tr>
+<tr>
+<td>1.2 ALCANCE</td>
+<td>Qué pretendemos conseguir con el proyecto acontando las tareas</td>
+</tr>
+<tr>
+<td>1.3 RECURSOS HUMANOS</td>
+<td>Aquellas personas que intervienen y la explicación de sus funciones</td>
+</tr>
+<tr>
+<td>1.4 COMUNICACIONES</td>
+<td>Elementos de comunicación interna y externa, incluimos interesados y clientes.</td>
+</tr>
+<tr>
+<td>1.5 METODOLOGIA</td>
+<td>Conjunto de procedimientos que usaremos para la planificación y gestión.</td>
+</tr>
+<tr>
+<td>1.6 EDT</td>
+<td>Estructura en árbol con el desglose en tareas del trabajo</td>
+</tr>
+<tr>
+<td>1.7 ENTREGABLES</td>
+<td>Creación de los paquetes de trabajo del proyecto</td>
+</tr>
+<tr>
+<td>1.8 ESTIMACIÓN DE TIEMPOS</td>
+<td>Estimanción en horas para cada paquete de trabajo</td>
+</tr>
+<tr>
+<td>1.9 GANTT</td>
+<td>Tiempo determinado en el calendario para cada uno de los paquetes de trabajo</td>
+</tr>
+<tr>
+<td>1.10 PLAN DE RIESGOS</td>
+<td>Determinaremos los principales riesgos que pueden suceder durante el proyecto y los categorizaremos por nivel de impacto y de suceso.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1 CONCEPTOS PREVIOS</td>
+<td>Explicamos el contexto del problema planteado y cómo vamos a implementar la solución.</td>
+</tr>
+<tr>
+<td>2.2 PROYECTO AGRAI</td>
+<td>Presentamos el estado actual de la aplicación AGRAI.</td>
+</tr>
+<tr>
+<td>2.3 PIPELINE</td>
+<td>Exponemos los distintos pasos a través de los cuales se transforman los datos</td>
+</tr>
+<tr>
+<td>2.4 CATÁLOGO DE REQUISITOS</td>
+<td>Obtendremos los requisitos funcionales y no funcionales del proyecto</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1 ENTORNO</td>
+<td>Decidimos los entornos de desarrollo necesarios así como las tecnologías necesarias en cada punto.</td>
+</tr>
+<tr>
+<td>3.2 INFRAESTRUCTURA CÓDIGO</td>
+<td>Desarrollamos un script para dejar la máquina que contiene la aplicación en un estado estable con todas sus dependencias instaladas.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1 ANÁLISIS MODELO PREVIO</td>
+<td>Explicamos el contexto del modelo de datos previos y sus fallos</td>
+</tr>
+<tr>
+<td>4.2 REDISEÑO ENTIDADES</td>
+<td>Explicamos qué entidades conformarán el modelo y por que la base de datos quedará normalizada.</td>
+</tr>
+<tr>
+<td>4.3 DISEÑO DE SERVICIOS</td>
+<td>Encapsulamos las consultas más frecuentes en servicios fáciles de acceder.</td>
+</tr>
+<tr>
+<td>4.4 CARGA CON DATOS</td>
+<td>Cargaremos el modelo con datos para verificar su consistencia.</td>
+</tr>
+<tr>
+<td>4.5 DESPLIEGUE DE APLICACIÓN</td>
+<td>Obtendremos los requisitos funcionales y no funcionales del proyecto</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.1 DATOS DE ENTRADA</td>
+<td>Explicamos las fuentes de datos con las que trabajamos</td>
+</tr>
+<tr>
+<td>5.2 DEFINICIÓN DE ETAPAS</td>
+<td>Acotamos y definimos los pasos en los que se transforman los datos hasta llegar al modelo de forma consistente.</td>
+</tr>
+<tr>
+<td>5.3 VISTA MINABLE</td>
+<td>Con los datos ordenados en el modelo seleccionamos 'features' para el modelo de producción</td>
+</tr>
+<tr>
+<td>5.4 MODELO DE PRODUCCIÓN</td>
+<td>Usamos varias técnicas de Inteligencia Artificial para crear un modelo de producción de Kg para el cultivo.</td>
+</tr>
+<tr>
+<td>5.4 AUTOMATIZACIÓN COMPLETA</td>
+<td>Explicamos cómo esta definición e implementación de etapas permite automatizar el flujo de trabajo del equipo.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.1 PRUEBAS</td>
+<td>Realizamos pruebas de integración para asegurar la consistencia de los datos</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7.1 ESTUDIO PREVIO</td>
+<td>Se revisarán y observarán TFGs de años anteriores, los cuales podemos encontrar en la biblioteca de la Universidad de La Rioja.</td>
+</tr>
+<tr>
+<td>7.2 ESTRUCTURA</td>
+<td>Diseñaremos la estructura de nuestro TFG basándonos en la estructura de otros trabajos de compañeros.</td>
+</tr>
+<tr>
+<td>7.3 REDACCIÓN</td>
+<td>Redactamos la memoria a medida que avanza el proyecto.</td>
+</tr>
+<tr>
+<td>7.4 EXPORTACIÓN</td>
+<td>La memoria se escribe en notas de "markdown" debido a la simplicidad con la que se pueden integrar diagramas y código. Al terminarl, exportaremos la memoria como páginal "html"</td>
+</tr>
+<tr>
+<td>7.5 REVISIÓN</td>
+<td>Al finalizar el proyecto revisaremos el escrito para asegurarnos de no cometer errores.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8.1 GESTIÓN DE TIEMPOS</td>
+<td>En una tabla registramos el tiempo estimado, el tiempo real invertido y la desviación del tiempo en cada una de las tareas del proyecto.</td>
+</tr>
+<tr>
+<td>8.2 REUNIONES</td>
+<td>Se realizarán órdenes del día y actas con lo tratado en cada una de las reuniones.</td>
+</tr>
+</tbody>
+</table></div><div id=entregables><h3>3 entregables</h3><p>Para acotar el proceso de trabajo identificamos los siguientes entregables que generaremos a lo a medida que avance el proyecto. Estos entregables quedarán en la memoria en sus correspondientes apartados o como anexos si tienen una extensión más larga. La siguiente tabla contiene que lleva a cada uno de estos artefactos.</p>
 <table>
 <thead>
 <tr>
@@ -649,33 +867,124 @@ gantt
 <td align="left">Utilizar software libre</td>
 </tr>
 </tbody>
-</table></div><div id=infraestructure><h3>3 infraestructure</h3><div class="mermaid">
-graph LR;    
-    subgraph desarollo
-        WSL--> WSL.1
-        WSL--> WSL.2
-        WSL--> WSL.3
-    end
+</table></div><div id=infraestructure><h3>3 infraestructure</h3><p>El entorno local sobre el cuál desarrollamos y el de producción donde se despliega la aplicación son actualmente diferentes. Todos los miembros del equipo utilizamos máquinas Windows, mientras que el servidor de producción es una máquina Ubuntu. Es un problema importante por el proceso de instalación de las librerías necesarias para trabajar con los datos, se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va ha trabajar con el repositorio de la aplicación. Como solución propondremos una nueva forma de trabajo que nos asegure un entorno común con las mismas librerías y paquetes.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span><span class="p">;</span><span class="w">    </span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">desarollo</span><span class="w"></span>
+<span class="w">        </span><span class="n">WSL</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="mf">.1</span><span class="w"></span>
+<span class="w">        </span><span class="n">WSL</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="mf">.2</span><span class="w"></span>
+<span class="w">        </span><span class="n">WSL</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="mf">.3</span><span class="w"></span>
+<span class="w">    </span><span class="kd">end</span>
 
-    subgraph producción
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">producción</span><span class="w"></span>
 
-        WSL.1--> Ubuntu
-        WSL.2--> Ubuntu
-        WSL.3--> Ubuntu
+<span class="w">        </span><span class="n">WSL</span><span class="mf">.1</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
+<span class="w">        </span><span class="n">WSL</span><span class="mf">.2</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
+<span class="w">        </span><span class="n">WSL</span><span class="mf">.3</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
 
-    end
-
-
-        BD_test-->WSL
-        BD_prod-->Ubuntu
+<span class="w">    </span><span class="kd">end</span>
 
 
-    subgraph repositorio
-        CODE --> GIT    
-        GIT --> WSL
-        GIT --> Ubuntu
-    end
-</div></div><div id=entorno><h3>3 entorno</h3><p>Es importante preparar un entorno común para el equipo. Django es un framework muy útil por la integración de las herramientas que hemos visto (ORM, web-interfaces, etc.), pero para conseguir un workflow adecuado necesitamos incluir otras herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos con las librerías necesarias para ejecutar modelos predictivos.</p>
+<span class="w">        </span><span class="n">BD_test</span><span class="o">--&gt;</span><span class="n">WSL</span><span class="w"></span>
+<span class="w">        </span><span class="n">BD_prod</span><span class="o">--&gt;</span><span class="n">Ubuntu</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">repositorio</span><span class="w"></span>
+<span class="w">        </span><span class="n">CODE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GIT</span><span class="w">    </span>
+<span class="w">        </span><span class="n">GIT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">WSL</span><span class="w"></span>
+<span class="w">        </span><span class="n">GIT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"></span>
+<span class="w">    </span><span class="kd">end</span>
+</code></pre></div>
+
+<p>Parte del trabajo consiste en la automatización del despliegue de la aplicación. En este punto vemos como la infraestructura como código permite aislar las librerías necesarias creando un script que deja una máquina en estado estable para ejecutar la aplicación.</p>
+<p>Para poder utilizar tecnologías que posibiliten la integración continua transformamos el entorno de desarrollo desplegando la aplicación en UNIX. Identificamos las siguientes dependencias que necesitan ser instaladas:</p>
+<ul>
+<li>postgres 14 + postgis</li>
+<li>python3.10</li>
+<li>GDAL 3.3.2</li>
+<li>Django</li>
+<li>Virtual-Env [librerías ciencia de datos]</li>
+</ul>
+<p>Suele ser complicado encontrar todas las dependencias cons sus versiones correctas, en este caso el punto más complicado ha sido la instalación de Python con su versión correspondiente de GDAL, librería que permite tratar con los datos geoespaciales. Además el sistema gestor de BD, 'postgres' necesita una extensión especial, 'postgis' para poder guardar los datos georeferenciados. Como este tipo de trabajo es casi de prueba y error, la utilidad del script que obtenemos es de gran valor.</p>
+<p>El primero de los entregables hace referencia a esta parte del proceso. El siguiente script automatiza la creación de una máquina con las librerías necesarias, el cuál una vez ejecutado, deja la aplicación lista para su desligue.</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc<span class="p">|</span>sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+
+sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt install postgresql-14
+sudo apt install postgresql-14-postgis-scripts
+
+sudo service postgresql start
+
+sudo -u postgres createuser -P agrai_user
+sudo -u postgres createdb -O agrai_user agrai_db
+sudo -u postgres psql -c <span class="s2">&quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot;</span> agrai_db
+
+<span class="c1"># gdal native:</span>
+sudo add-apt-repository ppa:ubuntugis/ppa <span class="o">&amp;&amp;</span> sudo apt-get update
+sudo apt-get update
+
+<span class="c1"># cargarte la versión de la máquina, dejar solo 1:</span>
+sudo apt autoremove python3
+
+<span class="c1"># python repositories</span>
+
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+<span class="c1"># python concrete installation</span>
+
+sudo apt install python3.10 <span class="c1"># version concreta</span>
+sudo apt-get install python3.10-dev python3.10-venv
+sudo apt install python3.10-dev python3.10-venv
+sudo apt install virtualenv
+
+<span class="c1"># python env var</span>
+
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages&quot;</span>
+
+<span class="nb">alias</span> <span class="nv">py</span><span class="o">=</span>python3.10
+<span class="nb">alias</span> <span class="nv">python</span><span class="o">=</span>python3.10
+<span class="nb">alias</span> <span class="nv">python3</span><span class="o">=</span>python3.10
+
+<span class="c1"># creacion entorno_venv</span>
+sudo python3.10 -m venv ../agrai_venv
+
+<span class="c1"># GDAL</span>
+sudo apt-get install libgdal-dev
+
+<span class="c1"># env gdal lib variables</span>
+
+<span class="nb">export</span> <span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span>/usr/include/gdal
+<span class="nb">export</span> <span class="nv">C_INCLUDE_PATH</span><span class="o">=</span>/usr/include/gdal
+
+<span class="c1"># install dep in python agrai_venv</span>
+
+<span class="nb">source</span> ../agrai_venv/bin/activate
+<span class="c1"># pip install --upgrade pip # quitar</span>
+sudo python3 -m pip install -r requirements.txt
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
+<span class="n">django</span>
+<span class="n">django</span><span class="o">-</span><span class="n">apscheduler</span>
+<span class="n">django_extensions</span>
+<span class="n">psycopg2</span>
+<span class="n">numpy</span>
+<span class="n">pandas</span>
+<span class="n">requests</span>
+<span class="n">pdfkit</span>
+<span class="n">fiona</span>
+<span class="n">rasterio</span>
+<span class="n">rasterstats</span>
+<span class="n">GDAL</span><span class="o">==</span><span class="mf">3.4.3</span>
+<span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
+<span class="n">xhtml2pdf</span>
+</code></pre></div></div><div id=entorno><h3>3 entorno</h3><p>Es importante preparar un entorno común para el equipo. Django es un framework muy útil por la integración de las herramientas que hemos visto (ORM, web-interfaces, etc.), pero para conseguir un workflow adecuado necesitamos incluir otras herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos con las librerías necesarias para ejecutar modelos predictivos.</p>
 <p>Migración de todo el entorno a UNIX para posteriormente utilizar herramientas de integración continua. El trabajo en el equipo local se hace a través de una máquina en WSL (windows subsystem for Linux) para trabajar de forma semejante a un contender. Uno de los problemas principales para el equipo en su flujo de trabajo ha sido mantener una integridad entre el desarrollo realizad por los diferentes miembros del equipo y el posterior despliegue de la aplicación en un entorno UNIX diferente al que se había utilizado en local en las versiones de pre-producción.</p>
 <p>Dedicamos varios días a preparar la integración de Django con cuadernos jupyter y además poder ejecutar diferentes entornos virtuales con las librerías adecuadas en cada momento. Los siguientes ejemplos muestran como se ha conseguido integrar las librerías necesarias para el despliegue de los cuadernos y su integración con los datos y los modelos de Django.</p>
 <p>Los cuadernos jupyter que se encuentran en esta memoria se han exportado desde la propia aplicación. Vemos la facilidad con la que el equipo puede redactar informes para clientes concretos.  Estos cuadernos son un punto tan importante de la arquitectura como puede ser el módulo de servicios.</p></div><div id=UNIX><h3>3 UNIX</h3><p>Hacemos uso de WSL (Windows Subsystem for Linux) para crear el entorno de desarrollo necesario para el proyecto. De esta forma conseguimos que los entornos de pruebas y producción sean muy similares, permitiendo automatizar el despliegue de la aplicación mediante técnicas de infraestructura como código. Una de las ventajas de tener una máquina Ubuntu como entorno de desarrollo es que mediante un script .sh instalamos todas las dependencias necesarias para dejar dicha máquina en un estado estable preparado para el despliegue de la aplicación.</p>
@@ -684,11 +993,12 @@ graph LR;
 <li>Despliegue de la aplicación</li>
 <li>data-science para la creación de modelos a nivel interno.</li>
 </ul>
-<p>Actualmente solo existe un entono virtual sobre el cuál se instalan todas las librerías python necesarias para el desarrollo y despliegue. Dicha refactorización sobre la infraestructura se contempla para próximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande, pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseño actual impediría su mejora. En este caso sería muy sencillo, una vez crezca la aplicación separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id=control-versiones><h3>3 control-versiones</h3><div class="mermaid">
-       gitGraph
+<p>Actualmente solo existe un entono virtual sobre el cuál se instalan todas las librerías python necesarias para el desarrollo y despliegue. Dicha refactorización sobre la infraestructura se contempla para próximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos de un refactor grande, pero que no se lleven a cabo en el momento actual. Una vez identificados valoramos su importancia y vemos si el diseño actual impediría su mejora. En este caso sería muy sencillo, una vez crezca la aplicación separar los entornos virtuales para mejorar el tiempo de build y deployment.</p></div><div id=control-versiones><h3>3 control-versiones</h3><p>Para poder desarrollar sobre software que está en producción estamos utilizando un sistema de control de versiones básico. Damos unas pequeñas pinceladas sobre cómo evoluciona el software y las ramas que utilizamos. </p>
+<p>El código de la aplicación se encuentra en un único servidor que gestiona su control de versiones a través de SVN, Subversion. El siguiente diagrama muestra el flujo de desarrollo con las ramas creadas para el trabajo independiente sin romper el producto en producción.</p>
+<div class="codehilite"><pre><span></span><code>       gitGraph
            commit
            branch origins
-           commit tag:"v1.0.0"
+           commit tag:&quot;v1.0.0&quot;
            commit
            checkout main
            commit type: HIGHLIGHT
@@ -697,19 +1007,186 @@ graph LR;
            commit
            branch featureA
            commit
-</div></div><div id=componentes><h3>3 componentes</h3><div class="mermaid">
-erDiagram
+</code></pre></div>
+
+<p>Al plantear un nuevo rediseño del producto, el trabajo tiene lugar en una rama diferente a la que se encuentra en producción, Esta nueva rama, Origins, gestionará el rediseño del modelo de datos y la implementación del proceso de automatización de los datos. Si el trabajo evoluciona correctamente, los futuros merges no deberían ser problemáticos.</p></div><div id=componentes><h3>3 componentes</h3><p>introducción para este apartado.</p>
+<p>Cuando comencé a trabajar con la aplicación todo el código se encontraba en un único paquete con muy poca forma. A medida que se he ido refactorizando, se han creado entidades para modelar los datos y éstas se han estructurado en componentes atómicas de la aplicación.</p>
+<div class="codehilite"><pre><span></span><code>erDiagram
 
     CUADERNO ||--|{ CORE : uses
     ROLES }|..|{ CORE : uses
     METEO }|..|{ CORE : uses
     AUTO }|..|{ CORE : uses
-</div></div><div id=data-load><h3>3 data-load</h3><div class="mermaid">
-erDiagram
+</code></pre></div>
+
+<p>En Django podemos crear un proyecto compuesto por varias aplicaciones. En la documentación oficial se explica como funciona la arquitectura del framework y se exponen ejemplos para que, una vez creadas, podamos acoplar y desacoplar las aplicaciones al proyecto. Es una forma similar de trabajo a cuando organizamos una librería en múltiples paquetes, pero un poco más complicada debido a que el ORM subyacente traduce los modelos a tablas en una BD. Veamos cómo con solo añadir o quitar un string en nuestro settings activamos o desactivamos la aplicación en el proyecto.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django_apscheduler&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django_extensions&#39;</span><span class="p">,</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;django.contrib.gis&#39;</span><span class="p">,</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;core&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;meteo&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;roles&#39;</span><span class="p">,</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;cuaderno&#39;</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="s1">&#39;auto&#39;</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Estas aplicaciones pueden comunicarse entre sí a través de sus modelos y servicios. En la siguiente tabla explicamos que hace cada sub-aplicación.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ENTIDAD</th>
+<th align="right">DESCRIPCIÓN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Core</td>
+<td align="right">Como toda la información que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla “Parcela”.</td>
+</tr>
+<tr>
+<td align="left">Roles</td>
+<td align="right">Separa los interesados que realizan acciones sobre el parcelario de las entidades principales</td>
+</tr>
+<tr>
+<td align="left">Meteo</td>
+<td align="right">Gestiona la comunicación y descarga de datos de estaciones meteorológicas</td>
+</tr>
+<tr>
+<td align="left">Cuaderno</td>
+<td align="right">Extiende el almacenamiento de datos relacionado con incidencias en el parcelario.</td>
+</tr>
+<tr>
+<td align="left">Auto</td>
+<td align="right">Contiene scripts y dependencias externas para la automatización de procesos, como la descarga de imágenes satelitáles.</td>
+</tr>
+</tbody>
+</table>
+<p>Esta división en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Más importante aún la claridad y sencillez de los modelos de cada componente y su respectiva representación en la BD.</p></div><div id=data-load><h3>3 data-load</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicación de forma ordenada con posibilidad de ser escalados. En la implementación del pipeline que veremos en siguientes apartados haremos hincapié en los estados de carga por los que pasan los datos, de momento solo importa destacar que el modelo actual permite mantener un histórico de datos mucho más sólido que el que estaba implantado cuando comenzamos el desarrollo. </p>
+<p>Sí que es importante explicar por qué vamos a poner tanto énfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicación muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basándose en los índices vegetativos, también se muestra la producción estimada.</p>
+<p>
+<figure><img src="figures/visor_GIS.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere de varias entidades para persistir los datos y guardar un histórico. Es la visualización del histórico de índices vegetativos el mayor valor que obtiene el cliente cuando accede a la aplicación.</p>
+<p>El proceso de carga de datos hace uso de un módulo de descarga de imágenes satelitales que obtiene el valor de estos índices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del módulo de automatización junto con otras tareas similares. 
+Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de este para que los índices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
+<div class="codehilite"><pre><span></span><code>erDiagram
     AUTO }|..|{ descarga_indices : contains
     AUTO }|..|{ CORE : uses
-</div></div><div id=modelo-BD><h3>3 modelo-BD</h3><div class="mermaid">
-erDiagram
+</code></pre></div></div><div id=modelo-BD><h3>3 modelo-BD</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación de la parte de análisis descrita en el planteamiento.</p>
+<p>
+<figure><img src="figures/modelo-BD.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Para la creación de este modelo he trabajado con el equipo en la identificación de los conceptos que necesitaban ser representados. El diseño en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, además de permitir la transmisión de ideas de forma sencilla durante las reuniones.</p>
+<p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado aísla la base de datos y nos permite diseñar directamente en <em>Python</em> dicho modelo. Las entidades se diseñan como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves foráneas que físicamente contiene la base de datos.</p>
+<p>La utilización de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localización física de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de producción.</p>
+<p>Varias etapas han sido necesarias hasta llegar a un punto más o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del código. Esta representación gráfica ha sido realmente útil para poder pensar sobre el diseño a medida que avanzaba.</p>
+<h2>Entidades Principales</h2>
+<p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta selección de entidades se realiza cuidadosamente para que la aplicación pueda contemplar la mayor información posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseño detalladamente en los siguientes puntos.</p>
+<p>
+<figure><img src="figures/spectralgeo_db.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Este rediseño contempla la mayoría de casos posibles para el posterior tratamiento y procesamiento de datos, con posibilidad de crear buenos modelos predictivos. A continuación se describen las entidades principales contempladas en la base de datos.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ENTIDAD</th>
+<th align="right">DESCRIPCIÓN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Parcela</td>
+<td align="right">Como toda la información que se va a almacenar es referente a las parcelas y sus datos, toda la BD gira en torno a la tabla “Parcela”.</td>
+</tr>
+<tr>
+<td align="left">Cultivo</td>
+<td align="right">Esta tabla está directamente unida a la anterior, ya que un cultivo puede tener muchas variedades diferentes se modela de forma recursiva con una clave foránea a sí mismo (leer el siguiente punto, Ej: Guisante es un tipo de cultivo, pero tiene varias variedades: tirabeque, snap peas…).</td>
+</tr>
+<tr>
+<td align="left">Indice</td>
+<td align="right">Esta taba es de vital importancia para el funcionamiento de la aplicación, toda nuestra información lleva a estos datos vegetativos. Serán datos calculados en un dominio, esto se hace así ya que existen cientos de formas de denominar un mismo índice de vegetación y podría ser un desastre a la hora de realizar las consultas. Para ello se establecerán algunos campos determinados en el campo “tipo_indice” y se les dará un valor en “valor_indice”.</td>
+</tr>
+<tr>
+<td align="left">Mirar_Indice</td>
+<td align="right">Contempla un histórico de datos y permite dar valor concreto a un índice vegetativo en una fecha única.</td>
+</tr>
+<tr>
+<td align="left">Fenológico</td>
+<td align="right">Permite registrar diferentes estados fenológicos por los que puede pasar un cultivo. La relación entre el estado fenológico y el cultivo se realiza a través de la tabla Mirar_Fenologico.</td>
+</tr>
+<tr>
+<td align="left">Mirar_Fenologico</td>
+<td align="right">Permite dar carácter temporal al estado fenológico de un cultivo. Registramos un estado para un cultivo en una fecha concreta.</td>
+</tr>
+<tr>
+<td align="left">Campaña</td>
+<td align="right">Es una tabla muy importante, sirve para unir distintos tipos de registros (desde variedades hasta labores de campo pasando por unir los datos de parcelas y subparcelas).</td>
+</tr>
+<tr>
+<td align="left">Interesado</td>
+<td align="right">Permite realizar el diseño de roles mediante su clave foránea a una parcela. Un intereseado (stakeholder) es una persona que tiene relación con una o varias parcelas (Ej, cultivador, propietario, etc).</td>
+</tr>
+</tbody>
+</table>
+<p>
+<figure><img src="figures/modelo-end.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<h2>Diseño del Cultivo y Fenología</h2>
+<p>Una decisión complicada sobre el posible histórico de datos es el registro de la evolución de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLÓGICO damos carácter temporal al cultivo concreto que se está siendo cultivando en una parcela. De esta forma podemos registrar cuáles son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recolección".</p>
+<p>El modelado de la entidad FENOLÓGICO ha sido una decisión complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carácter general y tiene sentido como entidad en sí misma (todos los cultivos pasan por siembra). Es su relación con CULTIVO mediante MIRAR_FENOLÓGICO lo que dice que dicho cultivo está en un estado fenológico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el día "2022-01-23". </p>
+<p>También es importante destacar que CULTIVO es simplemente el tipo que se ha registrado, por lo tanto, para que la información sea completa, un avistamiento fenológico sucede sobre un tipo de cultivo físicamente sembrado en una PARCELA.  El siguiente esquema muestra cómo estas tres entidades se relacionará para dar carácter temporal y espacial a un tipo de cultivo</p>
+<div class="codehilite"><pre><span></span><code><span class="n">erDiagram</span><span class="w"></span>
+<span class="w">    </span><span class="n">CULTIVO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">CULTIVO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
+<span class="w">    </span><span class="n">CULTIVO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">descripcion</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">es_variedad</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">FENOLOGICO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">descripcion</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">FENOLOGICO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
+<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">CULTIVO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
+<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">PARCELA</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">contains</span><span class="w"></span>
+<span class="w">    </span><span class="n">MIRAR_FENOLOGICO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">fenologico</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">parcela</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">fecha</span><span class="w"> </span><span class="n">FK</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">PARCELA</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">estacion</span><span class="w"></span>
+<span class="w">        </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="n">altitud</span><span class="w"></span>
+<span class="w">        </span><span class="n">polygon</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>Otro punto importante de la aplicación es la contemplación de variedades. Para poder mantener una jerarquía con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave foránea a su misma tabla. Esta estructura permite el desglose de una jerarquía de cultivos en la que sabemos qué entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar múltiples niveles.</p>
+<p>
+<figure><img src="figures/mirar_feno.png" title="original" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Además,  </p>
+<h2>Diseño de Índices Vegetativos</h2>
+<p>Para nuestro sistema de información una parcela es una agrupación de varios píxeles. Entendemos como PIXEL a la imagen satelital más pequeña que se puede obtener sobre el terreno, a partir de la cual obtendremos los índices vegetativos.</p>
+<p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. A continuación mostramos cómo las relaciones identificadas van a permitir una correcta búsqueda de features para después poder estimar con precisión en el modelo de producción de cultivo.</p>
+<div class="codehilite"><pre><span></span><code>erDiagram
     INDICE ||--o{ MIRAR_INDICE : contains
     INDICE {
         string nombre FK
@@ -735,20 +1212,99 @@ erDiagram
         geojson json
         float valor
     }
-</div></div><div id=services><h3>3 services</h3><div class="mermaid">
-       gitGraph
-           commit
-           branch origins
-           commit tag:"v1.0.0"
-           commit
-           checkout main
-           commit type: HIGHLIGHT
-           commit
-           merge origins
-           commit
-           branch featureA
-           commit
-</div></div><div id=despliegue><h3>3 despliegue</h3><p>Con la aplicación en un estado sólido, procedemos a mostrar los datos en la interfaz web. Aunque no es parte del trabajo establecido para este TFG, necesitamos ver que los datos con los que trabajamos se muestran correctamente en el visor GIS de nuestra interfaz. </p>
+</code></pre></div>
+
+<p>Este diseño de índices permite mantener un histórico de datos preciso. </p>
+<h2>Diseño de Roles</h2>
+<p>Aunque es un punto secundario, la aplicación contempla que diferentes usuarios puedan realizar diferentes acciones. Recordamos que habíamos separado diferentes componentes de la aplicación, los roles se encuentran en un módulo secundario independiente de las entidades anteriores que representaban los conceptos agronómicos y vegetativos. El diseño modular del modelo de datos permite al equipo añadir diferentes roles sin estos estar "hardcoded" en el código de la aplicación. La siguiente tabla muestra los roles hasta ahora creados por el equipo y su relación con el parcelario.</p>
+<table>
+<thead>
+<tr>
+<th align="left">ROL</th>
+<th align="right">DESC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Agricultor</td>
+<td align="right">usuario de las parcelas</td>
+</tr>
+<tr>
+<td align="left">Cooperativa</td>
+<td align="right">entidad que agrupa a técnos con diferentes cargos sobre un parcelario</td>
+</tr>
+<tr>
+<td align="left">Tecnico</td>
+<td align="right">personal asignado a un número de parcelas.</td>
+</tr>
+</tbody>
+</table>
+<p>Roles necesarios para la organización jerárquica necesaria en una organización agraria. Estos roles permiten agrupara diferentes funciones que encontramos en el software diseñadas como diferentes servicios.</p></div><div id=services><h3>3 services</h3><p>El término servicio está sobrecargado y su significado adquiere diferentes matices según el contexto en que estemos. Como resultado, existe una nube de confusión en torno a la noción de servicios cuando se trata de distinguir entre servicios de aplicación, servicios de dominio, servicios de infraestructura, servicios SOA, etc. Las funciones de estos son diferentes y pueden abarcar todas las capas de una aplicación.</p>
+<p>De hecho, un servicio es un título un tanto genérico para un bloque de creación de una aplicación porque implica muy poco. En primer lugar, un servicio implica un cliente cuyas solicitudes está diseñado para satisfacer. Otra característica de una operación de servicio es la de entrada y salida: se proporcionan argumentos y como entrada a una operación y se devuelve un resultado. Ms allá de esta implicación suelen estar los supuestos de "statelessness" y la idea de "pure fabrication" según GRASP.</p>
+<div class="codehilite"><pre><span></span><code>When a significant process or transformation in the domain is not a natural responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as standalone interface declared as a SERVICE. Define the interface in terms of the language of the model and make sure the operation name is part of the UBIQUITOUS LANGUAGE. Make the SERVICE stateless.
+
+**Eric Evans** Domain-Driven Design 
+</code></pre></div>
+
+<p>El tipo de servicios que estamos diseñando e implementando para nuestra aplicación forman parte de la capa de dominio. Estos servicios de dominio a menudo se pasan por alto como bloques deconstrucción clave, confundidos por el enfoque de las entidades del modelo (o value objects).</p>
+<p>Cumpliendo con los principios mencionados, los servicios conforman la siguiente capa de abstracción al modelo de datos implementado. Colocaremos aquellas operaciones que dependan o relacionen ms de una entidad en su módulo correspondiente de servicios y no como un método de la clase del modelo. Este tipo de diseño en el que dejamos el modelo casi sin métodos propios puede llegar a entenderse como un anti-patrón, <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">anemic domain model</a></p>
+<p>Justificamos la implementación de la gran parte de los métodos sobre la capa de servicios por el tipo de información histórica sobre la que necesitamos hacer las consultas. La mayoría de entidades necesitan de una relación con otra segunda o tercera entidad para devolver la información pertinente. Es quizás que el modelo está orientado a manejar información histórica y sin estado, lo que nos lleva a colocar casi todos los métodos de acceso a los datos en un módulo de servicios aparte. Miremos el siguiente ejemplo sobre los históricos fenológicos en el parcelario registrado.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">ParcelaCultivos_Service</span><span class="p">():</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">get_cultivo</span><span class="p">(</span><span class="n">parcela_p</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; último cultivo que se está cultivando en una parcela &quot;&quot;&quot;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">mirar_feno</span> <span class="o">=</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela_p</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">if</span> <span class="p">(</span><span class="n">mirar_feno</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">mirar_feno</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cultivo</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">else</span><span class="p">:</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">get_historico_fenologicos</span><span class="p">(</span><span class="n">parcela_p</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; todos los estados fenológicos por los que ha pasado una parcela &quot;&quot;&quot;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela_p</span><span class="o">.</span><span class="n">referencia</span><span class="p">)</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">get_historico_range</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; histórico de todas las parcelas en un rango de fechas &quot;&quot;&quot;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">fecha__range</span><span class="o">=</span><span class="p">[</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">])</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">get_historico_parcela</span><span class="p">(</span><span class="n">parcela1</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; todo el histórico de una parcela &quot;&quot;&quot;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela1</span><span class="p">)</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">get_historico_parcela_range</span><span class="p">(</span><span class="n">parcela1</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; hostórico de una parcela en un rango de fechas &quot;&quot;&quot;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">historico</span> <span class="o">=</span> <span class="n">ParcelaCultivos_Service</span><span class="o">.</span><span class="n">get_historico_range</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">)</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">historico</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela1</span><span class="p">)</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">get_historico_mismo_fenologico</span><span class="p">(</span><span class="n">valor_fenologico</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; todo los cultivos que están en un mismo estado fenológico &quot;&quot;&quot;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">estado</span> <span class="o">=</span> <span class="n">valor_fenologico</span><span class="p">)</span>
+</code></pre></div>
+
+<p><a href="https://github.com/alesteba/tfg/tree/main/entregables/services">Adjuntamos</a> como entregables del proyecto algunos de los servicios diseñados y usados más frecuentemente. El código de estos servicios ...</p>
+<ul>
+<li>Pequeño párrafo.</li>
+</ul>
+<p>El pipeline que estamos diseñando es posible gracias a la factorización en módulos de la aplicación y a la sencillez y versatilidad del modelo. Los servicios que ahora diseñamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propósitos distintos. Son muy importantes, ya que nos acercan al flujo de trabajo de integración continua que estamos buscando.</p>
+<p>Como estamos utilizando el ORM de Django, para no sobrecargar los objetos del modelo con demasiados métodos establecemos un módulo de servicios (para cada componte del sistema) con las consultas ms frecuentes. Este módulo ayuda a mantener el código en el modelo limpio sin complejidad añadida debido a que las consultas / métodos que hacen uso de varias relaciones quedan como entidades separadas que se pueden reutilizar.</p>
+<p>La siguiente función es una de las más usadas debido a la integración directa con el proceso de descarga de imágenes satelitales del cultivo.</p></div><div id=despliegue><h3>3 despliegue</h3><p>Con la aplicación en un estado sólido, procedemos a mostrar los datos en la interfaz web. Aunque no es parte del trabajo establecido para este TFG, necesitamos ver que los datos con los que trabajamos se muestran correctamente en el visor GIS de nuestra interfaz. </p>
 <p>Recordemos que dentro de nuestras fuentes de datos tenemos datos de parcelas con su información geoespacial, tanto la forma de la parcela como la de todos sus píxeles que la conforman. Como estamos haciendo pruebas con un número reducido de datos, 25 parcelas con sus píxeles e índices asociados, el visor debe mostrar estas 25 parcelas con diferentes colores dependiendo del valor de los indices estudiados.</p>
 <ul>
 <li>captura visor *</li>
@@ -769,12 +1325,105 @@ erDiagram
 <p>Data Storage: almacenamos los datos en el modelo a través de Django y manteniendo una base de datos relacional en la máquina en la que se encuentra la aplicación.</p>
 </li>
 </ul>
-<p>Como hemos dicho, hay varias formas de realizar este proceso de canalización, en el siguiente punto exponemos la tecnología subyacente que utilizaremos para ello. </p></div><div id=commands-CLI><h3>3 commands-CLI</h3><div class="mermaid">
-graph LR;
-    indices --> download_indices;
-    download_indices --> download_today
-    download_indices --> download_range
-</div></div><div id=model-view><h3>3 model-view</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
+<p>Como hemos dicho, hay varias formas de realizar este proceso de canalización, en el siguiente punto exponemos la tecnología subyacente que utilizaremos para ello. </p></div><div id=commands-CLI><h3>3 commands-CLI</h3><p>En ingeniería de software, un <strong>patrón de diseño</strong> es una solución general y reutilizable para un problema común dentro de un contexto dado. El término pipeline puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicación como patrón de diseño ya que en nuestra aplicación se está utilizando como tal.</p>
+<p>**Podemos definir un pipeline como una cadena de elementos de procesamiento (procesos, subprocesos, rutinas, funciones, etc.), dispuestos de modo que la salida de cada elemento sea la entrada del siguiente; el nombre hace referencia al flujo de una o varias tuberías.</p>
+<p>En nuestro caso vamos a utilizar la arquitectura de comandos que proporciona Django para diseñar los procesos de transformación de datos que van a poblar la base de datos. La definición y reutilización del proceso de población es muy importante debido a la forma de trabajo que tiene la empresa con diferentes clientes. Dependiendo de la magnitud del cliente se prepara una copia de la aplicación para trabajar con sus datos, por ello una vez definido las unidades atómicas del proceso de carga de datos, se podrán diseñar diferentes pipelines para cada cliente. Para este trabajo nos conformaremos con el diseño y la implementación de un proceso general, pero manteniendo la idea de que pueda ser escalado más adelante.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+
+        <span class="c1"># now do the things that you want with your models here</span>
+</code></pre></div>
+
+<p>Las líneas de código anteriores hacen referencia a una implementación concreta del patrón mencionado.  Fijándonos en la siguiente figura, la clase <strong>Command</strong> sería el handler y el método <strong>handle</strong> corresponde con handleRequest del esquema. Los próximos scripts que creemos serán los clientes de estas clases. Resaltar que la implementación de Django de este patrón es un poco más compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parámetros. </p>
+<p>
+<figure><img src="figures/pipeline_pattern.png" /><figcaption>caption</figcaption>
+</figure>
+</p>
+<p>Con este patrón desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso más complejo. Cada unidad de carga se comporta como un filtro que añade de forma ordenada la información al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberías que permitan dejar varias instancias de la aplicación en estados diferentes.</p>
+<p>Para AGRAI, hacen falta transformar los datos de índices vegetativos que maneja el equipo en información ordenada que llegue al modelo de datos desarrollado anteriormente. A continuación explicamos el flujo de procesos de carga más utilizado.</p>
+<p>Los datos principalmente provienen de qgis, software para trabajar con información georeferenciada. El equipo pre-procesa la información sobre los índices vegetativos y da valores a los píxeles mediante dicho software. La principal función de este trabajo es dar sentido a esa información, persistiendo los datos tomados junto con sus relaciones con el parcelario físico.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">qgis</span><span class="o">--&gt;</span><span class="n">parcelas</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">parcelas</span><span class="o">--&gt;</span><span class="n">cultivos</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">cultivos</span><span class="o">--&gt;</span><span class="err">í</span><span class="n">ndices</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">í</span><span class="n">ndices</span><span class="o">--&gt;</span><span class="n">vista_minable</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">vista_minable</span><span class="o">--&gt;</span><span class="n">modelo</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+
+<p>La información de los píxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los índices vegetativos solo contemplamos la información sobre la geometría de la parcela, no sabemos nada más. Esta información tiene que almacenarse junto con el cultivo, estado fenológico, datos físicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los scripts que conforman los procesos del pipeline.</p>
+<table>
+<thead>
+<tr>
+<th align="left">SCRIPT</th>
+<th align="right">TAREA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">load_qgis</td>
+<td align="right">Extrae la información geometica de cada pixel proveniente de "qgis" e inserta dicha información en las tablas de "parcela" y "pixel" de la BD.</td>
+</tr>
+<tr>
+<td align="left">load_parcela</td>
+<td align="right">Lee de un excel información fisca sobre las parcelas e inserta los datos en la BD.</td>
+</tr>
+<tr>
+<td align="left">load_cultivos</td>
+<td align="right">Lee de un excel información sobre cultivos con sus variedades e inserta los datos en la BD.</td>
+</tr>
+<tr>
+<td align="left">download_img</td>
+<td align="right">Usa uno de los módulos desarrollado por el equipo para descargar índices vegetativos a partir de imágenes satelitales. No persiste nada directamente, devuelve un dataframe con los datos descargagos.</td>
+</tr>
+<tr>
+<td align="left">load_indice</td>
+<td align="right">integra la información de índices descargada en el paso anterior en la tabla de "pixel" de la BD.</td>
+</tr>
+</tbody>
+</table>
+<p>Para entender detalladamente qué hacen los scripts de carga de índices tenemos que explicar algunos de los procesos de automatización de los que hacemos uso. </p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">indices</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">download_indices</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">download_indices</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">download_today</span><span class="w"></span>
+<span class="w">    </span><span class="n">download_indices</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">download_range</span><span class="w"></span>
+</code></pre></div>
+
+<p>Estos scripts nos permiten crear el flujo necesario para que la aplicación procese la información y termine en un estado consistente. Parte del proceso necesita ser automatizado y ejecutado reiteradamente, añadiendo los datos a la BD y relacionándolos adecuadamente. En nuestro contexto agronómico, es la descarga de índices la parte del proceso que necesita ser automatizada, mientras que los datos de las parcelas y cultivos y la información geoespacial se pueden cargar directamente en el despliegue de la aplicación. </p>
+<p>Con esta estructura de tuberías lista, podemos reutilizar cualquier parte del proceso. Un planificador de tareas nos ayuda a establecer el tiempo que tiene que transcurrir entre las descargas. Sin entrar en más detalle, se ha utilizado el scheduler por defecto del framework de Django que estamos utilizando para esta gestión de tiempos y descarga.</p>
+<p>Finalmente, para realizar pruebas, queremos crear un único script que ejecute el proceso de forma ordenada. El resto de tuberías que se adjuntan en el proyecto tienen una forma similar y hacen el mismo uso de los comandos de Django que hemos explicado.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">LoggingBaseCommand</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">help</span> <span class="o">=</span> <span class="s1">&#39;Carga la geometría a las parcelas y a los pixeles&#39;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">PARCELA_SHAPE</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;parcelas&#39;</span> <span class="o">/</span> <span class="s1">&#39;25&#39;</span> <span class="o">/</span> <span class="s1">&#39;parcelas.shp&#39;</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">PIXEL_SHAPE</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;parcelas&#39;</span> <span class="o">/</span> <span class="s1">&#39;25&#39;</span> <span class="o">/</span> <span class="s1">&#39;pixeles.shp&#39;</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">FICHERO_PATH</span> <span class="n">Â</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;excels&#39;</span> <span class="o">/</span> <span class="n">Â</span> <span class="s1">&#39;datos-test-2.xls&#39;</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">TRILINEA_PATH</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;trilineas&#39;</span> <span class="o">/</span> <span class="s1">&#39;PRilineas.json&#39;</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Â</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="nb">print</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">))</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;1-load-qgis&#39;</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;2-load-parcela-data&#39;</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
+
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;3-load-cultivos&#39;</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  
+<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;4-download-indices&#39;</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Además de este último, podemos crear varios entornos con tuberías diferentes que den como resultado bases de datos con estados distintos. Como mencionábamos anteriormente, es muy útil debido al funcionamiento del equipo en relación con el procesamiento de datos con varios clientes. La aplicación puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre, por ejemplo la misma instancia de la BD sirve tanto para una bodega con variedades de vino que para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
+<p>Por último, este patrón nos permite ejecutar comandos de forma asíncrona y gestionar los procesos con un planificador. Actualmente, aunque el tiempo de carga es alto, podemos asumir una carga lenta. Pero es este mismo patrón de diseño el que nos puede permitir a futuro la carga asíncrona de los datos en cada una de las componentes que lo forman.</p>
+<p>Adjuntamos en los entregables los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que forman este proceso de persistencia de datos. </p></div><div id=model-view><h3>3 model-view</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
 <p>Ahora, fuera de la estructura de comandos de Django y utilizando el entorno virtual creado y los cuadernos integrados en la aplicación, escribimos el algoritmo para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
 <p>El código que mostramos en este apartado corresponde con la generación de la vista tabulada con la que vamos a crear el modelo de producción de cultivo. Ahora realizamos el proceso inverso a la persistencia de datos que hemos realizado hasta este punto. Utilizamos la información y sus relaciones persistidas en la base de datos de nuestro sistema para generar la vista minable que necesita el modelo predictivo. </p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">statistic_indices</span><span class="p">(</span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
