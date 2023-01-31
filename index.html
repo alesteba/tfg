@@ -334,7 +334,7 @@ graph TD;
 <td align="center">Desarrollo de un 'script' con las instrucciones bash para dejar la máquina que despliega la aplicación en un estado estable.</td>
 </tr>
 <tr>
-<td align="left">[E04]</td>
+<td align="left"><a href="">E04</a></td>
 <td align="right">Documento de Diseño</td>
 <td align="center">Documento en el que se explican las decisiones tomadas para la creación de las entidades del modelo y sus relaciones.</td>
 </tr>
@@ -344,12 +344,12 @@ graph TD;
 <td align="center">Esquema UML que representa las entidades del modelo y sus relaciones. Modelo simplificado de datos exraido del ORM Django</td>
 </tr>
 <tr>
-<td align="left">[E06]</td>
+<td align="left"><a href="https://github.com/alesteba/tfg/tree/main/entregables/models.py">E06</a></td>
 <td align="right">Arquitectura Pipeline</td>
 <td align="center">Arquitectura y diagramas del proceso de transformación de datos, junto con sus scripts. Memoria + Código</td>
 </tr>
 <tr>
-<td align="left">[E07]</td>
+<td align="left"><a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">E07</a></td>
 <td align="right">Vista Minable</td>
 <td align="center">Método algorítmico que genera la estructura tabular de datos necesaria para el modelo de producción</td>
 </tr>
@@ -565,8 +565,7 @@ graph TD;
 <td>1</td>
 </tr>
 </tbody>
-</table></div><div id=gantt><h3>1.3.6 gantt</h3><p>https://gist.github.com/martinwoodward/8ad6296118c975510766d80310db71fd</p>
-<p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. </p>
+</table></div><div id=gantt><h3>1.3.6 gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. El tiempo estipulado es de dos meses y una semana.</p>
 <div class="mermaid">
 gantt
     title Planificación
@@ -574,45 +573,48 @@ gantt
     axisFormat  %d
 
     section ANALISIS
-    ALCANCE: done, 01-01, 2d
-    METODOLOGIA: crit, 02-01, 3d
+    ALCANCE: 01-01, 2d
+    METODOLOGIA: 02-01, 3d
     EDT: 03-01, 5d
     GANNT: 04-01, 5d
     RRHH: 05-01, 3d
     COMUNICACIONES: 06-01, 5d
     RIESGOS: 07-01, 5d
 
-    section MODELO_DATOS
-    RELACIONES BD: done, 08-01, 15d
-    REDISEÑO: crit, 09-01, 15d
+    section INFRAESTRUCTURA
+    DJANGO+JUPYTER: 08-01, 3d
+    SCRIPT_.SH: 09-01, 4d
 
-    section ENTORNO
-    DJANGO+JUPYTER: done, 10-01, 2d
-    INT_CONTINUA: crit, 11-01, 3d
+    section MODELO_DATOS
+    RELACIONES BD: 10-01, 20d
+    REDISEÑO: crit, 11-01, 20d
 
     section PIPELINE
-    INFR: 20-01, 5d
-    LOAD: 21-01, 5d
-    FEAT: 25-01, 5d
-    VIEW: 25-01, 7d
-    MODEL: 30-01, 7d
-    WEB: 30-01, 5d
-    Phase 2 complete: milestone, 30-01, 0d
+    BLOQUES:  30-01, 10d
+    FEATURES: 05-02, 5d
+    VISTA: 05-02, 5d
+
+    section MODELO_PRODUCCIÓN
+    LOAD: 10-02, 5d
+    VIEW: 11-02, 5d
+    REGRESSION: 12-02, 10d
+    BEST_MODEL: 15-02, 10d
+    Phase 2 complete: milestone, 45-01, 0d
 
     section TEST
     TEST 1: 20-01, 30d
-    TEST 2: 30-01, 20d
-    TEST 3: milestone, 20-02, 1d
+    TEST 2: 30-01, 30d
+    Phase 3 complete: milestone, 01-03, 0d
 
     section MEMORIA
     MEM_WRITE: 01-01, 60d
     SEG_Y_CONT: 01-01, 60d
 
     Project complete: milestone, 10-03, 0d
-
 </div>
 
-<p>Este diagrama es una estipulación de cómo creo que voy a ir durante el desarrollo del modelo de datos y del pipeline correspondiente. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p></div><div id=rrhh><h3>1.3.7 rrhh</h3><p>El personal implicado en el Trabajo de Fin de Grado será:  </p>
+<p>Este diagrama es una estipulación de cómo creo que voy a ir durante el desarrollo del modelo de datos y del pipeline correspondiente. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p>
+<p>Remarcamos que las tareas de, escritura de la memoria, y pruebas unitarias se realizan durante casi todo el proyecto. Las pruebas nos permiten asegurarnos de que el proyecto funciona adecuadamente y así no pasamos a una nueva tarea si no hemos dejado la aplicación en un estado estable al terminar la anterior.</p></div><div id=rrhh><h3>1.3.7 rrhh</h3><p>El personal implicado en el Trabajo de Fin de Grado será:  </p>
 <table>
 <thead>
 <tr>
