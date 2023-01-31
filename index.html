@@ -1184,29 +1184,30 @@ erDiagram
 <p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. La entidad MIRAR_ÍNDICE es de vital importancia en el modelo, permite gestionar el histórico de valores de los índices para todos los píxeles. Esta tabla es una de las candidatas para realizar optimización en las consultas, algo que desde el ORM que utilizamos todavía queda un poco lejos. </p>
 <div class="mermaid">
 erDiagram
-    CULTIVO ||--o{ CULTIVO : contains
-    CULTIVO {
-        string nombre FK
-        string descripcion
-        string es_variedad FK
-    }
-    FENOLOGICO {
+    INDICE ||--o{ MIRAR_INDICE : contains
+    INDICE {
         string nombre FK
         string descripcion
     }
-    MIRAR_FENOLOGICO ||--o{ FENOLOGICO : contains
-    MIRAR_FENOLOGICO ||--o{ CULTIVO : contains
-    MIRAR_FENOLOGICO ||--o{ PARCELA : contains
-    MIRAR_FENOLOGICO {
-        string fenologico FK
-        string parcela FK
-        string fecha FK
+    PIXEL ||--o{ MIRAR_INDICE : contains
+    PIXEL ||--o{ PARCELA : contains
+    PIXEL {
+        string parcela FK 
+        polygon geom
+        string idx
     }
     PARCELA {
         string idx 
         string estacion
         float altitud
         polygon geom
+    }
+    MIRAR_INDICE {
+        string indice FK
+        string pixel FK
+        date fecha
+        geojson json
+        float valor
     }
 </div>
 
@@ -1215,24 +1216,31 @@ erDiagram
 <h3>Diseño de Roles</h3>
 <p>Aunque es un punto secundario, la aplicación contempla que diferentes usuarios puedan realizar diferentes acciones. Recordamos que habíamos separado en componentes la aplicación, y los roles se encuentran en un módulo secundario independiente de las entidades anteriores que representaban los principales conceptos agronómicos y vegetativos. El diseño modular del modelo de datos permite al equipo añadir diferentes roles sin estos estar "hardcoded" en el código de la aplicación. </p>
 <div class="mermaid">
-erDiagram
-    CULTIVO ||--o{ CULTIVO : contains
-    CULTIVO {
-        string nombre FK
-        string descripcion
-        string es_variedad FK
+erDiagram 
+    CULTIVADOR ||--o{ INTERESADO : is
+    CULTIVADOR { 
+        string nombre 
+        string parent FK
     }
-    FENOLOGICO {
-        string nombre FK
-        string descripcion
+    TECNICO ||--o{ INTERESADO : is
+    TECNICO { 
+        string nombre
+        string parent FK
     }
-    MIRAR_FENOLOGICO ||--o{ FENOLOGICO : contains
-    MIRAR_FENOLOGICO ||--o{ CULTIVO : contains
-    MIRAR_FENOLOGICO ||--o{ PARCELA : contains
-    MIRAR_FENOLOGICO {
-        string fenologico FK
-        string parcela FK
-        string fecha FK
+    PROPIETARIO ||--o{ INTERESADO : is
+    PROPIETARIO { 
+        string nombre
+        string parent FK
+    }
+    COOPERATIVA ||--o{ TECNICO : contains
+    COOPERATIVA {
+        string nombre
+        string tecnicos FK
+    }
+    INTERESADO ||--o{ PARCELA : contains
+    INTERESADO {
+        string parcela FK 
+        string nombre
     }
     PARCELA {
         string idx 
@@ -1240,6 +1248,7 @@ erDiagram
         float altitud
         polygon geom
     }
+
 </div>
 
 <p>Aunque la aplicación hace uso de estas entidades, no serán tan importantes para el desarrollo posterior del trabajo, debido a que la parte que necesita automatizarse es aquella relacionada con los índices vegetativos y la geometría de las parcelas anteriores. Como decíamos, estas entidades quedan separadas en un módulo de la aplicación con la única funcionalidad de controlar el acceso a la aplicación y dar permiso a las funcionalidades que cada cliente puede realizar dependiendo del rol que tenga asignado. La siguiente tabla describe los roles hasta ahora contemplados por el equipo y su relación con el parcelario.</p>
@@ -1274,29 +1283,53 @@ erDiagram
 <p>El siguiente diagrama recoge todas las relaciones descritas anteriormente y muestra el esquema completo que usa la aplicación. En los siguientes puntos hablaremos sobre los métodos definidos sobre este esquema de datos, dónde se localizan y cómo han de ser utilizados.</p>
 <div class="mermaid">
 erDiagram
-    CULTIVO ||--o{ CULTIVO : contains
+    CULTIVO ||--o{ CULTIVO : is
+    CULTIVO ||--o{ MIRAR_FENOLOGICO : contains
     CULTIVO {
         string nombre FK
-        string descripcion
         string es_variedad FK
     }
-    FENOLOGICO {
+    INDICE ||--o{ MIRAR_INDICE : contains
+    INDICE {
         string nombre FK
         string descripcion
     }
-    MIRAR_FENOLOGICO ||--o{ FENOLOGICO : contains
-    MIRAR_FENOLOGICO ||--o{ CULTIVO : contains
-    MIRAR_FENOLOGICO ||--o{ PARCELA : contains
-    MIRAR_FENOLOGICO {
-        string fenologico FK
-        string parcela FK
-        string fecha FK
+    PIXEL ||--o{ MIRAR_INDICE : contains
+    PIXEL ||--o{ PARCELA : is
+    PIXEL {
+        string parcela FK 
+        polygon geom
+        string idx
     }
+    PARCELA ||--o{ ESTACION : contains
+    PARCELA ||--o{ MIRAR_FENOLOGICO : contains
     PARCELA {
         string idx 
-        string estacion
+        string estacion FK
         float altitud
         polygon geom
+    }
+    MIRAR_INDICE {
+        string indice FK
+        string pixel FK
+        date fecha
+        geojson json
+        float valor
+    }
+    MIRAR_FENOLOGICO {
+        string cultivo FK
+        string parcela FK
+        date fecha
+        string estado
+    }
+    ESTACION ||--o{ ESTACION_HISTORICO : contains
+    ESTACION {
+        string nombre FK
+    }
+    ESTACION_HISTORICO {
+        string estacion FK
+        date fecha
+        charfield file
     }
 </div></div><div id=services><h3>1.6.4 services</h3><p>El término servicio está sobrecargado y su significado adquiere diferentes matices según el contexto en que estemos. Como resultado, existe una nube de confusión en torno a la noción de servicios cuando se trata de distinguir entre servicios de aplicación, servicios de dominio, servicios de infraestructura, servicios SOA, etc. Las funciones de estos son diferentes y pueden abarcar todas las capas de una aplicación.</p>
 <p>De hecho, un servicio es un título un tanto genérico para un bloque de creación de una aplicación porque implica muy poco. En primer lugar, un servicio implica un cliente cuyas solicitudes está diseñado para satisfacer. Otra característica de una operación de servicio es la de entrada y salida: se proporcionan argumentos y como entrada a una operación y se devuelve un resultado. Ms allá de esta implicación suelen estar los supuestos de "statelessness" y la idea de "pure fabrication" según GRASP.</p>
@@ -1444,11 +1477,9 @@ graph LR;
 <p>Para entender detalladamente qué hacen los scripts de carga de índices tenemos que explicar algunos de los procesos de automatización de los que hacemos uso. </p>
 <div class="mermaid">
 graph LR;
-    qgis-->parcelas;
-    parcelas-->cultivos;
-    cultivos-->índices;
-    índices-->vista_minable;
-    vista_minable-->modelo;
+    indices --> download_indices;
+    download_indices --> download_today
+    download_indices --> download_range
 </div>
 
 <p>Estos scripts nos permiten crear el flujo necesario para que la aplicación procese la información y termine en un estado consistente. Parte del proceso necesita ser automatizado y ejecutado reiteradamente, añadiendo los datos a la BD y relacionándolos adecuadamente. En nuestro contexto agronómico, es la descarga de índices la parte del proceso que necesita ser automatizada, mientras que los datos de las parcelas y cultivos y la información geoespacial se pueden cargar directamente en el despliegue de la aplicación. </p>
