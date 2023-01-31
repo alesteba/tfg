@@ -92,7 +92,7 @@ graph TD;
     PIPELINE-->PIPE.2_D;
 </div>
 
-<h2>Tareas y Descripción:</h2>
+<B>Tareas y Descripción:</B>
 <table>
 <thead>
 <tr>
@@ -1088,7 +1088,7 @@ erDiagram
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado aísla la base de datos y nos permite diseñar directamente en <em>Python</em> dicho modelo. Las entidades se diseñan como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado, de dicha forma creamos las claves foráneas que físicamente contiene la base de datos.</p>
 <p>La utilización de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localización física de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de producción.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto más o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del código. Esta representación gráfica ha sido realmente útil para poder pensar sobre el diseño a medida que avanzaba.</p>
-<h3>Entidades Principales</h3>
+<B>Entidades Principales</B>
 <p>Del inicio anterior, nos quedamos solo con las entidades principales. Esta selección de entidades se realiza cuidadosamente para que la aplicación pueda contemplar la mayor información posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseño detalladamente en los siguientes puntos.</p>
 <p>
 <figure><img src="figures/spectralgeo_db.png" title="original" /><figcaption>caption</figcaption>
@@ -1141,7 +1141,7 @@ erDiagram
 <figure><img src="figures/modelo-end.png" title="original" /><figcaption>caption</figcaption>
 </figure>
 </p>
-<h3>Diseño del Cultivo y Fenología</h3>
+<B>Diseño del Cultivo y Fenología</B>
 <p>Una decisión complicada sobre el posible histórico de datos es el registro de la evolución de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLÓGICO damos carácter temporal al cultivo concreto que se está siendo cultivando en una parcela. De esta forma podemos registrar cuáles son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recolección".</p>
 <p>El modelado de la entidad FENOLÓGICO ha sido una decisión complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carácter general y tiene sentido como entidad en sí misma (todos los cultivos pasan por siembra). Es su relación con CULTIVO mediante MIRAR_FENOLÓGICO lo que dice que dicho cultivo está en un estado fenológico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el día "2022-01-23". </p>
 <p>También es importante destacar que CULTIVO es simplemente el tipo que se ha registrado, por lo tanto, para que la información sea completa, un avistamiento fenológico sucede sobre un tipo de cultivo físicamente sembrado en una PARCELA.  El siguiente esquema muestra cómo estas tres entidades se relacionará para dar carácter temporal y espacial a un tipo de cultivo</p>
@@ -1178,7 +1178,7 @@ erDiagram
 <figure><img src="figures/mirar_feno.png" title="original" /><figcaption>caption</figcaption>
 </figure>
 </p>
-<h3>Diseño de Índices Vegetativos</h3>
+<B>Diseño de Índices Vegetativos</B>
 <p>Para nuestro sistema de información una parcela es una agrupación de varios píxeles. Entendemos como PIXEL a la imagen satelital más pequeña que se puede obtener sobre el terreno, a partir de la cual obtendremos los índices vegetativos. </p>
 <p>(el valor del índice es una caja negra para el desarrollo de este trabajo, proviene de scripts desarrollados por el resto del equipo)</p>
 <p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. La entidad MIRAR_ÍNDICE es de vital importancia en el modelo, permite gestionar el histórico de valores de los índices para todos los píxeles. Esta tabla es una de las candidatas para realizar optimización en las consultas, algo que desde el ORM que utilizamos todavía queda un poco lejos. </p>
@@ -1213,7 +1213,7 @@ erDiagram
 
 <p>El volumen de datos que la tabla MIRAR_INDICE puede contener es grande. Solo con la muestra representativa de las 25 parcelas con las que estamos trabajando (3000 píxeles), dos índices registrados, y contemplando sus valores en 6 fechas distintas, obtenemos un conjunto de 36.000.  Cuando la aplicación escale a un mayor número de parcelas, esta tabla será candidata a usar índices(BD).</p>
 <p>Este diseño de índices permite mantener un histórico de datos preciso. Gestiona la evolución de los cultivos a través de las diferentes fechas en las que se persisten los valores de los índices. Destacamos que cada índice se corresponde con una capa de visualización sobre el visor GIS que contiene la presentación de la aplicación, requisito que hace que tenga mucha importancia el poder añadir índices a los datos a media que se vayan contemplando.</p>
-<h3>Diseño de Roles</h3>
+<B>Diseño de Roles</B>
 <p>Aunque es un punto secundario, la aplicación contempla que diferentes usuarios puedan realizar diferentes acciones. Recordamos que habíamos separado en componentes la aplicación, y los roles se encuentran en un módulo secundario independiente de las entidades anteriores que representaban los principales conceptos agronómicos y vegetativos. El diseño modular del modelo de datos permite al equipo añadir diferentes roles sin estos estar "hardcoded" en el código de la aplicación. </p>
 <div class="mermaid">
 erDiagram 
@@ -1278,7 +1278,7 @@ erDiagram
 </tr>
 </tbody>
 </table>
-<h3>Modelo Final</h3>
+<B>Modelo Final</B>
 <p>El siguiente diagrama recoge todas las relaciones descritas anteriormente y muestra el esquema completo que usa la aplicación. En los siguientes puntos hablaremos sobre los métodos definidos sobre este esquema de datos, dónde se localizan y cómo han de ser utilizados.</p>
 <div class="mermaid">
 erDiagram
@@ -1397,10 +1397,10 @@ erDiagram
 <p>%%Como estamos utilizando el ORM de Django, para no sobrecargar los objetos del modelo con demasiados métodos establecemos un módulo de servicios (para cada componte del sistema) con las consultas ms frecuentes. Este módulo ayuda a mantener el código en el modelo limpio sin complejidad añadida debido a que las consultas / métodos que hacen uso de varias relaciones quedan como entidades separadas que se pueden reutilizar.%%</p>
 <p>%%otro párrafo%%</p>
 <p>La siguiente función es una de las más usadas debido a la integración directa con el proceso de descarga de imágenes satelitales del cultivo.</p></div><div id=0-implementacion><h3>1.7.0 0-implementacion</h3><div id=previos-pipe><h3>1.7.1 previos-pipe</h3><p>Es importante diferenciar qué tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para 'pipelines' como pueden ser ETLs u otras. Para la correcta carga y transformación de datos no utilizaremos ninguna de estas arquitecturas, sino que diseñaremos los bloques necesarios en cada paso para poblar nuestra base de datos. Este proceso puede entenderse como una canalización de datos, en la que recibimos información en diferentes fuentes y la dotamos de contexto dentro de la BD.</p>
-<h3>¿Qué es una canalización de datos?</h3>
+<B>¿Qué es una canalización de datos?</B>
 <p>Una canalización de datos se refiere a los pasos necesarios para mover datos del sistema de origen al sistema de destino. Estos pasos incluyen copiar datos, transferirlos desde una ubicación en el sitio a la nube y combinarlos con otras fuentes de datos. El objetivo principal de una canalización de datos es garantizar que todos estos pasos se produzcan de forma coherente con todos los datos.</p>
 <p>En el apartado anterior hemos visto cómo se ha diseñado el modelo de datos. Ahora nos centramos en los pequeños pasos de carga que vamos a dar para que los datos agronómicos de clientes e imágenes satelitales se persistan en dicho modelo. Valoramos la identificación de unidades atómicas de información que puedan persistirse reiteradamente. Es decir, buscaremos acotar pequeños procesos de carga que puedan ejecutarse en varios puntos dependiendo del volumen de datos de clientes que maneje el equipo en un momento dado.</p>
-<h3>Procesos de una canalización</h3>
+<B>Procesos de una canalización</B>
 <p>Identificamos tres conceptos que definen la canalización de datos que vamos a llevar a cabo y exponemos que hace el 'pipeline' de nuestra aplicación en cada uno de ellos.  </p>
 <ul>
 <li>
@@ -1573,11 +1573,11 @@ graph LR;
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
 
-<h2>Selección de features</h2>
+<B>Selección de features</B>
 <p>El diseño de la vista minable es complicado, para ello trabajo con el equipo seleccionando los campos de la BD más importantes que formaran la tabla.  Nos centramos principalmente en los índices vegetativos registrados en diferentes fechas. </p>
 <p>Para poder predecir la producción de cultivo incluimos en la vista varios estadísticos como la media y el sumatorio para cada índice en cuatro fechas representativas de la evolución de este. El diseño de esta estructura proviene de un estudio previo realizado por el equipo, en el que se ha concluido que ciertos estadísticos en unas fechas calibradas funcionan bien para predecir la producción. </p>
 <p>Hablábamos anteriormente de entornos virtuales, por el momento la aplicación utiliza un solo entorno virtual Python, pero este punto del trabajo podría hacer uso de un entorno separado con las librerías de ciencia de datos instaladas, de tal forma separaríamos dos procesos importantes. Resaltar que en el trabajo me estoy encargando del proceso para hacer pruebas, pero serán diferentes miembros del equipo los que usen estas tecnologías y para que podamos seguir escalando a medida que evolucione la aplicación, estos miembros tienen que poder utilizar los entornos creados.</p>
-<h2>Variable Objetivo</h2>
+<B>Variable Objetivo</B>
 <p>Junto con los datos extraídos añadiremos la variable objetivo de producción. Esta variable, todavía sin persistir en el modelo, hace referencia a los kilos de producción de cada parcela en su cosecha.
 A partir de ella, obtenida de históricos de campañas anteriores, junto con las features anteriores, vamos a poder predecir la evolución del cultivo con precisión en estados concretos de su maduración. Se explica con detalle en el siguiente punto.</p></div><div id=modelo-producción><h3>1.7.4 modelo-producción</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
 <p>
