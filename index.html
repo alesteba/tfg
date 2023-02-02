@@ -679,10 +679,7 @@ gantt
 <p>Tenemos que situarnos en el uso que se le está dando a la aplicación en relación con el diseño de ésta. La monitorización efectuada es válida para cualquier tipo de cultivo susceptible de ser fotografiado desde una imagen satelital y/o de dron. El modelo de datos que utiliza, aunque pobre al comienzo del trabajo, permite registrar tantos cultivos como un potencial cliente desee. Por otro lado, el caso real de uso de la aplicación proviene de bodegas o cooperativas vitivinícolas que quieren predecir la cantidad de kg de cosecha en una campaña determinada (2020-2021).</p>
 <p>Como punto de partida buscaremos identificar las entidades del dominio necesarias para que nuestro nuevo modelo de datos represente y relacione toda la información con precisión.</p>
 <p>En la interfaz web, el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en los píxeles hace referencia a los índices vegetativos provenientes de las imágenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la producción que predicen los modelos de Inteligencia Artificial generados.</p>
-<p>
-<figure><img src="figures/visor_GIS.png" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/visor_GIS.png" /></p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imágenes descargadas de satélites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con información proporcionada por estaciones meteorológicas como el SIAR y con la información que los clientes pueden proporcionar sobre campañas anteriores.</p>
 <p>Por otro lado, el proceso actual de esta información es tedioso para el equipo. Los diferentes miembros trabajan con tecnologías distintas sobre datos, muchas veces duplicados, que provienen de fuentes comunes. Los requisitos que identificamos en el siguiente punto consideran la idea de optimización continua necesaria.</p>
 <p>
@@ -1057,10 +1054,7 @@ erDiagram
 <p>Varias etapas han sido necesarias hasta llegar a un punto más o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del código. Esta representación gráfica ha sido realmente útil para poder pensar sobre el diseño a medida que avanzaba.</p>
 <B>Entidades Principales</B>
 <p>De la situación inicial, nos quedamos solo con las entidades principales. Esta selección de entidades se realiza cuidadosamente para que la aplicación pueda contemplar la mayor información posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseño detalladamente en los siguientes puntos.</p>
-<p>
-<figure><img src="figures/spectralgeo_db.png" title="original" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/spectralgeo_db.png" title="original" /> </p>
 <p>Este rediseño contempla la mayoría de casos posibles para el posterior tratamiento y procesamiento de datos, con posibilidad de crear buenos modelos predictivos. A continuación se describen las entidades principales contempladas en la base de datos.</p>
 <table>
 <thead>
@@ -1104,10 +1098,7 @@ erDiagram
 </tr>
 </tbody>
 </table>
-<p>
-<figure><img src="figures/modelo-end.png" title="original" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/modelo-end.png" title="original" /> </p>
 <B>Diseño del Cultivo y Fenología</B>
 <p>Una decisión complicada sobre el posible histórico de datos es el registro de la evolución de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLÓGICO damos carácter temporal al cultivo concreto de una parcela. De esta forma podemos registrar cuáles son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recolección".</p>
 <p>El modelado de la entidad FENOLÓGICO ha sido una decisión complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carácter general y tiene sentido como entidad en sí misma (todos los cultivos pasan por siembra). Es su relación con CULTIVO mediante MIRAR_FENOLÓGICO lo que dice que dicho cultivo está en un estado fenológico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el día "2022-01-23". </p>
@@ -1141,10 +1132,7 @@ erDiagram
 </div>
 
 <p>Otro punto importante de la aplicación es la contemplación de variedades. Para poder mantener una jerarquía con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave foránea a su misma tabla. Esta estructura permite el desglose de una jerarquía de cultivos en la que sabemos qué entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar múltiples niveles.</p>
-<p>
-<figure><img src="figures/mirar_feno.png" title="original" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/mirar_feno.png" title="original" /> </p>
 <B>Diseño de Índices Vegetativos</B>
 <p>Para nuestro sistema de información una parcela es una agrupación de varios píxeles. Entendemos como PIXEL a la imagen satelital más pequeña que se puede obtener sobre el terreno, a partir de la cual obtendremos los índices vegetativos. <em>(El valor del índice es una caja negra para este trabajo, proviene de scripts desarrollados por el resto del equipo)</em></p>
 <p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. La entidad MIRAR_ÍNDICE es de vital importancia en el modelo, permite gestionar el histórico de valores de los índices para todos los píxeles. Esta tabla es una de las candidatas para realizar optimización en las consultas, algo que desde el ORM que utilizamos todavía queda un poco lejos. </p>
@@ -1589,10 +1577,7 @@ A partir de ella, obtenida de históricos de campañas anteriores, junto con las
 De todas formas, sí que intentaremos que los datos de producción con los que vamos a predecir estén normalizados y se haya hecho una búsqueda previa de 'outliers'.</p>
 <p>Buscamos un modelo de regresión para el número de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeño, diseñaremos los cuadernos para automatizar la búsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar más adelante.</p>
 <p>El rango de valores para la mayoría de los índices que obtenemos va de -1 a 1. Los datos de índices negativos que llegan a la vista se pueden considerar como 'outliers'. Esto es debido a que si los índices provienen de una imagen con nubes, no se diferencian los colores del terreno y el índice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los índices que provengan de la toma de la imagen en una fecha en la que había nubes.</p>
-<p>
-<figure><img src="figures/nubes.png" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/nubes.png" /></p>
 <p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestión y automatización de los modelos de producción generados a partir los datos de las 25 parcelas estudiadas. Recordamos que estamos pensando en escribir el código necesario para automatizar en la medida de lo posible la búsqueda del mejor modelo de producción. De tal forma que cuando el sistema contemple un mayor número de parcelas, la ejecución de los cuadernos nos siga generando el mejor modelo de producción posible.</p></div><div id=modelo de regresión><h3>1.8.2 modelo de regresión</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
 <p><img alt="" src="figures/view-capture.png" /></p>
 <p>En el punto en el que estamos podemos pensar en las múltiples vistas que se pueden generar a partir de los datos persistidos en el BD. Desde aquí desarrollaremos la automatización de la búsqueda del mejor modelo posible para la vista anterior, pero siempre teniendo en cuenta que a partir de los datos persistidos podemos predecir muchos otros valores, no solo la producción de un cultivo. </p>
@@ -1694,7 +1679,6 @@ graph LR;
 <li>plan</li>
 </ul>
 <p>citar PMBOOK</p>
-<p>mencionar el libro, no el enlace.</p>
 <p>https://www.pmi.org/pmbok-guide-standards/foundational/pmbok#</p>
 <ul>
 <li>Infraestructura</li>
@@ -1703,20 +1687,15 @@ graph LR;
 <ul>
 <li>diseño modelo relacional</li>
 </ul>
-<p>Diagamas UML 
-https://mermaid.js.org/syntax/entityRelationshipDiagram.html</p>
-<p>Projecto Django
-https://docs.djangoproject.com/en/4.1/intro/tutorial01/</p>
-<p>Django Orm:
-https://docs.djangoproject.com/en/4.1/topics/db/queries/</p>
-<p>Arquitectura de Servicios
-http://gorodinski.com/blog/2012/04/14/services-in-domain-driven-design-ddd/</p>
+<p>https://mermaid.js.org/syntax/entityRelationshipDiagram.html</p>
+<p>https://docs.djangoproject.com/en/4.1/intro/tutorial01/</p>
+<p>https://docs.djangoproject.com/en/4.1/topics/db/queries/</p>
+<p>http://gorodinski.com/blog/2012/04/14/services-in-domain-driven-design-ddd/</p>
 <p>Domain Driven Design - Eric Evans</p>
 <ul>
 <li>Automatización Pipeline</li>
 </ul>
-<p>Django commands para 
-https://simpleisbetterthancomplex.com/tutorial/2018/08/27/how-to-create-custom-django-management-commands.html</p>
+<p>https://simpleisbetterthancomplex.com/tutorial/2018/08/27/how-to-create-custom-django-management-commands.html</p>
 <p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p>
 <p>https://www.astera.com/es/type/blog/etl-pipeline-vs-data-pipeline/</p>
 <ul>
