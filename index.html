@@ -1040,10 +1040,7 @@ erDiagram
 </table>
 <p>Esta división en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Más importante aún la claridad y sencillez de los modelos de cada componente y su respectiva representación en la BD.</p></div><div id=carga de datos><h3>1.6.2 carga de datos</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicación de forma ordenada con posibilidad de ser escalados en el futuro. En la implementación del pipeline que veremos en siguientes apartados haremos hincapié en los estados de carga por los que pasan los datos; de momento solo importa destacar que el modelo actual permite mantener un histórico de datos mucho más sólido que el que estaba implantado cuando comenzamos el desarrollo. </p>
 <p>Es importante explicar por qué vamos a poner tanto énfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicación muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basándose en los índices vegetativos, también se muestra la producción estimada.</p>
-<p>
-<figure><img src="figures/visor_GIS.png" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/visor_GIS.png" /></p>
 <p>El proceso de carga de datos hace uso de un módulo de descarga de imágenes satelitales que obtiene el valor de estos índices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del módulo de automatización junto con otras tareas similares. 
 Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de este para que los índices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
 <div class="mermaid">
@@ -1053,10 +1050,7 @@ erDiagram
 </div>
 
 <p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere del diseño de varias entidades para guardar un histórico de datos. En la visualización del histórico de índices vegetativos es el mayor valor que obtiene el cliente cuando accede a la aplicación.</p></div><div id=modelo relacional><h3>1.6.3 modelo relacional</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación del análisis descrita en el planteamiento.</p>
-<p>
-<figure><img src="figures/modelo-BD.png" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/modelo-BD.png" /></p>
 <p>Para la creación de este modelo he trabajado con el equipo en la identificación de los conceptos que necesitaban ser representados. El diseño en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, además de permitir la transmisión de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado aísla la base de datos y nos permite diseñar directamente en <em>Python</em> dicho modelo. Las entidades se diseñan como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado. De dicha forma creamos las claves foráneas que físicamente contiene la base de datos.</p>
 <p>La utilización de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localización física de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de producción.</p>
@@ -1417,14 +1411,14 @@ erDiagram
         <span class="c1"># now do the things that you want with your models here</span>
 </code></pre></div>
 
-<p>Las líneas de código anteriores hacen referencia a una implementación concreta del patrón mencionado.  Fijándonos en la siguiente figura, la clase <strong>Command</strong> sería el handler y el método <strong>handle</strong> corresponde con handleRequest del esquema. Los próximos scripts que creemos serán los clientes de estas clases. Resaltar que la implementación de Django de este patrón es un poco más compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parámetros. </p>
+<p>Las líneas de código anteriores hacen referencia a una implementación concreta del patrón mencionado.  Fijándonos en la siguiente figura, la clase <strong>Command</strong> sería el handler y el método <strong>handle</strong> corresponde con <em>handleRequest</em> del esquema. Los próximos scripts que creemos serán los clientes de estas clases. Resaltar que la implementación de Django de este patrón es un poco más compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parámetros. </p>
 <p>
 <figure><img src="figures/pipeline_pattern.png" /><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>Con este patrón desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso más complejo. Cada unidad de carga se comporta como un filtro que añade de forma ordenada la información al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberías que permitan dejar varias instancias de la aplicación en estados diferentes.</p>
 <p>Para AGRAI, hacen falta transformar los datos de índices vegetativos que maneja el equipo en información ordenada que llegue al modelo de datos desarrollado anteriormente. A continuación explicamos el flujo de procesos de carga más utilizado.</p>
-<p>Los datos principalmente provienen de qgis, software para trabajar con información georeferenciada. El equipo pre-procesa la información sobre los índices vegetativos y da valores a los píxeles mediante dicho software. La principal función de este trabajo es dar sentido a esa información, guardando los datos tomados junto con sus relaciones con el parcelario físico.</p>
+<p>Los datos principalmente provienen de <em>Qgis</em>, software para trabajar con información georreferenciada. El equipo pre-procesa la información sobre los índices vegetativos y da valores a los píxeles mediante dicho software. La principal función de este trabajo es dar sentido a esa información, guardando los datos tomados junto con sus relaciones con el parcelario físico.</p>
 <div class="mermaid">
 graph LR;
     qgis-->parcelas;
@@ -1572,10 +1566,7 @@ graph LR;
 <B>Variable Objetivo</B>
 <p>Junto con los datos extraídos añadiremos la variable objetivo de producción. Esta variable, aun sin almacenar en el modelo, hace referencia a los kilos de producción de cada parcela en su cosecha.
 A partir de ella, obtenida de históricos de campañas anteriores, junto con las features anteriores, vamos a poder predecir la evolución del cultivo con precisión en estados concretos de su maduración. Se explica con detalle en el siguiente punto.</p></div><div id=modelo de regresión><h3>1.7.4 modelo de regresión</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
-<p>
-<figure><img src="figures/view-capture.png" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/view-capture.png" /></p>
 <p>En el punto en el que estamos podemos pensar en las múltiples vistas que se pueden generar a partir de los datos persistidos en el BD. Desde aquí desarrollaremos la automatización de la búsqueda del mejor modelo posible para la vista anterior, pero siempre teniendo en cuenta que a partir de los datos persistidos podemos predecir muchos otros valores, no solo la producción de un cultivo. </p>
 <div class="codehilite"><pre><span></span><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
 
@@ -1594,10 +1585,7 @@ A partir de ella, obtenida de históricos de campañas anteriores, junto con las
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
-</code></pre></div></div><div id=MODELO IA><h3>1.8.0 MODELO IA</h3><p>-- LINK-NOTE --</p>
-<p>[[preprocesamiento]]</p>
-<p>[[modelo de regresión]]</p>
-<p>[[mejor modelo]]</p></div><div id=preprocesamiento><h3>1.8.1 preprocesamiento</h3><p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. 
+</code></pre></div></div><div id=MODELO IA><h3>1.8.0 MODELO IA</h3><div id=preprocesamiento><h3>1.8.1 preprocesamiento</h3><p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. 
 De todas formas, sí que intentaremos que los datos de producción con los que vamos a predecir estén normalizados y se haya hecho una búsqueda previa de 'outliers'.</p>
 <p>Buscamos un modelo de regresión para el número de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeño, diseñaremos los cuadernos para automatizar la búsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar más adelante.</p>
 <p>El rango de valores para la mayoría de los índices que obtenemos va de -1 a 1. Los datos de índices negativos que llegan a la vista se pueden considerar como 'outliers'. Esto es debido a que si los índices provienen de una imagen con nubes, no se diferencian los colores del terreno y el índice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los índices que provengan de la toma de la imagen en una fecha en la que había nubes.</p>
@@ -1606,10 +1594,7 @@ De todas formas, sí que intentaremos que los datos de producción con los que v
 </figure>
 </p>
 <p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestión y automatización de los modelos de producción generados a partir los datos de las 25 parcelas estudiadas. Recordamos que estamos pensando en escribir el código necesario para automatizar en la medida de lo posible la búsqueda del mejor modelo de producción. De tal forma que cuando el sistema contemple un mayor número de parcelas, la ejecución de los cuadernos nos siga generando el mejor modelo de producción posible.</p></div><div id=modelo de regresión><h3>1.8.2 modelo de regresión</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
-<p>
-<figure><img src="figures/view-capture.png" /><figcaption>caption</figcaption>
-</figure>
-</p>
+<p><img alt="" src="figures/view-capture.png" /></p>
 <p>En el punto en el que estamos podemos pensar en las múltiples vistas que se pueden generar a partir de los datos persistidos en el BD. Desde aquí desarrollaremos la automatización de la búsqueda del mejor modelo posible para la vista anterior, pero siempre teniendo en cuenta que a partir de los datos persistidos podemos predecir muchos otros valores, no solo la producción de un cultivo. </p>
 <div class="codehilite"><pre><span></span><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
 
