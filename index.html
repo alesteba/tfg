@@ -1387,7 +1387,7 @@ graph LR;
     vista_minable-->modelo;
 </div>
 
-<p>La información de los píxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los índices vegetativos solo contemplamos la información sobre la geometría de la parcela, no sabemos nada más. Esta información tiene que almacenarse junto con el cultivo, el estado fenológico, los datos físicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los scripts que conforman los procesos del pipeline.</p>
+<p>La información de los píxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los índices vegetativos solo contemplamos la información sobre la geometría de la parcela, no sabemos nada más. Esta información tiene que almacenarse junto con el cultivo, el estado fenológico, los datos físicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que conforman los procesos del pipeline.</p>
 <table>
 <thead>
 <tr>
@@ -1445,19 +1445,51 @@ graph LR;
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">))</span>
-
-        <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;1-load-qgis&#39;</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
+        <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;1-load-qgis&#39;</span><span class="p">,</span> <span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
 
         <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;2-load-parcela-data&#39;</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
 
         <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;3-load-cultivos&#39;</span><span class="p">,</span> <span class="n">excel</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FICHERO_PATH</span><span class="p">))</span>
 
-        <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;4-download-indices&#39;</span><span class="p">,</span><span class="n">parcelas</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PARCELA_SHAPE</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">)</span>
+        <span class="n">call_command</span><span class="p">(</span>
+
+            <span class="s1">&#39;4-download_img&#39;</span><span class="p">,</span>
+            <span class="n">date1</span><span class="o">=</span><span class="n">fecha_start</span><span class="p">,</span>
+            <span class="n">date2</span><span class="o">=</span><span class="n">fecha_end</span><span class="p">,</span>
+            <span class="n">pixels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PIXEL_SHAPE</span><span class="p">,</span>
+            <span class="n">indices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;down_img.csv&#39;</span><span class="p">)</span>
+
+        <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;4-load_range&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">])</span>
 </code></pre></div>
 
 <p>Además de este último, podemos crear varios entornos con tuberías diferentes que den como resultado bases de datos con estados distintos. Como mencionábamos anteriormente, esto es muy útil debido al funcionamiento del equipo en relación con el procesamiento de datos con varios clientes. La aplicación puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre; por ejemplo, la misma instancia de la BD sirve tanto para una bodega con variedades de vino como para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
 <p>Por último, este patrón nos permite ejecutar comandos de forma asíncrona y gestionar los procesos con un planificador. Actualmente, aunque el tiempo de carga es alto, podemos asumir una carga lenta. Pero es este mismo patrón de diseño el que nos puede permitir a futuro la carga asíncrona de los datos en cada una de los componentes que lo forman.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DATA</span><span class="p">,</span> <span class="n">INDICES</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">indice</span> <span class="ow">in</span> <span class="n">INDICES</span><span class="p">:</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">DATA</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">drop_cols</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">indice</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">col_name</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">col_name</span> <span class="o">==</span> <span class="s1">&#39;ID&#39;</span><span class="p">):</span>
+
+            <span class="k">continue</span>
+
+            <span class="n">drop_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col_name</span><span class="p">)</span>
+
+        <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_cols</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;4-load_indice&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="n">indice</span><span class="p">)</span>
+</code></pre></div>
+
 <p>Adjuntamos en los entregables los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que forman este proceso de almacenamiento de datos. </p></div><div id=vista_minable><h3>1.7.3 vista minable</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
 <p>Ahora, fuera de la estructura de comandos de <em>Django</em> y utilizando el entorno virtual creado y los cuadernos integrados en la aplicación, escribimos el <a href="">algoritmo</a> para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
 <p>El código que mostramos en este apartado corresponde con la generación de la vista tabulada con la que vamos a crear el modelo de producción de cultivo. Ahora realizamos el proceso inverso a la persistencia de datos que hemos realizado hasta este punto. Utilizamos la información y sus relaciones perisitidas en la base de datos de nuestro sistema para generar la vista minable que necesita el modelo predictivo. </p>
