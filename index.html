@@ -1,43 +1,32 @@
-
-
 <!DOCTYPE html>
-
 <html>
-
-    <head>
-        <meta charset="UTF-8">
-        <title>TFG | Pipeline de Datos</title>
-
-        <link rel="stylesheet" href="https://waloncab.github.io/s.ln_blog/assets/css/body.css">
-        <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="./codehilite.css">
-
-        <script src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
-        
-    </head> 
-
-    <body>
-
-        <div class="content">
-
-            <ul><li><a href="#TFG">1.0 TFG</a></li><ul><li><a href="#RESUMEN">1.1 RESUMEN</a></li><li><a href="#INTRODUCCIÓN">1.2.0 INTRODUCCIÓN</a></li><ul><li><a href="#contexto">1.2.1 contexto</a></li><li><a href="#previos">1.2.2 previos</a></li></ul><li><a href="#PLANIFICACIÓN">1.3.0 PLANIFICACIÓN</a></li><ul><li><a href="#alcance">1.3.1 alcance</a></li><li><a href="#metodología">1.3.2 metodología</a></li><li><a href="#EDT">1.3.3 EDT</a></li><li><a href="#entregables">1.3.4 entregables</a></li><li><a href="#tiempos">1.3.5 tiempos</a></li><li><a href="#gantt">1.3.6 gantt</a></li><li><a href="#rrhh">1.3.7 rrhh</a></li><li><a href="#comunicaciones">1.3.8 comunicaciones</a></li><li><a href="#riegos">1.3.9 riegos</a></li></ul><li><a href="#ANÁLISIS">1.4.0 ANÁLISIS</a></li><ul><li><a href="#dominio_agronómico">1.4.1 dominio agronómico</a></li><li><a href="#fuentes_de_datos">1.4.2 fuentes de datos</a></li><li><a href="#automatizacion">1.4.3 automatizacion</a></li><li><a href="#tecnologías">1.4.4 tecnologías</a></li><li><a href="#requisitos">1.4.5 requisitos</a></li></ul><li><a href="#INFRAESTRUCTURA">1.5.0 INFRAESTRUCTURA</a></li><ul><li><a href="#arquitectura_física">1.5.1 arquitectura física</a></li><li><a href="#entorno">1.5.2 entorno</a></li><li><a href="#UNIX_en_local">1.5.3 UNIX en local</a></li><li><a href="#control_de_versiones">1.5.4 control de versiones</a></li></ul><li><a href="#DISEÑO">1.6.0 DISEÑO</a></li><ul><li><a href="#componentes">1.6.1 componentes</a></li><li><a href="#carga_de_datos">1.6.2 carga de datos</a></li><li><a href="#modelo_relacional">1.6.3 modelo relacional</a></li><li><a href="#servicios">1.6.4 servicios</a></li></ul><li><a href="#PIPELINE">1.7.0 PIPELINE</a></li><ul><li><a href="#transformación_datos">1.7.1 transformación datos</a></li><li><a href="#design_pattern">1.7.2 design pattern</a></li><li><a href="#vista_minable">1.7.3 vista minable</a></li></ul><li><a href="#MODELO_IA">1.8.0 MODELO IA</a></li><ul><li><a href="#preprocesamiento">1.8.1 preprocesamiento</a></li><li><a href="#modelo_de_regresión">1.8.2 modelo de regresión</a></li><li><a href="#mejor_modelo">1.8.3 mejor modelo</a></li></ul><li><a href="#SEGUIMIENTO">1.9.0 SEGUIMIENTO</a></li><ul><li><a href="#desviaciones">1.9.1 desviaciones</a></li><li><a href="#memoria">1.9.2 memoria</a></li></ul><li><a href="#0-conclusiones">1.10.0 0-conclusiones</a></li><ul><li><a href="#conclusiones">1.10.1 conclusiones</a></li><li><a href="#bibliografía">1.10.2 bibliografía</a></li></ul></ul></ul>
-
-            <div id=TFG><h2>1.0 TFG</h2><div id=RESUMEN><h2>1.1 RESUMEN</h2><p>El trabajo consistirá en la reestructuración de una aplicación de gestión de datos agronómicos. Estos datos, que actualmente provienen de varias fuentes, van a ser tratados en una nueva arquitectura que posibilitará técnicas de integración y despliegue continuo. En su diseño pasamos por las etapas sucesivas de infraestructura, diseño de un modelo relacional, utilización de un pipeline para la carga de datos y, finalmente, la obtención de una vista minable sobre la que se ejecutarán modelos de Inteligencia Artificial. Esta vista permitirá predecir mediante regresión la cantidad de kg de cultivo que se espera cosechar en una parcela y en una fecha determinadas.</p></div><div id=INTRODUCCIÓN><h3>1.2.0 INTRODUCCIÓN</h3><div id=contexto><h3>1.2.1 contexto</h3><p>El propósito de este proyecto es mejorar el flujo de trabajo del equipo de "SpectralGeo" mediante la automatización del proceso de recogida y procesado de datos agronómicos que se utilizan en la creación de modelos de inteligencia artificial para el cultivo.</p>
+<head>
+<meta charset="utf-8"/>
+<title>TFG | Pipeline de Datos</title>
+<link href="https://waloncab.github.io/s.ln_blog/assets/css/body.css" rel="stylesheet"/>
+<link href="./style.css" rel="stylesheet"/>
+<link href="./codehilite.css" rel="stylesheet"/>
+<script src="https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div class="content">
+<ul><li><a href="#TFG">1.0 TFG</a></li><ul><li><a href="#RESUMEN">1.1 RESUMEN</a></li><li><a href="#INTRODUCCIÓN">1.2.0 INTRODUCCIÓN</a></li><ul><li><a href="#contexto">1.2.1 contexto</a></li><li><a href="#previos">1.2.2 previos</a></li></ul><li><a href="#PLANIFICACIÓN">1.3.0 PLANIFICACIÓN</a></li><ul><li><a href="#alcance">1.3.1 alcance</a></li><li><a href="#metodología">1.3.2 metodología</a></li><li><a href="#EDT">1.3.3 EDT</a></li><li><a href="#entregables">1.3.4 entregables</a></li><li><a href="#tiempos">1.3.5 tiempos</a></li><li><a href="#gantt">1.3.6 gantt</a></li><li><a href="#rrhh">1.3.7 rrhh</a></li><li><a href="#comunicaciones">1.3.8 comunicaciones</a></li><li><a href="#riegos">1.3.9 riegos</a></li></ul><li><a href="#ANÁLISIS">1.4.0 ANÁLISIS</a></li><ul><li><a href="#dominio_agronómico">1.4.1 dominio agronómico</a></li><li><a href="#fuentes_de_datos">1.4.2 fuentes de datos</a></li><li><a href="#automatizacion">1.4.3 automatizacion</a></li><li><a href="#tecnologías">1.4.4 tecnologías</a></li><li><a href="#requisitos">1.4.5 requisitos</a></li></ul><li><a href="#INFRAESTRUCTURA">1.5.0 INFRAESTRUCTURA</a></li><ul><li><a href="#arquitectura_física">1.5.1 arquitectura física</a></li><li><a href="#entorno">1.5.2 entorno</a></li><li><a href="#UNIX_en_local">1.5.3 UNIX en local</a></li><li><a href="#control_de_versiones">1.5.4 control de versiones</a></li></ul><li><a href="#DISEÑO">1.6.0 DISEÑO</a></li><ul><li><a href="#componentes">1.6.1 componentes</a></li><li><a href="#carga_de_datos">1.6.2 carga de datos</a></li><li><a href="#modelo_relacional">1.6.3 modelo relacional</a></li><li><a href="#servicios">1.6.4 servicios</a></li></ul><li><a href="#PIPELINE">1.7.0 PIPELINE</a></li><ul><li><a href="#transformación_datos">1.7.1 transformación datos</a></li><li><a href="#design_pattern">1.7.2 design pattern</a></li><li><a href="#vista_minable">1.7.3 vista minable</a></li></ul><li><a href="#MODELO_IA">1.8.0 MODELO IA</a></li><ul><li><a href="#preprocesamiento">1.8.1 preprocesamiento</a></li><li><a href="#modelo_de_regresión">1.8.2 modelo de regresión</a></li><li><a href="#mejor_modelo">1.8.3 mejor modelo</a></li></ul><li><a href="#SEGUIMIENTO">1.9.0 SEGUIMIENTO</a></li><ul><li><a href="#desviaciones">1.9.1 desviaciones</a></li><li><a href="#memoria">1.9.2 memoria</a></li></ul><li><a href="#0-conclusiones">1.10.0 0-conclusiones</a></li><ul><li><a href="#conclusiones">1.10.1 conclusiones</a></li><li><a href="#bibliografía">1.10.2 bibliografía</a></li></ul></ul></ul>
+<div id="TFG"><h2>1.0 TFG</h2><div id="RESUMEN"><h2>1.1 RESUMEN</h2><p>El trabajo consistirá en la reestructuración de una aplicación de gestión de datos agronómicos. Estos datos, que actualmente provienen de varias fuentes, van a ser tratados en una nueva arquitectura que posibilitará técnicas de integración y despliegue continuo. En su diseño pasamos por las etapas sucesivas de infraestructura, diseño de un modelo relacional, utilización de un pipeline para la carga de datos y, finalmente, la obtención de una vista minable sobre la que se ejecutarán modelos de Inteligencia Artificial. Esta vista permitirá predecir mediante regresión la cantidad de kg de cultivo que se espera cosechar en una parcela y en una fecha determinadas.</p></div><div id="INTRODUCCIÓN"><h3>1.2.0 INTRODUCCIÓN</h3><div id="contexto"><h3>1.2.1 contexto</h3><p>El propósito de este proyecto es mejorar el flujo de trabajo del equipo de "SpectralGeo" mediante la automatización del proceso de recogida y procesado de datos agronómicos que se utilizan en la creación de modelos de inteligencia artificial para el cultivo.</p>
 <p>AGRAI es una aplicación para la gestión de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicación se centra el despliegue de datos agronómicos y vegetativos georreferenciados a través de en una interfaz web. Los usuarios de la aplicación, normalmente agricultores o cooperativas, pueden consultar el estado de su parcelario junto con algunas predicciones, como puede ser la cantidad de Kg que se van a cosechar en una fecha determinada. El acceso a dicha aplicación puede darse desde equipo de sobremesa o un dispositivo móvil, aunque es este último lo que parece que se utiliza más. </p>
 <p>
-<figure><img src="figures/visor_GIS_det.png" /><figcaption>caption</figcaption>
+<figure><img src="https://github.com/alesteba/tfg/figures/visor_GIS_det.png"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>Actualmente, cómo se procesa la información que utiliza nuestra aplicación es un proceso tedioso para el equipo. En este proceso, diferentes miembros trabajan con tecnologías distintas sobre datos duplicados provenientes de fuentes comunes. Aunque se realiza una planificación y coordinación de los proyectos, se pierde bastante tiempo en la transformación de los datos que cada miembro del equipo necesita para llevar a cabo su labor.</p>
 <p>El objetivo de este trabajo es mejorar y automatizar el flujo de trabajo del equipo, convirtiendo la aplicación AGRAI en una herramienta robusta que manipule un único repositorio de datos al cual el resto del equipo pueda acceder, utilizándolo de forma segura y -lo más importante,-sin duplicar y romper la integridad de estos datos.</p>
-<p>Es un proyecto ambicioso debido a que no solo es importante el conocimiento técnico sino que serán necesarios cambios en la forma de trabajo del equipo, cambios que se basan en  la confianza de cada miembro en la nueva forma de trabajo que se desea implementar. </p></div><div id=previos><h3>1.2.2 previos</h3><p>SpectralGeo se ha especializado en el uso de nuevas tecnologías para sectores como el de la agricultura o el reciclaje, centrándose en proyectos con carácter reivindicativo de la sostenibilidad medioambiental. La relación con clientes como Ecoembes o el desarrollo de software para la gestión sostenible de cultivos lo demuestran.</p>
+<p>Es un proyecto ambicioso debido a que no solo es importante el conocimiento técnico sino que serán necesarios cambios en la forma de trabajo del equipo, cambios que se basan en  la confianza de cada miembro en la nueva forma de trabajo que se desea implementar. </p></div><div id="previos"><h3>1.2.2 previos</h3><p>SpectralGeo se ha especializado en el uso de nuevas tecnologías para sectores como el de la agricultura o el reciclaje, centrándose en proyectos con carácter reivindicativo de la sostenibilidad medioambiental. La relación con clientes como Ecoembes o el desarrollo de software para la gestión sostenible de cultivos lo demuestran.</p>
 <p>Durante las prácticas realizas en la empresa se identificó que era totalmente necesario dotar de una arquitectura robusta a la aplicación AGRAI. En estas prácticas se comenzó el desarrollo de un modelo de datos sobre el que dicha aplicación pudiese escalarse posteriormente.</p>
 <p>Actualmente, AGRAI aún necesita una reestructuración para la gestión de grandes volúmenes de datos agronómicos, poniendo especial énfasis en los índices vegetativos que gestiona, los cuales provienen del procesamiento de imágenes satelitales. El estado actual de dicha aplicación consiste en la monitorización de cultivos a través del análisis de históricos de datos.</p>
 <p>La aplicación ya está creada; el cliente obtiene los resultados que espera cuando consulta el estado de su parcelario en la interfaz de la aplicación. Como equipo, nos organizamos para que la información y los modelos predictivos lleguen al cliente a través de esta, pero son varios los puntos en los que trabajamos en exceso para finalmente mostrar una "predicción" al cliente. </p>
 <p>El valor más importante que predecimos es el número de kg que se espera cosechar en la fecha estipulada para el agricultor. Esta predicción hace uso de valores de índices vegetativos a partir de imágenes satelitales tomadas en diferentes fechas. El histórico de datos registrado permite estudiar la evolución del cultivo y, finalmente, mediante métodos de Inteligencia Artificial IA, predecir un valor en la fecha en la que se espera cosechar.</p>
 <p>Serán las etapas de infraestructura, diseño, implementación y modelado las que buscaremos optimizar en el contexto de todo el equipo, debido a que estas etapas se reparten entre sus miembros.</p>
 <p>
-<figure><img src="figures/lean_1.gif" /><figcaption>caption</figcaption>
+<figure><img src="https://github.com/alesteba/tfg/figures/lean_1.gif"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>Justificamos este cambio como parte de una búsqueda de procesos esbeltos (lean), que consisten en la eliminación de los "desperdicios", o fuentes de despilfarro de tiempo y trabajo en la elaboración de productos o servicios. A través de la solución que vamos a implantar buscamos la optimización continua del proceso y la aceptación de esta cultura de optimización por el equipo.</p>
@@ -46,7 +35,7 @@
 <li>identificar los desperdicios y tratar de eliminarlos</li>
 <li>mejorar la comunicación interna de la organización</li>
 <li>reducir costes y tiempos de entrega y mejorar la calidad</li>
-</ul></div><div id=PLANIFICACIÓN><h3>1.3.0 PLANIFICACIÓN</h3><div id=alcance><h3>1.3.1 alcance</h3><p>El proyecto planteado inicialmente por la empresa tiene una planificación de cuatro meses.  A continuación se expondrán los objetivos generales del proyecto para aportar una visión global del trabajo.</p>
+</ul></div><div id="PLANIFICACIÓN"><h3>1.3.0 PLANIFICACIÓN</h3><div id="alcance"><h3>1.3.1 alcance</h3><p>El proyecto planteado inicialmente por la empresa tiene una planificación de cuatro meses.  A continuación se expondrán los objetivos generales del proyecto para aportar una visión global del trabajo.</p>
 <ul>
 <li>Automatizar el despliegue de la aplicación mediante infraestructura como código.</li>
 <li>Preparar diferentes entornos con las tecnologías necesarias para cada parte de la aplicación.</li>
@@ -58,14 +47,13 @@
 <li>Probar técnicas de Inteligencia Artificial para entrenar el mejor modelo de regresión para la producción anterior.</li>
 <li>Utilizar el modelo de producción de cultivo para predecir nuevos valores que no han sido usados en el entrenamiento.</li>
 <li>Incluir los resultados en la presentación de la aplicación.</li>
-</ul></div><div id=metodología><h3>1.3.2 metodología</h3><p>En el equipo hacemos uso de SCRUM para la gestión del proyecto. Dicha metodología permite un desarrollo en cascada de las diferentes tareas propuestas para la creación del pipeline.</p>
-<p>Se usará un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (también llamadas iteraciones), se repiten de manera intencionada una o más actividades del<br />
-proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va aumentando. Las fases (iteraciones) desarrollan el producto a través de una serie de ciclos repetidos, mientras que los incrementos van añadiendo sucesivamente funcionalidad al producto. Esto, en definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteración se entrega una versión mejorada. Las versiones que entregamos se corresponden con las cuatro grandes fases de la arquitectura que desarrollamos.</p>
+</ul></div><div id="metodología"><h3>1.3.2 metodología</h3><p>En el equipo hacemos uso de SCRUM para la gestión del proyecto. Dicha metodología permite un desarrollo en cascada de las diferentes tareas propuestas para la creación del pipeline.</p>
+<p>Se usará un ciclo de vida iterativo e incremental. Dentro de las fases del proyecto (también llamadas iteraciones), se repiten de manera intencionada una o más actividades del  proyecto. Con estas iteraciones el entendimiento del producto por parte del equipo va aumentando. Las fases (iteraciones) desarrollan el producto a través de una serie de ciclos repetidos, mientras que los incrementos van añadiendo sucesivamente funcionalidad al producto. Esto, en definitiva, consiste en varios ciclos de vida en cascada. Al final de cada iteración se entrega una versión mejorada. Las versiones que entregamos se corresponden con las cuatro grandes fases de la arquitectura que desarrollamos.</p>
 <p>
-<figure><img src="figures/iteraciones.PNG" /><figcaption>caption</figcaption>
+<figure><img src="https://github.com/alesteba/tfg/figures/iteraciones.PNG"/><figcaption>caption</figcaption>
 </figure>
-</p></div><div id=EDT><h3>1.3.3 EDT</h3><p>Mostramos el desglose de las tareas más importantes para la correcta realización del proyecto.</p>
-<p>'<figure><img src="mermaid/output_0.svg" /><figcaption>mermaid</figcaption>
+</p></div><div id="EDT"><h3>1.3.3 EDT</h3><p>Mostramos el desglose de las tareas más importantes para la correcta realización del proyecto.</p>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_0.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <table>
 <thead>
@@ -240,7 +228,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td>Al finalizar el proyecto, revisamos el escrito para asegurarnos de no cometer errores.</td>
 </tr>
 </tbody>
-</table></div><div id=entregables><h3>1.3.4 entregables</h3><p>Para acotar el proceso de trabajo identificamos los siguientes entregables que generaremos a lo a medida que avance el proyecto. Estos entregables quedarán en la memoria en sus correspondientes apartados o como anexos si tienen una extensión más larga. La siguiente tabla contiene que lleva a cada uno de estos artefactos.</p>
+</table></div><div id="entregables"><h3>1.3.4 entregables</h3><p>Para acotar el proceso de trabajo identificamos los siguientes entregables que generaremos a lo a medida que avance el proyecto. Estos entregables quedarán en la memoria en sus correspondientes apartados o como anexos si tienen una extensión más larga. La siguiente tabla contiene que lleva a cada uno de estos artefactos.</p>
 <table>
 <thead>
 <tr>
@@ -296,7 +284,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td style="text-align: center;">Cuaderno jupyter en el que buscamos el mejor modelo posible</td>
 </tr>
 </tbody>
-</table></div><div id=tiempos><h3>1.3.5 tiempos</h3><p>Para poder realizar un posterior seguimiento y control del proyecto asignamos a cada tarea un tiempo adecuado a la complejidad que estimamos para ésta. En caso de que posteriormente nos alejemos de lo que aquí planificamos, anotaremos dichas desviaciones en la sección de 'seguimiento y control'</p>
+</table></div><div id="tiempos"><h3>1.3.5 tiempos</h3><p>Para poder realizar un posterior seguimiento y control del proyecto asignamos a cada tarea un tiempo adecuado a la complejidad que estimamos para ésta. En caso de que posteriormente nos alejemos de lo que aquí planificamos, anotaremos dichas desviaciones en la sección de 'seguimiento y control'</p>
 <table>
 <thead>
 <tr>
@@ -470,11 +458,11 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td>300</td>
 </tr>
 </tbody>
-</table></div><div id=gantt><h3>1.3.6 gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. El tiempo estipulado es de dos meses y una semana.</p>
-<p>'<figure><img src="mermaid/output_1.svg" /><figcaption>mermaid</figcaption>
+</table></div><div id="gantt"><h3>1.3.6 gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. El tiempo estipulado es de dos meses y una semana.</p>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_1.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>Este diagrama es una estipulación de cómo se desarrolla el proyecto. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p>
-<p>Destacamos que las tareas de escritura de la memoria y pruebas unitarias se realizan durante casi todo el proyecto. Las pruebas nos permiten asegurarnos de que el proyecto funciona adecuadamente: así no pasamos a una nueva tarea si no hemos dejado la aplicación estable al terminar la anterior.</p></div><div id=rrhh><h3>1.3.7 rrhh</h3><p>El personal implicado en el Trabajo de Fin de Grado será:  </p>
+<p>Destacamos que las tareas de escritura de la memoria y pruebas unitarias se realizan durante casi todo el proyecto. Las pruebas nos permiten asegurarnos de que el proyecto funciona adecuadamente: así no pasamos a una nueva tarea si no hemos dejado la aplicación estable al terminar la anterior.</p></div><div id="rrhh"><h3>1.3.7 rrhh</h3><p>El personal implicado en el Trabajo de Fin de Grado será:  </p>
 <table>
 <thead>
 <tr>
@@ -500,7 +488,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td style="text-align: center;">Compañero en la empresa. Probará el software desarrollado con un mayor volumen de datos.</td>
 </tr>
 </tbody>
-</table></div><div id=comunicaciones><h3>1.3.8 comunicaciones</h3><p>Para mantener informados tanto al tutor académico como a la tutora de la empresa, utilizaremos los siguientes canales:  </p>
+</table></div><div id="comunicaciones"><h3>1.3.8 comunicaciones</h3><p>Para mantener informados tanto al tutor académico como a la tutora de la empresa, utilizaremos los siguientes canales:  </p>
 <table>
 <thead>
 <tr>
@@ -522,7 +510,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td style="text-align: left;">aplicación de comunicación interna para mensajes directos con los miembros del equipo.</td>
 </tr>
 </tbody>
-</table></div><div id=riegos><h3>1.3.9 riegos</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos.</p>
+</table></div><div id="riegos"><h3>1.3.9 riegos</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos.</p>
 <table>
 <thead>
 <tr>
@@ -572,18 +560,18 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 </tbody>
 </table>
 <p>De la tabla anterior se prestará especial atención a los riesgos valorados como 'Alto', ya que por su incidencia en el proyecto requieren un seguimiento exhaustivo, para los cuales se desarrollarán sus correspondientes planes de contingencia.  </p>
-<p>Los riesgos de valoración Media y Baja tendrán un control basado en un plan de mitigación simple de seguimientos del cronograma, con intervalos cortos de tiempo.</p></div><div id=ANÁLISIS><h3>1.4.0 ANÁLISIS</h3><div id=dominio_agronómico><h3>1.4.1 dominio agronómico</h3><p>Una vez en contexto, procedemos a justificar las decisiones de diseño que la aplicación AGRAI necesita para llegar al rediseño que hemos identificado como clave.</p>
+<p>Los riesgos de valoración Media y Baja tendrán un control basado en un plan de mitigación simple de seguimientos del cronograma, con intervalos cortos de tiempo.</p></div><div id="ANÁLISIS"><h3>1.4.0 ANÁLISIS</h3><div id="dominio_agronómico"><h3>1.4.1 dominio agronómico</h3><p>Una vez en contexto, procedemos a justificar las decisiones de diseño que la aplicación AGRAI necesita para llegar al rediseño que hemos identificado como clave.</p>
 <p>AGRAI es una aplicación para la gestión de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicación se centra el despliegue de datos georreferenciados por medio de una interfaz web. Los resultados para el usuario de la aplicación son satisfactorios, permitiendo a éste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>Tenemos que situarnos en el uso que se le está dando a la aplicación en relación con el diseño de ésta. La monitorización efectuada es válida para cualquier tipo de cultivo susceptible de ser fotografiado desde una imagen satelital y/o de dron. El modelo de datos que utiliza, aunque pobre al comienzo del trabajo, permite registrar tantos cultivos como un potencial cliente desee. Por otro lado, el caso real de uso de la aplicación proviene de bodegas o cooperativas vitivinícolas que quieren predecir la cantidad de kg de cosecha en una campaña determinada (2020-2021).</p>
 <p>Como punto de partida buscaremos identificar las entidades del dominio necesarias para que nuestro nuevo modelo de datos represente y relacione toda la información con precisión.</p>
 <p>En la interfaz web, el cliente observa un mapa con sus parcelas resaltadas en colores. Este color reflejado en los píxeles hace referencia a los índices vegetativos provenientes de las imágenes satelitales. Los clientes utilizan dicha interfaz para ver el estado de sus cultivos y observar la producción que predicen los modelos de Inteligencia Artificial generados.</p>
-<p><img alt="" src="figures/visor_GIS.png" /></p>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/visor_GIS.png"/></p>
 <p>A nivel interno, el equipo trabaja con datos provenientes de imágenes descargadas de satélites como SENTINEL, o de grabaciones realizadas por dron cuando se requiere una mayor calidad. Estos datos se mezclan con información proporcionada por estaciones meteorológicas como el SIAR y con la información que los clientes pueden proporcionar sobre campañas anteriores.</p>
 <p>Por otro lado, el proceso actual de esta información es tedioso para el equipo. Los diferentes miembros trabajan con tecnologías distintas sobre datos, muchas veces duplicados, que provienen de fuentes comunes. Los requisitos que identificamos en el siguiente punto consideran la idea de optimización continua necesaria.</p>
 <p>
-<figure><img src="figures/lean.png" /><figcaption>caption</figcaption>
+<figure><img src="https://github.com/alesteba/tfg/figures/lean.png"/><figcaption>caption</figcaption>
 </figure>
-</p></div><div id=fuentes_de_datos><h3>1.4.2 fuentes de datos</h3><p>Mencionábamos la búsqueda de optimización del proceso como una de las principales ideas para mejorar el flujo de datos que utiliza la aplicación. El rediseño que se quiere implantar y la arquitectura resultante tienen que cumplir con los principios de dicha metodología. Para que este trabajo resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta física que coordine bien todas las tareas de los participantes que la usan.</p>
+</p></div><div id="fuentes_de_datos"><h3>1.4.2 fuentes de datos</h3><p>Mencionábamos la búsqueda de optimización del proceso como una de las principales ideas para mejorar el flujo de datos que utiliza la aplicación. El rediseño que se quiere implantar y la arquitectura resultante tienen que cumplir con los principios de dicha metodología. Para que este trabajo resulte satisfactorio, el software tiene que poder utilizarse por el equipo con agilidad, consiguiendo que quede como una herramienta física que coordine bien todas las tareas de los participantes que la usan.</p>
 <p>Para poder realizar este proyecto decidimos trabajar con un número pequeño representativo de datos de la aplicación, actualmente en producción. Un menor volumen de información permite realizar pruebas y da pie a fijarnos en las relaciones y los esquemas estructurales con más precisión.  </p>
 <p>Como estamos buscando una optimización continua, a medida que voy haciendo pruebas con mi entorno local, un compañero se encarga de utilizar el mismo proyecto con volúmenes mayores de datos, que la aplicación utiliza en producción. La reestructuración del modelo de BD que realizamos contempla un posterior escalado de la aplicación que permitirá la integración continua con más datos y nuevas tecnologías.</p>
 <p>La siguiente tabla muestra las principales fuentes de datos de las que se obtienen y enlaza la información. El volumen de datos que se puede llegar a manejar es grande ya que por cada parcela se almacenan varios índices vegetativos en cada uno de sus píxeles. </p>
@@ -611,11 +599,11 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 </table>
 <p>Para poder realizar el trabajo utilizaremos, por tanto, una muestra representativa de los datos debido a que el proceso de descarga de índices y persistencia de datos es largo para realizar las pruebas. El sistema está pensado para trabajar con muchas parcelas; en las pruebas que yo voy a realizar escogemos una muestra de 25 parcelas y pensaremos una descarga de índices para no más de 4 fechas diferentes.</p>
 <p>Para hacernos una idea, contemplando solo 25 parcelas, podemos almacenar 3000 píxeles. Por cada pixel vamos a registrar varios índices vegetativos (ndvi, ndre) y para generar el histórico de datos esta información se multiplica por el número de fechas contempladas. Es decir, que aunque trabajamos sobre un volumen reducido para probar la automatización, sigue siendo mucha la información que tiene que almacenarse en la base de datos.</p>
-<p>Es el histórico de índices en diferentes fechas lo que permite al sistema realizar modelos predictivos. A mayor volumen de datos, más precisión podremos obtener en los modelos posteriormente. El punto importante de este trabajo es la mejora del proceso y la automatización del flujo de datos; ello nos llevará a que finalmente podamos obtener un modelo de regresión para predecir los kg de cultivo, tal y como el agricultor necesita. La muestra que utilizamos, al ser representativa con 25 parcelas, predecirá con un cierto sobreajuste a los datos. Por tanto nuestro esfuerzo se centra en que el proceso que implantamos sea reproducible para cualquier volumen de datos, y en que sin desarrollo adicional podamos utilizar el mismo proceso para predecir en el volumen que queramos.</p></div><div id=automatizacion><h3>1.4.3 automatizacion</h3><p>El proceso que vamos a implantar requiere de un diseño que posibilite estructurar y manejar grandes volúmenes de datos. Actualmente, existen varias tecnologías que abordan el concepto de <em>Pipeline</em> desde un punto de vista global. No vamos a utilizar ninguna de estas tecnologías; nuestro proceso se va a desarrollar a medida, modelando un Pipeline como patrón de diseño, encargado de la transformación de los datos en bloques reutilizables para su persistencia en el modelo.</p>
+<p>Es el histórico de índices en diferentes fechas lo que permite al sistema realizar modelos predictivos. A mayor volumen de datos, más precisión podremos obtener en los modelos posteriormente. El punto importante de este trabajo es la mejora del proceso y la automatización del flujo de datos; ello nos llevará a que finalmente podamos obtener un modelo de regresión para predecir los kg de cultivo, tal y como el agricultor necesita. La muestra que utilizamos, al ser representativa con 25 parcelas, predecirá con un cierto sobreajuste a los datos. Por tanto nuestro esfuerzo se centra en que el proceso que implantamos sea reproducible para cualquier volumen de datos, y en que sin desarrollo adicional podamos utilizar el mismo proceso para predecir en el volumen que queramos.</p></div><div id="automatizacion"><h3>1.4.3 automatizacion</h3><p>El proceso que vamos a implantar requiere de un diseño que posibilite estructurar y manejar grandes volúmenes de datos. Actualmente, existen varias tecnologías que abordan el concepto de <em>Pipeline</em> desde un punto de vista global. No vamos a utilizar ninguna de estas tecnologías; nuestro proceso se va a desarrollar a medida, modelando un Pipeline como patrón de diseño, encargado de la transformación de los datos en bloques reutilizables para su persistencia en el modelo.</p>
 <p>El primer paso para realizar una carga de datos, es el diseño de un <a href="">modelo relacional</a> que soporte esta información de la forma más estructurada y organizada posible. Hará falta la comprensión de conceptos del dominio agronómico para dar sentido a esta información y obtener así un esquema sólido sobre el que poder preguntar sin limitaciones.</p>
-<p>'<figure><img src="mermaid/output_2.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_2.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
-<p>Con un modelo relacional para los datos, los bloques atómicos de carga se podrán ejecutar periódicamente utilizando las fuentes de datos necesarias. El proceso de automatización termina, una vez que están almacenados los datos, con la extracción de una vista minable que permite obtener el mejor modelo de regresión para los kg de cultivo que se van a cosechar en una fecha determinada.</p></div><div id=tecnologías><h3>1.4.4 tecnologías</h3><p>El código de la aplicación que heredamos está escrito en Python. El lenguaje es una decisión adecuada debido a la necesidad de integrar técnicas de procesamiento de datos e inteligencia artificial. El framework de Django para Python permite construir un proyecto robusto y desplegarlo en un servidor con una interfaz web.</p>
+<p>Con un modelo relacional para los datos, los bloques atómicos de carga se podrán ejecutar periódicamente utilizando las fuentes de datos necesarias. El proceso de automatización termina, una vez que están almacenados los datos, con la extracción de una vista minable que permite obtener el mejor modelo de regresión para los kg de cultivo que se van a cosechar en una fecha determinada.</p></div><div id="tecnologías"><h3>1.4.4 tecnologías</h3><p>El código de la aplicación que heredamos está escrito en Python. El lenguaje es una decisión adecuada debido a la necesidad de integrar técnicas de procesamiento de datos e inteligencia artificial. El framework de Django para Python permite construir un proyecto robusto y desplegarlo en un servidor con una interfaz web.</p>
 <p><em>Django</em> nos ofrece las herramientas necesarias para trabajar desde un alto nivel de abstracción y poder diseñar una aplicación sólida y estable. Algunas de estas herramientas son:</p>
 <ul>
 <li>ORM, Object-Relational-Mapping: permite crear un modelo de datos y gestiona automáticamente la BD (base de datos) subyacente. Abstrae las consultas SQL y evita tener que realizar migraciones manuales de los esquemas.</li>
@@ -624,7 +612,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 </ul>
 <p>Aunque el framework es muy potente, harán falta otras herramientas y entornos para completar con éxito la automatización que buscamos para así conseguir un proceso de optimización continua. En el siguiente punto hablaremos de la infraestructura que la aplicación requiere y de cómo podemos solventar algunos de los problemas de integración más importantes.</p>
 <p>
-<figure><img src="figures/django_migrate.PNG" /><figcaption>caption</figcaption>
+<figure><img src="https://github.com/alesteba/tfg/figures/django_migrate.PNG"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>La utilización de <em>Python</em>, aparte de incluir este framework, nos da la posibilidad de utilizar las librerías de inteligencia artificial y ciencia de datos que son necesarias para la creación del modelo de producción de cultivo. Algunas de librerías principales que vamos a utilizar son las siguientes:</p>
@@ -653,7 +641,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td style="text-align: left;">integración de cuadernos procesables con el resto del proyecto</td>
 </tr>
 </tbody>
-</table></div><div id=requisitos><h3>1.4.5 requisitos</h3><p>La siguiente tabla muestra los requisitos funcionales críticos para completar con éxito el proyecto, terminando el trabajo con un producto estable que el equipo pueda utilizar.</p>
+</table></div><div id="requisitos"><h3>1.4.5 requisitos</h3><p>La siguiente tabla muestra los requisitos funcionales críticos para completar con éxito el proyecto, terminando el trabajo con un producto estable que el equipo pueda utilizar.</p>
 <table>
 <thead>
 <tr>
@@ -722,8 +710,8 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 <td style="text-align: left;">Utilizar software libre</td>
 </tr>
 </tbody>
-</table></div><div id=INFRAESTRUCTURA><h3>1.5.0 INFRAESTRUCTURA</h3><div id=arquitectura_física><h3>1.5.1 arquitectura física</h3><p>El entorno local, sobre el cual desarrollamos, y el de producción, donde se despliega la aplicación, son actualmente diferentes. Todos los miembros del equipo utilizamos máquinas Windows, mientras que en el servidor de producción encontramos una máquina Ubuntu. Esto crea un problema importante en el proceso de instalación de las librerías necesarias para trabajar con los datos; se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va a trabajar con el repositorio de la aplicación; además, las librerías necesarias necesitan de una gran cantidad de dependencias que varían en cuanto a las versiones. Como solución propondremos una nueva forma de trabajo que nos asegure un entorno común con las mismas librerías y paquetes.</p>
-<p>'<figure><img src="mermaid/output_3.svg" /><figcaption>mermaid</figcaption>
+</table></div><div id="INFRAESTRUCTURA"><h3>1.5.0 INFRAESTRUCTURA</h3><div id="arquitectura_física"><h3>1.5.1 arquitectura física</h3><p>El entorno local, sobre el cual desarrollamos, y el de producción, donde se despliega la aplicación, son actualmente diferentes. Todos los miembros del equipo utilizamos máquinas Windows, mientras que en el servidor de producción encontramos una máquina Ubuntu. Esto crea un problema importante en el proceso de instalación de las librerías necesarias para trabajar con los datos; se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va a trabajar con el repositorio de la aplicación; además, las librerías necesarias necesitan de una gran cantidad de dependencias que varían en cuanto a las versiones. Como solución propondremos una nueva forma de trabajo que nos asegure un entorno común con las mismas librerías y paquetes.</p>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_3.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>Parte del trabajo consiste en la automatización del despliegue de la aplicación. En este punto vemos coómo la infraestructura como código permite aislar las librerías necesarias creando un script que deja una máquina en estado estable para ejecutar la aplicación.</p>
 <p>Para poder utilizar tecnologías que posibiliten la integración continua, transformamos el entorno de desarrollo desplegando la aplicación en UNIX. Identificamos las siguientes dependencias que necesitan ser instaladas:</p>
@@ -740,7 +728,7 @@ proyecto. Con estas iteraciones el entendimiento del producto por parte del equi
 
 curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
 
-sudo sh -c 'echo &quot;deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list'
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" &gt; /etc/apt/sources.list.d/pgdg.list'
 
 sudo apt update
 sudo apt upgrade
@@ -752,7 +740,7 @@ sudo service postgresql start
 
 sudo -u postgres createuser -P agrai_user
 sudo -u postgres createdb -O agrai_user agrai_db
-sudo -u postgres psql -c &quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot; agrai_db
+sudo -u postgres psql -c "CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;" agrai_db
 
 # gdal native:
 sudo add-apt-repository ppa:ubuntugis/ppa &amp;&amp; sudo apt-get update
@@ -775,7 +763,7 @@ sudo apt install virtualenv
 
 # python env var
 
-export PYTHONPATH=&quot;/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages&quot;
+export PYTHONPATH="/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages"
 
 alias py=python3.10
 alias python=python3.10
@@ -797,7 +785,7 @@ export C_INCLUDE_PATH=/usr/include/gdal
 source ../agrai_venv/bin/activate
 # pip install --upgrade pip # quitar
 sudo python3 -m pip install -r requirements.txt
-</code></pre></div><div id=entorno><h3>1.5.2 entorno</h3><p>Es importante preparar un entorno común para el equipo. Django es un framework muy útil por la integración de las herramientas que hemos visto (ORM, web-interfaces, etc.), pero para conseguir un workflow adecuado necesitamos incluir otras herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos, con las librerías necesarias para ejecutar modelos predictivos.</p>
+</code></pre></div><div id="entorno"><h3>1.5.2 entorno</h3><p>Es importante preparar un entorno común para el equipo. Django es un framework muy útil por la integración de las herramientas que hemos visto (ORM, web-interfaces, etc.), pero para conseguir un workflow adecuado necesitamos incluir otras herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos, con las librerías necesarias para ejecutar modelos predictivos.</p>
 <p>Realizamos una migración de todo el entorno a UNIX para posteriormente utilizar herramientas de integración continua. El trabajo en el equipo local se hace a través de una máquina en WSL (windows subsystem for Linux) para trabajar de forma semejante a un contenedor. Uno de los problemas principales para el equipo en su flujo de trabajo ha sido mantener una integridad entre el desarrollo realizado por los diferentes miembros del equipo y el posterior despliegue de la aplicación en un entorno UNIX diferente al que se había utilizado en local en las versiones de preproducción.</p>
 <p>Dedicamos varios días a preparar la integración de Django con cuadernos jupyter y a ejecutar diferentes entornos virtuales con las librerías adecuadas en cada momento. Los siguientes ejemplos muestran cómo se ha conseguido integrar las librerías necesarias para el despliegue de los cuadernos y su integración con los datos y los modelos de Django.</p>
 <pre class="codehilite"><code class="language-python"># base code for jupyter integration
@@ -808,25 +796,24 @@ BASE_DIR = os.path.dirname(os.path.abspath('../../agrai/'))
 
 sys.path.insert(0, BASE_DIR)
 
-os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;agrai.settings&quot;)
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "agrai.settings")
 
-os.environ[&quot;DJANGO_ALLOW_ASYNC_UNSAFE&quot;] = &quot;true&quot;
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 django.setup()
 </code></pre>
-
-<p>Los cuadernos jupyter que se encuentran en esta memoria se han exportado desde la propia aplicación. Vemos la facilidad con la que el equipo puede redactar informes para clientes concretos, utilizando los datos de la aplicación directamente.  El código anterior es el 'snippet' necesario para poder integrar los cuadernos con las llamadas necesarias a los modelos de Django. Estos cuadernos son un punto tan importante de la arquitectura como puede ser el módulo de servicios.</p></div><div id=UNIX_en_local><h3>1.5.3 UNIX en local</h3><p>Hacemos uso de WSL (Windows Subsystem for Linux) para crear el entorno de desarrollo necesario para el proyecto. De esta forma conseguimos que los entornos de pruebas y producción sean muy similares, permitiendo automatizar el despliegue de la aplicación mediante técnicas de infraestructura como código. Una de las ventajas de tener una máquina Ubuntu como entorno de desarrollo es que mediante un script .sh instalamos todas las dependencias necesarias para dejar dicha máquina lista para el despliegue de la aplicación.</p>
+<p>Los cuadernos jupyter que se encuentran en esta memoria se han exportado desde la propia aplicación. Vemos la facilidad con la que el equipo puede redactar informes para clientes concretos, utilizando los datos de la aplicación directamente.  El código anterior es el 'snippet' necesario para poder integrar los cuadernos con las llamadas necesarias a los modelos de Django. Estos cuadernos son un punto tan importante de la arquitectura como puede ser el módulo de servicios.</p></div><div id="UNIX_en_local"><h3>1.5.3 UNIX en local</h3><p>Hacemos uso de WSL (Windows Subsystem for Linux) para crear el entorno de desarrollo necesario para el proyecto. De esta forma conseguimos que los entornos de pruebas y producción sean muy similares, permitiendo automatizar el despliegue de la aplicación mediante técnicas de infraestructura como código. Una de las ventajas de tener una máquina Ubuntu como entorno de desarrollo es que mediante un script .sh instalamos todas las dependencias necesarias para dejar dicha máquina lista para el despliegue de la aplicación.</p>
 <p>Para el trabajo interno de la aplicación necesitamos entornos con librerías más pesadas como numpy o scikit-learn que no deberíamos usar en la producción de la interfaz web, ya que ésta simplemente muestra los datos del parcelario registrado con su producción estimada. Consideramos la posibilidad de crear varios entornos virtuales para los diferentes flujos de trabajo que contempla la aplicación.</p>
 <ul>
 <li>Despliegue de la información de la aplicación mediante interfaz</li>
 <li>Técnicas de ciencia de datos para la creación de modelos a nivel interno, backend.</li>
 </ul>
-<p>Actualmente, solo existe un entono virtual sobre el cual se instalan todas las librerías <em>Python</em> necesarias para el desarrollo y despliegue. Dicha refactorización sobre la infraestructura se contempla para próximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos a un <em>refactor</em> grande, pero que no se lleven a cabo en el momento actual. Una vez identificados, valoramos su importancia y vemos si el diseño actual impediría su mejora. En este caso sería muy sencillo, una vez crezca la aplicación, separar los entornos virtuales para mejorar el tiempo de compilación y despliegue.</p></div><div id=control_de_versiones><h3>1.5.4 control de versiones</h3><p>Para poder desarrollar sobre software que está en producción estamos utilizando un sistema de control de versiones básico. Damos unas pequeñas pinceladas sobre cómo evoluciona el software y las ramas que utilizamos. </p>
+<p>Actualmente, solo existe un entono virtual sobre el cual se instalan todas las librerías <em>Python</em> necesarias para el desarrollo y despliegue. Dicha refactorización sobre la infraestructura se contempla para próximos hitos en el proyecto. Es importante identificar aquellos puntos que sean propensos a un <em>refactor</em> grande, pero que no se lleven a cabo en el momento actual. Una vez identificados, valoramos su importancia y vemos si el diseño actual impediría su mejora. En este caso sería muy sencillo, una vez crezca la aplicación, separar los entornos virtuales para mejorar el tiempo de compilación y despliegue.</p></div><div id="control_de_versiones"><h3>1.5.4 control de versiones</h3><p>Para poder desarrollar sobre software que está en producción estamos utilizando un sistema de control de versiones básico. Damos unas pequeñas pinceladas sobre cómo evoluciona el software y las ramas que utilizamos. </p>
 <p>El código de la aplicación se encuentra en un único servidor que gestiona su control de versiones a través de SVN, Subversion. El siguiente diagrama muestra el flujo de desarrollo con las ramas creadas para el trabajo independiente sin romper el producto en producción.</p>
-<p>'<figure><img src="mermaid/output_4.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_4.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
-<p>Al plantear un nuevo rediseño del producto, el trabajo tiene lugar en una rama diferente a la que se encuentra en producción. Esta nueva rama, Origins, gestionará el rediseño del modelo de datos y la implementación del proceso de automatización de los datos. Si el trabajo evoluciona correctamente, los futuros merges no deberían ser problemáticos.</p></div><div id=DISEÑO><h3>1.6.0 DISEÑO</h3><div id=componentes><h3>1.6.1 componentes</h3><p>Cuando comencé a trabajar con la aplicación, todo el código se encontraba en un único paquete con muy poca forma. A medida que se he ido refactorizando, se han creado entidades para modelar los datos y éstas se han estructurado en componentes atómicas de la aplicación.</p>
-<p>'<figure><img src="mermaid/output_5.svg" /><figcaption>mermaid</figcaption>
+<p>Al plantear un nuevo rediseño del producto, el trabajo tiene lugar en una rama diferente a la que se encuentra en producción. Esta nueva rama, Origins, gestionará el rediseño del modelo de datos y la implementación del proceso de automatización de los datos. Si el trabajo evoluciona correctamente, los futuros merges no deberían ser problemáticos.</p></div><div id="DISEÑO"><h3>1.6.0 DISEÑO</h3><div id="componentes"><h3>1.6.1 componentes</h3><p>Cuando comencé a trabajar con la aplicación, todo el código se encontraba en un único paquete con muy poca forma. A medida que se he ido refactorizando, se han creado entidades para modelar los datos y éstas se han estructurado en componentes atómicas de la aplicación.</p>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_5.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>En Django podemos crear un proyecto compuesto por varias aplicaciones. En la documentación oficial se explica cómo funciona la arquitectura del framework y se exponen ejemplos para que, una vez creadas, podamos acoplar y desacoplar las aplicaciones al proyecto. Es una forma similar de trabajo al modo en que organizamos una librería en múltiples paquetes, pero un poco más complicada debido a que el ORM subyacente traduce los modelos a tablas en una BD. Veamos cómo con solo añadir o quitar un string en nuestro settings activamos o desactivamos la aplicación en el proyecto.</p>
 <pre class="codehilite"><code class="language-python">INSTALLED_APPS = [
@@ -848,7 +835,6 @@ django.setup()
     'auto'
 ]
 </code></pre>
-
 <p>Estas aplicaciones pueden comunicarse entre sí a través de sus modelos y servicios. En la siguiente tabla explicamos qué hace cada sub-aplicación.</p>
 <table>
 <thead>
@@ -880,22 +866,22 @@ django.setup()
 </tr>
 </tbody>
 </table>
-<p>Esta división en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Más importante aún la claridad y sencillez de los modelos de cada componente y su respectiva representación en la BD.</p></div><div id=carga_de_datos><h3>1.6.2 carga de datos</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicación de forma ordenada con posibilidad de ser escalados en el futuro. En la implementación del pipeline que veremos en siguientes apartados haremos hincapié en los estados de carga por los que pasan los datos; de momento solo importa destacar que el modelo actual permite mantener un histórico de datos mucho más sólido que el que estaba implantado cuando comenzamos el desarrollo. </p>
+<p>Esta división en aplicaciones permite desarrollar y hacer pruebas solo con aquella parte del proyecto que necesitemos en el momento dado. Más importante aún la claridad y sencillez de los modelos de cada componente y su respectiva representación en la BD.</p></div><div id="carga_de_datos"><h3>1.6.2 carga de datos</h3><p>Un modelo claro y robusto va a permitir cargar datos en la aplicación de forma ordenada con posibilidad de ser escalados en el futuro. En la implementación del pipeline que veremos en siguientes apartados haremos hincapié en los estados de carga por los que pasan los datos; de momento solo importa destacar que el modelo actual permite mantener un histórico de datos mucho más sólido que el que estaba implantado cuando comenzamos el desarrollo. </p>
 <p>Es importante explicar por qué vamos a poner tanto énfasis en que estos datos se gestionen de manera fluida y eficaz. La interfaz web de la aplicación muestra la punta de un iceberg en la que el usuario observa las parcelas coloreadas basándose en los índices vegetativos, también se muestra la producción estimada.</p>
-<p><img alt="" src="figures/visor_GIS.png" /></p>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/visor_GIS.png"/></p>
 <p>El proceso de carga de datos hace uso de un módulo de descarga de imágenes satelitales que obtiene el valor de estos índices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del módulo de automatización junto con otras tareas similares. 
 Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de este para que los índices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
-<p>'<figure><img src="mermaid/output_6.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_6.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
-<p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere del diseño de varias entidades para guardar un histórico de datos. En la visualización del histórico de índices vegetativos es el mayor valor que obtiene el cliente cuando accede a la aplicación.</p></div><div id=modelo_relacional><h3>1.6.3 modelo relacional</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación del análisis descrita en el planteamiento.</p>
-<p><img alt="" src="figures/modelo-BD.png" /></p>
+<p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere del diseño de varias entidades para guardar un histórico de datos. En la visualización del histórico de índices vegetativos es el mayor valor que obtiene el cliente cuando accede a la aplicación.</p></div><div id="modelo_relacional"><h3>1.6.3 modelo relacional</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación del análisis descrita en el planteamiento.</p>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/modelo-BD.png"/></p>
 <p>Para la creación de este modelo he trabajado con el equipo en la identificación de los conceptos que necesitaban ser representados. El diseño en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, además de permitir la transmisión de ideas de forma sencilla durante las reuniones.</p>
 <p>Dentro del entorno de trabajo de <em>Django,</em> el ORM proporcionado aísla la base de datos y nos permite diseñar directamente en <em>Python</em> dicho modelo. Las entidades se diseñan como clases y las relaciones entre ellas se especifican mediante el lenguaje de mapeo proporcionado. De dicha forma creamos las claves foráneas que físicamente contiene la base de datos.</p>
 <p>La utilización de este ORM es una ventaja que nos evita usar SQL directamente y permite poblar la base de datos mediante comandos <em>Python</em> desde la terminal. De todas formas, la localización física de la BD necesita ser enlazada correctamente. Este aislamiento posibilita utilizar diferentes bases de datos en los entornos locales y de producción.</p>
 <p>Varias etapas han sido necesarias hasta llegar a un punto más o menos estable. La herramienta <em>Graphviz</em> ha permitido obtener diagramas UML que visualizan la estructura de clases del modelo a partir del código. Esta representación gráfica ha sido realmente útil para poder pensar sobre el diseño a medida que avanzaba.</p>
-<B>Entidades Principales</B>
+<b>Entidades Principales</b>
 <p>De la situación inicial, nos quedamos solo con las entidades principales. Esta selección de entidades se realiza cuidadosamente para que la aplicación pueda contemplar la mayor información posible haciendo uso de un esquema sencillo pero robusto. Analizamos el diseño detalladamente en los siguientes puntos.</p>
-<p><img alt="" src="figures/spectralgeo_db.png" title="original" /> </p>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/spectralgeo_db.png" title="original"/> </p>
 <p>Este rediseño contempla la mayoría de casos posibles para el posterior tratamiento y procesamiento de datos, con posibilidad de crear buenos modelos predictivos. A continuación se describen las entidades principales contempladas en la base de datos.</p>
 <table>
 <thead>
@@ -939,25 +925,25 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 </tr>
 </tbody>
 </table>
-<p><img alt="" src="figures/modelo-end.png" title="original" /> </p>
-<B>Diseño del Cultivo y Fenología</B>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/modelo-end.png" title="original"/> </p>
+<b>Diseño del Cultivo y Fenología</b>
 <p>Una decisión complicada sobre el posible histórico de datos es el registro de la evolución de un cultivo en una parcela concreta. Mediante la tabla MIRAR_FENOLÓGICO damos carácter temporal al cultivo concreto de una parcela. De esta forma podemos registrar cuáles son los estados por los que ha pasado un cultivo, desde su "siembra" hasta su "recolección".</p>
 <p>El modelado de la entidad FENOLÓGICO ha sido una decisión complicada debido a que no se enlaza directamente con un cultivo. Entendemos que un estado como puede ser el de "siembra" tiene un carácter general y tiene sentido como entidad en sí misma (todos los cultivos pasan por siembra). Es su relación con CULTIVO mediante MIRAR_FENOLÓGICO lo que dice que dicho cultivo está en un estado fenológico concreto en un momento determinado. Por ejemplo, podemos decir que el cultivo "vid" estaba en estado de "siembra" el día "2022-01-23". </p>
 <p>También es importante destacar que CULTIVO es simplemente el tipo que se ha registrado, por lo tanto, para que la información sea completa, un avistamiento fenológico sucede sobre un tipo de cultivo físicamente sembrado en una PARCELA.  El siguiente esquema muestra cómo estas tres entidades se relacionará para dar carácter temporal y espacial a un tipo de cultivo.</p>
-<p>'<figure><img src="mermaid/output_7.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_7.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>Otro punto importante de la aplicación es la contemplación de variedades. Para poder mantener una jerarquía con las posibles entidades registradas en el sistema, enlazamos de forma recursiva el cultivo con una clave foránea a su misma tabla. Esta estructura permite el desglose de una jerarquía de cultivos en la que sabemos qué entidad es una subvariedad de un cultivo, dando la posibilidad de almacenar múltiples niveles.</p>
-<p><img alt="" src="figures/mirar_feno.png" title="original" /> </p>
-<B>Diseño de Índices Vegetativos</B>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/mirar_feno.png" title="original"/> </p>
+<b>Diseño de Índices Vegetativos</b>
 <p>Para nuestro sistema de información una parcela es una agrupación de varios píxeles. Entendemos como PIXEL a la imagen satelital más pequeña que se puede obtener sobre el terreno, a partir de la cual obtendremos los índices vegetativos. <em>(El valor del índice es una caja negra para este trabajo, proviene de scripts desarrollados por el resto del equipo)</em></p>
 <p>El trabajo con índices vegetativos por parte del equipo es uno de los puntos más importantes para que el rediseño sea satisfactorio. La entidad MIRAR_ÍNDICE es de vital importancia en el modelo, permite gestionar el histórico de valores de los índices para todos los píxeles. Esta tabla es una de las candidatas para realizar optimización en las consultas, algo que desde el ORM que utilizamos todavía queda un poco lejos. </p>
-<p>'<figure><img src="mermaid/output_8.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_8.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>El volumen de datos que la tabla MIRAR_INDICE puede contener es grande. Solo con la muestra representativa de las 25 parcelas con las que estamos trabajando (3000 píxeles), dos índices registrados, y contemplando sus valores en 6 fechas distintas, obtenemos un conjunto de 36.000 valores. Cuando la aplicación escale a un mayor número de parcelas, esta tabla será susceptible de utilizar índices (BD).</p>
 <p>Este diseño de índices permite mantener un histórico de datos preciso. Gestiona la evolución de los cultivos a través de las diferentes fechas en las que se persisten los valores de los índices. Destacamos que cada índice se corresponde con una capa de visualización sobre el visor GIS que contiene la presentación de la aplicación, requisito que hace que tenga mucha importancia el poder añadir índices a los datos a media que se vayan contemplando.</p>
-<B>Diseño de Roles</B>
+<b>Diseño de Roles</b>
 <p>Aunque es un punto secundario, la aplicación contempla que diferentes usuarios puedan realizar diferentes acciones. Recordamos que habíamos separado en componentes la aplicación, y los roles se encuentran en un módulo secundario independiente de las entidades anteriores, que representaban los principales conceptos agronómicos y vegetativos. El diseño modular del modelo de datos permite al equipo añadir diferentes roles sin que estos estén <em>hardcoded</em> en el código de la aplicación. </p>
-<p>'<figure><img src="mermaid/output_9.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_9.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>Aunque la aplicación hace uso de estas entidades, no serán tan importantes para el desarrollo posterior del trabajo, debido a que la parte que necesita automatizarse es aquella relacionada con los índices vegetativos y la geometría de las parcelas anteriores. Como decíamos, estas entidades quedan separadas en un módulo de la aplicación con la única funcionalidad de controlar el acceso a la aplicación y dar permiso a las funcionalidades que cada cliente puede realizar dependiendo del rol que tenga asignado. La siguiente tabla describe los roles hasta ahora contemplados por el equipo y su relación con el parcelario.</p>
 <table>
@@ -986,10 +972,10 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 </tr>
 </tbody>
 </table>
-<B>Modelo Final</B>
+<b>Modelo Final</b>
 <p>El siguiente diagrama recoge todas las relaciones descritas anteriormente y muestra el esquema completo que usa la aplicación. En los siguientes puntos hablaremos sobre los métodos definidos sobre este esquema de datos, dónde se localizan y cómo han de ser utilizados.</p>
-<p>'<figure><img src="mermaid/output_10.svg" /><figcaption>mermaid</figcaption>
-</figure>'</p></div><div id=servicios><h3>1.6.4 servicios</h3><p>Ahora tenemos un modelo relacional que soporta la gestión de grandes volúmenes de datos. En este punto tenemos que diseñar las diferentes operaciones que necesitamos hacer sobre los datos almacenados. Discutimos cómo tiene que ser la implementación de las operaciones más frecuentes y por qué en un modelo de datos sin estado, con información histórica, es más importante diseñar estas operaciones sobre el modelo relacional como servicios.</p>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_10.svg"/><figcaption>mermaid</figcaption>
+</figure>'</p></div><div id="servicios"><h3>1.6.4 servicios</h3><p>Ahora tenemos un modelo relacional que soporta la gestión de grandes volúmenes de datos. En este punto tenemos que diseñar las diferentes operaciones que necesitamos hacer sobre los datos almacenados. Discutimos cómo tiene que ser la implementación de las operaciones más frecuentes y por qué en un modelo de datos sin estado, con información histórica, es más importante diseñar estas operaciones sobre el modelo relacional como servicios.</p>
 <p>El término servicio está sobrecargado y su significado adquiere diferentes matices según el contexto en que estemos. Como resultado, existe una nube de confusión en torno a la noción de servicios cuando se trata de distinguir entre servicios de aplicación, servicios de dominio, servicios de infraestructura, servicios SOA, etc. Las funciones de estos son diferentes y pueden abarcar todas las capas de una aplicación.</p>
 <p>De hecho, un servicio es un título un tanto genérico para un bloque de creación de una aplicación porque implica muy poco. En primer lugar, un servicio implica un cliente para cuyas solicitudes está diseñado. Otra característica de una operación de servicio es la de entrada y salida: se proporcionan argumentos  como entrada a una operación y se devuelve un resultado. Ms allá de esta implicación suelen estar los supuestos de "statelessness" y la idea de "pure fabrication", según GRASP:</p>
 <p><strong>When a significant process or transformation in the domain is not a natural responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as standalone interface declared as a SERVICE. Define the interface in terms of the language of the model and make sure the operation name is part of the UBIQUITOUS LANGUAGE. Make the SERVICE stateless.</strong></p>
@@ -1001,7 +987,7 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 
     def get_cultivo(parcela_p):
 
-        &quot;&quot;&quot; último cultivo que se está cultivando en una parcela &quot;&quot;&quot;
+        """ último cultivo que se está cultivando en una parcela """
 
         mirar_feno = Mirar_Fenologico.objects.filter(parcela = parcela_p.idx)
 
@@ -1015,25 +1001,25 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 
     def get_historico_fenologicos(parcela_p):
 
-        &quot;&quot;&quot; todos los estados fenológicos por los que ha pasado una parcela &quot;&quot;&quot;
+        """ todos los estados fenológicos por los que ha pasado una parcela """
 
         return Mirar_Fenologico.objects.filter(parcela = parcela_p.referencia)
 
     def get_historico_range(fecha_inicio, fecha_end):
 
-        &quot;&quot;&quot; histórico de todas las parcelas en un rango de fechas &quot;&quot;&quot;
+        """ histórico de todas las parcelas en un rango de fechas """
 
         return Mirar_Fenologico.objects.filter(fecha__range=[fecha_inicio, fecha_end])
 
     def get_historico_parcela(parcela1):
 
-        &quot;&quot;&quot; todo el histórico de una parcela &quot;&quot;&quot;
+        """ todo el histórico de una parcela """
 
         return Mirar_Fenologico.objects.filter(parcela = parcela1)
 
     def get_historico_parcela_range(parcela1, fecha_inicio, fecha_end):
 
-        &quot;&quot;&quot; hostórico de una parcela en un rango de fechas &quot;&quot;&quot;
+        """ hostórico de una parcela en un rango de fechas """
 
         historico = ParcelaCultivos_Service.get_historico_range(fecha_inicio, fecha_end)
 
@@ -1041,17 +1027,16 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 
     def get_historico_mismo_fenologico(valor_fenologico):
 
-        &quot;&quot;&quot; todo los cultivos que están en un mismo estado fenológico &quot;&quot;&quot;
+        """ todo los cultivos que están en un mismo estado fenológico """
 
         return Mirar_Fenologico.objects.filter(estado = valor_fenologico)
 </code></pre>
-
 <p><a href="https://github.com/alesteba/tfg/tree/main/entregables/services">Adjuntamos</a> como entregables del proyecto algunos de los servicios diseñados y usados más frecuentemente. El código de estos servicios es utilizado por el resto de miembros del equipo para otras tareas de la aplicación, como puede ser la presentación de los datos en la interfaz web.</p>
 <p>El pipeline que vamos a diseñar es posible gracias a la factorización en módulos de la aplicación y a la sencillez y versatilidad del modelo relacional de datos. Los servicios que ahora implementamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propósitos distintos. Son muy importantes, ya que nos acercan al flujo de trabajo de integración continua que estamos buscando.</p>
 <p>La siguiente función es una de las más usadas debido a la integración directa con el proceso de descarga de imágenes satelitales del cultivo. Fijémonos en cómo utilizamos las entidades creadas anteriormente para acceder a la información de la BD, el ORM subyacente nos abstrae de otras consultas complejas que podríamos hacer en lenguajes como SQL.</p>
 <pre class="codehilite"><code class="language-python">def get_indice_func(parcela, indice_p, fecha_p, func, filtro):
 
-    &quot;&quot;&quot;Método que encapsula el uso de una función agregada junto con un filtro &quot;&quot;&quot;
+    """Método que encapsula el uso de una función agregada junto con un filtro """
 
     indice_p = Indice.objects.get(nombre=indice_p) 
 
@@ -1074,12 +1059,12 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 
 
     return None
-</code></pre></div><div id=PIPELINE><h3>1.7.0 PIPELINE</h3><div id=transformación_datos><h3>1.7.1 transformación datos</h3><p>Una vez tenemos un modelo que soporta las principales entidades del dominio agronómico que necesitamos, procedemos a cargar la información proveniente de distintas fuentes en la BD bajo sus correspondientes entidades y con las relaciones necesarias para las consultas. Para esta carga vamos a utilizar un pipeline de datos; veamos a qué nos referimos.</p>
+</code></pre></div><div id="PIPELINE"><h3>1.7.0 PIPELINE</h3><div id="transformación_datos"><h3>1.7.1 transformación datos</h3><p>Una vez tenemos un modelo que soporta las principales entidades del dominio agronómico que necesitamos, procedemos a cargar la información proveniente de distintas fuentes en la BD bajo sus correspondientes entidades y con las relaciones necesarias para las consultas. Para esta carga vamos a utilizar un pipeline de datos; veamos a qué nos referimos.</p>
 <p>Es importante diferenciar qué tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para 'pipelines', como pueden ser ETLs u otras. Para la correcta carga y transformación de datos no utilizaremos ninguna de estas arquitecturas, sino que diseñaremos los bloques necesarios en cada paso para poblar nuestra base de datos. Este proceso puede entenderse como una canalización de datos, en la que recibimos información en diferentes fuentes y la dotamos de contexto dentro de la BD.</p>
-<B>Canalización de datos</B>
+<b>Canalización de datos</b>
 <p>Una canalización de datos hace referencia a los pasos necesarios para mover datos del sistema de origen al sistema de destino. Estos pasos incluyen copiar datos, transferirlos desde una ubicación a otra y combinarlos con otras fuentes de datos. El objetivo principal de una canalización de datos es garantizar que todos estos pasos se produzcan de forma coherente con todos los datos.</p>
 <p>En el apartado anterior hemos visto cómo se ha diseñado el modelo de datos. Ahora nos centramos en los pequeños pasos de carga que vamos a dar para que los datos agronómicos de clientes e imágenes satelitales  persistan en dicho modelo. Valoramos la identificación de unidades atómicas de persistencia de información que puedan ejecutarse reiteradamente. Es decir, buscaremos acotar pequeños procesos de carga que puedan ejecutarse en varios puntos dependiendo del volumen de datos de clientes que maneje el equipo en un momento dado.</p>
-<B>Procesos de una canalización</B>
+<b>Procesos de una canalización</b>
 <p>Identificamos tres conceptos que definen la canalización de datos que vamos a llevar a cabo y exponemos qué hace el 'pipeline' de nuestra aplicación en cada uno de ellos.  </p>
 <ul>
 <li>
@@ -1092,7 +1077,7 @@ Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de es
 <p>Data Storage: almacenamos los datos en el modelo a través de Django, manteniendo una base de datos relacional en la máquina en la que se encuentra la aplicación.</p>
 </li>
 </ul>
-<p>Como hemos dicho, hay varias formas de realizar este proceso de canalización; en nuestro caso identificaremos los bloques y diseñaremos el proceso casi de forma manual, para que se ajuste con exactitud a lo que queremos hacer. En el siguiente punto exponemos la tecnología subyacente que utilizaremos para ello. </p></div><div id=design_pattern><h3>1.7.2 design pattern</h3><p>En ingeniería de software, un <strong>patrón de diseño</strong> es una solución general y reutilizable para un problema común dentro de un contexto dado. El término "pipeline" puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicación como patrón de diseño ya que en nuestra aplicación se está utilizando como tal.</p>
+<p>Como hemos dicho, hay varias formas de realizar este proceso de canalización; en nuestro caso identificaremos los bloques y diseñaremos el proceso casi de forma manual, para que se ajuste con exactitud a lo que queremos hacer. En el siguiente punto exponemos la tecnología subyacente que utilizaremos para ello. </p></div><div id="design_pattern"><h3>1.7.2 design pattern</h3><p>En ingeniería de software, un <strong>patrón de diseño</strong> es una solución general y reutilizable para un problema común dentro de un contexto dado. El término "pipeline" puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicación como patrón de diseño ya que en nuestra aplicación se está utilizando como tal.</p>
 <p><strong>Podemos definir un pipeline como una cadena de elementos de procesamiento (procesos, subprocesos, rutinas, funciones, etc.) dispuestos de modo que la salida de cada elemento sea la entrada del siguiente; el nombre hace referencia al flujo de una o varias tuberías.</strong></p>
 <p>En nuestro caso vamos a utilizar la arquitectura de comandos que proporciona Django para diseñar los procesos de transformación de datos que van a poblar la base de datos. La definición y reutilización del proceso de población es muy importante debido a la forma de trabajo que tiene la empresa con diferentes clientes. Dependiendo del cliente se prepara una copia de la aplicación para trabajar con sus datos; por ello una vez definidas las unidades atómicas del proceso de carga de datos, se podrán diseñar diferentes pipelines para cada cliente. Para este trabajo nos conformaremos con el diseño y la implementación de un proceso general, pero manteniendo la idea de que pueda ser escalado más adelante.</p>
 <pre class="codehilite"><code class="language-python">from django.core.management.base import BaseCommand
@@ -1103,16 +1088,15 @@ class Command(BaseCommand):
 
         # now do the things that you want with your models here
 </code></pre>
-
 <p>Las líneas de código anteriores hacen referencia a una implementación concreta del patrón mencionado.  Fijándonos en la siguiente figura, la clase <strong>Command</strong> sería el handler; el método <strong>handle</strong> corresponde con <em>handleRequest</em> del esquema. Los próximos scripts que creemos serán los clientes de estas clases. Destacaremos que la implementación de Django de este patrón es un poco más compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parámetros. </p>
 <p>
-<figure><img src="figures/pipeline_pattern.PNG" /><figcaption>caption</figcaption>
+<figure><img src="https://github.com/alesteba/tfg/figures/pipeline_pattern.PNG"/><figcaption>caption</figcaption>
 </figure>
 </p>
 <p>Con este patrón desarrollamos la infraestructura necesaria para cargar los datos en el modelo. Cada comando representa un proceso de carga de datos, el cual se puede componer posteriormente dentro de un proceso más complejo. Cada unidad de carga se comporta como un filtro que añade de forma ordenada la información al modelo de datos, enlazando las entidades con sus datos correspondientes. Utilizaremos estas unidades para generar diferentes tuberías que permitan dejar varias instancias de la aplicación en estados diferentes.</p>
 <p>Para AGRAI hace falta transformar los datos de índices vegetativos que maneja el equipo en información ordenada que llegue al modelo de datos desarrollado anteriormente. A continuación explicamos el flujo de procesos de carga más utilizado.</p>
 <p>Los datos principalmente provienen de <em>Qgis</em>, software para trabajar con información georreferenciada. El equipo pre-procesa la información sobre los índices vegetativos y da valores a los píxeles mediante dicho software. La principal función de este trabajo es dar sentido a esa información, guardando los datos tomados junto con sus relaciones con el parcelario físico.</p>
-<p>'<figure><img src="mermaid/output_11.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_11.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>La información de los píxeles tiene que enlazarse con los datos de parcelas y cultivos. Cuando obtenemos los índices vegetativos solo contemplamos la información sobre la geometría de la parcela, no sabemos nada más. Esta información tiene que almacenarse junto con el cultivo, el estado fenológico, los datos físicos de la parcela, etc. En la siguiente tabla explicamos cada uno de los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que conforman los procesos del pipeline.</p>
 <table>
@@ -1146,7 +1130,7 @@ class Command(BaseCommand):
 </tbody>
 </table>
 <p>Para entender detalladamente qué hacen los scripts de carga de índices tenemos que explicar algunos de los procesos de automatización de los que hacemos uso. </p>
-<p>'<figure><img src="mermaid/output_12.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_12.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
 <p>Estos scripts nos permiten crear el flujo necesario para que la aplicación procese la información y termine en un estado consistente. Parte del proceso necesita ser automatizado y ejecutado reiteradamente, añadiendo los datos a la BD y relacionándolos adecuadamente. En nuestro contexto agronómico, es la descarga de índices la parte del proceso que necesita ser automatizada, mientras que los datos de las parcelas y cultivos y la información geoespacial se pueden cargar directamente en el despliegue de la aplicación. </p>
 <p>Con esta estructura de tuberías lista, podemos reutilizar cualquier parte del proceso. Un planificador de tareas nos ayuda a establecer el tiempo que tiene que transcurrir entre las descargas.  Se ha utilizado el scheduler por defecto del framework de Django que estamos utilizando para esta gestión de tiempos y descarga.</p>
@@ -1189,7 +1173,6 @@ class Command(BaseCommand):
 
         call_command('4-load_range', data=df, indices=['ndvi', 'ndre'])
 </code></pre>
-
 <p>Además de este último, podemos crear varios entornos con tuberías diferentes que den como resultado bases de datos con estados distintos. Como mencionábamos anteriormente, esto es muy útil debido al funcionamiento del equipo en relación con el procesamiento de datos con varios clientes. La aplicación puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre; por ejemplo, la misma instancia de la BD sirve tanto para una bodega con variedades de vino como para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc.</p>
 <p>Por último, este patrón nos permite ejecutar comandos de forma asíncrona y gestionar los procesos con un planificador. Actualmente, aunque el tiempo de carga es alto, podemos asumir una carga lenta. Pero es este mismo patrón de diseño el que nos puede permitir a futuro la carga asíncrona de los datos en cada una de los componentes que lo forman.</p>
 <pre class="codehilite"><code class="language-python">def run (self, DATA, INDICES):
@@ -1214,8 +1197,7 @@ class Command(BaseCommand):
 
         call_command('4-load_indice', data=df1, indice=indice)
 </code></pre>
-
-<p>Adjuntamos en los entregables los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que forman este proceso de almacenamiento de datos. </p></div><div id=vista_minable><h3>1.7.3 vista minable</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
+<p>Adjuntamos en los entregables los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que forman este proceso de almacenamiento de datos. </p></div><div id="vista_minable"><h3>1.7.3 vista minable</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
 <p>Ahora, fuera de la estructura de comandos de <em>Django</em> y utilizando el entorno virtual creado y los cuadernos integrados en la aplicación, escribimos el <a href="">algoritmo</a> para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
 <p>El código que mostramos en este apartado corresponde con la generación de la vista tabulada con la que vamos a crear el modelo de producción de cultivo. Ahora realizamos el proceso inverso a la persistencia de datos que hemos realizado hasta este punto. Utilizamos la información y sus relaciones perisitidas en la base de datos de nuestro sistema para generar la vista minable que necesita el modelo predictivo. </p>
 <pre class="codehilite"><code class="language-python">def statistic_indices(indices = ['ndvi', 'ndre'], func=np.mean):
@@ -1274,20 +1256,19 @@ class Command(BaseCommand):
 
     return df
 </code></pre>
-
-<B>Selección de features</B>
+<b>Selección de features</b>
 <p>El diseño de la vista minable es complicado; para ello trabajo con el equipo seleccionando los campos de la BD más importantes que formarán la tabla.  Nos centramos principalmente en los índices vegetativos registrados en diferentes fechas. </p>
 <p>Para poder predecir la producción de cultivo, incluimos en la vista varios estadísticos, como la media y el sumatorio para cada índice en cuatro fechas representativas de la evolución de este. El diseño de esta estructura proviene de un estudio previo realizado por el equipo en el que se ha concluido que ciertos estadísticos en unas fechas calibradas funcionan bien para predecir la producción. </p>
 <p>Hablábamos anteriormente de entornos virtuales, por el momento la aplicación utiliza un solo entorno virtual Python, pero este punto del trabajo podría hacer uso de un entorno separado con las librerías de ciencia de datos instaladas, de tal forma que separaríamos dos procesos importantes. Hay que destacar que en el trabajo me estoy encargando del proceso para hacer pruebas, pero serán diferentes miembros del equipo los que usen estas tecnologías: para que podamos seguir escalando a medida que evolucione la aplicación, estos miembros tienen que poder utilizar los entornos creados.</p>
-<B>Variable Objetivo</B>
-<p>Junto con los datos extraídos añadiremos la variable "objetivo de producción". Esta variable, aún sin almacenar en el modelo, hace referencia a los kilos de producción de cada parcela en su cosecha. A partir de ella, obtenida de históricos de campañas anteriores, junto con las features anteriores, vamos a poder predecir la evolución del cultivo con precisión en estados concretos de su maduración. Se explica con detalle en el siguiente punto.</p></div><div id=MODELO_IA><h3>1.8.0 MODELO IA</h3><div id=preprocesamiento><h3>1.8.1 preprocesamiento</h3><p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. 
+<b>Variable Objetivo</b>
+<p>Junto con los datos extraídos añadiremos la variable "objetivo de producción". Esta variable, aún sin almacenar en el modelo, hace referencia a los kilos de producción de cada parcela en su cosecha. A partir de ella, obtenida de históricos de campañas anteriores, junto con las features anteriores, vamos a poder predecir la evolución del cultivo con precisión en estados concretos de su maduración. Se explica con detalle en el siguiente punto.</p></div><div id="MODELO_IA"><h3>1.8.0 MODELO IA</h3><div id="preprocesamiento"><h3>1.8.1 preprocesamiento</h3><p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. 
 De todas formas, sí que intentaremos que los datos de producción con los que vamos a predecir estén normalizados y que se haya hecho una búsqueda previa de 'outliers'.</p>
 <p>Buscamos un modelo de regresión para el número de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeño, diseñaremos los cuadernos para automatizar la búsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar más adelante.</p>
 <p>El rango de valores para la mayoría de los índices que obtenemos va de -1 a 1. Los datos de índices negativos que llegan a la vista se pueden considerar como 'outliers'. Esto es debido a que, si los índices provienen de una imagen con nubes, no se diferencian los colores del terreno y el índice acaba teniendo un valor muy malo. Para evitar valores corruptos eliminaremos los índices que provengan de la toma de la imagen en una fecha en la que había nubes.</p>
-<p><img alt="" src="figures/nubes.png" /></p>
-<p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestión y automatización de los modelos de producción generados a partir los datos de las 25 parcelas estudiadas. Recordamos que estamos pensando en escribir el código necesario para automatizar en la medida de lo posible la búsqueda del mejor modelo de producción, de tal forma que cuando el sistema contemple un mayor número de parcelas, la ejecución de los cuadernos nos siga generando el mejor modelo de producción posible.</p></div><div id=modelo_de_regresión><h3>1.8.2 modelo de regresión</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
-<p><img alt="" src="figures/view-capture.PNG" /></p>
-<p>En el punto en el que estamos, podemos pensar en las múltiples vistas que se pueden generar a partir de los datos persistidos en el BD. Desde aquí desarrollaremos la automatización de la búsqueda del mejor modelo posible para la vista anterior, pero siempre teniendo en cuenta que a partir de los datos almacenados podemos predecir muchos otros valores, no solo la producción de un cultivo. </p>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/nubes.png"/></p>
+<p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestión y automatización de los modelos de producción generados a partir los datos de las 25 parcelas estudiadas. Recordamos que estamos pensando en escribir el código necesario para automatizar en la medida de lo posible la búsqueda del mejor modelo de producción, de tal forma que cuando el sistema contemple un mayor número de parcelas, la ejecución de los cuadernos nos siga generando el mejor modelo de producción posible.</p></div><div id="modelo_de_regresión"><h3>1.8.2 modelo de regresión</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
+<p><img alt="" src="https://github.com/alesteba/tfg/figures/view-capture.PNG"/></p>
+<p>En el punto en el que estamos, podemos pensar en las múltiples vistas que se pueden generar a partir de los datos persistidos en la BD. Desde aquí desarrollaremos la automatización de la búsqueda del mejor modelo posible para la vista anterior, pero siempre teniendo en cuenta que a partir de los datos almacenados podemos predecir muchos otros valores, no solo la producción de un cultivo. </p>
 <pre class="codehilite"><code class="language-python">X_train, X_test, y_train, y_test= train_test_split(
 
     X,y,
@@ -1295,7 +1276,6 @@ De todas formas, sí que intentaremos que los datos de producción con los que v
     random_state = SEED,
 )
 </code></pre>
-
 <p>Resaltamos esta idea debido a que es el punto más fuerte del trabajo realizado. La arquitectura obtenida para la aplicación nos permite generar diferentes vistas con el objetivo de utilizar la información en diversos estudios. Los índices vegetativos y la información almacenada sobre de los cultivos se pueden presentar en el formato necesario que el estudio requiera. </p>
 <p>Por último, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir, casi en tiempo real, cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
 <pre class="codehilite"><code class="language-python">clf = RandomForestRegressor(**CV_rfr.best_params_)
@@ -1305,7 +1285,7 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
 print(y_pred)
-</code></pre></div><div id=mejor_modelo><h3>1.8.3 mejor modelo</h3><p>Tras conseguir los datos con la forma correspondiente, exponemos los modelos de inteligencia artificial que vamos a utilizar para buscar el mejor modelo de producción de cultivo (kg) posible.</p>
+</code></pre></div><div id="mejor_modelo"><h3>1.8.3 mejor modelo</h3><p>Tras conseguir los datos con la forma correspondiente, exponemos los modelos de inteligencia artificial que vamos a utilizar para buscar el mejor modelo de producción de cultivo (kg) posible.</p>
 <p>El problema que estamos buscando resolver es un problema de regresión, en el que conocemos la variable objetivo por el estudio de campañas anteriores. Los clientes, en este caso agricultores, quieren poder predecir cuántos kg de cultivo van a poder cosechar al final de la temporada (septiembre), o en estados previos de maduración (enero).</p>
 <p>Los cuadernos que conforman el entregable contienen código que busca el mejor modelo posible para los datos importados con los índices y sus estadísticos. Los índices vegetativos registrados en diferentes fechas, junto con la variable de producción de campañas anteriores, tienen que poder predecir con precisión la campaña actual.</p>
 <pre class="codehilite"><code class="language-python"># drop columns with negative mean.
@@ -1316,7 +1296,6 @@ for col in df.columns:
     if (df2 &lt; 0):
         df = df.drop(columns=[col], axis =1)
 </code></pre>
-
 <p>Antes de ejecutar código para los modelos, analizamos las relaciones entre las columnas y hacemos estudios de correlación y análisis de componentes principales, para ver si algunos datos de fechas que han llegado a este punto no añaden valor a la información que queremos predecir. Recordemos que puede que lleguen índices provenientes de imágenes tomadas entre nubes y entonces la información empeora el modelo.</p>
 <p>Un análisis de componentes principales y la observación de las mejores columnas son el siguiente paso a la limpieza de columnas que se ha realizado en el preprocesamiento.</p>
 <pre class="codehilite"><code class="language-python">rfe = RFE(estimator=DecisionTreeRegressor(), n_features_to_select=5)  
@@ -1328,7 +1307,6 @@ n_scores = cross_val_score(pipeline, X, y, scoring='neg_mean_absolute_error', cv
 
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 </code></pre>
-
 <p>Para la variable objetivo de producción también hacemos un pequeño análisis. Queremos ver si esta contiene outilers, para ello analizamos la distribución y seleccionamos aquellos valores que se alejan mucho de la media y desviación típica de la muestra. Es importante que los datos con los que vamos a predecir estén limpios para que el modelo obtenga una buena métrica, como puede ser el "mean absolute error", MAE, puntuación para problemas de regresión en el que el resultado está contemplado en las unidades de la variable analizada.</p>
 <p>Una vez hemos analizado los datos y hemos limpiado los valores erróneos de los índices, procedemos a probar aquellos modelos de inteligencia artificial que mejor puedan predecir este valor de kg de producción. Los modelos que probamos son los siguientes.</p>
 <ul>
@@ -1353,15 +1331,14 @@ mlp = MLPRegressor(
     }
 )
 </code></pre>
-
 <p>Este pequeño estudio nos permite orientarnos para ver por dónde van los datos, pero no es nuestro objetivo final que el modelo prediga con exactitud: solo queremos dejar automatizada una pequeña visualización de las relaciones entre los índices para así poder intuir qué modelo nos puede funcionar mejor. De hecho, los datos representativos con los que trabajamos nos impiden buscar un modelo real preciso.</p>
-<p>Como hemos dicho, un último punto para completar el desarrollo de la arquitectura sería hacer uso de este modelo para mostrar directamente en la presentación de la aplicación valores predichos con datos almacenados en la aplicación, algo que aún no está desarrollado, pero que resulta trivial en relación  con la arquitectura y el modelo de datos obtenidos hasta este punto.</p></div><div id=SEGUIMIENTO><h3>1.9.0 SEGUIMIENTO</h3><div id=desviaciones><h3>1.9.1 desviaciones</h3><p>El proyecto se ha desarrollado sin grandes cambios relativos a la planificación estipulada, pero a pesar de realizar la planificación del proyecto con su desglose en entregables y horas para los paquetes de trabajo, el tiempo de desarrollo ha diferido de la misma en algunas ocasiones, especialmente en la memoria.</p>
-<p>El número de horas planificadas era de 300, las cuales se repartían en varias etapas marcadas<br />
-por los diversos puntos de control: planificación, análisis, infraestructura, diseño,<br />
+<p>Como hemos dicho, un último punto para completar el desarrollo de la arquitectura sería hacer uso de este modelo para mostrar directamente en la presentación de la aplicación valores predichos con datos almacenados en la aplicación, algo que aún no está desarrollado, pero que resulta trivial en relación  con la arquitectura y el modelo de datos obtenidos hasta este punto.</p></div><div id="SEGUIMIENTO"><h3>1.9.0 SEGUIMIENTO</h3><div id="desviaciones"><h3>1.9.1 desviaciones</h3><p>El proyecto se ha desarrollado sin grandes cambios relativos a la planificación estipulada, pero a pesar de realizar la planificación del proyecto con su desglose en entregables y horas para los paquetes de trabajo, el tiempo de desarrollo ha diferido de la misma en algunas ocasiones, especialmente en la memoria.</p>
+<p>El número de horas planificadas era de 300, las cuales se repartían en varias etapas marcadas<br/>
+por los diversos puntos de control: planificación, análisis, infraestructura, diseño,<br/>
 implementación, modelos y seguimiento y control.</p>
-<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que aparecen. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id=memoria><h3>1.9.2 memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
+<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que aparecen. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id="memoria"><h3>1.9.2 memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
 <p>El documento se ha escrito como notas en <em>markdown</em> por la facilidad que da para incluir fragmentos de código relativos al proyecto y poder explicar decisiones y conceptos. Para integrar los diagramas expuestos utilizamos tecnologías como <em>mermaid</em>, que posibilita editar los diagramas directamente en el documento, algo totalmente necesario cuando estos modelos se modifican a medida que avanzamos.</p>
-<p>Finalmente, exportamos las notas en el orden que necesario para la memoria y renderizamos el documento en html. El fácil acceso al documento tiene bastante relevancia por el uso que el equipo puede darle al consultar la documentación, especialmente la del modelo relacional y los servicios.</p></div><div id=0-conclusiones><h4>1.10.0 0-conclusiones</h4><div id=conclusiones><h4>1.10.1 conclusiones</h4><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatización que permite la integración continua del flujo de trabajo del equipo para una aplicación de gestión agronómica. Hemos pasado por casi todas las etapas de diseño e implementación, además de la final inclusión de los modelos predictivos para la producción de cultivo.</p>
+<p>Finalmente, exportamos las notas en el orden que necesario para la memoria y renderizamos el documento en html. El fácil acceso al documento tiene bastante relevancia por el uso que el equipo puede darle al consultar la documentación, especialmente la del modelo relacional y los servicios.</p></div><div id="0-conclusiones"><h4>1.10.0 0-conclusiones</h4><div id="conclusiones"><h4>1.10.1 conclusiones</h4><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatización que permite la integración continua del flujo de trabajo del equipo para una aplicación de gestión agronómica. Hemos pasado por casi todas las etapas de diseño e implementación, además de la final inclusión de los modelos predictivos para la producción de cultivo.</p>
 <p>Durante el proceso hemos influido en los principales bloques de diseño e implementación relativos a la arquitectura de la aplicación, pasando por la infraestructura, los modelos de datos, la carga de estos datos, y la búsqueda de modelos predictivos a partir de ellos. Acorde al alcance planteado, hemos llegado satisfactoriamente a todos los puntos estipulados; recodamos estos puntos:</p>
 <ul>
 <li>Obtenemos un script de creación para el entorno necesario.</li>
@@ -1372,9 +1349,9 @@ implementación, modelos y seguimiento y control.</p>
 <li>Implementamos el modelo para predecir nuevos valores que no han sido usados en el entrenamiento.</li>
 </ul>
 <p>Para finalizar, volvemos a los conceptos de los procesos 'lean' que mencionábamos al principio. La fácil comprensión que permiten los esquemas de datos aquí planteados dotan al equipo de trabajo del lenguaje ubicuo necesario para que el software pueda crecer y ser escalado, evitando bloqueos por falta de comprensión. El lenguaje que maneja el equipo está directamente relacionado con su buen funcionamiento y garantiza el proceso de  optimización continua. Los artefactos obtenidos y la explicación de los modelos quedan así como documentación interna que debe ser mantenida al mismo nivel de importancia que el software que la implementa. </p>
-<p>'<figure><img src="mermaid/output_13.svg" /><figcaption>mermaid</figcaption>
+<p>'<figure><img src="https://github.com/alesteba/tfg/mermaid/output_13.svg"/><figcaption>mermaid</figcaption>
 </figure>'</p>
-<p>En cuanto a la aplicación, se ha conseguido terminar con un producto funcional que cumple con los requisitos planteados. El proceso de arquitectura conseguido facilita el uso de múltiples datos provenientes de las fuentes estudiadas. El esquema de datos relacional implementado soporta la carga de los índices vegetativos, así como el resto de información relativa al parcelario. Los bloques atómicos de carga diseñados permiten planificar y automatizar la ingestión de los datos provenientes de las fuentes descritas. Por último, la capacidad para utilizar modelos de regresión sobre los datos dota a la arquitectura de la capa necesaria para realizar predicciones y configurar los estudios necesarios. Hemos conseguido crear las bases de un proceso que tiene un gran potencial para monitorizar y proporcionar una adecuada toma de decisiones sobre conceptos agronómicos.</p></div><div id=bibliografía><h4>1.10.2 bibliografía</h4><ul>
+<p>En cuanto a la aplicación, se ha conseguido terminar con un producto funcional que cumple con los requisitos planteados. El proceso de arquitectura conseguido facilita el uso de múltiples datos provenientes de las fuentes estudiadas. El esquema de datos relacional implementado soporta la carga de los índices vegetativos, así como el resto de información relativa al parcelario. Los bloques atómicos de carga diseñados permiten planificar y automatizar la ingestión de los datos provenientes de las fuentes descritas. Por último, la capacidad para utilizar modelos de regresión sobre los datos dota a la arquitectura de la capa necesaria para realizar predicciones y configurar los estudios necesarios. Hemos conseguido crear las bases de un proceso que tiene un gran potencial para monitorizar y proporcionar una adecuada toma de decisiones sobre conceptos agronómicos.</p></div><div id="bibliografía"><h4>1.10.2 bibliografía</h4><ul>
 <li>plan</li>
 </ul>
 <p>citar PMBOOK</p>
@@ -1406,10 +1383,6 @@ implementación, modelos y seguimiento y control.</p>
 <p>https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_pipeline_display.html#sphx-glr-auto-examples-miscellaneous-plot-pipeline-display-py</p>
 <p>https://scikit-learn.org/stable/modules/cross_validation.html</p>
 <p>https://www.cienciadedatos.net/documentos/py19-pca-python.html</p></div>
-
-        <div>
-
-    </body>
-
+<div>
+</div></div></div></div></div></div></div></div></div></div></div></div></body>
 </html>
-
