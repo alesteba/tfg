@@ -6,7 +6,6 @@
 <link href="https://sln-alesteba.github.io/s.ln_blog/assets/css/body.css" rel="stylesheet"/>
 <link href="./style.css" rel="stylesheet"/>
 <link href="./codehilite.css" rel="stylesheet"/>
-<script async="" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-codehighlight@1/codehighlight.js"></script>
 </head>
 <body>
 <div class="content">
@@ -865,7 +864,7 @@ django.setup()
 <p><img alt="" src="https://raw.githubusercontent.com/alesteba/tfg/main/figures/visor_GIS.png"/></p>
 <p>El proceso de carga de datos hace uso de un módulo de descarga de imágenes satelitales que obtiene el valor de estos índices vegetativos. Este script de descarga ha sido desarrollado por el equipo y ha sido colocado dentro del módulo de automatización junto con otras tareas similares. 
 Utilizaremos el módulo como una caja negra y aseguraremos el correcto uso de este para que los índices vegetativos terminen en sus tablas correspondientes dentro de la BD.</p>
-<p>'<img alt="" src="https://raw.githubusercontent.com/alesteba/tfg/main/mermaid/output_6.svg"/>'</p>
+<!-- '![](mermaid/output_6.svg)' -->
 <p>Los índices que renderiza el visor de la aplicación son el resultado de todo el proceso que estamos exponiendo. Es el punto más delicado que requiere del diseño de varias entidades para guardar un histórico de datos. En la visualización del histórico de índices vegetativos es el mayor valor que obtiene el cliente cuando accede a la aplicación.</p></div><div id="modelo_relacional"><h3>1.6.3 modelo relacional</h3><p>Como inicio de la posterior automatización, se reestructura la arquitectura de la aplicación junto con su BD para soportar el almacenamiento de nuevos datos. El siguiente esquema de BD es el resultado de la implementación del análisis descrita en el planteamiento.</p>
 <p><img alt="" src="https://raw.githubusercontent.com/alesteba/tfg/main/figures/modelo-BD.png"/></p>
 <p>Para la creación de este modelo he trabajado con el equipo en la identificación de los conceptos que necesitaban ser representados. El diseño en papel da la posibilidad de pensar abiertamente sobre las relaciones entre entidades, además de permitir la transmisión de ideas de forma sencilla durante las reuniones.</p>
