@@ -1,0 +1,21 @@
+.content {
+    max-width: 925px;
+    margin: auto;
+}
+
+.child {
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* key stuff */
+.your-centered-div {
+    width: 560px; 
+    height: 315px;
+
+    position: block; 
+    top: 0; right: 0; 
+    bottom: 0; left: 0;
+    margin: auto;
+}
