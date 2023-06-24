@@ -615,6 +615,8 @@
 <li>ORM, Object-Relational-Mapping: permite crear un modelo de datos y gestiona automáticamente la BD (base de datos) subyacente. Abstrae las consultas SQL y evita tener que realizar migraciones manuales de los esquemas.</li>
 <li>Static File Generator: podemos diseñar la interfaz de la aplicación en formato web y desplegar en un servidor.</li>
 <li>Commands-System: gestión de comandos internos mediante los que se puede automatizar tareas; utilizaremos esta arquitectura para diseñar el pipeline de datos y almacenar la información proveniente de diferentes fuentes.</li>
+<li>Vagrant:</li>
+<li>Jenkins;</li>
 </ul>
 <p>Aunque el framework es muy potente, harán falta otras herramientas y entornos para completar con éxito la automatización que buscamos para así conseguir un proceso de optimización continua. En el siguiente punto hablaremos de la infraestructura que la aplicación requiere y de cómo podemos solventar algunos de los problemas de integración más importantes.</p>
 <p>
@@ -718,8 +720,8 @@
 </tbody>
 </table></div><div id=INFRAESTRUCTURA><h3>1.5.0 INFRAESTRUCTURA</h3><div id=arquitectura_física><h3>1.5.1 arquitectura física</h3><p>El entorno local, sobre el cual desarrollamos, y el de producción, donde se despliega la aplicación, son actualmente diferentes. Todos los miembros del equipo utilizamos máquinas Windows, mientras que en el servidor de producción encontramos una máquina Ubuntu. Esto crea un problema importante en el proceso de instalación de las librerías necesarias para trabajar con los datos; se pierde gran cantidad de tiempo en preparar el entorno de cada persona que va a trabajar con el repositorio de la aplicación; además, las librerías necesarias necesitan de una gran cantidad de dependencias que varían en cuanto a las versiones. Como solución propondremos una nueva forma de trabajo que nos asegure un entorno común con las mismas librerías y paquetes.</p>
 <p>'<img alt="" src="mermaid/output_3.svg" />'</p>
-<p>Parte del trabajo consiste en la automatización del despliegue de la aplicación. En este punto vemos coómo la infraestructura como código permite aislar las librerías necesarias creando un script que deja una máquina en estado estable para ejecutar la aplicación.</p>
-<p>Para poder utilizar tecnologías que posibiliten la integración continua, transformamos el entorno de desarrollo desplegando la aplicación en UNIX. Identificamos las siguientes dependencias que necesitan ser instaladas:</p>
+<p>Parte del trabajo consiste en la automatización del despliegue de la aplicación. En este punto vemos cómo la infraestructura como código permite aislar las librerías necesarias creando un script que deja una máquina en estado estable para ejecutar la aplicación.</p>
+<p>Para poder utilizar tecnologías que posibiliten la integración continua, transformamos el entorno de desarrollo desplegando la aplicación en UNIX mediante una máquina Vagrant en la que podamos reproducir vairas veces el proceso. Identificamos las siguientes dependencias que necesitan ser instaladas:</p>
 <ul>
 <li>postgres 14 + postgis</li>
 <li>python3.10</li>
@@ -728,7 +730,7 @@
 <li>Virtual-Env [librerías ciencia de datos]</li>
 </ul>
 <p>Suele ser complicado encontrar todas las dependencias con sus versiones correctas; en este caso el punto más complicado ha sido la instalación de Python con su versión correspondiente de GDAL, librería que permite tratar con los datos geoespaciales. Además, el sistema gestor de BD, 'postgres', necesita una extensión especial, 'postgis', para poder guardar los datos georreferenciados. Como este tipo de trabajo es casi de prueba y error, la utilidad del script que obtenemos es de gran valor.</p>
-<p>El primero de los entregables hace referencia a esta parte del proceso. El siguiente script automatiza la creación de una máquina con las librerías necesarias, el cual, una vez ejecutado, deja la aplicación lista para su desligue.</p>
+<p>El primero de los entregables hace referencia a esta parte del proceso. El siguiente script automatiza la creación de una máquina con las librerías necesarias, el cual, una vez ejecutado, deja la máquina lista para el despliegue de la aplicación.</p>
 <pre class="codehilite"><code class="language-bash">#!/bin/bash
 
 curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
