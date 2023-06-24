@@ -1282,7 +1282,7 @@ De todas formas, sí que intentaremos que los datos de producción con los que v
 </code></pre>
 
 <p>Resaltamos esta idea debido a que es el punto más fuerte del trabajo realizado. La arquitectura obtenida para la aplicación nos permite generar diferentes vistas con el objetivo de utilizar la información en diversos estudios. Los índices vegetativos y la información almacenada sobre de los cultivos se pueden presentar en el formato necesario que el estudio requiera. </p>
-<p>Por último, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir, casi en tiempo real, cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
+<p>Por último, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir,  cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
 <pre class="codehilite"><code class="language-python">clf = RandomForestRegressor(**CV_rfr.best_params_)
 
 clf.fit(X_train, y_train)
@@ -1371,7 +1371,8 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 <ul>
 <li>SVR</li>
 <li>MLP</li>
-<li>Lineales {Lasso, Ridge, Elastic}</li>
+<li>Lineales {ElasticNet}</li>
+<li>Random Forest</li>
 </ul>
 <p>El modelo que mejor MAE obtienen es la red neuronal; esperamos que no sobre-ajuste  los datos, aunque cabe la posibilidad.</p>
 <pre class="codehilite"><code class="language-python"># MLP
