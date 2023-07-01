@@ -5,6 +5,8 @@ table, th, td {
     
 }
 
+.codehilite { font-size: 12px; }
+
 td, th {
     border: 1px solid #777;
     padding: 0.5rem;
@@ -15,7 +17,7 @@ table {
     border-collapse: collapse;
     table-layout: auto;
     width: 100%; 
-    margin: 5px;
+    margin: 1px;
 }
 
 tbody tr:nth-child(odd) {
@@ -26,8 +28,8 @@ caption {
 }
 
 
-p, table, ul, li {
-    font-size: 12px;
+p, ul, li {
+    font-size: 15px;
 }
 
 
