@@ -1,6 +1,7 @@
 table, th, td {
      
     border: 1px solid;
+    font-size: 12px;
     
 }
 
@@ -26,7 +27,7 @@ caption {
 
 
 p, table, ul, li {
-    font-size: 18px;
+    font-size: 12px;
 }
 
 

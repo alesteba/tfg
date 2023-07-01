@@ -2,9 +2,9 @@ body {
     font-family: sans-serif;
   }
   @media print {
-    a::after {
+    /* a::after {
       content: " (" attr(href) ") ";
-    }
+    } */
     pre {
       white-space: pre-wrap;
     }
