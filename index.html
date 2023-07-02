@@ -582,95 +582,95 @@
 </ul>
 <p>Suele ser complicado encontrar todas las dependencias con sus versiones correctas; en este caso el punto más complicado ha sido la instalación de Python con su versión correspondiente de GDAL, librería que permite tratar con los datos geoespaciales. Además, el sistema gestor de BD, 'postgres', necesita una extensión especial, 'postgis', para poder guardar los datos georreferenciados. Como este tipo de trabajo es casi de prueba y error, la utilidad del script que obtenemos es de gran valor.</p>
 <p>Para aislar el entorno de desarrollo utilizaremos una máquina Vagrant con Ubuntu 20.04. El archivo 'Vagrantfile' nos permite provisionarla con el código del proyecto y el script que deja a dicha máquina con las librerías necesarias para el correcto funcionamiento de este.</p>
-<pre class="codehilite"><code class="language-bash">Vagrant.configure(&quot;2&quot;) do |config|
+<div class="codehilite"><pre><span></span><code>Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="p">|</span>config<span class="p">|</span>
 
-  config.vm.box = &quot;bento/ubuntu-20.04&quot;
+<span class="w">  </span>config.vm.box<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bento/ubuntu-20.04&quot;</span>
 
-  config.vm.provision &quot;file&quot;, source: &quot;~/Desktop/agrai&quot;, destination: &quot;$HOME/&quot;
-  config.vm.provision :shell, :path =&gt; &quot;start.sh&quot;
-  config.vm.provision :shell, :path =&gt; &quot;jenkins.sh&quot;
+<span class="w">  </span>config.vm.provision<span class="w"> </span><span class="s2">&quot;file&quot;</span>,<span class="w"> </span>source:<span class="w"> </span><span class="s2">&quot;~/Desktop/agrai&quot;</span>,<span class="w"> </span>destination:<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/&quot;</span>
+<span class="w">  </span>config.vm.provision<span class="w"> </span>:shell,<span class="w"> </span>:path<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="s2">&quot;start.sh&quot;</span>
+<span class="w">  </span>config.vm.provision<span class="w"> </span>:shell,<span class="w"> </span>:path<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="s2">&quot;jenkins.sh&quot;</span>
 
-  config.vm.define &quot;server&quot; do |server|
-      server.vm.network &quot;private_network&quot;, ip: &quot;192.168.56.19&quot;
-       server.vm.provider &quot;virtualbox&quot; do |vb|
-          vb.memory = &quot;4096&quot;
-          vb.cpus   = &quot;2&quot;
-      end
-  end
-</code></pre>
+<span class="w">  </span>config.vm.define<span class="w"> </span><span class="s2">&quot;server&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="p">|</span>server<span class="p">|</span>
+<span class="w">      </span>server.vm.network<span class="w"> </span><span class="s2">&quot;private_network&quot;</span>,<span class="w"> </span>ip:<span class="w"> </span><span class="s2">&quot;192.168.56.19&quot;</span>
+<span class="w">       </span>server.vm.provider<span class="w"> </span><span class="s2">&quot;virtualbox&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="p">|</span>vb<span class="p">|</span>
+<span class="w">          </span>vb.memory<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;4096&quot;</span>
+<span class="w">          </span>vb.cpus<span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2&quot;</span>
+<span class="w">      </span>end
+<span class="w">  </span>end
+</code></pre></div>
 
 <p>El primero de los entregables, 'start.sh', hace referencia a esta parte del proceso. El siguiente script automatiza la creación de una máquina con las librerías necesarias, el cual, una vez ejecutado, deja dicha máquina lista para el despliegue de la aplicación.</p>
-<pre class="codehilite"><code class="language-bash">#!/bin/bash
-sudo rm -f /etc/apt/trusted.gpg.d/postgresql.gpg
-curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
-sudo sh -c 'echo &quot;deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list'
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/apt/trusted.gpg.d/postgresql.gpg
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://www.postgresql.org/media/keys/ACCC4CF8.asc<span class="p">|</span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/trusted.gpg.d/postgresql.gpg
+sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
 
-sudo apt update
-sudo apt upgrade -y
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
 
-sudo apt install -y postgresql-14 
-sudo apt install -y postgresql-14-postgis-scripts
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postgresql-14<span class="w"> </span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postgresql-14-postgis-scripts
 
-sudo service postgresql start
+sudo<span class="w"> </span>service<span class="w"> </span>postgresql<span class="w"> </span>start
 
-sudo -u postgres createuser agrai_user
-sudo -u postgres createdb -O agrai_user agrai_db
-sudo -u postgres psql -c &quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot; agrai_db
-sudo -u postgres psql -c &quot;ALTER USER agrai_user PASSWORD 'password';&quot;
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createuser<span class="w"> </span>agrai_user
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>-O<span class="w"> </span>agrai_user<span class="w"> </span>agrai_db
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;&quot;</span><span class="w"> </span>agrai_db
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ALTER USER agrai_user PASSWORD &#39;password&#39;;&quot;</span>
 
-# gdal native:
-sudo add-apt-repository ppa:ubuntugis/ppa &amp;&amp; sudo apt-get update
-sudo apt-get update
+<span class="c1"># gdal native:</span>
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:ubuntugis/ppa<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 
-sudo apt autoremove -y python3
+sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>-y<span class="w"> </span>python3
 
-# python repositories
+<span class="c1"># python repositories</span>
 
-sudo apt install software-properties-common -y
-sudo add-apt-repository ppa:deadsnakes/ppa
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common<span class="w"> </span>-y
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:deadsnakes/ppa
 
-# python concrete installation
+<span class="c1"># python concrete installation</span>
 
-sudo apt install -y python3.10 # version concreta 
-sudo apt install -y python3.10-dev python3.10-venv
-sudo apt install -y virtualenv
-sudo apt install -y build-essential
-sudo apt install -y python3.10-tk
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.10<span class="w"> </span><span class="c1"># version concreta </span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.10-dev<span class="w"> </span>python3.10-venv
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>virtualenv
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.10-tk
 
-# python env var
+<span class="c1"># python env var</span>
 
-export PYTHONPATH=&quot;/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages&quot;
-alias py=python3.10
-alias python=python3.10
-alias python3=python3.10
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin/python3.10:/usr/local/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/site-packages&quot;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">py</span><span class="o">=</span>python3.10
+<span class="nb">alias</span><span class="w"> </span><span class="nv">python</span><span class="o">=</span>python3.10
+<span class="nb">alias</span><span class="w"> </span><span class="nv">python3</span><span class="o">=</span>python3.10
 
-#Tkinter
-sudo apt install -y python3-tk
+<span class="c1">#Tkinter</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-tk
 
-# GDAL
-sudo apt install -y libgdal-dev
-sudo apt install -y gdal-bin
+<span class="c1"># GDAL</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libgdal-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>gdal-bin
 
-# env gdal lib variables
-export CPLUS_INCLUDE_PATH=/usr/include/gdal
-export C_INCLUDE_PATH=/usr/include/gdal
-</code></pre></div><div id=Entorno><h3>1.5.2 Entorno</h3><p>Es importante preparar un entorno común para el equipo. Django es un framework muy útil por la integración de las herramientas que hemos visto (ORM, integración continua (Jenkins), etc.), pero para conseguir un workflow adecuado necesitamos incluir otras herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos, con las librerías necesarias para ejecutar modelos predictivos.</p>
+<span class="c1"># env gdal lib variables</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span>/usr/include/gdal
+<span class="nb">export</span><span class="w"> </span><span class="nv">C_INCLUDE_PATH</span><span class="o">=</span>/usr/include/gdal
+</code></pre></div></div><div id=Entorno><h3>1.5.2 Entorno</h3><p>Es importante preparar un entorno común para el equipo. Django es un framework muy útil por la integración de las herramientas que hemos visto (ORM, integración continua (Jenkins), etc.), pero para conseguir un workflow adecuado necesitamos incluir otras herramientas propias de ciencia de datos como pueden ser cuadernos de jupyter y sus entornos, con las librerías necesarias para ejecutar modelos predictivos.</p>
 <p>Jenkins es una herramienta de integración continua muy relevante para el proceso de automatización y mejora continua que queremos implantar. En este punto mencionamos cómo se incluye en la máquina Vagrant que contiene el proyecto. En los siguientes puntos veremos cómo permite integrar los distintos scripts de carga de datos junto con la generación de la vista minable y posterior modelo que conformar el pipeline que queremos conseguir.</p>
 <p>Dedicamos varios días a preparar la integración de Django con cuadernos jupyter y a ejecutar diferentes entornos virtuales con las librerías adecuadas en cada momento. Los siguientes ejemplos muestran cómo se ha conseguido integrar las librerías necesarias para el despliegue de los cuadernos y su integración con los datos y los modelos de Django.</p>
-<pre class="codehilite"><code class="language-python"># base code for jupyter integration
+<div class="codehilite"><pre><span></span><code><span class="c1"># base code for jupyter integration</span>
 
-import sys, os, django
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">django</span>
 
-BASE_DIR = os.path.dirname(os.path.abspath('../../agrai/'))
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../../agrai/&#39;</span><span class="p">))</span>
 
-sys.path.insert(0, BASE_DIR)
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BASE_DIR</span><span class="p">)</span>
 
-os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;agrai.settings&quot;)
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;agrai.settings&quot;</span><span class="p">)</span>
 
-os.environ[&quot;DJANGO_ALLOW_ASYNC_UNSAFE&quot;] = &quot;true&quot;
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DJANGO_ALLOW_ASYNC_UNSAFE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
 
-django.setup()
-</code></pre>
+<span class="n">django</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+</code></pre></div>
 
 <p>Los cuadernos jupyter que se encuentran en esta memoria se han exportado desde la propia aplicación. Vemos la facilidad con la que el equipo puede redactar informes para clientes concretos, utilizando los datos de la aplicación directamente.  El código anterior es el 'snippet' necesario para poder integrar los cuadernos con las llamadas concretas a los modelos de Django. Estos cuadernos son un punto tan importante de la arquitectura como puede ser el módulo de servicios.</p></div><div id=Vagrant><h3>1.5.3 Vagrant</h3><p>Hacemos uso de Vagrant para crear en una máquina virtual Unix (Ubuntu), el entorno de desarrollo necesario para el proyecto. De esta forma conseguimos que los entornos de pruebas y producción sean muy similares, permitiendo automatizar el despliegue de la aplicación mediante técnicas de infraestructura como código. Una de las ventajas de tener una máquina Ubuntu como entorno de desarrollo es que mediante scripts .sh instalamos todas las dependencias necesarias para dejar dicha máquina lista para el despliegue de la aplicación.</p>
 <p>esto igual sobra: </p>
@@ -786,84 +786,84 @@ django.setup()
 <p>El tipo de servicios que estamos diseñando e implementando para nuestra aplicación forman parte de la capa de dominio. Estos servicios de dominio a menudo se pasan por alto como bloques de construcción clave, confundidos por el enfoque de las entidades del modelo (o value objects).</p>
 <p>Cumpliendo con los principios mencionados, los servicios conforman la siguiente capa de abstracción del modelo de datos implementado. Colocaremos aquellas operaciones que dependan o relacionen más de una entidad en su módulo correspondiente de servicios y no como un método de la clase del modelo. Este tipo de diseño en el que dejamos el modelo casi sin métodos propios puede llegar a entenderse como un anti-patrón, <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">anemic domain model</a>, pero que en nuestro caso, tras buscar la forma más sencilla de acceder a la información, será de gran utilidad.</p>
 <p>Justificamos la implementación de gran parte de los métodos sobre la capa de servicios por el tipo de información histórica sobre la que necesitamos hacer las consultas. La mayoría de entidades necesitan de una relación con otra segunda o tercera entidad para devolver la información pertinente. <strong>Como el modelo está orientado a manejar información histórica y sin estado</strong>, optamos por colocar casi todos los métodos de acceso a los datos en un módulo de servicios aparte. Miremos el siguiente ejemplo sobre los históricos fenológicos en el parcelario registrado.</p>
-<pre class="codehilite"><code class="language-python">class ParcelaCultivos_Service():
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">ParcelaCultivos_Service</span><span class="p">():</span>
 
-    def get_cultivo(parcela_p):
+    <span class="k">def</span> <span class="nf">get_cultivo</span><span class="p">(</span><span class="n">parcela_p</span><span class="p">):</span>
 
-        &quot;&quot;&quot; último cultivo que se está cultivando en una parcela &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; último cultivo que se está cultivando en una parcela &quot;&quot;&quot;</span>
 
-        mirar_feno = Mirar_Fenologico.objects.filter(parcela = parcela_p.idx)
+        <span class="n">mirar_feno</span> <span class="o">=</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela_p</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
 
-        if (mirar_feno.count() &gt; 0):
+        <span class="k">if</span> <span class="p">(</span><span class="n">mirar_feno</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
 
-            return mirar_feno.order_by('fecha')[0].cultivo
+            <span class="k">return</span> <span class="n">mirar_feno</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cultivo</span>
 
-        else:
+        <span class="k">else</span><span class="p">:</span>
 
-            return None
+            <span class="k">return</span> <span class="kc">None</span>
 
-    def get_historico_fenologicos(parcela_p):
+    <span class="k">def</span> <span class="nf">get_historico_fenologicos</span><span class="p">(</span><span class="n">parcela_p</span><span class="p">):</span>
 
-        &quot;&quot;&quot; todos los estados fenológicos por los que ha pasado una parcela &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; todos los estados fenológicos por los que ha pasado una parcela &quot;&quot;&quot;</span>
 
-        return Mirar_Fenologico.objects.filter(parcela = parcela_p.referencia)
+        <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela_p</span><span class="o">.</span><span class="n">referencia</span><span class="p">)</span>
 
-    def get_historico_range(fecha_inicio, fecha_end):
+    <span class="k">def</span> <span class="nf">get_historico_range</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">):</span>
 
-        &quot;&quot;&quot; histórico de todas las parcelas en un rango de fechas &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; histórico de todas las parcelas en un rango de fechas &quot;&quot;&quot;</span>
 
-        return Mirar_Fenologico.objects.filter(fecha__range=[fecha_inicio, fecha_end])
+        <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">fecha__range</span><span class="o">=</span><span class="p">[</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">])</span>
 
-    def get_historico_parcela(parcela1):
+    <span class="k">def</span> <span class="nf">get_historico_parcela</span><span class="p">(</span><span class="n">parcela1</span><span class="p">):</span>
 
-        &quot;&quot;&quot; todo el histórico de una parcela &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; todo el histórico de una parcela &quot;&quot;&quot;</span>
 
-        return Mirar_Fenologico.objects.filter(parcela = parcela1)
+        <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela1</span><span class="p">)</span>
 
-    def get_historico_parcela_range(parcela1, fecha_inicio, fecha_end):
+    <span class="k">def</span> <span class="nf">get_historico_parcela_range</span><span class="p">(</span><span class="n">parcela1</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">):</span>
 
-        &quot;&quot;&quot; hostórico de una parcela en un rango de fechas &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; hostórico de una parcela en un rango de fechas &quot;&quot;&quot;</span>
 
-        historico = ParcelaCultivos_Service.get_historico_range(fecha_inicio, fecha_end)
+        <span class="n">historico</span> <span class="o">=</span> <span class="n">ParcelaCultivos_Service</span><span class="o">.</span><span class="n">get_historico_range</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_end</span><span class="p">)</span>
 
-        return historico.filter(parcela = parcela1)
+        <span class="k">return</span> <span class="n">historico</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span> <span class="o">=</span> <span class="n">parcela1</span><span class="p">)</span>
 
-    def get_historico_mismo_fenologico(valor_fenologico):
+    <span class="k">def</span> <span class="nf">get_historico_mismo_fenologico</span><span class="p">(</span><span class="n">valor_fenologico</span><span class="p">):</span>
 
-        &quot;&quot;&quot; todo los cultivos que están en un mismo estado fenológico &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; todo los cultivos que están en un mismo estado fenológico &quot;&quot;&quot;</span>
 
-        return Mirar_Fenologico.objects.filter(estado = valor_fenologico)
-</code></pre>
+        <span class="k">return</span> <span class="n">Mirar_Fenologico</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">estado</span> <span class="o">=</span> <span class="n">valor_fenologico</span><span class="p">)</span>
+</code></pre></div>
 
 <p><a href="https://github.com/alesteba/tfg/tree/main/entregables/services">Adjuntamos</a> como entregables del proyecto algunos de los servicios diseñados y usados más frecuentemente. El código de estos servicios es utilizado por el resto de miembros del equipo para otras tareas de la aplicación, como puede ser la presentación de los datos en la interfaz web.</p>
 <p>El pipeline que vamos a diseñar es posible gracias a la factorización en módulos de la aplicación y a la sencillez y versatilidad del modelo relacional de datos. Los servicios que ahora implementamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propósitos distintos. Son muy importantes, ya que nos acercan al flujo de trabajo de integración continua que estamos buscando.</p>
 <p>La siguiente función es una de las más usadas debido a la integración directa con el proceso de descarga de imágenes satelitales del cultivo. Fijémonos en cómo utilizamos las entidades creadas anteriormente para acceder a la información de la BD, el ORM subyacente nos abstrae de otras consultas complejas que podríamos hacer en lenguajes como SQL.</p>
-<pre class="codehilite"><code class="language-python">def get_indice_func(parcela, indice_p, fecha_p, func, filtro):
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_indice_func</span><span class="p">(</span><span class="n">parcela</span><span class="p">,</span> <span class="n">indice_p</span><span class="p">,</span> <span class="n">fecha_p</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
 
-    &quot;&quot;&quot;Método que encapsula el uso de una función agregada junto con un filtro &quot;&quot;&quot;
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Método que encapsula el uso de una función agregada junto con un filtro &quot;&quot;&quot;</span>
 
-    indice_p = Indice.objects.get(nombre=indice_p) 
+    <span class="n">indice_p</span> <span class="o">=</span> <span class="n">Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">indice_p</span><span class="p">)</span> 
 
-    if ParcelaIndices_Service.is_parcela_filter(parcela, filtro):
+    <span class="k">if</span> <span class="n">ParcelaIndices_Service</span><span class="o">.</span><span class="n">is_parcela_filter</span><span class="p">(</span><span class="n">parcela</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
 
-    pixels = parcela.get_pixeles()
+    <span class="n">pixels</span> <span class="o">=</span> <span class="n">parcela</span><span class="o">.</span><span class="n">get_pixeles</span><span class="p">()</span>
 
-    indices_pixels = Mirar_Indice.objects.filter(
+    <span class="n">indices_pixels</span> <span class="o">=</span> <span class="n">Mirar_Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
 
-        pixel__in = pixels, 
-        indice = indice_p, 
-        fecha = fecha_p
-    )
+        <span class="n">pixel__in</span> <span class="o">=</span> <span class="n">pixels</span><span class="p">,</span> 
+        <span class="n">indice</span> <span class="o">=</span> <span class="n">indice_p</span><span class="p">,</span> 
+        <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha_p</span>
+    <span class="p">)</span>
 
-        if ParcelaIndices_Service.get_indice_filter(indices_pixels, filtro):
+        <span class="k">if</span> <span class="n">ParcelaIndices_Service</span><span class="o">.</span><span class="n">get_indice_filter</span><span class="p">(</span><span class="n">indices_pixels</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
 
-            array_valores = list(indices_pixels.values_list('valor', flat=True))
+            <span class="n">array_valores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indices_pixels</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">&#39;valor&#39;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
-            return func(array_valores)
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">array_valores</span><span class="p">)</span>
 
 
-    return None
-</code></pre></div><p style="page-break-after: always;">&nbsp;</p><div id=PIPELINE><h3>1.7.0 PIPELINE</h3><div id=Transformación_de_datos><h3>1.7.1 Transformación de datos</h3><p>Una vez tenemos un modelo que soporta las principales entidades del dominio agronómico que necesitamos, procedemos a cargar la información proveniente de distintas fuentes en la BD bajo sus correspondientes entidades y con las relaciones necesarias para las consultas. Para esta carga vamos a utilizar un pipeline de datos; veamos a qué nos referimos.</p>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div></div><p style="page-break-after: always;">&nbsp;</p><div id=PIPELINE><h3>1.7.0 PIPELINE</h3><div id=Transformación_de_datos><h3>1.7.1 Transformación de datos</h3><p>Una vez tenemos un modelo que soporta las principales entidades del dominio agronómico que necesitamos, procedemos a cargar la información proveniente de distintas fuentes en la BD bajo sus correspondientes entidades y con las relaciones necesarias para las consultas. Para esta carga vamos a utilizar un pipeline de datos; veamos a qué nos referimos.</p>
 <p>Es importante diferenciar qué tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para 'pipelines', como pueden ser ETLs u otras. Para la correcta carga y transformación de datos no utilizaremos ninguna de estas arquitecturas, sino que diseñaremos los bloques necesarios en cada paso para poblar nuestra base de datos. Este proceso puede entenderse como una canalización de datos, en la que recibimos información en diferentes fuentes y la dotamos de contexto dentro de la BD.</p>
 <B>Canalización de datos</B>
 <p>Una canalización de datos hace referencia a los pasos necesarios para mover datos del sistema de origen al sistema de destino. Estos pasos incluyen copiar datos, transferirlos desde una ubicación a otra y combinarlos con otras fuentes de datos. El objetivo principal de una canalización de datos es garantizar que todos estos pasos se produzcan de forma coherente con todos los datos.</p>
@@ -884,14 +884,14 @@ django.setup()
 <p>Como hemos dicho, hay varias formas de realizar este proceso de canalización; en nuestro caso identificaremos los bloques y diseñaremos el proceso casi de forma manual, para que se ajuste con exactitud a lo que queremos hacer. En el siguiente punto exponemos la tecnología subyacente que utilizaremos para ello. </p></div><div id=Design_pattern><h3>1.7.2 Design pattern</h3><p>En ingeniería de software, un <strong>patrón de diseño</strong> es una solución general y reutilizable para un problema común dentro de un contexto dado. El término "pipeline" puede hacer referencia a diferentes soluciones y contextos. De momento vamos a centrarnos en su aplicación como patrón de diseño ya que en nuestra aplicación se está utilizando como tal.</p>
 <p><strong>Podemos definir un pipeline como una cadena de elementos de procesamiento (procesos, subprocesos, rutinas, funciones, etc.) dispuestos de modo que la salida de cada elemento sea la entrada del siguiente; el nombre hace referencia al flujo de una o varias tuberías.</strong></p>
 <p>En nuestro caso vamos a utilizar la arquitectura de comandos que proporciona Django para diseñar los procesos de transformación de datos que van a poblar la base de datos. La definición y reutilización del proceso de población es muy importante debido a la forma de trabajo que tiene la empresa con diferentes clientes. Dependiendo del cliente se prepara una copia de la aplicación para trabajar con sus datos; por ello una vez definidas las unidades atómicas del proceso de carga de datos, se podrán diseñar diferentes pipelines para cada cliente. Para este trabajo nos conformaremos con el diseño y la implementación de un proceso general, pero manteniendo la idea de que pueda ser escalado más adelante.</p>
-<pre class="codehilite"><code class="language-python">from django.core.management.base import BaseCommand
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
 
-class Command(BaseCommand):
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
 
-    def handle(self, **options):
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 
-        # now do the things that you want with your models here
-</code></pre>
+        <span class="c1"># now do the things that you want with your models here</span>
+</code></pre></div>
 
 <p>Las líneas de código anteriores hacen referencia a una implementación concreta del patrón mencionado.  Fijándonos en la siguiente figura, la clase <strong>Command</strong> sería el handler; el método <strong>handle</strong> corresponde con <em>handleRequest</em> del esquema. Los próximos scripts que creemos serán los clientes de estas clases. Destacaremos que la implementación de Django de este patrón es un poco más compleja porque los comandos que encapsulan la funcionalidad permiten tomar diferentes parámetros. </p>
 <p><img alt="" src="figures/pipeline_pattern.PNG" /></p>
@@ -935,88 +935,88 @@ class Command(BaseCommand):
 <p>Con esta estructura de tuberías lista, podemos reutilizar cualquier parte del proceso. Un planificador de tareas nos ayuda a establecer el tiempo que tiene que transcurrir entre las descargas.  Se ha utilizado el scheduler por defecto del framework de Django que estamos utilizando para esta gestión de tiempos y descarga.</p>
 <p>Finalmente, para realizar pruebas, queremos crear un único script que ejecute el proceso de forma ordenada. El resto de tuberías que se adjuntan en el proyecto tienen una forma similar y hacen el mismo uso de los comandos de Django que hemos explicado.</p>
 <p>Por último, este patrón nos permite ejecutar comandos de forma asíncrona y gestionar los procesos con un planificador. Actualmente, aunque el tiempo de carga es alto, podemos asumir una carga lenta. Pero es este mismo patrón de diseño el que nos puede permitir a futuro la carga asíncrona de los datos en cada una de los componentes que lo forman.</p>
-<pre class="codehilite"><code class="language-python">def run (self, DATA, INDICES):
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DATA</span><span class="p">,</span> <span class="n">INDICES</span><span class="p">):</span>
 
-    for indice in INDICES:
+    <span class="k">for</span> <span class="n">indice</span> <span class="ow">in</span> <span class="n">INDICES</span><span class="p">:</span>
 
-        df = DATA.copy()
+        <span class="n">df</span> <span class="o">=</span> <span class="n">DATA</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-        drop_cols = []
+        <span class="n">drop_cols</span> <span class="o">=</span> <span class="p">[]</span>
 
-        for col_name in list(df):
+        <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 
-            if indice.upper() not in col_name:
+            <span class="k">if</span> <span class="n">indice</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">col_name</span><span class="p">:</span>
 
-                if (col_name == 'ID'):
+                <span class="k">if</span> <span class="p">(</span><span class="n">col_name</span> <span class="o">==</span> <span class="s1">&#39;ID&#39;</span><span class="p">):</span>
 
-            continue
+            <span class="k">continue</span>
 
-            drop_cols.append(col_name)
+            <span class="n">drop_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col_name</span><span class="p">)</span>
 
-        df1 = df.drop(drop_cols, axis=1)
+        <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_cols</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-        call_command('4-load_indice', data=df1, indice=indice)
-</code></pre>
+        <span class="n">call_command</span><span class="p">(</span><span class="s1">&#39;4-load_indice&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="n">indice</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Adjuntamos en los entregables los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que forman este proceso de almacenamiento de datos. </p></div><div id=Vista_minable><h3>1.7.3 Vista minable</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
 <p>Ahora, fuera de la estructura de comandos de <em>Django</em> y utilizando el entorno virtual creado y los cuadernos integrados en la aplicación, escribimos el <a href="">algoritmo</a> para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
 <p>El código que mostramos en este apartado corresponde con la generación de la vista tabulada con la que vamos a crear el modelo de producción de cultivo. Ahora realizamos el proceso inverso a la persistencia de datos que hemos realizado hasta este punto. Utilizamos la información y sus relaciones perisitidas en la base de datos de nuestro sistema para generar la vista minable que necesita el modelo predictivo. </p>
-<pre class="codehilite"><code class="language-python">def statistic_indices(indices = ['ndvi', 'ndre'], func=np.mean):
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">statistic_indices</span><span class="p">(</span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
 
-    df = pd.DataFrame()
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
-    col_ids = []
+    <span class="n">col_ids</span> <span class="o">=</span> <span class="p">[]</span>
 
-    for p in Parcela.objects.all():
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Parcela</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
 
-        col_ids.append(p.idx)
+        <span class="n">col_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
 
-    df['IDX'] = col_ids
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;IDX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">col_ids</span>
 
-    # para cada indice:
-    for ind in indices:
+    <span class="c1"># para cada indice:</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
 
-        indice_p = Indice.objects.get(nombre=ind) # if type(indice_p) == str else indice_p
+        <span class="n">indice_p</span> <span class="o">=</span> <span class="n">Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span> <span class="c1"># if type(indice_p) == str else indice_p</span>
 
-        for fecha in fechas: 
+        <span class="k">for</span> <span class="n">fecha</span> <span class="ow">in</span> <span class="n">fechas</span><span class="p">:</span> 
 
-            col_data = []
+            <span class="n">col_data</span> <span class="o">=</span> <span class="p">[]</span>
 
-            # por cada iteración de esto tienes una fila en el df:
-            for p in Parcela.objects.all():
+            <span class="c1"># por cada iteración de esto tienes una fila en el df:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Parcela</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
 
-                # la media de todos sus índices
-                p_indices = Pixel.objects.filter(parcela=p)
+                <span class="c1"># la media de todos sus índices</span>
+                <span class="n">p_indices</span> <span class="o">=</span> <span class="n">Pixel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parcela</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
 
-                list_values = []
+                <span class="n">list_values</span> <span class="o">=</span> <span class="p">[]</span>
 
-                for p_itr in p_indices:
+                <span class="k">for</span> <span class="n">p_itr</span> <span class="ow">in</span> <span class="n">p_indices</span><span class="p">:</span>
 
-                    qs =  Mirar_Indice.objects.get(
+                    <span class="n">qs</span> <span class="o">=</span>  <span class="n">Mirar_Indice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
 
-                        pixel = p_itr, 
-                        indice = indice_p, 
-                        fecha = fecha # fecha para la columna:
-                    )
+                        <span class="n">pixel</span> <span class="o">=</span> <span class="n">p_itr</span><span class="p">,</span> 
+                        <span class="n">indice</span> <span class="o">=</span> <span class="n">indice_p</span><span class="p">,</span> 
+                        <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span> <span class="c1"># fecha para la columna:</span>
+                    <span class="p">)</span>
 
-                    import math
+                    <span class="kn">import</span> <span class="nn">math</span>
 
-                    if ( not math.isnan(qs.valor) ):
+                    <span class="k">if</span> <span class="p">(</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span> <span class="p">):</span>
 
-                        list_values.append(qs.valor)
+                        <span class="n">list_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">valor</span><span class="p">)</span>
 
-                # estadistico:añadir columna
+                <span class="c1"># estadistico:añadir columna</span>
 
-                res = func(list_values)
+                <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">list_values</span><span class="p">)</span>
 
-                col_data.append(res)
+                <span class="n">col_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
-            df[func.__name__ + '_' + ind +'_' +str(fecha)] = col_data
+            <span class="n">df</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">ind</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)]</span> <span class="o">=</span> <span class="n">col_data</span>
 
-            # valor a la tabla
+            <span class="c1"># valor a la tabla</span>
 
-    return df
-</code></pre>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
 
 <B>Selección de features</B>
 <p>El diseño de la vista minable es complicado; para ello trabajo con el equipo seleccionando los campos de la BD más importantes que formarán la tabla.  Nos centramos principalmente en los índices vegetativos registrados en diferentes fechas. </p>
@@ -1027,59 +1027,59 @@ class Command(BaseCommand):
 <p>El siguiente script reproduce el flujo de uso común de la aplicación desde su creación, pasando por todos los pasos de carga de datos en el modelo, hasta la vista minable sobre la cual se obtiene el modelo de producción de kg de cultivo. </p>
 <p>La ejecución del siguiente pipeline tiene lugar tras lanzar la máquina Vagrant sobre la que corre el proyecto. En el comienzo de la memoria habíamos hablado de que dicha máquina se provisiona con los scripts necesarios para instalar las dependencias del proyecto. En este punto con la máquina en dicho estado, los primeros pasos del pipeline descargan la última versión estable del código del proyecto y crean un entorno virtual que hace uso del las librerías correctas. </p>
 <p>Los siguientes pasos ejecutan uno a uno los comandos definidos anteriormente, cargando así en la base de datos los datos provenientes de las distintas fuentes (en este caso excels) y procesando su vista minable. El proceso se realiza de forma ordenada para las 25 parcelas de muestra con las que estamos trabajando, remarcamos que el proceso tiene una alta escalabilidad debido a que podemos reproducir aquellos 'stages' necesarios en los momentos que nos interese. Es decir, podemos comenzar con un pipeline para insertar la información de 25 parcelas, pero posteriormente podríamos añadir más pasos a medida que dispongamos de más información. Por otra parte, la infraestructura como código que conseguimos posibilita definir el flujo concreto que un cliente puede tener con la aplicación. </p>
-<pre class="codehilite"><code class="language-jenkins">pipeline {
-    agent any
+<div class="codehilite"><pre><span></span><code><span class="n">pipeline</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">agent</span><span class="w"> </span><span class="n">any</span>
 
-    stages {
-        stage('git') {
-            steps {
-                git url: '/home/vagrant/agrai/.git'
-            }
-        }
-        stage('env') {
-            steps {
-                sh('python3.10 -m venv ./tfg_venv')
-                sh('. ./tfg_venv/bin/activate')
-                sh('pip install -r ./unix-dep/requirements.txt')
-                sh('pip install --upgrade numpy')
-            }
-        }
-        stage('migrate')
-        {
-           steps {
-                sh('python3.10 manage.py makemigrations core')
-                sh('python3.10 manage.py migrate')
-                sh('python3.10 manage.py flush --no-input')
-            }
-       }    
-        stage('qgis') {
-            steps {
-                sh('python3.10 manage.py 1-load-qgis --parcelas &quot;data/parcelas/25/parcelas.shp&quot; --pixels &quot;data/parcelas/25/pixeles.shp&quot; ')
-            }
-        }
-        stage('parcela') {
-            steps {
-                sh('python3.10 manage.py 2-load-parcela-data -xls &quot;data/excels/datos-test-2.xls&quot; ')
-            }
-        }
-    stage('cultivos') {
-            steps {
-                sh('python3.10 manage.py 3-load-cultivos -xls &quot;data/excels/datos-test-2.xls&quot; ')
-            }
-        }
-        stage('indices') {
-            steps {
-                sh('python3.10 manage.py 4-download_img -a &quot;20220601&quot; -b &quot;20220701&quot; -p &quot;data/parcelas/25/pixeles.shp&quot; -i ndvi ndre' )
-            }
-        }
-        stage('vista') {
-            steps {
-                sh('python3.10 manage.py 5-load_range')
-            }
-        }
-    }
-}
-</code></pre>
+<span class="w">    </span><span class="n">stages</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">git</span><span class="w"> </span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/home/vagrant/agrai/.git&#39;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;env&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 -m venv ./tfg_venv&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;. ./tfg_venv/bin/activate&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;pip install -r ./unix-dep/requirements.txt&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;pip install --upgrade numpy&#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;migrate&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">           </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py makemigrations core&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py migrate&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py flush --no-input&#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">       </span><span class="p">}</span><span class="w">    </span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;qgis&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 1-load-qgis --parcelas &quot;data/parcelas/25/parcelas.shp&quot; --pixels &quot;data/parcelas/25/pixeles.shp&quot; &#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;parcela&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 2-load-parcela-data -xls &quot;data/excels/datos-test-2.xls&quot; &#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;cultivos&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 3-load-cultivos -xls &quot;data/excels/datos-test-2.xls&quot; &#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;indices&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 4-download_img -a &quot;20220601&quot; -b &quot;20220701&quot; -p &quot;data/parcelas/25/pixeles.shp&quot; -i ndvi ndre&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;vista&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 5-load_range&#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Además de este último, podemos crear varios entornos con tuberías diferentes que den como resultado bases de datos con estados distintos. Como mencionábamos anteriormente, esto es muy útil debido al funcionamiento del equipo en relación con el procesamiento de datos con varios clientes. La aplicación puede trabajar con instancias diferentes de la misma base de datos dependiendo del proyecto en el que se encuentre; por ejemplo, la misma instancia de la BD sirve tanto para una bodega con variedades de vino como para una cooperativa que contempla varios cultivos como guisantes, olivas, peras, etc. Por ello, definir scripts como el anterior utilizando los mismos comandos con distintas fuentes de datos es una forma clara y ordenada de automatizar los procesos.</p></div><p style="page-break-after: always;">&nbsp;</p><div id=MODELO_IA><h3>1.8.0 MODELO IA</h3><div id=Preprocesamiento><h3>1.8.1 Preprocesamiento</h3><p>Como los datos con los que trabajamos en los cuadernos provienen de una base de datos estructurada y previamente estudiada, no va a hacer falta un paso de preprocesamiento previo. De todas formas, sí que intentaremos que los datos de producción con los que vamos a predecir estén normalizados y que se haya hecho una búsqueda previa de 'outliers'.</p>
 <p>Buscamos un modelo de regresión para el número de Kg de cultivo en cada parcela. Aunque los datos son representativos de un parcelario pequeño, diseñaremos los cuadernos para automatizar la búsqueda del mejor modelo con cualquier volumen de datos que podamos necesitar más adelante.</p>
@@ -1088,48 +1088,48 @@ class Command(BaseCommand):
 <p>El <a href="https://github.com/alesteba/tfg/tree/main/entregables">siguiente repositorio</a> contiene los cuadernos necesarios para la gestión y automatización de los modelos de producción generados a partir los datos de las 25 parcelas estudiadas. Recordamos que estamos pensando en escribir el código necesario para automatizar en la medida de lo posible la búsqueda del mejor modelo de producción, de tal forma que cuando el sistema contemple un mayor número de parcelas, la ejecución de los cuadernos nos siga generando el mejor modelo de producción posible.</p></div><div id=Regresión><h3>1.8.2 Regresión</h3><p>La vista minable que hemos obtenido representa los datos necesarios para crear un modelo de producción para el cultivo. El <a href="https://github.com/alesteba/tfg/tree/main/entregables">próximo entregable</a> es el desarrollo de uno o varios cuadernos de jupyter con modelos de inteligencia artificial para la tabla anterior.</p>
 <p><img alt="" src="figures/view-capture.PNG" /></p>
 <p>En el punto en el que estamos, podemos pensar en las múltiples vistas que se pueden generar a partir de los datos persistidos en la BD. Desde aquí desarrollaremos la automatización de la búsqueda del mejor modelo posible para la vista anterior, pero siempre teniendo en cuenta que a partir de los datos almacenados podemos predecir muchos otros valores, no solo la producción de un cultivo. </p>
-<pre class="codehilite"><code class="language-python">X_train, X_test, y_train, y_test= train_test_split(
+<div class="codehilite"><pre><span></span><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
 
-    X,y,
-    train_size   = 0.8,
-    random_state = SEED,
-)
-</code></pre>
+    <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">train_size</span>   <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">random_state</span> <span class="o">=</span> <span class="n">SEED</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
 
 <p>Resaltamos esta idea debido a que es el punto más fuerte del trabajo realizado. La arquitectura obtenida para la aplicación nos permite generar diferentes vistas con el objetivo de utilizar la información en diversos estudios. Los índices vegetativos y la información almacenada sobre de los cultivos se pueden presentar en el formato necesario que el estudio requiera. </p>
 <p>Por último, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir,  cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
-<pre class="codehilite"><code class="language-python">clf = RandomForestRegressor(**CV_rfr.best_params_)
+<div class="codehilite"><pre><span></span><code><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">CV_rfr</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 
-clf.fit(X_train, y_train)
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-y_pred = clf.predict(X_test)
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-print(y_pred)
-</code></pre></div><div id=Mejor_modelo><h3>1.8.3 Mejor modelo</h3><p>Tras conseguir los datos con la forma correspondiente, exponemos los modelos de inteligencia artificial que vamos a utilizar para buscar el mejor modelo de producción de cultivo (kg) posible.</p>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</code></pre></div></div><div id=Mejor_modelo><h3>1.8.3 Mejor modelo</h3><p>Tras conseguir los datos con la forma correspondiente, exponemos los modelos de inteligencia artificial que vamos a utilizar para buscar el mejor modelo de producción de cultivo (kg) posible.</p>
 <p>El problema que estamos buscando resolver es un problema de regresión, en el que conocemos la variable objetivo por el estudio de campañas anteriores. Los clientes, en este caso agricultores, quieren poder predecir cuántos kg de cultivo van a poder cosechar al final de la temporada (septiembre), o en estados previos de maduración (enero).</p>
 <p>Los cuadernos que conforman el entregable contienen código que busca el mejor modelo posible para los datos importados con los índices y sus estadísticos. Los índices vegetativos registrados en diferentes fechas, junto con la variable de producción de campañas anteriores, tienen que poder predecir con precisión la campaña actual.</p>
-<pre class="codehilite"><code class="language-python"># drop columns with negative mean.
+<div class="codehilite"><pre><span></span><code><span class="c1"># drop columns with negative mean.</span>
 
-for col in df.columns:
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
 
-    df2 = df[col].mean()
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-    if (df2 &lt; 0):
+    <span class="k">if</span> <span class="p">(</span><span class="n">df2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
 
-        df = df.drop(columns=[col], axis =1)
-</code></pre>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Antes de ejecutar código para los modelos, analizamos las relaciones entre las columnas y hacemos estudios de correlación y análisis de componentes principales, para ver si algunos datos de fechas que han llegado a este punto no añaden valor a la información que queremos predecir. Recordemos que puede que lleguen índices provenientes de imágenes tomadas entre nubes y entonces la información empeora el modelo.</p>
 <p>Un análisis de componentes principales y la observación de las mejores columnas son el siguiente paso a la limpieza de columnas que se ha realizado en el preprocesamiento.</p>
-<pre class="codehilite"><code class="language-python">rfe = RFE(estimator=DecisionTreeRegressor(), n_features_to_select=5)  
-model = DecisionTreeRegressor()
-pipeline = Pipeline(steps=[('s',rfe),('m',model)])
+<div class="codehilite"><pre><span></span><code><span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(),</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="n">Â</span> 
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">rfe</span><span class="p">),(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)])</span>
 
-cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
-n_scores = cross_val_score(pipeline, X, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
+<span class="n">cv</span> <span class="o">=</span> <span class="n">RepeatedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">n_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
-print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MAE: </span><span class="si">%.3f</span><span class="s1"> (</span><span class="si">%.3f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">n_scores</span><span class="p">),</span> <span class="n">std</span><span class="p">(</span><span class="n">n_scores</span><span class="p">)))</span>
+</code></pre></div>
 
 <p>Para la variable objetivo de producción también hacemos un pequeño análisis. Queremos ver si esta contiene outilers, para ello analizamos la distribución y seleccionamos aquellos valores que se alejan mucho de la media y desviación típica de la muestra. Es importante que los datos con los que vamos a predecir estén limpios para que el modelo obtenga una buena métrica, como puede ser el "mean absolute error", MAE, puntuación para problemas de regresión en el que el resultado está contemplado en las unidades de la variable analizada.</p>
 <p>Una vez hemos analizado los datos y hemos limpiado los valores erróneos de los índices, procedemos a probar aquellos modelos de inteligencia artificial que mejor puedan predecir este valor de kg de producción. Los modelos que probamos son los siguientes.</p>
@@ -1186,36 +1186,36 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 </table>
 
 <p>La tabla anterior muestra ciertas métricas para los algoritmos probados. Al ordenar la tabla por el RMSE vemos qué algoritmo predice un poco mejor y observamos aquellos hiperparámetros que mejor score obtienen.</p>
-<pre class="codehilite"><code class="language-python">df_sorted = df.sort_values(by='RMSE', ascending=True, na_position='first');
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;RMSE&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na_position</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">);</span>
+</code></pre></div>
 
-<pre class="codehilite"><code class="language-python">best_models = []
+<div class="codehilite"><pre><span></span><code><span class="n">best_models</span> <span class="o">=</span> <span class="p">[]</span>
 
-for index, row in df_sorted.iterrows():
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_sorted</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
 
-    model_str, model_prm= row[&quot;MODEL&quot;], row[&quot;PARAMS&quot;]
-    model_type = getattr(sys.modules[__name__], model_str)
-    rm_pre_parms = rm_dict_pre(model_prm) # modify dict keys
-    best_model = model_type(**rm_pre_parms)
-    best_models.append(best_model)
-</code></pre>
+    <span class="n">model_str</span><span class="p">,</span> <span class="n">model_prm</span><span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;MODEL&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;PARAMS&quot;</span><span class="p">]</span>
+    <span class="n">model_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">],</span> <span class="n">model_str</span><span class="p">)</span>
+    <span class="n">rm_pre_parms</span> <span class="o">=</span> <span class="n">rm_dict_pre</span><span class="p">(</span><span class="n">model_prm</span><span class="p">)</span> <span class="c1"># modify dict keys</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="n">model_type</span><span class="p">(</span><span class="o">**</span><span class="n">rm_pre_parms</span><span class="p">)</span>
+    <span class="n">best_models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_model</span><span class="p">)</span>
+</code></pre></div>
 
-<pre class="codehilite"><code class="language-python">best_estimators = []
+<div class="codehilite"><pre><span></span><code><span class="n">best_estimators</span> <span class="o">=</span> <span class="p">[]</span>
 
-for idx, est in enumerate(best_models):
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">best_models</span><span class="p">):</span>
 
-    best_estimators.append((est.__class__.__name__, est))
-</code></pre>
+    <span class="n">best_estimators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">est</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">est</span><span class="p">))</span>
+</code></pre></div>
 
 <p>Como cada modelo aporta un punto de vista diferente, vamos a utilizar los resultados obtenidos para generar un modelo ensemble que generalice las predicciones de los anteriores. Utilizaremos las métricas obtenidas para establecer el orden en el que construir un modelo 'stacking'. Como estimador final nos quedamos como el mejor modelo obtenido al ordenar la tabla anterior por el valor del RMSE obtenido para cada uno de ellos, es decir, el RandomForestRegressor.</p>
-<pre class="codehilite"><code class="language-python">reg = StackingRegressor(
-        estimators=estimators,
-        final_estimator=estimators[0][1])
+<div class="codehilite"><pre><span></span><code><span class="n">reg</span> <span class="o">=</span> <span class="n">StackingRegressor</span><span class="p">(</span>
+        <span class="n">estimators</span><span class="o">=</span><span class="n">estimators</span><span class="p">,</span>
+        <span class="n">final_estimator</span><span class="o">=</span><span class="n">estimators</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 
-reg.fit(x, y)
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-y_pred_e = reg.predict(x)
-</code></pre>
+<span class="n">y_pred_e</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 
 <p>A continuación mostramos una gráfica para cada modelo en la que vemos la relación entre los valores actuales y los valores predichos por el modelo. Esta pequeña visualización nos permite ver si cada algoritmo sobreajusta a los datos de entrenamiento o realmente tiene el rango que necesitamos. El punto más interesante es el análisis del modelo 'stacking' en el que vemos que es capaz de inferir los estilos de los algoritmos anteriores.</p>
 <p><img alt="" src="figures/models-predictions.png" /></p>
@@ -1230,49 +1230,49 @@ y_pred_e = reg.predict(x)
 <p>Utilizamos algunas herramientas de integración continua como Github Actions para automatizar este proceso. En un primer lugar convertimos el grafo de notas Markdown a un documento HTML mediante un proceso recursivo que ordena las notas y genera así la memoria del proyecto. Además, el índice se crea a partir de los nombres de las notas y sus relaciones con las que están enlazadas.</p>
 <p><img alt="" src="figures/graph.png" /></p>
 <p>Estas notas se encuentran en un repositorio separado al proyecto para poder así construir la memoria. Utilizamos Github Actions para definir las acciones necesarias cuando se realicen cambios en el repositirio, es decir, a medida que escribimos en las notas. En primer lugar, queremos conseguir que el documento se renderice cuando se hacen cambios en el repositorio y se publique posteriormente dicha memoria en una pequeña web bajo el dominio asociado a nuestro usuario de Github Pages. En segundo lugar, una vez tenemos publicada la memoria, una segunda acción convertirá el código HTML asociado al documento en el archivo PDF que está leyendo actualmente. </p>
-<pre class="codehilite"><code class="language-yaml">  build_notes:
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nt">build_notes</span><span class="p">:</span>
 
-    name: Building web notes from graph
-    runs-on: ubuntu-latest
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Building web notes from graph</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 
-    steps:
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 
-      - name: Checkout
-        uses: actions/checkout@v3
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
 
-      - name: Setup Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'
-          cache: 'pip'      
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Python</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;pip&#39;</span><span class="w">      </span>
 
-      - name: Install Dependencies
-        run: pip install -r requirements.txt   
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span><span class="w">   </span>
 
-      - name: Install Jupyter
-        run: sudo -H pip install jupyter
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Jupyter</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo -H pip install jupyter</span>
 
-      - name: Install Mermaid Converter
-        run: |
-          npm install -g @mermaid-js/mermaid-cli
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Mermaid Converter</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">npm install -g @mermaid-js/mermaid-cli</span>
 
-      - name: Run Script and Build Notes
-        run: |
-          cd _k.pcs.zen/
-          jupyter nbconvert --to script ./automate_md.ipynb
-          python ./automate_md.py      
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Script and Build Notes</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cd _k.pcs.zen/</span>
+<span class="w">          </span><span class="no">jupyter nbconvert --to script ./automate_md.ipynb</span>
+<span class="w">          </span><span class="no">python ./automate_md.py      </span>
 
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: '_k.pcs.zen/publish'
-          destination-github-username: 'alesteba'
-          destination-repository-name: 'tfg'
-          user-email: alesteba@unirioja.es
-          target-branch: main
-</code></pre>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pushes to another repository</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpina/github-action-push-to-another-repository@main</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">API_TOKEN_GITHUB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_TOKEN_GITHUB }}</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">source-directory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_k.pcs.zen/publish&#39;</span>
+<span class="w">          </span><span class="nt">destination-github-username</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;alesteba&#39;</span>
+<span class="w">          </span><span class="nt">destination-repository-name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tfg&#39;</span>
+<span class="w">          </span><span class="nt">user-email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alesteba@unirioja.es</span>
+<span class="w">          </span><span class="nt">target-branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+</code></pre></div>
 
 <p>El código anterior se corresponde con la transformación de la memoria en notas de Markdown al documento en HTML. Como podemos observar en los pasos se utiliza una máquina Ubuntu en la que se instalan librerías necesarias para transformar los diagramas en imágenes y poder trabajar con cuadernos Jupyter. Posteriormente, se transforma el cuaderno con el código de conversión de las notas en un único script, se ejecuta y se publican los resultados en otro repositorio diferente, el cual mediante Github Pages crea la página HTML correspondiente con la memoria final. </p>
 <p><img alt="" src="figures/github-actions.png" /></p></div><p style="page-break-after: always;">&nbsp;</p><div id=TESIS><h4>1.10.0 TESIS</h4><div id=Conclusiones><h4>1.10.1 Conclusiones</h4><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatización que permite la integración continua del flujo de trabajo del equipo para una aplicación de gestión agronómica. Hemos pasado por casi todas las etapas de diseño e implementación, además de la final inclusión de los modelos predictivos para la producción de cultivo.</p>
