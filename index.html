@@ -325,9 +325,8 @@
 <td style="text-align: center;">Cuaderno jupyter en el que buscamos el mejor modelo posible</td>
 </tr>
 </tbody>
-</table></div><div id=Gantt><h3>1.3.5 Gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. El tiempo estipulado es de dos meses y una semana.</p>
+</table></div><div id=Gantt><h3>1.3.5 Gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. Este diagrama es una estipulación de cómo se desarrolla el proyecto. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p>
 <p>'<img alt="" src="mermaid/output_0.png" />'</p>
-<p>Este diagrama es una estipulación de cómo se desarrolla el proyecto. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p>
 <p>Destacamos que las tareas de escritura de la memoria y pruebas unitarias se realizan durante casi todo el proyecto. Las pruebas nos permiten asegurarnos de que el proyecto funciona adecuadamente: así no pasamos a una nueva tarea si no hemos dejado la aplicación estable al terminar la anterior.</p></div><div id=Comunicaciones><h3>1.3.6 Comunicaciones</h3><p>Para mantener informados tanto al tutor académico como a la tutora de la empresa, utilizaremos los siguientes canales:  </p>
 <table>
 <thead>
@@ -840,29 +839,45 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <thead>
 <tr>
 <th style="text-align: left;">SCRIPT</th>
-<th style="text-align: right;">TAREA</th>
+<th style="text-align: center;">TAREA</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">load_qgis</td>
-<td style="text-align: right;">Extrae la información geomrética de cada pixel proveniente de "qgis" e inserta dicha información en las tablas de "parcela" y "pixel" de la BD.</td>
+<td style="text-align: center;">Extrae la información geométrica de cada pixel proveniente de "qgis" e inserta dicha información en las tablas de "parcela" y "pixel" de la BD.</td>
 </tr>
 <tr>
 <td style="text-align: left;">load_parcela</td>
-<td style="text-align: right;">Lee de un excel información fisca sobre las parcelas e inserta los datos en la BD.</td>
+<td style="text-align: center;">Lee de un excel información fisca sobre las parcelas e inserta los datos en la BD.</td>
 </tr>
 <tr>
 <td style="text-align: left;">load_cultivos</td>
-<td style="text-align: right;">Lee de un excel información sobre cultivos con sus variedades e inserta los datos en la BD.</td>
+<td style="text-align: center;">Lee de un excel información sobre cultivos con sus variedades e inserta los datos en la BD.</td>
 </tr>
 <tr>
 <td style="text-align: left;">download_img</td>
-<td style="text-align: right;">Usa uno de los módulos desarrollado por el equipo para descargar índices vegetativos a partir de imágenes satelitales. No almacen nada directamente, devuelve un dataframe con los datos descargados.</td>
+<td style="text-align: center;">Usa uno de los módulos desarrollado por el equipo para descargar índices vegetativos a partir de imágenes satelitales. No almacen nada directamente, devuelve un dataframe con los datos descargados.</td>
 </tr>
 <tr>
 <td style="text-align: left;">load_indice</td>
-<td style="text-align: right;">integra la información de índices descargada en el paso anterior en la tabla de "pixel" de la BD.</td>
+<td style="text-align: center;">Integra la información de índices descargada en el paso anterior en la tabla de "pixel" de la BD.</td>
+</tr>
+<tr>
+<td style="text-align: left;">load_range</td>
+<td style="text-align: center;">Utiliza el script anterior para cargar varios índices.</td>
+</tr>
+<tr>
+<td style="text-align: left;">create_view</td>
+<td style="text-align: center;">Construye la vista minable de la que hablaremos en el siguiente punto.</td>
+</tr>
+<tr>
+<td style="text-align: left;">create_model</td>
+<td style="text-align: center;">Busca y entrena el mejor modelo IA posible sobre la vista minable anterior.</td>
+</tr>
+<tr>
+<td style="text-align: left;">predict_model</td>
+<td style="text-align: center;">Utiliza el modelo entrenado para predecir sobre los datos de prueba que contiene la vista minable.</td>
 </tr>
 </tbody>
 </table>
@@ -1279,36 +1294,39 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>Para finalizar, volvemos a los conceptos de los procesos 'lean' que mencionábamos al principio. La fácil comprensión que permiten los esquemas de datos aquí planteados dotan al equipo de trabajo del lenguaje ubicuo necesario para que el software pueda crecer y ser escalado, evitando bloqueos por falta de comprensión. El lenguaje que maneja el equipo está directamente relacionado con su buen funcionamiento y garantiza el proceso de  optimización continua. Los artefactos obtenidos y la explicación de los modelos quedan así como documentación interna que debe ser mantenida al mismo nivel de importancia que el software que la implementa. </p>
 <p>'<img alt="" src="mermaid/output_4.png" />'</p>
 <p>En cuanto a la aplicación, se ha conseguido terminar con un producto funcional que cumple con los requisitos planteados. El proceso de arquitectura conseguido facilita el uso de múltiples datos provenientes de las fuentes estudiadas. El esquema de datos relacional implementado soporta la carga de los índices vegetativos, así como el resto de información relativa al parcelario. Los bloques atómicos de carga diseñados permiten planificar y automatizar la ingestión de los datos provenientes de las fuentes descritas. Por último, la capacidad para utilizar modelos de regresión sobre los datos dota a la arquitectura de la capa necesaria para realizar predicciones y configurar los estudios necesarios. Hemos conseguido crear las bases de un proceso que tiene un gran potencial para monitorizar y proporcionar una adecuada toma de decisiones sobre conceptos agronómicos.</p>
-<p><img alt="" src="figures/completed.png" /></p>
-<p>(recortar y hasta aquí:)</p></div><div id=Figuras><h4>1.10.2 Figuras</h4><p>enlace a las figuras utilizadas:  (esto)</p>
+<p><img alt="" src="figures/completed.png" /></p></div><div id=Figuras><h4>1.10.2 Figuras</h4><p>enlace a las figuras utilizadas:  (esto)</p>
 <p>Figura 1 - Imagen del frontend de la aplicación en la que se muestran, mediante un mapeo con colores, la evolución de los índices vegetativos en varias parcelas agrícolas.</p>
 <p>Figura 2 - Esquema ciclo iterativo en cascada.</p>
 <p>Figura 3 - Diagrama Gantt con un desglose estipulado de la evolución del proyecto.</p>
 <p>Figura 4 - Captura del visor web en la que se aprecia cómo se monitorizan varias parcelas.</p>
 <p>Figura 5 - Esquema de las etapas de desarrollo planificadas para el trabajo.</p>
 <p>Figura 6 - Ejemplo de uso de una migración en Django al estado inicial de la base de datos.</p>
-<p>Figura 7 - estoy repitiendo utilizar otra cosa.</p>
-<p>Figura 8 - esquema relacional en uso de la aplicación</p>
-<p>Figura 9 - esquema relacional inicial de partida, con entidades definidas, pero sin implementar, se toma como idea para el comienzo del diseño.</p>
-<p>Figura 10 - modelo relacional de las entidades descritas para su mejor comprensión.</p>
-<p>Figura 11 - pipeline design pattern, diagrama de clases para exponer cómo vamos a utilizar los bloques de carga creamos.</p>
-<p>Figura 12 - estados del pipeline.</p>
+<p>Figura 7 - Ejecución del pipeline mientras realiza la descarga de datos del satélite Copernicus.</p>
+<p>Figura 8 - Esquema relacional en uso de la aplicación</p>
+<p>Figura 9 - Esquema relacional inicial de partida, con entidades definidas, pero sin implementar, se toma como idea para el comienzo del diseño.</p>
+<p>Figura 10 - Modelo relacional de las entidades descritas para su mejor comprensión.</p>
+<p>Figura 11 - Pipeline design pattern, diagrama de clases para exponer cómo vamos a utilizar los bloques de carga creamos.</p>
+<p>Figura 12 - Estados ordenados del pipeline que queremos implementar.</p>
 <p>Figura 13 - Imagen satelital con nubes para indicar cómo afectan a los índices vegetativos calculados en la vista minable.</p>
-<p>Figura 14 - tabla con la vista minable calculada para un rango de fechas concretas.</p>
-<p>Figura 15 - comparación de los algoritmos. Valores reales vs los predichos por cada uno de los algoritmos utilizados.</p>
+<p>Figura 13 - Ejecución del pipeline implementado desde la herramienta de integración continua Jenkins.</p>
+<p>Figura 14 - Tabla con la vista minable calculada para un rango de fechas concretas.</p>
+<p>Figura 15 - Comparación de los algoritmos. Valores reales vs los predichos por cada uno de los algoritmos utilizados.</p>
+<p>Figura 15 - Predicción de la cantidad de Kg de cultivo que se va ha cosechar. Resultado tras la ejecución del último 'stage' en el pipeline.</p>
 <p>Figura 16 - Imagen del grafo asociado a las notas en las que se ha escrito esta memoria.</p>
-<p>Figura 17 - resumen del pipeline implementado a lo largo de este trabajo.</p>
-<p>Figura 18 - ejemplo construcción de la memoria desde Github Actions.</p></div><div id=Bibliografía><h4>1.10.3 Bibliografía</h4><ul>
+<p>Figura 17 - Resumen del pipeline implementado a lo largo de este trabajo.</p>
+<p>Figura 18 - Ejemplo construcción de la memoria desde Github Actions.</p>
+<p>Figura 19 - Captura de la ejecución del pipeline tras terminar la ejecución por completo.</p></div><div id=Bibliografía><h4>1.10.3 Bibliografía</h4><ul>
 <li>plan (ordenar esto;) -&gt; tfg listo; -&gt; correción mañana;</li>
 </ul>
-<p>citar PMBOOK</p>
 <p>https://www.pmi.org/pmbok-guide-standards/foundational/pmbok#</p>
 <ul>
 <li>Infraestructura</li>
 </ul>
 <p>https://en.wikipedia.org/wiki/Infrastructure_as_code</p>
+<p>https://www.jenkins.io/</p>
+<p>https://www.vagrantup.com/</p>
 <ul>
-<li>diseño modelo relacional</li>
+<li>Diseño modelo relacional</li>
 </ul>
 <p>https://mermaid.js.org/syntax/entityRelationshipDiagram.html</p>
 <p>https://docs.djangoproject.com/en/4.1/intro/tutorial01/</p>
@@ -1322,14 +1340,18 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p>
 <p>https://www.astera.com/es/type/blog/etl-pipeline-vs-data-pipeline/</p>
 <ul>
-<li>modelo-producción</li>
+<li>Modelo IA</li>
 </ul>
 <p>https://stackabuse.com/random-forest-algorithm-with-python-and-scikit-learn/</p>
 <p>https://towardsdatascience.com/random-forest-regression-5f605132d19d</p>
 <p>https://www.kaggle.com/code/sociopath00/random-forest-using-gridsearchcv</p>
 <p>https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_pipeline_display.html#sphx-glr-auto-examples-miscellaneous-plot-pipeline-display-py</p>
 <p>https://scikit-learn.org/stable/modules/cross_validation.html</p>
-<p>https://www.cienciadedatos.net/documentos/py19-pca-python.html</p></div>
+<p>https://www.cienciadedatos.net/documentos/py19-pca-python.html</p>
+<ul>
+<li>redacción memoria</li>
+</ul>
+<p>(solo enlaces 'oficiales')</p></div>
 
         <div>
 
