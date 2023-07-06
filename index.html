@@ -350,7 +350,7 @@
 <td style="text-align: left;">aplicación de comunicación interna para mensajes directos con los miembros del equipo.</td>
 </tr>
 </tbody>
-</table></div><div id=Riesgos><h3>1.3.7 Riesgos</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos. (cambiar)</p>
+</table></div><div id=Riesgos><h3>1.3.7 Riesgos</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos.</p>
 <table>
 <thead>
 <tr>
@@ -369,7 +369,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Tecnología equivocada</td>
-<td style="text-align: center;">Medio</td>
+<td style="text-align: center;">Alto</td>
 <td style="text-align: center;">Estudiar nuevas posiblidades</td>
 <td style="text-align: center;">Uso de patrones abstractos elegantes que se puedan implementar en diferentes frameworks</td>
 </tr>
@@ -380,16 +380,16 @@
 <td style="text-align: center;">Backups y control de versiones</td>
 </tr>
 <tr>
-<td style="text-align: left;">Pérdida documentación</td>
+<td style="text-align: left;">Fallo de dependencias o librerías</td>
 <td style="text-align: center;">Alto</td>
-<td style="text-align: center;">Empezar casi de cero</td>
-<td style="text-align: center;">Utilizar herramientas de copias incrementales</td>
+<td style="text-align: center;">Volver a crear los entornos</td>
+<td style="text-align: center;">Utilizar técnias de infraestructura como código donde sea posible</td>
 </tr>
 <tr>
-<td style="text-align: left;">Fallo del servidor con la applicación</td>
-<td style="text-align: center;">Alto</td>
-<td style="text-align: center;">Utilizar y configurar uno nuevo</td>
-<td style="text-align: center;">Backups</td>
+<td style="text-align: left;">Sobreajuste en los modelos</td>
+<td style="text-align: center;">Medio</td>
+<td style="text-align: center;">Probar otros algoritmos</td>
+<td style="text-align: center;">Automatizar el proceso de búsqueda de los mejores algoritmos probando hiperparámetros.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Falta de horas para terminar el proyecto</td>
@@ -399,8 +399,7 @@
 </tr>
 </tbody>
 </table>
-<p>De la tabla anterior se prestará especial atención a los riesgos valorados como 'Alto', ya que por su incidencia en el proyecto requieren un seguimiento exhaustivo, para los cuales se desarrollarán sus correspondientes planes de contingencia.  </p>
-<p>Los riesgos de valoración Media y Baja tendrán un control basado en un plan de mitigación simple de seguimientos del cronograma, con intervalos cortos de tiempo.</p></div><p style="page-break-after: always;">&nbsp;</p><div id=ANÁLISIS><h3>1.4.0 ANÁLISIS</h3><div id=Dominio_agronómico><h3>1.4.1 Dominio agronómico</h3><p>Una vez en contexto, procedemos a justificar las decisiones de diseño que la aplicación AGRAI necesita para llegar al rediseño que hemos identificado como clave.</p>
+<p>De la tabla anterior se prestará especial atención a los riesgos valorados como 'Alto', ya que por su incidencia en el proyecto requieren un seguimiento exhaustivo, para los cuales se desarrollarán sus correspondientes planes de contingencia. Los riesgos de valoración Media y Baja tendrán un control basado en un plan de mitigación simple de seguimientos del cronograma, con intervalos cortos de tiempo.</p></div><p style="page-break-after: always;">&nbsp;</p><div id=ANÁLISIS><h3>1.4.0 ANÁLISIS</h3><div id=Dominio_agronómico><h3>1.4.1 Dominio agronómico</h3><p>Una vez en contexto, procedemos a justificar las decisiones de diseño que la aplicación AGRAI necesita para llegar al rediseño que hemos identificado como clave.</p>
 <p>AGRAI es una aplicación para la gestión de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicación se centra el despliegue de datos georreferenciados por medio de una interfaz web. Los resultados para el usuario de la aplicación son satisfactorios, permitiendo a éste consultar el estado de su parcelario junto con algunas predicciones en cualquier momento. </p>
 <p>Tenemos que situarnos en el uso que se le está dando a la aplicación en relación con el diseño de ésta. La monitorización efectuada es válida para cualquier tipo de cultivo susceptible de ser fotografiado desde una imagen satelital y/o de dron. El modelo de datos que utiliza, aunque pobre al comienzo del trabajo, permite registrar tantos cultivos como un potencial cliente desee. Por otro lado, el caso real de uso de la aplicación proviene de bodegas o cooperativas vitivinícolas que quieren predecir la cantidad de kg de cosecha en una campaña determinada (2020-2021).</p>
 <p>Como punto de partida buscaremos identificar las entidades del dominio necesarias para que nuestro nuevo modelo de datos represente y relacione toda la información con precisión.</p>
@@ -1077,7 +1076,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
   <tbody>
     <tr>
       <th>2</th>
-      <td>RandomForest</td>
+      <td>RandomForestRegressor</td>
       <td>{'rf__max_depth': 7, 'rf__max_features': 'sqrt', 'rf__n_estimators': 5, 'rf__random_state': 42}</td>
       <td>-4.475243e+07</td>
       <td>2282.013333</td>
@@ -1094,13 +1093,22 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <td>6494.212821</td>
     </tr>
     <tr>
+      <th>4</th>
+      <td>KNeighborsRegressor</td>
+      <td>{'knn__metric': 'manhattan', 'knn__n_neighbors': 11, 'knn__weights': 'uniform'}</td>
+      <td>-4.566995e+07</td>
+      <td>5109.534545</td>
+      <td>4.310770e+07</td>
+      <td>6565.645200</td>
+    </tr>
+    <tr>
       <th>3</th>
-      <td>MLP</td>
-      <td>{'mlpr__activation': 'tanh', 'mlpr__alpha': 0.0001, 'mlpr__hidden_layer_sizes': (100, 50, 30), 'mlpr__learning_rate': 'adaptive', 'mlpr__max_iter': 50, 'mlpr__solver': 'sgd'}</td>
-      <td>-4.524895e+07</td>
-      <td>4616.211769</td>
-      <td>4.322007e+07</td>
-      <td>6574.197540</td>
+      <td>MLPRegressor</td>
+      <td>{'mlpr__activation': 'tanh', 'mlpr__alpha': 0.05, 'mlpr__hidden_layer_sizes': (100, 50, 30), 'mlpr__learning_rate': 'adaptive', 'mlpr__max_iter': 50, 'mlpr__solver': 'sgd'}</td>
+      <td>-4.550295e+07</td>
+      <td>4585.188137</td>
+      <td>4.325927e+07</td>
+      <td>6577.177888</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1148,11 +1156,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 
 <p>A continuación mostramos una gráfica para cada modelo en la que vemos la relación entre los valores actuales y los valores predichos por el modelo. Esta pequeña visualización nos permite ver si cada algoritmo sobreajusta a los datos de entrenamiento o realmente tiene el rango que necesitamos. El punto más interesante es el análisis del modelo 'stacking' en el que vemos que es capaz de inferir los estilos de los algoritmos anteriores.</p>
 <p><img alt="" src="figures/models-predictions.png" /></p>
-<p>Hemos analizado cada algoritmo con la intención de ver si modeliza correctamente nuestro problema de regresión, pero no es nuestro objetivo final que el modelo prediga con exactitud: solo queremos dejar automatizada una pequeña visualización de las relaciones entre los índices para así poder intuir qué modelo nos puede funcionar mejor. De hecho, los datos representativos con los que trabajamos nos impiden buscar un modelo real preciso.</p></div><div id=Predicciones><h3>1.8.4 Predicciones</h3><p>Nuestro último paso en el pipeline mostrado anteriormente es la capacidad para utilizar el modelo y predecir qué cantidad de kg se pueden cosechar cuando se pasa una nueva parcela al sistema. </p>
-<p>A continuación mostrar, a modo de ejemplo, cómo el último 'stage' del pipeline utiliza el modelo para predecir sobre la tabla minable utilizada.</p>
-<p>En este punto, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir, cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
-<p>-&gt; ultimo stage del pipeline.
--&gt; cambio a modelo ensemble.</p>
+<p>Hemos analizado cada algoritmo con la intención de ver si modeliza correctamente nuestro problema de regresión, pero no es nuestro objetivo final que el modelo prediga con exactitud: solo queremos dejar automatizada una pequeña visualización de las relaciones entre los índices para así poder intuir qué modelo nos puede funcionar mejor. De hecho, los datos representativos con los que trabajamos nos impiden buscar un modelo real preciso.</p></div><div id=Predicciones><h3>1.8.4 Predicciones</h3><p>Nuestro último paso en el pipeline mostrado anteriormente es la capacidad para utilizar el modelo y predecir qué cantidad de kg se pueden cosechar cuando se pasa una nueva parcela al sistema. A continuación mostramos cómo el último 'stage' del pipeline utiliza el modelo que acabamos de entenar para predecir sobre la vista minable.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;script/finalized_model.sav&#39;</span>
 
 <span class="n">df_x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;script/view.csv&#39;</span><span class="p">)</span>
@@ -1162,9 +1166,12 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <span class="n">y_pred_e</span> <span class="o">=</span> <span class="n">loaded_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_x</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y_pred_e</span><span class="p">)</span>
-</code></pre></div></div><p style="page-break-after: always;">&nbsp;</p><div id=SEGUIMIENTO><h3>1.9.0 SEGUIMIENTO</h3><div id=Desviaciones><h3>1.9.1 Desviaciones</h3><p>El proyecto se ha desarrollado sin grandes cambios relativos a la planificación estipulada, pero a pesar de realizar la planificación del proyecto con su desglose en entregables y horas para los paquetes de trabajo, el tiempo de desarrollo ha diferido de la misma en algunas ocasiones, especialmente en la memoria.</p>
+</code></pre></div>
+
+<p>En este punto, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir, cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
+<p><img alt="" src="figures/predict.png" /></p></div><p style="page-break-after: always;">&nbsp;</p><div id=SEGUIMIENTO><h3>1.9.0 SEGUIMIENTO</h3><div id=Desviaciones><h3>1.9.1 Desviaciones</h3><p>El proyecto se ha desarrollado sin grandes cambios relativos a la planificación estipulada, pero a pesar de realizar la planificación del proyecto con su desglose en entregables y horas para los paquetes de trabajo, el tiempo de desarrollo ha diferido de la misma en algunas ocasiones, especialmente en la memoria.</p>
 <p>El número de horas planificadas era de 300, las cuales se repartían en varias etapas marcadas  por los diversos puntos de control: planificación, análisis, infraestructura, diseño,  implementación, modelos y seguimiento y control.</p>
-<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que aparecen. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id=Memoria><h3>1.9.2 Memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
+<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que apareceno la automatización en Github Actions. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id=Memoria><h3>1.9.2 Memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
 <p>El documento se ha escrito como notas en <em>Markdown</em> por la facilidad que da para incluir fragmentos de código relativos al proyecto y poder explicar decisiones y conceptos. Para integrar los diagramas expuestos utilizamos tecnologías como <em>Mermaid</em>, que posibilita editar los diagramas directamente en el documento, algo totalmente necesario cuando estos modelos se modifican a medida que avanzamos.</p>
 <p>Finalmente, exportamos las notas en el orden necesario para la memoria y renderizamos el documento en HTML. El fácil acceso al documento tiene bastante relevancia por el uso que el equipo puede darle al consultar la documentación, especialmente la del modelo relacional y los servicios.</p>
 <p>Utilizamos algunas herramientas de integración continua como <em>Github Actions</em> para automatizar este proceso. En un primer lugar convertimos el grafo de notas Markdown a un documento HTML mediante un proceso recursivo que ordena las notas y genera así la memoria del proyecto. Además, el índice se crea a partir de los nombres de las notas y sus relaciones con las que están enlazadas.</p>
@@ -1172,45 +1179,45 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>El principal interés de que la redacción se realice de esta forma es que al comienzo del proyecto no había una idea clara de cómo se tenían que desarrollar los contenidos. Escribir un capítulo o tema en una nota es algo más sencillo (por lo tanto, se puede terminar) que pensar desde el principio dónde colocar esta sección que quiero escribir en la memoria. Utilizando Obsidian como gestor de las notas, podemos definir relaciones entre ellas simplemente conectando palabras claves entre ellas. De esta forma conseguimos un esquema mental del proyecto simplemente visualizando el grafo generado. Finalmente, a medida que nos acercamos al cierre del proyecto, escribimos en un notebook una serie de algoritmos que nos permiten presentar el resultado de la memoria de la forma que deseamos. En ellos implementamos los pasos necesarios para transformar cada nota a HTML, integrar aquellos sniptes de código que pueda contener, representar tablas y diagramas, etc. Muy importante, el grafo permite generar los niveles de identación asociados a cada capítulo o sección del documento. A continuación, mostramos algunas de las funciones utilizadas en el cuaderno para obtener el resultado que está leyendo.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">neigh</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="s2">&quot;&quot;&quot; given starting node, recursively find neighbours until desired depth is reached &quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot; given starting node, recursively find neighbours until desired depth is reached &quot;&quot;&quot;</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">if</span> <span class="n">depth</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">depth</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+      <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">else</span><span class="p">:</span>
+    <span class="k">else</span><span class="p">:</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+      <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">node_list</span> <span class="o">+=</span> <span class="n">neigh</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">node_list</span> <span class="o">+=</span> <span class="n">neigh</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">node_list</span><span class="p">))</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">node_list</span><span class="p">))</span>
 </code></pre></div>
 
 <p>Entre estas funciones ... </p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">rec_note_prcs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;TFG&#39;</span><span class="p">,</span> <span class="n">ident</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">):</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">ident</span> <span class="o">=</span> <span class="n">ident</span> <span class="o">+</span> <span class="s1">&#39;.0&#39;</span>
+  <span class="n">ident</span> <span class="o">=</span> <span class="n">ident</span> <span class="o">+</span> <span class="s1">&#39;.0&#39;</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">neigh</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+  <span class="n">neigh</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">neigh</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">neigh</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">note_decorate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">note_decorate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">end_doc</span> <span class="o">=</span>  <span class="n">note_decorate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">ident</span><span class="p">)</span>
+  <span class="n">end_doc</span> <span class="o">=</span>  <span class="n">note_decorate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">ident</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">neigh</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">neigh</span><span class="p">:</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">ident</span> <span class="o">=</span> <span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ident</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ident</span> <span class="o">=</span> <span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ident</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">Â</span>  <span class="n">end_doc</span> <span class="o">=</span> <span class="n">end_doc</span> <span class="o">+</span> <span class="n">rec_note_prcs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">ident</span><span class="p">)</span>
+    <span class="n">end_doc</span> <span class="o">=</span> <span class="n">end_doc</span> <span class="o">+</span> <span class="n">rec_note_prcs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">ident</span><span class="p">)</span>
 
-<span class="n">Â</span>  <span class="n">Â</span>  <span class="k">return</span> <span class="n">end_doc</span>
+  <span class="k">return</span> <span class="n">end_doc</span>
 </code></pre></div>
 
 <p>Estas notas se encuentran en un repositorio separado al proyecto para poder así construir la memoria. Utilizamos <em>Github Actions</em> para definir las acciones necesarias cuando se realicen cambios en el repositorio, es decir, a medida que escribimos en las notas. En primer lugar, queremos conseguir que el documento se renderice cuando se hacen cambios en el repositorio y se publique posteriormente dicha memoria en una pequeña web bajo el dominio asociado a nuestro usuario de <em>Github Pages</em>. En segundo lugar, una vez tenemos publicada la memoria, una segunda acción convertirá el código HTML asociado al documento en el archivo PDF que está leyendo actualmente. </p>
@@ -1272,7 +1279,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>Para finalizar, volvemos a los conceptos de los procesos 'lean' que mencionábamos al principio. La fácil comprensión que permiten los esquemas de datos aquí planteados dotan al equipo de trabajo del lenguaje ubicuo necesario para que el software pueda crecer y ser escalado, evitando bloqueos por falta de comprensión. El lenguaje que maneja el equipo está directamente relacionado con su buen funcionamiento y garantiza el proceso de  optimización continua. Los artefactos obtenidos y la explicación de los modelos quedan así como documentación interna que debe ser mantenida al mismo nivel de importancia que el software que la implementa. </p>
 <p>'<img alt="" src="mermaid/output_4.png" />'</p>
 <p>En cuanto a la aplicación, se ha conseguido terminar con un producto funcional que cumple con los requisitos planteados. El proceso de arquitectura conseguido facilita el uso de múltiples datos provenientes de las fuentes estudiadas. El esquema de datos relacional implementado soporta la carga de los índices vegetativos, así como el resto de información relativa al parcelario. Los bloques atómicos de carga diseñados permiten planificar y automatizar la ingestión de los datos provenientes de las fuentes descritas. Por último, la capacidad para utilizar modelos de regresión sobre los datos dota a la arquitectura de la capa necesaria para realizar predicciones y configurar los estudios necesarios. Hemos conseguido crear las bases de un proceso que tiene un gran potencial para monitorizar y proporcionar una adecuada toma de decisiones sobre conceptos agronómicos.</p>
-<p><img alt="" src="figures/completed.PNG" /></p>
+<p><img alt="" src="figures/completed.png" /></p>
 <p>(recortar y hasta aquí:)</p></div><div id=Figuras><h4>1.10.2 Figuras</h4><p>enlace a las figuras utilizadas:  (esto)</p>
 <p>Figura 1 - Imagen del frontend de la aplicación en la que se muestran, mediante un mapeo con colores, la evolución de los índices vegetativos en varias parcelas agrícolas.</p>
 <p>Figura 2 - Esquema ciclo iterativo en cascada.</p>
