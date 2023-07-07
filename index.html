@@ -1005,21 +1005,26 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <span class="w">        </span><span class="p">}</span><span class="w">    </span>
 <span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;sources&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 1-load-qgis --parcelas &quot;data/parcelas/25/parcelas.shp&quot; --pixels &quot;data/parcelas/25/pixeles.shp&quot; &#39;</span><span class="p">)</span>
-<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 2-load-parcela-data -xls &quot;data/excels/datos-test-2.xls&quot; &#39;</span><span class="p">)</span>
-<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 3-load-cultivos -xls &quot;data/excels/datos-test-2.xls&quot; &#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 1-load-qgis </span>
+<span class="w">                    </span><span class="o">--</span><span class="n">parcelas</span><span class="w"> </span><span class="s2">&quot;data/parcelas/25/parcelas.shp&quot;</span><span class="w"> </span>
+<span class="w">                    </span><span class="o">--</span><span class="n">pixels</span><span class="w"> </span><span class="s2">&quot;data/parcelas/25/pixeles.shp&quot;</span><span class="w"> </span><span class="s1">&#39;)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 2-load-parcela-data </span>
+<span class="w">                    </span><span class="o">-</span><span class="n">xls</span><span class="w"> </span><span class="s2">&quot;data/excels/datos-test-2.xls&quot;</span><span class="w"> </span><span class="s1">&#39;)</span>
+<span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 3-load-cultivos </span>
+<span class="w">                    </span><span class="o">-</span><span class="n">xls</span><span class="w"> </span><span class="s2">&quot;data/excels/datos-test-2.xls&quot;</span><span class="w"> </span><span class="s1">&#39;)</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;sentinel&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">sh</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;python3.10 manage.py 4-download_img </span>
-<span class="s2">                -a &quot;20220601&quot; </span>
-<span class="s2">                -b &quot;20220701&quot; </span>
-<span class="s2">                -p &quot;data/parcelas/25/pixeles.shp&quot; </span>
-<span class="s2">                -i ndvi ndre&quot;&quot;&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="s2">                    -a &quot;20220601&quot; </span>
+<span class="s2">                    -b &quot;20220701&quot; </span>
+<span class="s2">                    -p &quot;data/parcelas/25/pixeles.shp&quot; </span>
+<span class="s2">                    -i ndvi ndre&quot;&quot;&quot;</span><span class="w"> </span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;indices&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 5-load_range -i ndvi ndre &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;indices&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 5-load_range </span>
+<span class="w">                                        </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">ndvi</span><span class="w"> </span><span class="n">ndre</span><span class="w"> </span><span class="s1">&#39;) } }</span>
 
 <span class="w">        </span><span class="n">stage</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sh</span><span class="p">(</span><span class="s1">&#39;python3.10 manage.py 6-create-view&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 
@@ -1082,7 +1087,6 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <th></th>
       <th>MODEL</th>
       <th>PARAMS</th>
-      <th>SCORE</th>
       <th>MAE</th>
       <th>MSE</th>
       <th>RMSE</th>
@@ -1093,7 +1097,6 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <th>2</th>
       <td>RandomForestRegressor</td>
       <td>{'rf__max_depth': 7, 'rf__max_features': 'sqrt', 'rf__n_estimators': 5, 'rf__random_state': 42}</td>
-      <td>-4.475243e+07</td>
       <td>2282.013333</td>
       <td>1.464411e+07</td>
       <td>3826.762121</td>
@@ -1102,7 +1105,6 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <th>0</th>
       <td>ElasticNet</td>
       <td>{'en__alpha': 10, 'en__l1_ratio': 0.7000000000000001, 'en__max_iter': 5}</td>
-      <td>-4.556500e+07</td>
       <td>4668.784757</td>
       <td>4.217480e+07</td>
       <td>6494.212821</td>
@@ -1111,7 +1113,6 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <th>4</th>
       <td>KNeighborsRegressor</td>
       <td>{'knn__metric': 'manhattan', 'knn__n_neighbors': 11, 'knn__weights': 'uniform'}</td>
-      <td>-4.566995e+07</td>
       <td>5109.534545</td>
       <td>4.310770e+07</td>
       <td>6565.645200</td>
@@ -1120,16 +1121,14 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <th>3</th>
       <td>MLPRegressor</td>
       <td>{'mlpr__activation': 'tanh', 'mlpr__alpha': 0.05, 'mlpr__hidden_layer_sizes': (100, 50, 30), 'mlpr__learning_rate': 'adaptive', 'mlpr__max_iter': 50, 'mlpr__solver': 'sgd'}</td>
-      <td>-4.550295e+07</td>
-      <td>4585.188137</td>
-      <td>4.325927e+07</td>
-      <td>6577.177888</td>
+      <td>4599.475956</td>
+      <td>4.323998e+07</td>
+      <td>6575.711553</td>
     </tr>
     <tr>
       <th>1</th>
       <td>SVR</td>
       <td>{'svr__C': 5.0, 'svr__gamma': 0.01, 'svr__kernel': 'linear'}</td>
-      <td>-4.776304e+07</td>
       <td>4129.801479</td>
       <td>4.749271e+07</td>
       <td>6891.495313</td>
@@ -1307,15 +1306,15 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>Figura 11 - Pipeline design pattern, diagrama de clases para exponer cómo vamos a utilizar los bloques de carga creamos.</p>
 <p>Figura 12 - Estados ordenados del pipeline que queremos implementar.</p>
 <p>Figura 13 - Imagen satelital con nubes para indicar cómo afectan a los índices vegetativos calculados en la vista minable.</p>
-<p>Figura 13 - Ejecución del pipeline implementado desde la herramienta de integración continua Jenkins.</p>
-<p>Figura 14 - Tabla con la vista minable calculada para un rango de fechas concretas.</p>
-<p>Figura 15 - Comparación de los algoritmos. Valores reales vs los predichos por cada uno de los algoritmos utilizados.</p>
-<p>Figura 15 - Predicción de la cantidad de Kg de cultivo que se va ha cosechar. Resultado tras la ejecución del último 'stage' en el pipeline.</p>
-<p>Figura 16 - Imagen del grafo asociado a las notas en las que se ha escrito esta memoria.</p>
-<p>Figura 17 - Resumen del pipeline implementado a lo largo de este trabajo.</p>
-<p>Figura 18 - Ejemplo construcción de la memoria desde Github Actions.</p>
-<p>Figura 19 - Captura de la ejecución del pipeline tras terminar la ejecución por completo.</p></div><div id=Bibliografía><h4>1.10.3 Bibliografía</h4><ul>
-<li>plan (ordenar esto;) -&gt; tfg listo; -&gt; correción mañana;</li>
+<p>Figura 14 - Ejecución del pipeline implementado desde la herramienta de integración continua Jenkins.</p>
+<p>Figura 15 - Tabla con la vista minable calculada para un rango de fechas concretas.</p>
+<p>Figura 16 - Comparación de los algoritmos. Valores reales vs. los predichos por cada uno de los algoritmos utilizados.</p>
+<p>Figura 17 - Predicción de la cantidad de Kg de cultivo que se va a cosechar. Resultado tras la ejecución del último 'stage' en el pipeline.</p>
+<p>Figura 18 - Imagen del grafo asociado a las notas en las que se ha escrito esta memoria.</p>
+<p>Figura 19 - Resumen del pipeline implementado a lo largo de este trabajo.</p>
+<p>Figura 20 - Ejemplo construcción de la memoria desde Github Actions.</p>
+<p>Figura 21 - Captura de la ejecución del pipeline tras terminar la ejecución por completo.</p></div><div id=Bibliografía><h4>1.10.3 Bibliografía</h4><ul>
+<li>plan</li>
 </ul>
 <p>https://www.pmi.org/pmbok-guide-standards/foundational/pmbok#</p>
 <ul>
@@ -1343,14 +1342,15 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </ul>
 <p>https://stackabuse.com/random-forest-algorithm-with-python-and-scikit-learn/</p>
 <p>https://towardsdatascience.com/random-forest-regression-5f605132d19d</p>
-<p>https://www.kaggle.com/code/sociopath00/random-forest-using-gridsearchcv</p>
 <p>https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_pipeline_display.html#sphx-glr-auto-examples-miscellaneous-plot-pipeline-display-py</p>
 <p>https://scikit-learn.org/stable/modules/cross_validation.html</p>
-<p>https://www.cienciadedatos.net/documentos/py19-pca-python.html</p>
+<p>https://scikit-learn.org/stable/auto_examples/ensemble/plot_stack_predictors.html#sphx-glr-auto-examples-ensemble-plot-stack-predictors-py</p>
 <ul>
 <li>redacción memoria</li>
 </ul>
-<p>(solo enlaces 'oficiales')</p></div>
+<p>https://networkx.org/</p>
+<p>https://github.com/obsidianmd/obsidian-api</p>
+<p>https://docs.github.com/en/actions</p></div>
 
         <div>
 
