@@ -29,7 +29,9 @@ caption {
 
 
 p, ul, li {
-    font-size: 15px;
+     font-size: 15px;
+     text-align:justify/left/right/center;
+     text-justify:values;
 }
 
 
