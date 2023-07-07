@@ -1185,7 +1185,103 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>En este punto, deberíamos poder utilizar este modelo obtenido dentro de la arquitectura de la aplicación para predecir, cómo evolucionan los cultivos que se están monitorizando. El punto en el que se encuentra la arquitectura soporta casi de forma directa la inclusión de las predicciones de la aplicación.</p>
 <p><img alt="" src="figures/predict.png" /></p></div><p style="page-break-after: always;">&nbsp;</p><div id=SEGUIMIENTO><h3>1.9.0 SEGUIMIENTO</h3><div id=Desviaciones><h3>1.9.1 Desviaciones</h3><p>El proyecto se ha desarrollado sin grandes cambios relativos a la planificación estipulada, pero a pesar de realizar la planificación del proyecto con su desglose en entregables y horas para los paquetes de trabajo, el tiempo de desarrollo ha diferido de la misma en algunas ocasiones, especialmente en la memoria.</p>
 <p>El número de horas planificadas era de 300, las cuales se repartían en varias etapas marcadas  por los diversos puntos de control: planificación, análisis, infraestructura, diseño,  implementación, modelos y seguimiento y control.</p>
-<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que apareceno la automatización en Github Actions. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><p style="page-break-after: always;">&nbsp;</p><div id=Memoria><h3>1.9.2 Memoria</h3><p style="page-break-after: always;">&nbsp;</p><div id=TESIS><h4>1.10.0 TESIS</h4><div id=Conclusiones><h4>1.10.1 Conclusiones</h4><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatización que permite la integración continua del flujo de trabajo del equipo para una aplicación de gestión agronómica. Hemos pasado por casi todas las etapas de diseño e implementación, además de la final inclusión de los modelos predictivos para la producción de cultivo.</p>
+<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que apareceno la automatización en Github Actions. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id=Memoria><h3>1.9.2 Memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
+<p>El documento se ha escrito como notas en <em>Markdown</em> por la facilidad que da para incluir fragmentos de código relativos al proyecto y poder explicar decisiones y conceptos. Para integrar los diagramas expuestos utilizamos tecnologías como <em>Mermaid</em>, que posibilita editar los diagramas directamente en el documento, algo totalmente necesario cuando estos modelos se modifican a medida que avanzamos.</p>
+<p>Finalmente, exportamos las notas en el orden necesario para la memoria y renderizamos el documento en HTML. El fácil acceso al documento tiene bastante relevancia por el uso que el equipo puede darle al consultar la documentación, especialmente la del modelo relacional y los servicios.</p>
+<p>Utilizamos algunas herramientas de integración continua como <em>Github Actions</em> para automatizar este proceso. En un primer lugar convertimos el grafo de notas Markdown a un documento HTML mediante un proceso recursivo que ordena las notas y genera así la memoria del proyecto. Además, el índice se crea a partir de los nombres de las notas y sus relaciones con las que están enlazadas.</p>
+<p><img alt="" src="figures/graph.png" /></p>
+<p>El principal interés de que la redacción se realice de esta forma es que al comienzo del proyecto no había una idea clara de cómo se tenían que desarrollar los contenidos. Escribir un capítulo o tema en una nota es algo más sencillo (por lo tanto, se puede terminar) que pensar desde el principio dónde colocar esta sección que quiero escribir en la memoria. Utilizando Obsidian como gestor de las notas, podemos definir relaciones entre ellas simplemente conectando palabras claves entre ellas. De esta forma conseguimos un esquema mental del proyecto simplemente visualizando el grafo generado. Finalmente, a medida que nos acercamos al cierre del proyecto, escribimos en un notebook una serie de algoritmos que nos permiten presentar el resultado de la memoria de la forma que deseamos. En ellos implementamos los pasos necesarios para transformar cada nota a HTML, integrar aquellos <em>snipets</em> de código que pueda contener, representar tablas y diagramas, etc. Muy importante, el grafo permite generar los niveles de indentación asociados a cada capítulo o sección del documento. A continuación, mostramos algunas de las funciones utilizadas en el cuaderno para obtener el resultado que está leyendo.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">rec_note_prcs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;TFG&#39;</span><span class="p">,</span> <span class="n">ident</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; recursive note building &quot;&quot;&quot;</span>
+
+    <span class="n">ident</span> <span class="o">=</span> <span class="n">ident</span> <span class="o">+</span> <span class="s1">&#39;.0&#39;</span>
+
+    <span class="n">neigh</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">neigh</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">note_decorate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">end_doc</span> <span class="o">=</span>  <span class="n">note_decorate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">ident</span><span class="p">)</span>
+
+      <span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">neigh</span><span class="p">:</span>
+
+        <span class="n">ident</span> <span class="o">=</span> <span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ident</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">end_doc</span> <span class="o">=</span> <span class="n">end_doc</span> <span class="o">+</span> <span class="n">rec_note_prcs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">ident</span><span class="p">)</span>
+
+      <span class="k">return</span> <span class="n">end_doc</span>
+</code></pre></div>
+
+<p>Estas celdas de código son parte del proceso de transformación de Markdown a HTML. Aunque existen librerías con funciones para realizar dicha transformación, necesitamos realizar un gran trabajo de procesado para que el documento enlace las notas en el orden correcto y se tengan en cuenta conceptos como la indentación en los distintos apartados. El grafo que conforman las notas pasa a una estructura de árbol en la que es fácil crear enlaces entre los puntos a los que pertenece cada nota.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">mermaid_process</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; transforms any mermaid diagrams to images in png format &quot;&quot;&quot;</span>
+
+    <span class="k">global</span> <span class="n">parent_directory</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="err">!</span><span class="p">[](</span><span class="n">mermaid</span><span class="o">/</span><span class="n">output_4</span><span class="o">.</span><span class="n">png</span><span class="p">)</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="n">sub_text</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="err">!</span><span class="p">[](</span><span class="n">mermaid</span><span class="o">/</span><span class="n">output_5</span><span class="o">.</span><span class="n">png</span><span class="p">)</span><span class="s1">&#39;mermaid_digram(?s:.*?)```&#39;</span><span class="p">,</span> 
+        <span class="n">mmd_to_img</span><span class="p">(</span><span class="n">sub_text</span><span class="p">,</span> <span class="n">mermaid_dir</span><span class="p">)</span> <span class="p">,</span>
+        <span class="n">text</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mermaid_process</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Estas notas se encuentran en un repositorio separado al proyecto para poder así construir la memoria. Utilizamos <em>Github Actions</em> para definir las acciones necesarias cuando se realicen cambios en el repositorio, es decir, a medida que escribimos en las notas. En primer lugar, queremos conseguir que el documento se renderice cuando se hacen cambios en el repositorio y se publique posteriormente dicha memoria en una pequeña web bajo el dominio asociado a nuestro usuario de <em>Github Pages</em>. En segundo lugar, una vez tenemos publicada la memoria, una segunda acción convertirá el código HTML asociado al documento en el archivo PDF que está leyendo actualmente. </p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nt">build_notes</span><span class="p">:</span>
+
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Building web notes from graph</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Python</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;pip&#39;</span><span class="w">      </span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span><span class="w">   </span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Jupyter</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo -H pip install jupyter</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Mermaid Converter</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">npm install -g @mermaid-js/mermaid-cli</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Script and Build Notes</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cd _k.pcs.zen/</span>
+<span class="w">          </span><span class="no">jupyter nbconvert --to script ./automate_md.ipynb</span>
+<span class="w">          </span><span class="no">python ./automate_md.py      </span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pushes to another repository</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpina/github-action-push-to-another-repository@main</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">API_TOKEN_GITHUB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_TOKEN_GITHUB }}</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">source-directory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_k.pcs.zen/publish&#39;</span>
+<span class="w">          </span><span class="nt">destination-github-username</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;alesteba&#39;</span>
+<span class="w">          </span><span class="nt">destination-repository-name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tfg&#39;</span>
+<span class="w">          </span><span class="nt">user-email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alesteba@unirioja.es</span>
+<span class="w">          </span><span class="nt">target-branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+</code></pre></div>
+
+<p>El código anterior se corresponde con la transformación de la memoria en notas de Markdown al documento en HTML. Como podemos observar en los pasos se utiliza una máquina Ubuntu en la que se instalan librerías necesarias para transformar los diagramas en imágenes y poder trabajar con cuadernos Jupyter. Posteriormente, se transforma el cuaderno con el código de conversión de las notas en un único script, se ejecuta y se publican los resultados en otro repositorio diferente, el cual mediante <em>Github Pages</em> crea la página HTML correspondiente con la memoria final. </p>
+<p><img alt="" src="figures/github-actions.png" /></p></div><p style="page-break-after: always;">&nbsp;</p><div id=TESIS><h4>1.10.0 TESIS</h4><div id=Conclusiones><h4>1.10.1 Conclusiones</h4><p>Este trabajo se ha centrado en el desarrollo de un proceso de automatización que permite la integración continua del flujo de trabajo del equipo para una aplicación de gestión agronómica. Hemos pasado por casi todas las etapas de diseño e implementación, además de la final inclusión de los modelos predictivos para la producción de cultivo.</p>
 <p>Durante el proceso hemos influido en los principales bloques de diseño e implementación relativos a la arquitectura de la aplicación, pasando por la infraestructura, los modelos de datos, la carga de estos datos, y la búsqueda de modelos predictivos a partir de ellos. Acorde al alcance planteado, hemos llegado satisfactoriamente a todos los puntos estipulados; recodamos estos puntos:</p>
 <ul>
 <li>Obtenemos un script de creación para el entorno necesario.</li>
@@ -1196,7 +1292,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <li>Implementamos el modelo para predecir nuevos valores que no han sido usados en el entrenamiento.</li>
 </ul>
 <p>Para finalizar, volvemos a los conceptos de los procesos 'lean' que mencionábamos al principio. La fácil comprensión que permiten los esquemas de datos aquí planteados dotan al equipo de trabajo del lenguaje ubicuo necesario para que el software pueda crecer y ser escalado, evitando bloqueos por falta de comprensión. El lenguaje que maneja el equipo está directamente relacionado con su buen funcionamiento y garantiza el proceso de  optimización continua. Los artefactos obtenidos y la explicación de los modelos quedan así como documentación interna que debe ser mantenida al mismo nivel de importancia que el software que la implementa. </p>
-<p>'<img alt="" src="mermaid/output_4.png" />'</p>
+<p>'<img alt="" src="mermaid/output_6.png" />'</p>
 <p>En cuanto a la aplicación, se ha conseguido terminar con un producto funcional que cumple con los requisitos planteados. El proceso de arquitectura conseguido facilita el uso de múltiples datos provenientes de las fuentes estudiadas. El esquema de datos relacional implementado soporta la carga de los índices vegetativos, así como el resto de información relativa al parcelario. Los bloques atómicos de carga diseñados permiten planificar y automatizar la ingestión de los datos provenientes de las fuentes descritas. Por último, la capacidad para utilizar modelos de regresión sobre los datos dota a la arquitectura de la capa necesaria para realizar predicciones y configurar los estudios necesarios. Hemos conseguido crear las bases de un proceso que tiene un gran potencial para monitorizar y proporcionar una adecuada toma de decisiones sobre conceptos agronómicos.</p>
 <p><img alt="" src="figures/completed.png" /></p></div><div id=Figuras><h4>1.10.2 Figuras</h4><p>Figura 1 - Imagen del frontend de la aplicación en la que se muestran, mediante un mapeo con colores, la evolución de los índices vegetativos en varias parcelas agrícolas.</p>
 <p>Figura 2 - Esquema ciclo iterativo en cascada.</p>
