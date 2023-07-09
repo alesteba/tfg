@@ -24,7 +24,10 @@
             <p style="page-break-after: always;">&nbsp;</p><div id=TFG><h2>1.0 TFG</h2><div id=RESUMEN><h2>1.1 RESUMEN</h2><p>El trabajo consistirá en la reestructuración de una aplicación de gestión de datos agronómicos. Estos datos, que actualmente provienen de varias fuentes, van a ser tratados en una nueva arquitectura que posibilitará técnicas de integración y despliegue continuo. En su diseño pasamos por las etapas sucesivas de infraestructura, diseño de un modelo relacional, utilización de un pipeline para la carga de datos y, finalmente, la obtención de una vista minable sobre la que se ejecutarán modelos de Inteligencia Artificial. Esta vista permitirá predecir mediante regresión la cantidad de kg de cultivo que se espera cosechar en una parcela y en una fecha determinadas.</p>
 <p>The following work will handle the restructuring of an agronomic data management application. These data, which currently come from various sources, are going to be processed in a new architecture that will enable continuous integration and deployment techniques. In its design, we go through the successive stages of infrastructure, design of a relational model, use of a pipeline for data loading and, finally, obtaining a mineable view on which Artificial Intelligence models will be executed. This view will make it possible to predict, with a regression model, the amount of kilograms of crop that is expected to be harvested in a plot and on a given date.</p></div><p style="page-break-after: always;">&nbsp;</p><div id=INTRODUCCIÓN><h3>1.2.0 INTRODUCCIÓN</h3><div id=Contexto><h3>1.2.1 Contexto</h3><p>El propósito de este proyecto es mejorar el flujo de trabajo del equipo de "SpectralGeo" mediante la automatización del proceso de recogida y procesado de datos agronómicos que se utilizan en la creación de modelos de inteligencia artificial para el cultivo.</p>
 <p>AGRAI es una aplicación para la gestión de cultivo que permite al agricultor monitorizar el estado de sus parcelas. El estado actual de la aplicación se centra el despliegue de datos agronómicos y vegetativos georreferenciados a través de en una interfaz web. Los usuarios de la aplicación, normalmente agricultores o cooperativas, pueden consultar el estado de su parcelario junto con algunas predicciones, como puede ser la cantidad de Kg que se van a cosechar en una fecha determinada. El acceso a dicha aplicación puede darse desde equipo de sobremesa o un dispositivo móvil, aunque es este último lo que parece que se utiliza más. </p>
-<p><img alt="" src="figures/visor_GIS_det.png" /></p>
+<p>
+<figure><img src="figures/visor_GIS_det.png" /><figcaption>Imagen del frontend de la aplicación en la que se muestran, mediante un mapeo con colores, la evolución de los índices vegetativos en varias parcelas agrícolas.</figcaption>
+</figure>
+</p>
 <p>Actualmente, cómo se procesa la información que utiliza nuestra aplicación es un proceso tedioso para el equipo. En este proceso, diferentes miembros trabajan con tecnologías distintas sobre datos duplicados provenientes de fuentes comunes. Aunque se realiza una planificación y coordinación de los proyectos, se pierde bastante tiempo en la transformación de los datos que cada miembro del equipo necesita para llevar a cabo su labor.</p>
 <p>El objetivo de este trabajo es mejorar y automatizar el flujo de trabajo del equipo, convirtiendo la aplicación AGRAI en una herramienta robusta que manipule un único repositorio de datos al cual el resto del equipo pueda acceder, utilizándolo de forma segura y -lo más importante,-sin duplicar y romper la integridad de estos datos.</p>
 <p>Es un proyecto ambicioso debido a que no solo es importante el conocimiento técnico sino que serán necesarios cambios en la forma de trabajo del equipo, cambios que se basan en  la confianza de cada miembro en la nueva forma de trabajo que se desea implementar. </p></div><div id=Previos><h3>1.2.2 Previos</h3><p>SpectralGeo se ha especializado en el uso de nuevas tecnologías para sectores como el de la agricultura o el reciclaje, centrándose en proyectos con carácter reivindicativo de la sostenibilidad medioambiental. La relación con clientes como Ecoembes o el desarrollo de software para la gestión sostenible de cultivos lo demuestran.</p>
@@ -274,58 +277,58 @@
 <thead>
 <tr>
 <th style="text-align: left;">IDENT</th>
-<th style="text-align: right;">ENTREGABLE</th>
+<th style="text-align: left;">ENTREGABLE</th>
 <th style="text-align: center;">DESCRIPCIÓN</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">E01</a></td>
-<td style="text-align: right;">Módulo de Inicio</td>
+<td style="text-align: left;">Módulo de Inicio</td>
 <td style="text-align: center;">Análisis de viabilidad que permitirá determinar si es posible desarrollar el proyecto.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://alesteba.github.io/tfg/#PLANIFICACI%C3%93N">E02</a></td>
-<td style="text-align: right;">Planificación del proyecto</td>
+<td style="text-align: left;">Planificación del proyecto</td>
 <td style="text-align: center;">Determinaremos los requisitos del proyecto, crearemos un enunciado para el alcance, realizaremos una descripción detallada de tareas junto a una EDT, estimaremos el tiempo y coste de los paquetes de trabajo, desarrollaremos un cronograma, estableceremos los estándares, procesos y métricas de calidad, determinaremos un plan de identificación de riesgos y crearemos el plan de gestión de cambios.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/tree/main/entregables/infraestructure">E03</a></td>
-<td style="text-align: right;">Infraestructura como código</td>
+<td style="text-align: left;">Infraestructura como código</td>
 <td style="text-align: center;">Desarrollo de un 'script' con las instrucciones bash para dejar la máquina que despliega la aplicación en un estado estable.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="">E04</a></td>
-<td style="text-align: right;">Documento de Diseño</td>
+<td style="text-align: left;">Documento de Diseño</td>
 <td style="text-align: center;">Documento en el que se explican las decisiones tomadas para la creación de las entidades del modelo y sus relaciones.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/tree/main/entregables/models.py">E05</a></td>
-<td style="text-align: right;">Esquema modelo de Datos</td>
+<td style="text-align: left;">Esquema modelo de Datos</td>
 <td style="text-align: center;">Esquema UML que representa las entidades del modelo y sus relaciones. Modelo simplificado de datos exraido del ORM Django</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/tree/main/entregables/models.py">E06</a></td>
-<td style="text-align: right;">Arquitectura Pipeline</td>
+<td style="text-align: left;">Arquitectura Pipeline</td>
 <td style="text-align: center;">Arquitectura y diagramas del proceso de transformación de datos, junto con sus scripts. Memoria + Código</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/blob/main/entregables/view.ipynb">E07</a></td>
-<td style="text-align: right;">Vista Minable</td>
+<td style="text-align: left;">Vista Minable</td>
 <td style="text-align: center;">Método algorítmico que genera la estructura tabular de datos necesaria para el modelo de producción</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/blob/main/entregables/view.ipynb">E08</a></td>
-<td style="text-align: right;">Datos Vista</td>
+<td style="text-align: left;">Datos Vista</td>
 <td style="text-align: center;">Estructura tabulada con las 'features' necesarias y los datos requeridos. (Estudio con 25 parcelas)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/alesteba/tfg/blob/main/entregables/model_IA">E09</a></td>
-<td style="text-align: right;">Modelo de producción</td>
+<td style="text-align: left;">Modelo de producción</td>
 <td style="text-align: center;">Cuaderno jupyter en el que buscamos el mejor modelo posible</td>
 </tr>
 </tbody>
-</table></div><div id=Gantt><h3>1.3.5 Gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. Este diagrama es una estipulación de cómo se desarrolla el proyecto. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p>
+</table></div><div id=Gantt><h3>1.3.5 Gantt</h3><p>El siguiente diagrama propone un desglose de tareas para la planificación del proyecto. Este diagrama es una estipulación de cómo se desarrolla el proyecto, en el eje horizontal, medimos el tiempo en días. Considerando 4 h de trabajo diarias, obtenemos una duración de 75 días para repartir las 300 h a lo largo de los próximos 6 meses que podemos dedicarle al trabajo. En la sección final de seguimiento y control analizamos las desviaciones encontradas y cómo han sido solucionados estos contratiempos.</p>
 <p>'<img alt="" src="mermaid/output_0.png" />'</p>
 <p>Destacamos que las tareas de escritura de la memoria y pruebas unitarias se realizan durante casi todo el proyecto. Las pruebas nos permiten asegurarnos de que el proyecto funciona adecuadamente: así no pasamos a una nueva tarea si no hemos dejado la aplicación estable al terminar la anterior.</p></div><div id=Comunicaciones><h3>1.3.6 Comunicaciones</h3><p>Para mantener informados tanto al tutor académico como a la tutora de la empresa, utilizaremos los siguientes canales:  </p>
 <table>
