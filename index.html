@@ -19,6 +19,8 @@
 
         <div class="content">
 
+            <h2>ÍNDICE</h2>
+
             <ul><li><a href="#RESUMEN">1 RESUMEN</a></li><li><a href="#ABSTRACT">2 ABSTRACT</a></li><li><a href="#INTRODUCCIÓN">3 INTRODUCCIÓN</a></li><ul><li><a href="#Contexto">3.1 Contexto</a></li><li><a href="#Previos">3.2 Previos</a></li></ul><li><a href="#PLANIFICACIÓN">4 PLANIFICACIÓN</a></li><ul><li><a href="#Alcance">4.1 Alcance</a></li><li><a href="#Metodología">4.2 Metodología</a></li><li><a href="#EDT">4.3 EDT</a></li><li><a href="#Entregables">4.4 Entregables</a></li><li><a href="#Gantt">4.5 Gantt</a></li><li><a href="#Comunicaciones">4.6 Comunicaciones</a></li><li><a href="#Riesgos">4.7 Riesgos</a></li></ul><li><a href="#ANÁLISIS">5 ANÁLISIS</a></li><ul><li><a href="#Dominio_agronómico">5.1 Dominio agronómico</a></li><li><a href="#Fuentes_de_datos">5.2 Fuentes de datos</a></li><li><a href="#Automatizacion">5.3 Automatizacion</a></li><li><a href="#Tecnologías">5.4 Tecnologías</a></li><li><a href="#Requisitos">5.5 Requisitos</a></li></ul><li><a href="#INFRAESTRUCTURA">6 INFRAESTRUCTURA</a></li><ul><li><a href="#Arquitectura_física">6.1 Arquitectura física</a></li><li><a href="#Vagrant">6.2 Vagrant</a></li><li><a href="#Entorno">6.3 Entorno</a></li></ul><li><a href="#DISEÑO">7 DISEÑO</a></li><ul><li><a href="#Carga_de_datos">7.1 Carga de datos</a></li><li><a href="#Modelo_relacional">7.2 Modelo relacional</a></li><li><a href="#Servicios">7.3 Servicios</a></li></ul><li><a href="#PIPELINE">8 PIPELINE</a></li><ul><li><a href="#Transformación_de_datos">8.1 Transformación de datos</a></li><li><a href="#Design_pattern">8.2 Design pattern</a></li><li><a href="#Vista_minable">8.3 Vista minable</a></li><li><a href="#Integración_continua">8.4 Integración continua</a></li></ul><li><a href="#MODELO_IA">9 MODELO IA</a></li><ul><li><a href="#Preprocesamiento">9.1 Preprocesamiento</a></li><li><a href="#Regresión">9.2 Regresión</a></li><li><a href="#Mejor_modelo">9.3 Mejor modelo</a></li><li><a href="#Predicciones">9.4 Predicciones</a></li></ul><li><a href="#SEGUIMIENTO">10 SEGUIMIENTO</a></li><ul><li><a href="#Desviaciones">10.1 Desviaciones</a></li><li><a href="#Memoria">10.2 Memoria</a></li></ul><li><a href="#CONCLUSIONES">11 CONCLUSIONES</a></li><li><a href="#BIBILIOGRAFÍA">12 BIBILIOGRAFÍA</a></li></ul>
 
             <p style="page-break-after: always;">&nbsp;</p>
@@ -45,7 +47,8 @@
 <li>identificar los desperdicios y tratar de eliminarlos</li>
 <li>mejorar la comunicación interna de la organización</li>
 <li>reducir costes y tiempos de entrega y mejorar la calidad</li>
-</ul></div><p style="page-break-after: always;">&nbsp;</p><div id=PLANIFICACIÓN><h2>4 PLANIFICACIÓN</h2><div id=Alcance><h3>4.1 Alcance</h3><p>El proyecto planteado inicialmente por la empresa tiene una planificación de cuatro meses.  A continuación se expondrán los objetivos generales del proyecto para aportar una visión global del trabajo.</p>
+</ul></div><p style="page-break-after: always;">&nbsp;</p><div id=PLANIFICACIÓN><h2>4 PLANIFICACIÓN</h2><div id=Alcance><h3>4.1 Alcance</h3><p>A continuación se expondrán los objetivos generales del proyecto para aportar una visión global del trabajo.</p>
+<p>MODIFICAR _&gt;</p>
 <ul>
 <li>Automatizar el despliegue de la aplicación mediante infraestructura como código.</li>
 <li>Preparar diferentes entornos con las tecnologías necesarias para cada parte de la aplicación.</li>
@@ -799,7 +802,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 
 <p><a href="https://github.com/alesteba/tfg/tree/main/entregables/services">Adjuntamos</a> como entregables del proyecto algunos de los servicios diseñados y usados más frecuentemente. El código de estos servicios es utilizado por el resto de miembros del equipo para otras tareas de la aplicación, como puede ser la presentación de los datos en la interfaz web.</p>
 <p>El pipeline que vamos a diseñar es posible gracias a la factorización en módulos de la aplicación y a la sencillez y versatilidad del modelo relacional de datos. Los servicios que ahora implementamos abstraen al resto del equipo de la funcionalidad subyacente y me permiten crear diferentes interfaces con propósitos distintos. Son muy importantes, ya que nos acercan al flujo de trabajo de integración continua que estamos buscando.</p>
-<p>Por otro lado, tenemos métodos más clásicos en los que hacemos uso de las entidades registradas para La siguiente función es una de las más usadas debido a la integración directa con el proceso de descarga de imágenes satelitales del cultivo. Fijémonos en cómo utilizamos las entidades creadas anteriormente para acceder a la información de la BD, el ORM subyacente nos abstrae de otras consultas complejas que podríamos hacer en lenguajes como SQL.</p>
+<p>Por otro lado, tenemos métodos más clásicos en los que hacemos uso de las entidades registradas para obtener valores concretos. La siguiente función es una de las más usadas debido a la integración directa con el proceso de descarga de imágenes satelitales del cultivo. Fijémonos en cómo utilizamos las entidades creadas anteriormente para acceder a la información de la BD, el ORM subyacente nos abstrae de otras consultas complejas que podríamos hacer en lenguajes como SQL.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_indice_func</span><span class="p">(</span><span class="n">parcela</span><span class="p">,</span> <span class="n">indice_p</span><span class="p">,</span> <span class="n">fecha_p</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">filtro</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Método que encapsula el uso de una función agregada junto con un filtro &quot;&quot;&quot;</span>
@@ -822,9 +825,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
             <span class="n">array_valores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indices_pixels</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">&#39;valor&#39;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">array_valores</span><span class="p">)</span>
-</code></pre></div>
-
-<p>DOCUMENTAR</p></div><p style="page-break-after: always;">&nbsp;</p><div id=PIPELINE><h2>8 PIPELINE</h2><div id=Transformación_de_datos><h3>8.1 Transformación de datos</h3><p>Una vez tenemos un modelo que soporta las principales entidades del dominio agronómico que necesitamos, procedemos a cargar la información proveniente de distintas fuentes en la BD bajo sus correspondientes entidades y con las relaciones necesarias para las consultas. Para esta carga vamos a utilizar un pipeline de datos; veamos a qué nos referimos.</p>
+</code></pre></div></div><p style="page-break-after: always;">&nbsp;</p><div id=PIPELINE><h2>8 PIPELINE</h2><div id=Transformación_de_datos><h3>8.1 Transformación de datos</h3><p>Una vez tenemos un modelo que soporta las principales entidades del dominio agronómico que necesitamos, procedemos a cargar la información proveniente de distintas fuentes en la BD bajo sus correspondientes entidades y con las relaciones necesarias para las consultas. Para esta carga vamos a utilizar un pipeline de datos; veamos a qué nos referimos.</p>
 <p>Es importante diferenciar qué tipo de estructura estamos construyendo. Existen actualmente varias arquitecturas para 'pipelines', como pueden ser ETLs u otras. Para la correcta carga y transformación de datos no utilizaremos ninguna de estas arquitecturas, sino que diseñaremos los bloques necesarios en cada paso para poblar nuestra base de datos. Este proceso puede entenderse como una canalización de datos, en la que recibimos información en diferentes fuentes y la dotamos de contexto dentro de la BD.</p>
 <B>Canalización de datos</B>
 <p>Una canalización de datos hace referencia a los pasos necesarios para mover datos del sistema de origen al sistema de destino. Estos pasos incluyen copiar datos, transferirlos desde una ubicación a otra y combinarlos con otras fuentes de datos. El objetivo principal de una canalización de datos es garantizar que todos estos pasos se produzcan de forma coherente con todos los datos.</p>
@@ -1349,6 +1350,8 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <li>Planificación</li>
 </ul>
 <p>https://www.pmi.org/pmbok-guide-standards/foundational/pmbok#</p>
+<p>https://mermaid.js.org/syntax/gantt.html</p>
+<p>https://www.pmi.org/learning/library/applying-work-breakdown-structure-project-lifecycle-6979</p>
 <ul>
 <li>Infraestructura</li>
 </ul>
@@ -1369,6 +1372,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>https://simpleisbetterthancomplex.com/tutorial/2018/08/27/how-to-create-custom-django-management-commands.html</p>
 <p>https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60</p>
 <p>https://www.astera.com/es/type/blog/etl-pipeline-vs-data-pipeline/</p>
+<p>https://www.jenkins.io/doc/book/pipeline/syntax/</p>
 <ul>
 <li>Modelo IA</li>
 </ul>
