@@ -344,21 +344,21 @@
 <thead>
 <tr>
 <th style="text-align: left;">CANAL</th>
-<th style="text-align: left;">DESCRIPCIÓN</th>
+<th style="text-align: center;">DESCRIPCIÓN</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">Reuniones</td>
-<td style="text-align: left;">presenciales, tanto con el tutor académico como con el tutor de la empresa.</td>
+<td style="text-align: center;">Presenciales, tanto con el tutor académico como con el tutor de la empresa.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Email</td>
-<td style="text-align: left;">forma de comunicación electrónica para concretar determinadas pautas o establecimiento de citas.</td>
+<td style="text-align: center;">Forma de comunicación electrónica para concretar determinadas pautas o establecimiento de citas.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Discord</td>
-<td style="text-align: left;">aplicación de comunicación interna para mensajes directos con los miembros del equipo.</td>
+<td style="text-align: center;">Aplicación de comunicación interna para mensajes directos con los miembros del equipo.</td>
 </tr>
 </tbody>
 </table></div><div id=Riesgos><h3>4.7 Riesgos</h3><p>El objetivo de esta tabla es aumentar la probabilidad de eventos positivos y disminuir la de los negativos.</p>
@@ -434,22 +434,22 @@
 <tbody>
 <tr>
 <td style="text-align: left;">QGIS</td>
-<td style="text-align: center;">información geomométrica de parcelas y sus pixéles</td>
+<td style="text-align: center;">Información geomométrica de parcelas y sus pixéles</td>
 </tr>
 <tr>
 <td style="text-align: left;">Índices Vegetativos</td>
-<td style="text-align: center;">información provenientes de imágenes satelitales descargadas en diferentes fechas</td>
+<td style="text-align: center;">Información provenientes de imágenes satelitales descargadas en diferentes fechas</td>
 </tr>
 <tr>
 <td style="text-align: left;">Cultivos / Variedad</td>
-<td style="text-align: center;">información tabulada en excels sobre tipo de cultivos y sus variedades</td>
+<td style="text-align: center;">Información tabulada en excels sobre tipo de cultivos y sus variedades</td>
 </tr>
 </tbody>
 </table>
 <p>Para poder realizar el trabajo utilizaremos, por tanto, una muestra representativa de los datos debido a que el proceso de descarga de índices y persistencia de datos es largo para realizar las pruebas. El sistema está pensado para trabajar con muchas parcelas; en las pruebas que yo voy a realizar escogemos una muestra de 25 parcelas y pensaremos una descarga de índices para no más de 4 fechas diferentes.</p>
 <p>Para hacernos una idea, contemplando solo 25 parcelas, podemos almacenar 3000 píxeles. Por cada pixel vamos a registrar varios índices vegetativos (ndvi, ndre) y para generar el histórico de datos esta información se multiplica por el número de fechas contempladas. Es decir, que aunque trabajamos sobre un volumen reducido para probar la automatización, sigue siendo mucha la información que tiene que almacenarse en la base de datos.</p>
 <p>Es el histórico de índices en diferentes fechas lo que permite al sistema realizar modelos predictivos. A mayor volumen de datos, más precisión podremos obtener en los modelos posteriormente. El punto importante de este trabajo es la mejora del proceso y la automatización del flujo de datos; ello nos llevará a que finalmente podamos obtener un modelo de regresión para predecir los kg de cultivo, tal y como el agricultor necesita. La muestra que utilizamos, al ser representativa con 25 parcelas, predecirá con un cierto sobreajuste a los datos. Por tanto nuestro esfuerzo se centra en que el proceso que implantamos sea reproducible para cualquier volumen de datos, y en que sin desarrollo adicional podamos utilizar el mismo proceso para predecir en el volumen que queramos.</p></div><div id=Automatizacion><h3>5.3 Automatizacion</h3><p>El proceso que vamos a implantar requiere de un diseño que posibilite estructurar y manejar grandes volúmenes de datos. Actualmente, existen varias tecnologías que abordan el concepto de <em>Pipeline</em> desde un punto de vista global. No vamos a utilizar ninguna de estas tecnologías; nuestro proceso se va a desarrollar a medida, modelando un Pipeline como patrón de diseño, encargado de la transformación de los datos en bloques reutilizables para su persistencia en el modelo.</p>
-<p>El primer paso para realizar una carga de datos, es el diseño de un <a href="">modelo relacional</a> que soporte esta información de la forma más estructurada y organizada posible. Hará falta la comprensión de conceptos del dominio agronómico para dar sentido a esta información y obtener así un esquema sólido sobre el que poder preguntar sin limitaciones.</p>
+<p>El primer paso para realizar una carga de datos, es el diseño de un modelo relacional que soporte esta información de la forma más estructurada y organizada posible. Hará falta la comprensión de conceptos del dominio agronómico para dar sentido a esta información y obtener así un esquema sólido sobre el que poder preguntar sin limitaciones.</p>
 <p>'<img alt="" src="mermaid/output_1.png" />'</p>
 <p>Con un modelo relacional para los datos, los bloques atómicos de carga se podrán ejecutar periódicamente utilizando las fuentes de datos necesarias. El proceso de automatización termina, una vez que están almacenados los datos, con la extracción de una vista minable que permite obtener el mejor modelo de regresión para los kg de cultivo que se van a cosechar en una fecha determinada.</p></div><div id=Tecnologías><h3>5.4 Tecnologías</h3><p>El código de la aplicación que heredamos está escrito en Python. El lenguaje es una decisión adecuada debido a la necesidad de integrar técnicas de procesamiento de datos e inteligencia artificial. El framework de Django para Python permite construir un proyecto robusto y desplegarlo en un servidor con una interfaz web.</p>
 <p><em>Django</em> nos ofrece las herramientas necesarias para trabajar desde un alto nivel de abstracción y poder diseñar una aplicación sólida y estable. Algunas de estas herramientas son:</p>
@@ -478,19 +478,19 @@
 <tbody>
 <tr>
 <td style="text-align: left;">scikit-learn</td>
-<td style="text-align: center;">creación de modelos de inteligencia artificial</td>
+<td style="text-align: center;">Creación de modelos de inteligencia artificial</td>
 </tr>
 <tr>
 <td style="text-align: left;">numpy</td>
-<td style="text-align: center;">tratamiento de datos multidimensionales</td>
+<td style="text-align: center;">Tratamiento de datos multidimensionales</td>
 </tr>
 <tr>
 <td style="text-align: left;">pandas</td>
-<td style="text-align: center;">uso de datos tabulados con herramientas para su procesamiento</td>
+<td style="text-align: center;">Uso de datos tabulados con herramientas para su procesamiento</td>
 </tr>
 <tr>
 <td style="text-align: left;">jupyter</td>
-<td style="text-align: center;">integración de cuadernos procesables con el resto del proyecto</td>
+<td style="text-align: center;">Integración de cuadernos procesables con el resto del proyecto</td>
 </tr>
 </tbody>
 </table></div><div id=Requisitos><h3>5.5 Requisitos</h3><p>La siguiente tabla muestra los requisitos funcionales críticos para completar con éxito el proyecto, terminando el trabajo con un producto estable que el equipo pueda utilizar.</p>
@@ -504,31 +504,31 @@
 <tbody>
 <tr>
 <td style="text-align: left;">RF1</td>
-<td style="text-align: center;">automatizar el despliegue de la aplicación identificando las librerías y dependencias necesarias</td>
+<td style="text-align: center;">Automatizar el despliegue de la aplicación identificando las librerías y dependencias necesarias.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RF2</td>
-<td style="text-align: center;">rediseñar el modelo de datos para poder escalar la aplicación y su gestión de datos.</td>
+<td style="text-align: center;">Rediseñar el modelo de datos para poder escalar la aplicación y su gestión de datos.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RF3</td>
-<td style="text-align: center;">documentar el proceso de desarrollo generando los documentos de diseño pertinentes.</td>
+<td style="text-align: center;">Documentar el proceso de desarrollo generando los documentos de diseño pertinentes.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RF4</td>
-<td style="text-align: center;">crear un entorno común que permita trabajar al equipo sobre las mismas fuentes de datos.</td>
+<td style="text-align: center;">Crear un entorno común que permita trabajar al equipo sobre las mismas fuentes de datos.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RF5</td>
-<td style="text-align: center;">obtener una vista minable con la selección de <em>features</em> provenientes del modelo.</td>
+<td style="text-align: center;">Obtener una vista minable con la selección de <em>features</em> provenientes del modelo.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RF6</td>
-<td style="text-align: center;">creación de un modelo de producción probando varios algoritmos de inteligencia artificial.</td>
+<td style="text-align: center;">Creación de un modelo de producción probando varios algoritmos de inteligencia artificial.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RF7</td>
-<td style="text-align: center;">despliegue de los datos del modelo en la interfaz de la aplicación.</td>
+<td style="text-align: center;">Despliegue de los datos del modelo en la interfaz de la aplicación.</td>
 </tr>
 </tbody>
 </table>
@@ -940,7 +940,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </code></pre></div>
 
 <p>Adjuntamos en los entregables los <a href="https://github.com/alesteba/tfg/tree/main/entregables/pipeline">scripts</a> que forman este proceso de almacenamiento de datos. </p></div><div id=Vista_minable><h3>8.3 Vista minable</h3><p>Hasta este punto habíamos insertado en la base da datos la información que provenía de diferentes fuentes. Hemos dotado de consistencia y relación a los datos y se ha creado un sistema con capacidad para hacer consultas sobre estos de forma ordenada y sencilla.</p>
-<p>Ahora, fuera de la estructura de comandos de <em>Django</em> y utilizando el entorno virtual creado y los cuadernos integrados en la aplicación, escribimos el <a href="">algoritmo</a> para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
+<p>Ahora, fuera de la estructura de comandos de <em>Django</em> y utilizando el entorno virtual creado y los cuadernos integrados en la aplicación, escribimos el algoritmo para extraer los datos y dar la forma necesaria para los siguientes pasos.</p>
 <p>El código que mostramos en este apartado corresponde con la generación de la vista tabulada con la que vamos a crear el modelo de producción de cultivo. Ahora realizamos el proceso inverso a la persistencia de datos que hemos realizado hasta este punto. Utilizamos la información y sus relaciones perisitidas en la base de datos de nuestro sistema para generar la vista minable que necesita el modelo predictivo. </p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">statistic_indices</span><span class="p">(</span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndre&#39;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
 
@@ -994,8 +994,6 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
                 <span class="n">col_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
             <span class="n">df</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">ind</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)]</span> <span class="o">=</span> <span class="n">col_data</span>
-
-            <span class="c1"># valor a la tabla</span>
 
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
@@ -1222,7 +1220,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </figure>
 </p></div><p style="page-break-after: always;">&nbsp;</p><div id=SEGUIMIENTO><h2>10 SEGUIMIENTO</h2><div id=Desviaciones><h3>10.1 Desviaciones</h3><p>El proyecto se ha desarrollado sin grandes cambios relativos a la planificación estipulada, pero a pesar de realizar la planificación del proyecto con su desglose en entregables y horas para los paquetes de trabajo, el tiempo de desarrollo ha diferido de la misma en algunas ocasiones, especialmente en la memoria.</p>
 <p>El número de horas planificadas era de 300, las cuales se repartían en varias etapas marcadas  por los diversos puntos de control: planificación, análisis, infraestructura, diseño,  implementación, modelos y seguimiento y control.</p>
-<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el <a href="https://alesteba.github.io/tfg/#tiempos">desglose de tareas</a>. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que apareceno la automatización en Github Actions. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id=Memoria><h3>10.2 Memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
+<p>No ha habido grandes desviaciones en cuanto a la planificación estipulada en el desglose de tareas. Sí que podemos remarcar que se han dedicado más horas a la redacción de la memoria y a algunas tareas secundarias relacionadas con esta, como pueden ser la integración de los diversos diagramas que apareceno la automatización en Github Actions. Podemos estimar entre 15 o 20 horas más para esta tarea sobre las 20 estimadas al principio.</p></div><div id=Memoria><h3>10.2 Memoria</h3><p>Esta memoria se incluye como un entregable del proyecto debido a las explicaciones y esquemas que contiene (principalmente para el modelo relacional). Para poder mejorar el flujo de trabajo, ciertos conceptos necesitan ser entendidos por los desarrolladores. La documentación aquí expuesta tiene un gran valor por el lenguaje ubicuo que implanta en el proyecto. </p>
 <p>El documento se ha escrito como notas en <em>Markdown</em> por la facilidad que da para incluir fragmentos de código relativos al proyecto y poder explicar decisiones y conceptos. Para integrar los diagramas expuestos utilizamos tecnologías como <em>Mermaid</em>, que posibilita editar los diagramas directamente en el documento, algo totalmente necesario cuando estos modelos se modifican a medida que avanzamos.</p>
 <p>Finalmente, exportamos las notas en el orden necesario para la memoria y renderizamos el documento en HTML. El fácil acceso al documento tiene bastante relevancia por el uso que el equipo puede darle al consultar la documentación, especialmente la del modelo relacional y los servicios.</p>
 <p>Utilizamos algunas herramientas de integración continua como <em>Github Actions</em> para automatizar este proceso. En un primer lugar convertimos el grafo de notas Markdown a un documento HTML mediante un proceso recursivo que ordena las notas y genera así la memoria del proyecto. Además, el índice se crea a partir de los nombres de las notas y sus relaciones con las que están enlazadas.</p>
