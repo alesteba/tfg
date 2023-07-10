@@ -9,7 +9,7 @@ body {
       white-space: pre-wrap;
     }
     @page {
-      margin: 0.5in;
+      margin: 0.7in;
       size: A4;
       @top-right {
         content: counter(page);
